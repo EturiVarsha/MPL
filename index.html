@@ -1,0 +1,1457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Million Phrases Labs — Words. Websites. Visuals.</title>
+  <meta name="description" content="Beyond websites. We build your complete digital presence — words, websites, and visuals that speak the same language. Personal branding as an ecosystem.">
+  <meta name="author" content="Varsha Eturi">
+  <meta property="og:title" content="Million Phrases Labs — Words. Websites. Visuals.">
+  <meta property="og:description" content="Beyond websites. We build your complete digital presence.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,300;1,9..144,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ============================================================
+       RESET & BASE
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    :root {
+      --ink:      #07071A;
+      --cream:    #FFFCF5;
+      --coral:    #FF4F38;
+      --amber:    #FFAA2C;
+      --violet:   #7C3AED;
+      --forest:   #0D9488;
+      --muted:    #888AAB;
+      --border:   rgba(0,0,0,0.08);
+      --white:    #FFFFFF;
+      --font-d:   'Fraunces', serif;
+      --font-b:   'Plus Jakarta Sans', sans-serif;
+      --max-w:    1240px;
+      --nav-h:    76px;
+    }
+
+    body {
+      font-family: var(--font-b);
+      background: var(--cream);
+      color: var(--ink);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: var(--cream); }
+    ::-webkit-scrollbar-thumb { background: var(--coral); border-radius: 3px; }
+
+    a { text-decoration: none; }
+
+    img { max-width: 100%; }
+
+    /* ============================================================
+       NAV
+    ============================================================ */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      height: var(--nav-h); z-index: 200;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5%;
+      background: rgba(255, 252, 245, 0.88);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      transition: box-shadow 0.3s;
+    }
+    nav.scrolled { box-shadow: 0 4px 30px rgba(0,0,0,0.08); }
+
+    .nav-logo {
+      font-family: var(--font-d);
+      font-size: 1.15rem;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+    }
+    .nav-logo em { color: var(--coral); font-style: normal; }
+
+    .nav-links {
+      display: flex; align-items: center; gap: 2.5rem;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--ink); font-size: 0.875rem; font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--coral); }
+    .nav-links a.active { color: var(--coral); font-weight: 600; }
+
+    .nav-cta {
+      background: var(--ink) !important;
+      color: var(--cream) !important;
+      padding: 0.6rem 1.5rem;
+      border-radius: 50px;
+      font-weight: 700 !important;
+      transition: background 0.2s, transform 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--coral) !important; transform: translateY(-1px); }
+
+    .hamburger {
+      display: none; background: none; border: none;
+      cursor: pointer; flex-direction: column; gap: 5px;
+    }
+    .hamburger span {
+      display: block; width: 24px; height: 2px;
+      background: var(--ink); border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    /* Mobile Nav */
+    .mob-nav {
+      display: none; position: fixed; inset: 0;
+      background: var(--ink); z-index: 199;
+      flex-direction: column; align-items: center; justify-content: center;
+      gap: 2rem;
+    }
+    .mob-nav.open { display: flex; }
+    .mob-nav a {
+      color: var(--cream); font-family: var(--font-d);
+      font-size: 2.5rem; font-weight: 700;
+      transition: color 0.2s;
+    }
+    .mob-nav a:hover { color: var(--coral); }
+    .mob-close {
+      position: absolute; top: 1.5rem; right: 5%;
+      background: none; border: none; color: var(--cream);
+      font-size: 2.2rem; cursor: pointer; line-height: 1;
+    }
+
+    /* ============================================================
+       SHARED UTILITIES
+    ============================================================ */
+    .container { max-width: var(--max-w); margin: 0 auto; }
+
+    .eyebrow {
+      font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--coral); margin-bottom: 1rem;
+      display: flex; align-items: center; gap: 0.6rem;
+    }
+    .eyebrow::before {
+      content: ''; display: inline-block;
+      width: 28px; height: 2px; background: currentColor;
+    }
+
+    .sec-title {
+      font-family: var(--font-d);
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 900; line-height: 1.05;
+      letter-spacing: -0.03em; margin-bottom: 1.25rem;
+    }
+
+    .sec-sub {
+      font-size: 1.05rem; color: #4E4E72;
+      max-width: 560px; line-height: 1.75;
+      margin-bottom: 3.5rem;
+    }
+
+    .btn-p {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: var(--coral); color: white;
+      padding: 0.875rem 2rem; border-radius: 50px;
+      font-weight: 700; font-size: 0.92rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+      border: none; cursor: pointer; font-family: var(--font-b);
+    }
+    .btn-p:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(255,79,56,0.35); }
+
+    .btn-s {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: transparent; color: var(--ink);
+      padding: 0.875rem 2rem; border-radius: 50px;
+      font-weight: 600; font-size: 0.92rem;
+      border: 2px solid currentColor;
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn-s:hover { background: var(--ink); color: var(--cream); }
+
+    /* Scroll reveal */
+    .r {
+      opacity: 0; transform: translateY(32px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .r.vis { opacity: 1; transform: none; }
+    .r.d1 { transition-delay: 0.1s; }
+    .r.d2 { transition-delay: 0.2s; }
+    .r.d3 { transition-delay: 0.3s; }
+    .r.d4 { transition-delay: 0.4s; }
+
+    /* ============================================================
+       HERO
+    ============================================================ */
+    #home {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding: var(--nav-h) 5% 60px;
+      position: relative; overflow: hidden;
+    }
+
+    .hero-orb-1, .hero-orb-2, .hero-orb-3 {
+      position: absolute; border-radius: 50%;
+      pointer-events: none;
+    }
+    .hero-orb-1 {
+      width: 700px; height: 700px;
+      background: radial-gradient(circle, rgba(255,79,56,0.1) 0%, transparent 68%);
+      top: -200px; right: -200px;
+    }
+    .hero-orb-2 {
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(255,170,44,0.09) 0%, transparent 68%);
+      bottom: -150px; left: -100px;
+    }
+    .hero-orb-3 {
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(124,58,237,0.08) 0%, transparent 68%);
+      top: 40%; left: 38%;
+    }
+
+    .hero-wrap {
+      max-width: var(--max-w); margin: 0 auto; width: 100%;
+      display: grid; grid-template-columns: 1.1fr 0.9fr;
+      gap: 4rem; align-items: center;
+    }
+
+    .hero-tag {
+      font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--coral); margin-bottom: 1.5rem;
+      display: inline-flex; align-items: center; gap: 0.7rem;
+      padding: 0.4rem 1rem 0.4rem 0.6rem;
+      background: rgba(255,79,56,0.08); border-radius: 50px;
+      border: 1px solid rgba(255,79,56,0.18);
+    }
+    .hero-tag span {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--coral); flex-shrink: 0;
+    }
+
+    .hero-h1 {
+      font-family: var(--font-d);
+      font-size: clamp(3.2rem, 6.5vw, 6rem);
+      font-weight: 900; line-height: 0.95;
+      letter-spacing: -0.04em;
+      margin-bottom: 1.75rem;
+      color: var(--ink);
+    }
+    .hero-h1 .c { color: var(--coral); }
+    .hero-h1 .ci { color: var(--coral); font-style: italic; }
+
+    .hero-p {
+      font-size: 1.1rem; color: #4E4E72;
+      max-width: 500px; line-height: 1.75;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    /* Hero right - floating cards */
+    .hero-cards {
+      display: flex; flex-direction: column; gap: 1.1rem;
+      position: relative; padding: 1rem 0;
+    }
+
+    .hc {
+      background: var(--white); border-radius: 18px;
+      padding: 1.2rem 1.5rem;
+      box-shadow: 0 6px 30px rgba(0,0,0,0.08);
+      border: 1px solid rgba(0,0,0,0.05);
+      display: flex; align-items: center; gap: 1rem;
+    }
+    .hc:nth-child(1) { animation: hfloat 6s ease-in-out infinite; }
+    .hc:nth-child(2) { margin-left: 2.5rem; animation: hfloat 6s ease-in-out infinite 2s; }
+    .hc:nth-child(3) { animation: hfloat 6s ease-in-out infinite 4s; }
+
+    @keyframes hfloat {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-9px); }
+    }
+
+    .hc-icon {
+      width: 44px; height: 44px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem; flex-shrink: 0;
+    }
+    .hc-icon.r { background: rgba(255,79,56,0.1); }
+    .hc-icon.y { background: rgba(255,170,44,0.12); }
+    .hc-icon.v { background: rgba(124,58,237,0.1); }
+
+    .hc-t strong { display: block; font-weight: 700; font-size: 0.88rem; }
+    .hc-t span { font-size: 0.75rem; color: var(--muted); }
+
+    /* ============================================================
+       MARQUEE
+    ============================================================ */
+    .marquee {
+      background: var(--ink); padding: 1rem 0; overflow: hidden;
+    }
+    .marquee-track {
+      display: flex; gap: 0; white-space: nowrap;
+    }
+    .marquee-inner {
+      display: flex; gap: 3rem; align-items: center;
+      animation: scroll 28s linear infinite; flex-shrink: 0;
+    }
+    @keyframes scroll {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+    .m-item {
+      display: inline-flex; align-items: center; gap: 0.75rem;
+      font-size: 0.8rem; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: rgba(255,252,245,0.75);
+    }
+    .m-item::before {
+      content: ''; width: 5px; height: 5px;
+      border-radius: 50%; background: var(--coral);
+    }
+
+    /* ============================================================
+       STATS
+    ============================================================ */
+    .stats-bar {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+    }
+    .stats-inner {
+      max-width: var(--max-w); margin: 0 auto;
+      padding: 2.5rem 5%;
+      display: grid; grid-template-columns: repeat(4,1fr);
+      gap: 2rem; text-align: center;
+    }
+    .stat strong {
+      display: block; font-family: var(--font-d);
+      font-size: 2.8rem; font-weight: 900;
+      color: var(--coral); line-height: 1; margin-bottom: 0.35rem;
+    }
+    .stat span { font-size: 0.82rem; color: var(--muted); font-weight: 500; }
+
+    /* ============================================================
+       SERVICES
+    ============================================================ */
+    #services { padding: 100px 5%; background: var(--cream); }
+
+    .svc-grid {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      gap: 1.5rem; margin-bottom: 1.5rem;
+    }
+    .svc-sub-grid {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      gap: 1.5rem;
+    }
+
+    .svc-card {
+      background: var(--white); border-radius: 22px;
+      padding: 2rem; border: 1px solid var(--border);
+      transition: transform 0.3s, box-shadow 0.3s;
+      position: relative; overflow: hidden;
+    }
+    .svc-card::after {
+      content: ''; position: absolute;
+      top: 0; left: 0; right: 0; height: 3px;
+      background: var(--c, var(--coral));
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 0.35s ease;
+    }
+    .svc-card:hover::after { transform: scaleX(1); }
+    .svc-card:hover { transform: translateY(-5px); box-shadow: 0 14px 45px rgba(0,0,0,0.09); }
+
+    .svc-ico {
+      width: 54px; height: 54px; border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; margin-bottom: 1.25rem;
+      background: var(--bg, rgba(255,79,56,0.08));
+    }
+    .svc-card h3 {
+      font-family: var(--font-d); font-size: 1.35rem;
+      font-weight: 700; margin-bottom: 0.6rem;
+    }
+    .svc-card p { font-size: 0.88rem; color: #4E4E72; line-height: 1.65; margin-bottom: 1.5rem; }
+
+    .tag-list { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+    .tag {
+      font-size: 0.7rem; font-weight: 700;
+      padding: 0.3rem 0.75rem; border-radius: 50px;
+      background: var(--tbg, rgba(255,79,56,0.08));
+      color: var(--tc, var(--coral));
+    }
+
+    /* Sub-cards (smaller) */
+    .svc-card.sm { padding: 1.5rem; }
+    .svc-card.sm .svc-ico {
+      width: 38px; height: 38px; font-size: 1rem; border-radius: 9px;
+      margin-bottom: 0.85rem;
+    }
+    .svc-card.sm h3 { font-size: 1.05rem; margin-bottom: 0.4rem; }
+    .svc-card.sm p { font-size: 0.82rem; margin-bottom: 0; }
+    .svc-card.sm .aside {
+      font-size: 0.73rem; color: var(--muted); margin-top: 0.6rem;
+    }
+
+    /* ============================================================
+       WHAT MAKES US DIFFERENT (coral banner)
+    ============================================================ */
+    .diff-band {
+      background: var(--coral); padding: 80px 5%; text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .diff-band::before {
+      content: ''; position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .diff-band .sec-title { color: white; position: relative; }
+    .diff-band .sec-sub { color: rgba(255,255,255,0.82); margin: 0 auto 3rem; position: relative; }
+
+    .diff-cards {
+      display: flex; justify-content: center;
+      gap: 1.5rem; flex-wrap: wrap; position: relative;
+    }
+    .diff-c {
+      background: rgba(255,255,255,0.14);
+      border: 1px solid rgba(255,255,255,0.28);
+      border-radius: 22px; padding: 2rem 1.5rem;
+      width: 210px; text-align: center;
+      backdrop-filter: blur(8px);
+      transition: background 0.3s, transform 0.25s;
+    }
+    .diff-c:hover { background: rgba(255,255,255,0.24); transform: translateY(-5px); }
+    .diff-c .ico { font-size: 2.5rem; margin-bottom: 0.85rem; }
+    .diff-c h3 { font-family: var(--font-d); font-size: 1.3rem; font-weight: 900; color: white; margin-bottom: 0.4rem; }
+    .diff-c p { font-size: 0.78rem; color: rgba(255,255,255,0.78); line-height: 1.5; }
+
+    /* ============================================================
+       TEMPLATES
+    ============================================================ */
+    #templates { padding: 100px 5%; background: #F4F0FF; }
+
+    .tpl-grid {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      gap: 1.5rem;
+    }
+
+    .tpl-card {
+      background: var(--white); border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+      border: 1px solid rgba(0,0,0,0.05);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .tpl-card:hover { transform: translateY(-7px); box-shadow: 0 18px 55px rgba(0,0,0,0.14); }
+
+    .tpl-preview {
+      height: 230px; position: relative;
+      background: #eee; overflow: hidden;
+    }
+
+    /* Gradient placeholder shown until/unless iframe loads */
+    .tpl-ph {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-d); font-size: 1.6rem;
+      font-weight: 900; letter-spacing: -0.02em;
+    }
+
+    /* Iframe scales the live site down */
+    .tpl-iframe-box {
+      position: absolute; inset: 0; overflow: hidden;
+    }
+    .tpl-iframe-box iframe {
+      width: 1280px; height: 780px;
+      transform: scale(0.29); transform-origin: top left;
+      pointer-events: none; border: none;
+      transition: opacity 0.4s;
+      opacity: 0;
+    }
+    .tpl-iframe-box iframe.loaded { opacity: 1; }
+
+    .tpl-meta { padding: 1.1rem 1.4rem 1.4rem; }
+    .tpl-cat {
+      font-size: 0.68rem; font-weight: 700;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 0.3rem;
+    }
+    .tpl-meta h3 {
+      font-family: var(--font-d); font-size: 1.1rem;
+      font-weight: 700; margin-bottom: 0.75rem;
+    }
+    .tpl-link {
+      display: inline-flex; align-items: center; gap: 0.35rem;
+      font-size: 0.82rem; font-weight: 700;
+      color: var(--violet); transition: gap 0.2s;
+    }
+    .tpl-link:hover { gap: 0.65rem; }
+
+    .tpl-cta { text-align: center; margin-top: 3rem; }
+
+    /* ============================================================
+       ABOUT (dark)
+    ============================================================ */
+    #about { padding: 100px 5%; background: var(--ink); }
+
+    .about-grid {
+      max-width: var(--max-w); margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1.3fr;
+      gap: 5rem; align-items: center;
+    }
+
+    .about-visual { position: relative; }
+
+    .about-frame {
+      width: 100%; aspect-ratio: 3/4;
+      border-radius: 28px; overflow: hidden;
+      background: linear-gradient(145deg, #FF4F38 0%, #7C3AED 55%, #07071A 100%);
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+    }
+    .about-monogram {
+      font-family: var(--font-d); font-size: 9rem; font-weight: 900;
+      color: rgba(255,255,255,0.12); letter-spacing: -0.05em;
+      user-select: none;
+    }
+    .about-frame-line {
+      position: absolute; top: 2rem; left: 2rem; right: 2rem;
+      border: 1px solid rgba(255,255,255,0.15); border-radius: 20px;
+      bottom: 2rem; pointer-events: none;
+    }
+
+    .about-badge {
+      position: absolute; bottom: -24px; right: -24px;
+      background: var(--amber); border-radius: 18px;
+      padding: 1.2rem 1.6rem;
+      box-shadow: 0 10px 35px rgba(0,0,0,0.4);
+    }
+    .about-badge strong {
+      display: block; font-size: 1.9rem; font-weight: 900;
+      color: var(--ink); line-height: 1;
+    }
+    .about-badge span { font-size: 0.72rem; color: rgba(7,7,26,0.65); font-weight: 600; }
+
+    #about .eyebrow { color: var(--amber); }
+    #about .sec-title { color: var(--cream); }
+
+    .about-quote {
+      font-family: var(--font-d); font-style: italic;
+      font-size: 1.2rem; color: var(--amber);
+      margin-bottom: 1.5rem; line-height: 1.5;
+    }
+
+    .about-body p {
+      font-size: 0.92rem; color: rgba(255,252,245,0.68);
+      line-height: 1.82; margin-bottom: 1.2rem;
+    }
+
+    .creds {
+      display: flex; flex-wrap: wrap; gap: 0.6rem;
+      margin-top: 1.75rem; margin-bottom: 2rem;
+    }
+    .cred {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 50px; padding: 0.4rem 0.9rem;
+      font-size: 0.75rem; font-weight: 500;
+      color: rgba(255,252,245,0.75);
+    }
+
+    /* ============================================================
+       BLOG
+    ============================================================ */
+    #blog { padding: 100px 5%; background: var(--cream); }
+
+    .blog-grid {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      gap: 1.5rem;
+    }
+
+    .blog-card {
+      background: var(--white); border-radius: 18px;
+      overflow: hidden; border: 1px solid var(--border);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .blog-card:hover { transform: translateY(-5px); box-shadow: 0 14px 45px rgba(0,0,0,0.1); }
+
+    .blog-thumb {
+      height: 196px; overflow: hidden; position: relative;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .blog-thumb img { width: 100%; height: 100%; object-fit: cover; }
+    .blog-thumb-fallback {
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-d); font-size: 1.5rem;
+      font-weight: 900; color: rgba(255,255,255,0.25);
+      letter-spacing: -0.02em;
+    }
+
+    .blog-body { padding: 1.4rem; }
+    .blog-date { font-size: 0.73rem; color: var(--muted); margin-bottom: 0.5rem; }
+    .blog-card h3 {
+      font-family: var(--font-d); font-size: 1.1rem;
+      font-weight: 700; line-height: 1.35; margin-bottom: 0.65rem;
+    }
+    .blog-card p { font-size: 0.83rem; color: #4E4E72; line-height: 1.65; margin-bottom: 1rem; }
+    .blog-read { font-size: 0.8rem; font-weight: 700; color: var(--coral); }
+
+    .blog-state {
+      grid-column: 1/-1; text-align: center;
+      padding: 3.5rem; color: var(--muted);
+    }
+    .blog-state .spinner {
+      display: inline-block; width: 36px; height: 36px;
+      border: 3px solid rgba(255,79,56,0.2);
+      border-top-color: var(--coral); border-radius: 50%;
+      animation: spin 0.8s linear infinite; margin-bottom: 1rem;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .blog-cta { text-align: center; margin-top: 3rem; }
+
+    /* ============================================================
+       CONTACT (dark)
+    ============================================================ */
+    #contact { padding: 100px 5%; background: var(--ink); }
+
+    .contact-grid {
+      max-width: var(--max-w); margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 5rem; align-items: start;
+    }
+
+    #contact .eyebrow { color: var(--amber); }
+    #contact .sec-title { color: var(--cream); }
+
+    .contact-info p {
+      color: rgba(255,252,245,0.6);
+      line-height: 1.82; margin-bottom: 2rem;
+      font-size: 0.92rem;
+    }
+
+    .c-methods { display: flex; flex-direction: column; gap: 0.9rem; }
+    .c-method {
+      display: flex; align-items: center; gap: 0.85rem;
+      color: rgba(255,252,245,0.68);
+    }
+    .c-method-ico {
+      width: 40px; height: 40px; border-radius: 10px; flex-shrink: 0;
+      background: rgba(255,255,255,0.06);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+    }
+    .c-method span { font-size: 0.88rem; }
+    .c-method a { color: var(--amber); }
+
+    .contact-note {
+      margin-top: 3rem; padding: 1.25rem;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px;
+      font-size: 0.8rem; font-style: italic;
+      color: rgba(255,252,245,0.38);
+      line-height: 1.65;
+    }
+
+    /* Contact form */
+    .form { display: flex; flex-direction: column; gap: 1.1rem; }
+    .fg label {
+      display: block; font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: rgba(255,252,245,0.4); margin-bottom: 0.45rem;
+    }
+    .fg input, .fg textarea, .fg select {
+      width: 100%;
+      background: rgba(255,255,255,0.055);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px; padding: 0.875rem 1rem;
+      color: var(--cream); font-family: var(--font-b);
+      font-size: 0.88rem; outline: none;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .fg input:focus, .fg textarea:focus, .fg select:focus {
+      border-color: var(--coral);
+      background: rgba(255,255,255,0.08);
+    }
+    .fg textarea { resize: vertical; min-height: 110px; }
+    .fg select option { background: #12122A; }
+    .fg input::placeholder, .fg textarea::placeholder { color: rgba(255,252,245,0.25); }
+
+    .submit-btn {
+      background: var(--coral); color: white;
+      border: none; border-radius: 50px; padding: 1rem 2rem;
+      font-family: var(--font-b); font-size: 0.95rem; font-weight: 700;
+      cursor: pointer; width: 100%;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(255,79,56,0.4); }
+
+    .form-msg {
+      text-align: center; font-size: 0.83rem;
+      padding: 0.5rem; border-radius: 8px; display: none;
+    }
+    .form-msg.ok { color: #10B981; background: rgba(16,185,129,0.1); display: block; }
+    .form-msg.err { color: #FF5340; background: rgba(255,83,64,0.1); display: block; }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    footer {
+      background: #040410; padding: 3rem 5%;
+    }
+    .footer-in {
+      max-width: var(--max-w); margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr 1fr;
+      gap: 2rem; align-items: center;
+    }
+    .footer-logo {
+      font-family: var(--font-d); font-size: 1.1rem;
+      font-weight: 900; color: var(--cream);
+    }
+    .footer-logo em { color: var(--coral); font-style: normal; }
+    .footer-logo small {
+      display: block; font-family: var(--font-b);
+      font-size: 0.7rem; color: rgba(255,252,245,0.35);
+      font-weight: 400; margin-top: 0.2rem; letter-spacing: 0.05em;
+    }
+    .footer-links {
+      display: flex; justify-content: center;
+      gap: 2rem; list-style: none;
+    }
+    .footer-links a { color: rgba(255,252,245,0.45); font-size: 0.82rem; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--cream); }
+    .footer-right { text-align: right; }
+    .footer-right p {
+      font-size: 0.75rem; color: rgba(255,252,245,0.3);
+      line-height: 1.6;
+    }
+
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+    @media (max-width: 1024px) {
+      .svc-grid { grid-template-columns: 1fr 1fr; }
+      .svc-sub-grid { grid-template-columns: 1fr 1fr; }
+      .tpl-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .hero-wrap { grid-template-columns: 1fr; }
+      .hero-cards { display: none; }
+      .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .footer-in { grid-template-columns: 1fr; text-align: center; }
+      .footer-right { text-align: center; }
+      .footer-links { justify-content: center; }
+    }
+
+    @media (max-width: 700px) {
+      .svc-grid { grid-template-columns: 1fr; }
+      .svc-sub-grid { grid-template-columns: 1fr; }
+      .tpl-grid { grid-template-columns: 1fr; }
+      .blog-grid { grid-template-columns: 1fr; }
+      .stats-inner { grid-template-columns: repeat(2,1fr); }
+      .diff-cards { gap: 1rem; }
+      .diff-c { width: 100%; max-width: 220px; }
+    }
+
+    @media (max-width: 480px) {
+      #home, #services, #templates, #about, #blog, #contact {
+        padding-left: 5%; padding-right: 5%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===================== NAV ===================== -->
+<nav id="nav">
+  <a href="#home" class="nav-logo">Million<em>Phrases</em> Labs</a>
+  <ul class="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#templates">Templates</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#blog">Blog</a></li>
+    <li><a href="#contact" class="nav-cta">Work With Us</a></li>
+  </ul>
+  <button class="hamburger" id="hbg" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile nav -->
+<div class="mob-nav" id="mobnav">
+  <button class="mob-close" id="mobclose">✕</button>
+  <a href="#home"      onclick="closeMob()">Home</a>
+  <a href="#services"  onclick="closeMob()">Services</a>
+  <a href="#templates" onclick="closeMob()">Templates</a>
+  <a href="#about"     onclick="closeMob()">About</a>
+  <a href="#blog"      onclick="closeMob()">Blog</a>
+  <a href="#contact"   onclick="closeMob()">Contact</a>
+</div>
+
+
+<!-- ===================== HERO ===================== -->
+<section id="home">
+  <div class="hero-orb-1"></div>
+  <div class="hero-orb-2"></div>
+  <div class="hero-orb-3"></div>
+
+  <div class="hero-wrap">
+    <!-- Left -->
+    <div>
+      <div class="hero-tag r"><span></span> Digital Presence Studio</div>
+      <h1 class="hero-h1 r d1">
+        Beyond<br>
+        <span class="ci">Websites.</span><br>
+        We Build<br>
+        Presence<span class="c">.</span>
+      </h1>
+      <p class="hero-p r d2">
+        A great website is only one part of the story. Your LinkedIn, résumé, and blog should all speak the same language. That's where we come in.
+      </p>
+      <div class="hero-btns r d3">
+        <a href="#services" class="btn-p">Explore Services ↗</a>
+        <a href="#templates" class="btn-s">View Templates</a>
+      </div>
+    </div>
+
+    <!-- Right – floating cards -->
+    <div class="hero-cards r d2">
+      <div class="hc">
+        <div class="hc-icon r">✍️</div>
+        <div class="hc-t">
+          <strong>Words &amp; Copy</strong>
+          <span>Blogs · LinkedIn · Résumés</span>
+        </div>
+      </div>
+      <div class="hc">
+        <div class="hc-icon y">🌐</div>
+        <div class="hc-t">
+          <strong>Personal Websites</strong>
+          <span>Hosted on GitHub Pages · Free</span>
+        </div>
+      </div>
+      <div class="hc">
+        <div class="hc-icon v">🎨</div>
+        <div class="hc-t">
+          <strong>Brand Visuals</strong>
+          <span>Banners · Thumbnails · Assets</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===================== MARQUEE ===================== -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <!-- inner repeated twice for seamless loop -->
+    <div class="marquee-inner" id="mi1">
+      <span class="m-item">Blog Content</span>
+      <span class="m-item">LinkedIn Profiles</span>
+      <span class="m-item">Personal Websites</span>
+      <span class="m-item">Résumé Writing</span>
+      <span class="m-item">Brand Visuals</span>
+      <span class="m-item">Substack Integration</span>
+      <span class="m-item">GitHub Pages</span>
+      <span class="m-item">SEO Content</span>
+      <span class="m-item">Career Transitions</span>
+      <span class="m-item">Digital Presence</span>
+    </div>
+    <div class="marquee-inner" aria-hidden="true">
+      <span class="m-item">Blog Content</span>
+      <span class="m-item">LinkedIn Profiles</span>
+      <span class="m-item">Personal Websites</span>
+      <span class="m-item">Résumé Writing</span>
+      <span class="m-item">Brand Visuals</span>
+      <span class="m-item">Substack Integration</span>
+      <span class="m-item">GitHub Pages</span>
+      <span class="m-item">SEO Content</span>
+      <span class="m-item">Career Transitions</span>
+      <span class="m-item">Digital Presence</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- ===================== STATS ===================== -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat r"><strong>100+</strong><span>Websites Delivered</span></div>
+    <div class="stat r d1"><strong>1000+</strong><span>Clients Served</span></div>
+    <div class="stat r d2"><strong>India +</strong><span>Global Reach</span></div>
+    <div class="stat r d3"><strong>5 ★</strong><span>Client Satisfaction</span></div>
+  </div>
+</div>
+
+
+<!-- ===================== SERVICES ===================== -->
+<section id="services">
+  <div class="container">
+    <p class="eyebrow r">What We Offer</p>
+    <h2 class="sec-title r d1">One voice.<br><em style="font-style:italic; color:var(--coral);">Everywhere.</em></h2>
+    <p class="sec-sub r d2">Your website, LinkedIn, résumé, and blog — all aligned. Personal branding is not one asset. It is an ecosystem.</p>
+
+    <!-- 3 main pillars -->
+    <div class="svc-grid">
+      <!-- Websites -->
+      <div class="svc-card r" style="--c:#FF4F38; --bg:rgba(255,79,56,0.08);">
+        <div class="svc-ico">🌐</div>
+        <h3>Websites</h3>
+        <p>Personal websites, landing pages, digital homes. Clean, elegant, hosted on GitHub Pages — websites you truly own. No subscriptions. No lock-in.</p>
+        <div class="tag-list">
+          <span class="tag" style="--tbg:rgba(255,79,56,0.08);--tc:#FF4F38;">Personal Sites</span>
+          <span class="tag" style="--tbg:rgba(255,79,56,0.08);--tc:#FF4F38;">Landing Pages</span>
+          <span class="tag" style="--tbg:rgba(255,79,56,0.08);--tc:#FF4F38;">GitHub Pages</span>
+          <span class="tag" style="--tbg:rgba(255,79,56,0.08);--tc:#FF4F38;">Substack Link</span>
+        </div>
+      </div>
+
+      <!-- Words -->
+      <div class="svc-card r d1" style="--c:#7C3AED; --bg:rgba(124,58,237,0.08);">
+        <div class="svc-ico" style="background:rgba(124,58,237,0.08);">✍️</div>
+        <h3>Words</h3>
+        <p>Thoughtful, human, SEO-ready writing. Blogs, LinkedIn profiles, résumés — content that builds authority, communicates value, and earns trust.</p>
+        <div class="tag-list">
+          <span class="tag" style="--tbg:rgba(124,58,237,0.08);--tc:#7C3AED;">Blog Content</span>
+          <span class="tag" style="--tbg:rgba(124,58,237,0.08);--tc:#7C3AED;">LinkedIn Profiles</span>
+          <span class="tag" style="--tbg:rgba(124,58,237,0.08);--tc:#7C3AED;">Résumé / CV</span>
+          <span class="tag" style="--tbg:rgba(124,58,237,0.08);--tc:#7C3AED;">Substack</span>
+        </div>
+      </div>
+
+      <!-- Visuals -->
+      <div class="svc-card r d2" style="--c:#FFAA2C; --bg:rgba(255,170,44,0.1);">
+        <div class="svc-ico" style="background:rgba(255,170,44,0.1);">🎨</div>
+        <h3>Visuals</h3>
+        <p>Banners, thumbnails, and brand assets that make your digital presence cohesive. Designed to look like you — not a template.</p>
+        <div class="tag-list">
+          <span class="tag" style="--tbg:rgba(255,170,44,0.1);--tc:#B45309;">Banners</span>
+          <span class="tag" style="--tbg:rgba(255,170,44,0.1);--tc:#B45309;">Thumbnails</span>
+          <span class="tag" style="--tbg:rgba(255,170,44,0.1);--tc:#B45309;">Brand Assets</span>
+          <span class="tag" style="--tbg:rgba(255,170,44,0.1);--tc:#B45309;">Social Media</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sub-services -->
+    <div class="svc-sub-grid" style="margin-top:1.5rem;">
+      <div class="svc-card sm r" style="--c:#10B981; --bg:rgba(16,185,129,0.08); border-left:3px solid #10B981;">
+        <div class="svc-ico" style="background:rgba(16,185,129,0.08);">📝</div>
+        <h3>Blog Content</h3>
+        <p>SEO-ready articles that build authority. Turn your ideas into content people read and remember — whether on Substack or your own site.</p>
+        <div class="aside">Perfect for: founders · coaches · consultants · creators</div>
+      </div>
+      <div class="svc-card sm r d1" style="--c:#0EA5E9; --bg:rgba(14,165,233,0.08); border-left:3px solid #0EA5E9;">
+        <div class="svc-ico" style="background:rgba(14,165,233,0.08);">💼</div>
+        <h3>LinkedIn Profile</h3>
+        <p>Stronger headlines, better summaries, clearer positioning. Your profile should read like a value proposition — not a job description.</p>
+      </div>
+      <div class="svc-card sm r d2" style="--c:#F43F5E; --bg:rgba(244,63,94,0.08); border-left:3px solid #F43F5E;">
+        <div class="svc-ico" style="background:rgba(244,63,94,0.08);">📄</div>
+        <h3>Résumé &amp; CV</h3>
+        <p>A résumé that communicates direction, confidence, and capability — sharper, clearer, and more strategic.</p>
+        <div class="aside">Ideal for: executives · professionals · career transitions</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===================== DIFF BAND ===================== -->
+<div class="diff-band">
+  <h2 class="sec-title r">What makes us different</h2>
+  <p class="sec-sub r">We built a Substack integration system that connects your website directly to your newsletter — so your site automatically updates as you publish.</p>
+
+  <div class="diff-cards">
+    <div class="diff-c r">
+      <div class="ico">📬</div>
+      <h3>Substack</h3>
+      <p>Your newsletter connected to your site. Auto-updates as you publish.</p>
+    </div>
+    <div class="diff-c r d1">
+      <div class="ico">⚡</div>
+      <h3>Fast Sites</h3>
+      <p>GitHub Pages hosting — efficient, free, and truly owned by you.</p>
+    </div>
+    <div class="diff-c r d2">
+      <div class="ico">💡</div>
+      <h3>No Fees</h3>
+      <p>No monthly subscriptions. No technical overwhelm. No lock-in.</p>
+    </div>
+    <div class="diff-c r d3">
+      <div class="ico">🎯</div>
+      <h3>One Ecosystem</h3>
+      <p>Website · LinkedIn · Résumé · Blog — all one aligned voice.</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- ===================== TEMPLATES ===================== -->
+<section id="templates">
+  <div class="container">
+    <p class="eyebrow r" style="color:var(--violet);">Template Gallery</p>
+    <h2 class="sec-title r d1">Websites We've <em style="font-style:italic;color:var(--violet);">Built</em></h2>
+    <p class="sec-sub r d2">Every project is intentional — designed for identity, not just aesthetics. Browse our portfolio across industries and niches.</p>
+
+    <div class="tpl-grid">
+
+      <!-- 1 Creator -->
+      <div class="tpl-card r">
+        <div class="tpl-preview">
+          <div class="tpl-ph" style="background:linear-gradient(135deg,#FF6B6B,#FFE66D);color:rgba(0,0,0,0.55);">Creator</div>
+          <div class="tpl-iframe-box">
+            <iframe src="https://eturivarsha.github.io/Creator/" loading="lazy" title="Creator Template" onload="iframeLoaded(this)" onerror="iframeError(this)"></iframe>
+          </div>
+        </div>
+        <div class="tpl-meta">
+          <div class="tpl-cat">Creator / Influencer</div>
+          <h3>The Creator</h3>
+          <a href="https://eturivarsha.github.io/Creator/" target="_blank" rel="noopener" class="tpl-link">Live Preview →</a>
+        </div>
+      </div>
+
+      <!-- 2 Life Coaching -->
+      <div class="tpl-card r d1">
+        <div class="tpl-preview">
+          <div class="tpl-ph" style="background:linear-gradient(135deg,#A8EDEA,#FED6E3);color:rgba(0,0,0,0.5);">Life Coach</div>
+          <div class="tpl-iframe-box">
+            <iframe src="https://eturivarsha.github.io/Lifecoaching1/" loading="lazy" title="Life Coaching Template" onload="iframeLoaded(this)" onerror="iframeError(this)"></iframe>
+          </div>
+        </div>
+        <div class="tpl-meta">
+          <div class="tpl-cat">Coaching / Wellness</div>
+          <h3>Life Coaching</h3>
+          <a href="https://eturivarsha.github.io/Lifecoaching1/" target="_blank" rel="noopener" class="tpl-link">Live Preview →</a>
+        </div>
+      </div>
+
+      <!-- 3 BharatLingo -->
+      <div class="tpl-card r d2">
+        <div class="tpl-preview">
+          <div class="tpl-ph" style="background:linear-gradient(135deg,#FF9933,#138808);color:rgba(255,255,255,0.85);">BharatLingo</div>
+          <div class="tpl-iframe-box">
+            <iframe src="https://eturivarsha.github.io/bharatlingo1/" loading="lazy" title="BharatLingo Template" onload="iframeLoaded(this)" onerror="iframeError(this)"></iframe>
+          </div>
+        </div>
+        <div class="tpl-meta">
+          <div class="tpl-cat">Education / Language</div>
+          <h3>BharatLingo</h3>
+          <a href="https://eturivarsha.github.io/bharatlingo1/" target="_blank" rel="noopener" class="tpl-link">Live Preview →</a>
+        </div>
+      </div>
+
+      <!-- 4 Trekster -->
+      <div class="tpl-card r">
+        <div class="tpl-preview">
+          <div class="tpl-ph" style="background:linear-gradient(135deg,#1A2980,#26D0CE);color:rgba(255,255,255,0.85);">Trekster</div>
+          <div class="tpl-iframe-box">
+            <iframe src="https://eturivarsha.github.io/Trekster/" loading="lazy" title="Trekster Template" onload="iframeLoaded(this)" onerror="iframeError(this)"></iframe>
+          </div>
+        </div>
+        <div class="tpl-meta">
+          <div class="tpl-cat">Travel / Adventure</div>
+          <h3>Trekster</h3>
+          <a href="https://eturivarsha.github.io/Trekster/" target="_blank" rel="noopener" class="tpl-link">Live Preview →</a>
+        </div>
+      </div>
+
+      <!-- 5 Hot & Sweet -->
+      <div class="tpl-card r d1">
+        <div class="tpl-preview">
+          <div class="tpl-ph" style="background:linear-gradient(135deg,#F7971E,#FFD200);color:rgba(0,0,0,0.6);">Hot &amp; Sweet</div>
+          <div class="tpl-iframe-box">
+            <iframe src="https://eturivarsha.github.io/Hot-Sweet/" loading="lazy" title="Hot Sweet Template" onload="iframeLoaded(this)" onerror="iframeError(this)"></iframe>
+          </div>
+        </div>
+        <div class="tpl-meta">
+          <div class="tpl-cat">Food / Bakery</div>
+          <h3>Hot &amp; Sweet</h3>
+          <a href="https://eturivarsha.github.io/Hot-Sweet/" target="_blank" rel="noopener" class="tpl-link">Live Preview →</a>
+        </div>
+      </div>
+
+      <!-- 6 Magazine Blog -->
+      <div class="tpl-card r d2">
+        <div class="tpl-preview">
+          <div class="tpl-ph" style="background:linear-gradient(135deg,#232526,#414345);color:rgba(255,255,255,0.75);">Magazine</div>
+          <div class="tpl-iframe-box">
+            <iframe src="https://eturivarsha.github.io/magazine-blog/" loading="lazy" title="Magazine Blog Template" onload="iframeLoaded(this)" onerror="iframeError(this)"></iframe>
+          </div>
+        </div>
+        <div class="tpl-meta">
+          <div class="tpl-cat">Editorial / Blog</div>
+          <h3>Magazine Blog</h3>
+          <a href="https://eturivarsha.github.io/magazine-blog/" target="_blank" rel="noopener" class="tpl-link">Live Preview →</a>
+        </div>
+      </div>
+
+      <!-- 7 Design Thinking -->
+      <div class="tpl-card r">
+        <div class="tpl-preview">
+          <div class="tpl-ph" style="background:linear-gradient(135deg,#4568DC,#B06AB3);color:rgba(255,255,255,0.85);">Design</div>
+          <div class="tpl-iframe-box">
+            <iframe src="https://eturivarsha.github.io/Designthinking/" loading="lazy" title="Design Thinking Template" onload="iframeLoaded(this)" onerror="iframeError(this)"></iframe>
+          </div>
+        </div>
+        <div class="tpl-meta">
+          <div class="tpl-cat">Design / Consultancy</div>
+          <h3>Design Thinking</h3>
+          <a href="https://eturivarsha.github.io/Designthinking/" target="_blank" rel="noopener" class="tpl-link">Live Preview →</a>
+        </div>
+      </div>
+
+      <!-- 8 Luxury -->
+      <div class="tpl-card r d1">
+        <div class="tpl-preview">
+          <div class="tpl-ph" style="background:linear-gradient(135deg,#1a1a1a,#4a3728);color:#D4AF37;">Luxury</div>
+          <div class="tpl-iframe-box">
+            <iframe src="https://eturivarsha.github.io/Luxurysite/" loading="lazy" title="Luxury Site Template" onload="iframeLoaded(this)" onerror="iframeError(this)"></iframe>
+          </div>
+        </div>
+        <div class="tpl-meta">
+          <div class="tpl-cat">Luxury / Premium Brand</div>
+          <h3>Luxury Site</h3>
+          <a href="https://eturivarsha.github.io/Luxurysite/" target="_blank" rel="noopener" class="tpl-link">Live Preview →</a>
+        </div>
+      </div>
+
+      <!-- 9 Million Phrases -->
+      <div class="tpl-card r d2">
+        <div class="tpl-preview">
+          <div class="tpl-ph" style="background:linear-gradient(135deg,#FF4F38,#7C3AED);color:rgba(255,255,255,0.85);">M Phrases</div>
+          <div class="tpl-iframe-box">
+            <iframe src="https://eturivarsha.github.io/millionphrases.github.io/" loading="lazy" title="Million Phrases Template" onload="iframeLoaded(this)" onerror="iframeError(this)"></iframe>
+          </div>
+        </div>
+        <div class="tpl-meta">
+          <div class="tpl-cat">Agency / Studio</div>
+          <h3>Million Phrases</h3>
+          <a href="https://eturivarsha.github.io/millionphrases.github.io/" target="_blank" rel="noopener" class="tpl-link">Live Preview →</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="tpl-cta r">
+      <a href="#contact" class="btn-p" style="background:var(--violet);">Get a Custom Website ↗</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===================== ABOUT ===================== -->
+<section id="about">
+  <div class="about-grid">
+    <!-- Left: visual -->
+    <div class="about-visual r">
+      <div class="about-frame">
+        <div class="about-monogram">VE</div>
+        <div class="about-frame-line"></div>
+      </div>
+      <div class="about-badge">
+        <strong>IIT</strong>
+        <span>Bombay — JRF</span>
+      </div>
+    </div>
+
+    <!-- Right: text -->
+    <div class="about-body">
+      <p class="eyebrow r">Meet the Founder</p>
+      <h2 class="sec-title r d1">Varsha Eturi</h2>
+      <p class="about-quote r d2">"I believe words can build worlds."</p>
+
+      <p class="r d2">Over several years, I've worked with multiple startups and thousands of clients — both in India and globally — helping individuals and businesses shape their voice through thoughtful content, strategic writing, and meaningful storytelling.</p>
+
+      <p class="r d3">My journey began in academia. I hold a Master's degree in Linguistics, qualified UGC Junior Research Fellowship (JRF) and GATE Linguistics, and worked as a Junior Research Fellow at IIT Bombay — deepening my understanding of language, communication, and human thought.</p>
+
+      <p class="r d3">I spent time living in the Himalayas — an experience that gave me perspective, clarity, and a deeper appreciation for meaningful work. That shift changed everything. Today, my unusual blend defines my work: academic rigor, human empathy, creative design, and technological thinking.</p>
+
+      <p class="r d4" style="color:rgba(255,252,245,0.45); font-style:italic; font-size:0.85rem;">
+        I write with compassion. I design with care. I build with intention.
+      </p>
+
+      <div class="creds r d4">
+        <span class="cred">🎓 M.A. Linguistics</span>
+        <span class="cred">📚 UGC JRF</span>
+        <span class="cred">🏛 IIT Bombay</span>
+        <span class="cred">⛰ Himalayas</span>
+        <span class="cred">🤖 AI Strategy</span>
+        <span class="cred">GATE Linguistics</span>
+      </div>
+
+      <a href="#contact" class="btn-p r" style="background:var(--amber); color:var(--ink);">Work With Varsha ↗</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===================== BLOG ===================== -->
+<section id="blog">
+  <div class="container">
+    <p class="eyebrow r">Latest Writings</p>
+    <h2 class="sec-title r d1">From Varsha's <em style="font-style:italic;color:var(--coral);">Substack</em></h2>
+    <p class="sec-sub r d2">Thoughtful articles on writing, personal branding, digital presence, and the art of building a voice online.</p>
+
+    <div class="blog-grid" id="blog-grid">
+      <div class="blog-state">
+        <div class="spinner"></div>
+        <p>Loading from Substack…</p>
+      </div>
+    </div>
+
+    <div class="blog-cta r">
+      <a href="https://varshaeturi.substack.com/" target="_blank" rel="noopener" class="btn-s">
+        Subscribe on Substack ↗
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===================== CONTACT ===================== -->
+<section id="contact">
+  <div class="contact-grid">
+    <!-- Info -->
+    <div>
+      <p class="eyebrow r">Let's Connect</p>
+      <h2 class="sec-title r d1">Ready to build your digital presence?</h2>
+      <p class="r d2" style="color:rgba(255,252,245,0.6); line-height:1.82; font-size:0.92rem; margin-bottom:2rem;">
+        No technical overwhelm. No expensive subscriptions. No unnecessary complexity. Just clean, elegant work — designed for you.
+      </p>
+
+      <div class="c-methods r d3">
+        <div class="c-method">
+          <div class="c-method-ico">📬</div>
+          <span>Substack: <a href="https://varshaeturi.substack.com" target="_blank">varshaeturi.substack.com</a></span>
+        </div>
+        <div class="c-method">
+          <div class="c-method-ico">🌐</div>
+          <span>Portfolio: <a href="https://eturivarsha.github.io" target="_blank">eturivarsha.github.io</a></span>
+        </div>
+        <div class="c-method">
+          <div class="c-method-ico">📧</div>
+          <span>Send a message using the form →</span>
+        </div>
+      </div>
+
+      <div class="contact-note r d4">
+        "I believe words can build worlds. Every project here is personal — designed not just for aesthetics, but for identity."<br>
+        — Varsha Eturi, Founder · Million Phrases Labs
+      </div>
+    </div>
+
+    <!-- Form -->
+    <div class="form r d2">
+      <div class="fg">
+        <label>Your Name</label>
+        <input type="text" id="fn" placeholder="Jane Smith">
+      </div>
+      <div class="fg">
+        <label>Email Address</label>
+        <input type="email" id="fe" placeholder="jane@example.com">
+      </div>
+      <div class="fg">
+        <label>I Need Help With</label>
+        <select id="fs">
+          <option value="">Select a service…</option>
+          <option value="Personal Website">Personal Website</option>
+          <option value="Blog Content">Blog Content</option>
+          <option value="LinkedIn Profile">LinkedIn Profile</option>
+          <option value="Résumé / CV">Résumé / CV</option>
+          <option value="Brand Visuals">Brand Visuals</option>
+          <option value="Full Digital Presence">Full Digital Presence (All of the above)</option>
+        </select>
+      </div>
+      <div class="fg">
+        <label>Tell us about your project</label>
+        <textarea id="fm" placeholder="Tell me a bit about yourself and what you'd like to build…"></textarea>
+      </div>
+      <button class="submit-btn" onclick="sendForm()">Send Message →</button>
+      <div class="form-msg" id="fmsg"></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===================== FOOTER ===================== -->
+<footer>
+  <div class="footer-in">
+    <div class="footer-logo">
+      Million<em>Phrases</em> Labs
+      <small>Words. Websites. Visuals.</small>
+    </div>
+    <ul class="footer-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#templates">Templates</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#blog">Blog</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="footer-right">
+      <p>Built with intelligence.<br>Designed with empathy.<br><br>© 2025 Million Phrases Labs</p>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ===================== JS ===================== -->
+<script>
+  /* ---- Nav scroll ---- */
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 30);
+    // active nav link
+    const sections = ['home','services','templates','about','blog','contact'];
+    let current = '';
+    sections.forEach(id => {
+      const s = document.getElementById(id);
+      if (s && window.scrollY >= s.offsetTop - 120) current = id;
+    });
+    document.querySelectorAll('.nav-links a').forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === '#'+current);
+    });
+  });
+
+  /* ---- Mobile nav ---- */
+  document.getElementById('hbg').addEventListener('click', () =>
+    document.getElementById('mobnav').classList.add('open'));
+  document.getElementById('mobclose').addEventListener('click', closeMob);
+  function closeMob() { document.getElementById('mobnav').classList.remove('open'); }
+
+  /* ---- Scroll reveal ---- */
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('vis'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.r').forEach(el => io.observe(el));
+
+  /* ---- Iframe previews ---- */
+  function iframeLoaded(iframe) {
+    try { iframe.classList.add('loaded'); } catch(e) {}
+  }
+  function iframeError(iframe) {
+    iframe.style.display = 'none';
+  }
+
+  /* ---- Substack blog ---- */
+  async function loadBlog() {
+    const grid = document.getElementById('blog-grid');
+    const rss  = 'https://varshaeturi.substack.com/feed';
+    const url  = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rss)}&count=6`;
+
+    try {
+      const res  = await fetch(url);
+      const data = await res.json();
+
+      if (data.status === 'ok' && data.items && data.items.length > 0) {
+        const palettes = [
+          ['#FF4F38','#FFAA2C'], ['#7C3AED','#FF4F38'],
+          ['#0EA5E9','#7C3AED'], ['#10B981','#0EA5E9'],
+          ['#FFAA2C','#FF4F38'], ['#F43F5E','#7C3AED'],
+        ];
+
+        grid.innerHTML = data.items.slice(0,6).map((p, i) => {
+          const [c1, c2] = palettes[i % palettes.length];
+          const date     = new Date(p.pubDate).toLocaleDateString('en-IN', {
+            year:'numeric', month:'long', day:'numeric'
+          });
+          const raw      = p.description || '';
+          const text     = raw.replace(/<[^>]*>/g,'').trim().slice(0,130);
+          const excerpt  = text ? text + '…' : 'Read the full article on Substack.';
+          const thumb    = p.thumbnail || (p.enclosure && p.enclosure.link) || '';
+
+          return `
+            <div class="blog-card r">
+              <div class="blog-thumb" style="background:linear-gradient(135deg,${c1},${c2});">
+                ${thumb
+                  ? `<img src="${thumb}" alt="${p.title}" loading="lazy" onerror="this.style.display='none'">`
+                  : `<div class="blog-thumb-fallback">✦</div>`
+                }
+              </div>
+              <div class="blog-body">
+                <div class="blog-date">${date}</div>
+                <h3>${p.title}</h3>
+                <p>${excerpt}</p>
+                <a href="${p.link}" target="_blank" rel="noopener" class="blog-read">Read on Substack →</a>
+              </div>
+            </div>`;
+        }).join('');
+
+        grid.querySelectorAll('.r').forEach(el => io.observe(el));
+
+      } else {
+        fallbackBlog();
+      }
+    } catch (err) {
+      fallbackBlog();
+    }
+  }
+
+  function fallbackBlog() {
+    document.getElementById('blog-grid').innerHTML = `
+      <div class="blog-state">
+        <p style="font-size:1.2rem;margin-bottom:0.75rem;">📬 Fresh content landing soon!</p>
+        <p style="margin-bottom:1.5rem;">Varsha writes about personal branding, digital presence, and building a voice online. Subscribe to be first to read.</p>
+        <a href="https://varshaeturi.substack.com/" target="_blank" rel="noopener"
+           style="display:inline-flex;align-items:center;gap:0.5rem;background:#FF4F38;color:white;
+                  padding:0.875rem 2rem;border-radius:50px;font-weight:700;font-size:0.92rem;
+                  text-decoration:none;">
+          Subscribe on Substack ↗
+        </a>
+      </div>`;
+  }
+
+  loadBlog();
+
+  /* ---- Contact form ---- */
+  function sendForm() {
+    const name    = document.getElementById('fn').value.trim();
+    const email   = document.getElementById('fe').value.trim();
+    const service = document.getElementById('fs').value;
+    const msg     = document.getElementById('fm').value.trim();
+    const fb      = document.getElementById('fmsg');
+
+    fb.className = 'form-msg';
+
+    if (!name || !email || !msg) {
+      fb.textContent = '⚠ Please fill in your name, email and message.';
+      fb.className   = 'form-msg err';
+      return;
+    }
+
+    const sub  = encodeURIComponent(`Million Phrases Labs — ${service || 'General Inquiry'} from ${name}`);
+    const body = encodeURIComponent(
+      `Hi Varsha,\n\nName: ${name}\nEmail: ${email}\nService: ${service||'Not specified'}\n\n${msg}\n\n— Sent via millionphraseslabs.com`
+    );
+    window.location.href = `mailto:?subject=${sub}&body=${body}`;
+
+    fb.textContent = '✓ Opening your email client… Talk soon!';
+    fb.className   = 'form-msg ok';
+  }
+
+  /* Allow Enter key in form inputs */
+  document.querySelectorAll('.fg input, .fg select, .fg textarea').forEach(el => {
+    el.addEventListener('keydown', e => { if (e.key==='Enter' && e.target.tagName!=='TEXTAREA') sendForm(); });
+  });
+</script>
+
+</body>
+</html>
