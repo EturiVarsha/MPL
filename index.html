@@ -517,11 +517,14 @@
       display: flex; align-items: center; justify-content: center;
       position: relative;
     }
-    .about-monogram {
-      font-family: var(--font-d); font-size: 9rem; font-weight: 900;
-      color: rgba(255,255,255,0.12); letter-spacing: -0.05em;
-      user-select: none;
-    }
+    /* replaces the monogram, sits inside .about-frame */
+.about-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
     .about-frame-line {
       position: absolute; top: 2rem; left: 2rem; right: 2rem;
       border: 1px solid rgba(255,255,255,0.15); border-radius: 20px;
@@ -1161,7 +1164,11 @@
     <!-- Left: visual -->
     <div class="about-visual r">
       <div class="about-frame">
-        <div class="about-monogram">VE</div>
+        <img 
+          src="https://raw.githubusercontent.com/EturiVarsha/MPL/main/IMG_20260117_090541.jpg" 
+          alt="Varsha Eturi" 
+          class="about-photo"
+        />
         <div class="about-frame-line"></div>
       </div>
       <div class="about-badge">
@@ -1169,23 +1176,17 @@
         <span>Bombay — JRF</span>
       </div>
     </div>
-
     <!-- Right: text -->
     <div class="about-body">
       <p class="eyebrow r">Meet the Founder</p>
       <h2 class="sec-title r d1">Varsha Eturi</h2>
       <p class="about-quote r d2">"I believe words can build worlds."</p>
-
       <p class="r d2">Over several years, I've worked with multiple startups and thousands of clients — both in India and globally — helping individuals and businesses shape their voice through thoughtful content, strategic writing, and meaningful storytelling.</p>
-
       <p class="r d3">My journey began in academia. I hold a Master's degree in Linguistics, qualified UGC Junior Research Fellowship (JRF) and GATE Linguistics, and worked as a Junior Research Fellow at IIT Bombay — deepening my understanding of language, communication, and human thought.</p>
-
       <p class="r d3">I spent time living in the Himalayas — an experience that gave me perspective, clarity, and a deeper appreciation for meaningful work. That shift changed everything. Today, my unusual blend defines my work: academic rigor, human empathy, creative design, and technological thinking.</p>
-
       <p class="r d4" style="color:rgba(255,252,245,0.45); font-style:italic; font-size:0.85rem;">
         I write with compassion. I design with care. I build with intention.
       </p>
-
       <div class="creds r d4">
         <span class="cred">🎓 M.A. Linguistics</span>
         <span class="cred">📚 UGC JRF</span>
@@ -1194,12 +1195,10 @@
         <span class="cred">🤖 AI Strategy</span>
         <span class="cred">GATE Linguistics</span>
       </div>
-
       <a href="#contact" class="btn-p r" style="background:var(--amber); color:var(--ink);">Work With Varsha ↗</a>
     </div>
   </div>
 </section>
-
 
 <!-- ===================== BLOG ===================== -->
 <section id="blog">
