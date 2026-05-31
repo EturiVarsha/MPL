@@ -1,1411 +1,716 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Million Phrases Labs — Words. Websites. Visuals.</title>
-  <meta name="description" content="Beyond websites. We build your complete digital presence — words, websites, and visuals that speak the same language. Personal branding as an ecosystem.">
-  <meta name="author" content="Varsha Eturi">
-  <meta property="og:title" content="Million Phrases Labs — Words. Websites. Visuals.">
-  <meta property="og:description" content="Beyond websites. We build your complete digital presence.">
-  <meta property="og:type" content="website">
-  <meta name="twitter:card" content="summary_large_image">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,300;1,9..144,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
-
-  <style>
-    /* ============================================================
-       RESET & BASE
-    ============================================================ */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-
-    :root {
-      --ink:      #07071A;
-      --cream:    #FFFCF5;
-      --coral:    #FF4F38;
-      --amber:    #FFAA2C;
-      --violet:   #7C3AED;
-      --forest:   #0D9488;
-      --muted:    #888AAB;
-      --border:   rgba(0,0,0,0.08);
-      --white:    #FFFFFF;
-      --font-d:   'Fraunces', serif;
-      --font-b:   'Plus Jakarta Sans', sans-serif;
-      --font-m:   'Space Mono', monospace;
-      --font-s:   'Syne', sans-serif;
-      --max-w:    1240px;
-      --nav-h:    76px;
-    }
-
-    body {
-      font-family: var(--font-b);
-      background: var(--cream);
-      color: var(--ink);
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-
-    ::-webkit-scrollbar { width: 5px; }
-    ::-webkit-scrollbar-track { background: var(--cream); }
-    ::-webkit-scrollbar-thumb { background: var(--coral); border-radius: 3px; }
-
-    a { text-decoration: none; }
-    img { max-width: 100%; }
-
-    /* ============================================================
-       NAV
-    ============================================================ */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0;
-      height: var(--nav-h); z-index: 200;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 5%;
-      background: rgba(255, 252, 245, 0.88);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--border);
-      transition: box-shadow 0.3s;
-    }
-    nav.scrolled { box-shadow: 0 4px 30px rgba(0,0,0,0.08); }
-
-    .nav-logo {
-      font-family: var(--font-d);
-      font-size: 1.15rem; font-weight: 900;
-      letter-spacing: -0.02em; color: var(--ink);
-    }
-    .nav-logo em { color: var(--coral); font-style: normal; }
-
-    .nav-links {
-      display: flex; align-items: center; gap: 2.5rem;
-      list-style: none;
-    }
-    .nav-links a {
-      color: var(--ink); font-size: 0.875rem; font-weight: 500;
-      transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--coral); }
-    .nav-links a.active { color: var(--coral); font-weight: 600; }
-
-    .nav-cta {
-      background: var(--ink) !important;
-      color: var(--cream) !important;
-      padding: 0.6rem 1.5rem; border-radius: 50px;
-      font-weight: 700 !important;
-      transition: background 0.2s, transform 0.2s !important;
-    }
-    .nav-cta:hover { background: var(--coral) !important; transform: translateY(-1px); }
-
-    .hamburger {
-      display: none; background: none; border: none;
-      cursor: pointer; flex-direction: column; gap: 5px;
-    }
-    .hamburger span {
-      display: block; width: 24px; height: 2px;
-      background: var(--ink); border-radius: 2px; transition: all 0.3s;
-    }
-
-    .mob-nav {
-      display: none; position: fixed; inset: 0;
-      background: var(--ink); z-index: 199;
-      flex-direction: column; align-items: center; justify-content: center;
-      gap: 2rem;
-    }
-    .mob-nav.open { display: flex; }
-    .mob-nav a {
-      color: var(--cream); font-family: var(--font-d);
-      font-size: 2.5rem; font-weight: 700; transition: color 0.2s;
-    }
-    .mob-nav a:hover { color: var(--coral); }
-    .mob-close {
-      position: absolute; top: 1.5rem; right: 5%;
-      background: none; border: none; color: var(--cream);
-      font-size: 2.2rem; cursor: pointer; line-height: 1;
-    }
-
-    /* ============================================================
-       SHARED UTILITIES
-    ============================================================ */
-    .container { max-width: var(--max-w); margin: 0 auto; }
-
-    .eyebrow {
-      font-size: 0.72rem; font-weight: 700;
-      letter-spacing: 0.2em; text-transform: uppercase;
-      color: var(--coral); margin-bottom: 1rem;
-      display: flex; align-items: center; gap: 0.6rem;
-    }
-    .eyebrow::before {
-      content: ''; display: inline-block;
-      width: 28px; height: 2px; background: currentColor;
-    }
-
-    .sec-title {
-      font-family: var(--font-d);
-      font-size: clamp(2rem, 4vw, 3.5rem);
-      font-weight: 900; line-height: 1.05;
-      letter-spacing: -0.03em; margin-bottom: 1.25rem;
-    }
-
-    .sec-sub {
-      font-size: 1.05rem; color: #4E4E72;
-      max-width: 560px; line-height: 1.75; margin-bottom: 3.5rem;
-    }
-
-    .btn-p {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      background: var(--coral); color: white;
-      padding: 0.875rem 2rem; border-radius: 50px;
-      font-weight: 700; font-size: 0.92rem;
-      transition: transform 0.2s, box-shadow 0.2s;
-      border: none; cursor: pointer; font-family: var(--font-b);
-    }
-    .btn-p:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(255,79,56,0.35); }
-
-    .btn-s {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      background: transparent; color: var(--ink);
-      padding: 0.875rem 2rem; border-radius: 50px;
-      font-weight: 600; font-size: 0.92rem;
-      border: 2px solid currentColor;
-      transition: background 0.2s, color 0.2s;
-    }
-    .btn-s:hover { background: var(--ink); color: var(--cream); }
-
-    .r {
-      opacity: 0; transform: translateY(32px);
-      transition: opacity 0.65s ease, transform 0.65s ease;
-    }
-    .r.vis { opacity: 1; transform: none; }
-    .r.d1 { transition-delay: 0.1s; }
-    .r.d2 { transition-delay: 0.2s; }
-    .r.d3 { transition-delay: 0.3s; }
-    .r.d4 { transition-delay: 0.4s; }
-
-    /* ============================================================
-       HERO
-    ============================================================ */
-    #home {
-      min-height: 100vh;
-      display: flex; align-items: center;
-      padding: var(--nav-h) 5% 60px;
-      position: relative; overflow: hidden;
-    }
-
-    .hero-orb-1, .hero-orb-2, .hero-orb-3 {
-      position: absolute; border-radius: 50%; pointer-events: none;
-    }
-    .hero-orb-1 {
-      width: 700px; height: 700px;
-      background: radial-gradient(circle, rgba(255,79,56,0.1) 0%, transparent 68%);
-      top: -200px; right: -200px;
-    }
-    .hero-orb-2 {
-      width: 500px; height: 500px;
-      background: radial-gradient(circle, rgba(255,170,44,0.09) 0%, transparent 68%);
-      bottom: -150px; left: -100px;
-    }
-    .hero-orb-3 {
-      width: 300px; height: 300px;
-      background: radial-gradient(circle, rgba(124,58,237,0.08) 0%, transparent 68%);
-      top: 40%; left: 38%;
-    }
-
-    .hero-wrap {
-      max-width: var(--max-w); margin: 0 auto; width: 100%;
-      display: grid; grid-template-columns: 1.05fr 0.95fr;
-      gap: 4rem; align-items: center;
-    }
-
-    .hero-tag {
-      font-size: 0.75rem; font-weight: 700;
-      letter-spacing: 0.18em; text-transform: uppercase;
-      color: var(--coral); margin-bottom: 1.5rem;
-      display: inline-flex; align-items: center; gap: 0.7rem;
-      padding: 0.4rem 1rem 0.4rem 0.6rem;
-      background: rgba(255,79,56,0.08); border-radius: 50px;
-      border: 1px solid rgba(255,79,56,0.18);
-    }
-    .hero-tag span {
-      width: 6px; height: 6px; border-radius: 50%;
-      background: var(--coral); flex-shrink: 0;
-    }
-
-    .hero-h1 {
-      font-family: var(--font-d);
-      font-size: clamp(3.2rem, 6.5vw, 6rem);
-      font-weight: 900; line-height: 0.95;
-      letter-spacing: -0.04em; margin-bottom: 1.75rem; color: var(--ink);
-    }
-    .hero-h1 .c  { color: var(--coral); }
-    .hero-h1 .ci { color: var(--coral); font-style: italic; }
-
-    .hero-p {
-      font-size: 1.1rem; color: #4E4E72;
-      max-width: 500px; line-height: 1.75; margin-bottom: 2.5rem;
-    }
-
-    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
-
-    /* ---- Tile Grid (hero right) ---- */
-    .hero-tiles {
-      position: relative;
-    }
-
-    .tile-universe {
-      background: #faf7f4;
-      border-radius: 20px;
-      padding: 14px 14px 10px;
-      border: 1px solid rgba(0,0,0,0.05);
-      box-shadow: 0 12px 50px rgba(0,0,0,0.08);
-    }
-
-    .tile-grid {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 6px;
-      font-family: var(--font-m);
-    }
-
-    .tile-wrap {
-      perspective: 700px;
-      aspect-ratio: 1 / 1;
-      cursor: pointer;
-    }
-
-    .tile {
-      width: 100%; height: 100%;
-      position: relative;
-      transform-style: preserve-3d;
-      transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
-      border-radius: 9px;
-    }
-
-    .tile-wrap.flipped .tile { transform: rotateY(180deg); }
-
-    .tile-front, .tile-back {
-      position: absolute; inset: 0;
-      border-radius: 9px;
-      backface-visibility: hidden;
-      display: flex; align-items: center; justify-content: center;
-      flex-direction: column; gap: 2px;
-      padding: 5px; box-sizing: border-box;
-      text-align: center;
-    }
-
-    .tile-front {
-      background: #fffdf9;
-      border: 1px solid #e8e0d4;
-    }
-
-    .tile-front .sym {
-      font-size: 20px; color: #c8b8a2;
-      line-height: 1; user-select: none;
-    }
-
-    .tile-front .sym-label {
-      font-family: var(--font-m);
-      font-size: 6.5px; color: #d4c4b0;
-      letter-spacing: 0.05em;
-    }
-
-    .tile-back {
-      transform: rotateY(180deg);
-      flex-direction: column; gap: 4px; border: none;
-    }
-
-    .tile-back .tile-word {
-      font-family: var(--font-s);
-      font-weight: 800; font-size: 9px;
-      color: #fff; text-transform: uppercase;
-      letter-spacing: 0.04em; line-height: 1.2;
-    }
-
-    .tile-back .accent-dot {
-      width: 4px; height: 4px; border-radius: 50%;
-      background: rgba(255,255,255,0.4);
-    }
-
-    .tile-hint {
-      font-family: var(--font-m);
-      font-size: 7.5px; color: #c4b09a;
-      text-align: center; padding: 6px 0 2px;
-      letter-spacing: 0.1em;
-    }
-
-    .tile-flip-btn {
-      display: block; margin: 6px auto 0;
-      padding: 6px 20px;
-      background: transparent; color: #a09080;
-      border: 1px solid #ddd0c4; border-radius: 50px;
-      font-family: var(--font-m); font-size: 9px;
-      cursor: pointer; letter-spacing: 0.1em;
-      transition: all 0.2s;
-    }
-    .tile-flip-btn:hover { background: #f0ebe4; color: #6a5a4a; }
-
-    /* ============================================================
-       MARQUEE
-    ============================================================ */
-    .marquee { background: var(--ink); padding: 1rem 0; overflow: hidden; }
-    .marquee-track { display: flex; gap: 0; white-space: nowrap; }
-    .marquee-inner {
-      display: flex; gap: 3rem; align-items: center;
-      animation: scroll 28s linear infinite; flex-shrink: 0;
-    }
-    @keyframes scroll {
-      from { transform: translateX(0); }
-      to   { transform: translateX(-50%); }
-    }
-    .m-item {
-      display: inline-flex; align-items: center; gap: 0.75rem;
-      font-size: 0.8rem; font-weight: 600;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      color: rgba(255,252,245,0.75);
-    }
-    .m-item::before {
-      content: ''; width: 5px; height: 5px;
-      border-radius: 50%; background: var(--coral);
-    }
-
-    /* ============================================================
-       STATS
-    ============================================================ */
-    .stats-bar { background: var(--white); border-bottom: 1px solid var(--border); }
-    .stats-inner {
-      max-width: var(--max-w); margin: 0 auto;
-      padding: 2.5rem 5%;
-      display: grid; grid-template-columns: repeat(4,1fr);
-      gap: 2rem; text-align: center;
-    }
-    .stat strong {
-      display: block; font-family: var(--font-d);
-      font-size: 2.8rem; font-weight: 900;
-      color: var(--coral); line-height: 1; margin-bottom: 0.35rem;
-    }
-    .stat span { font-size: 0.82rem; color: var(--muted); font-weight: 500; }
-
-    /* ============================================================
-       SERVICES
-    ============================================================ */
-    #services { padding: 100px 5%; background: var(--cream); }
-
-    .svc-grid {
-      display: grid; grid-template-columns: repeat(3,1fr);
-      gap: 1.5rem; margin-bottom: 1.5rem;
-    }
-    .svc-sub-grid {
-      display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem;
-    }
-
-    .svc-card {
-      background: var(--white); border-radius: 22px;
-      padding: 2rem; border: 1px solid var(--border);
-      transition: transform 0.3s, box-shadow 0.3s;
-      position: relative; overflow: hidden;
-    }
-    .svc-card::after {
-      content: ''; position: absolute;
-      top: 0; left: 0; right: 0; height: 3px;
-      background: var(--c, var(--coral));
-      transform: scaleX(0); transform-origin: left;
-      transition: transform 0.35s ease;
-    }
-    .svc-card:hover::after { transform: scaleX(1); }
-    .svc-card:hover { transform: translateY(-5px); box-shadow: 0 14px 45px rgba(0,0,0,0.09); }
-
-    .svc-ico {
-      width: 54px; height: 54px; border-radius: 14px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.5rem; margin-bottom: 1.25rem;
-      background: var(--bg, rgba(255,79,56,0.08));
-    }
-    .svc-card h3 { font-family: var(--font-d); font-size: 1.35rem; font-weight: 700; margin-bottom: 0.6rem; }
-    .svc-card p  { font-size: 0.88rem; color: #4E4E72; line-height: 1.65; margin-bottom: 1.5rem; }
-
-    .tag-list { display: flex; flex-wrap: wrap; gap: 0.45rem; }
-    .tag {
-      font-size: 0.7rem; font-weight: 700;
-      padding: 0.3rem 0.75rem; border-radius: 50px;
-      background: var(--tbg, rgba(255,79,56,0.08));
-      color: var(--tc, var(--coral));
-    }
-
-    .svc-card.sm { padding: 1.5rem; }
-    .svc-card.sm .svc-ico { width: 38px; height: 38px; font-size: 1rem; border-radius: 9px; margin-bottom: 0.85rem; }
-    .svc-card.sm h3 { font-size: 1.05rem; margin-bottom: 0.4rem; }
-    .svc-card.sm p  { font-size: 0.82rem; margin-bottom: 0; }
-    .svc-card.sm .aside { font-size: 0.73rem; color: var(--muted); margin-top: 0.6rem; }
-
-    /* ============================================================
-       DIFF BAND
-    ============================================================ */
-    .diff-band {
-      background: var(--coral); padding: 80px 5%; text-align: center;
-      position: relative; overflow: hidden;
-    }
-    .diff-band::before {
-      content: ''; position: absolute; inset: 0;
-      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-    }
-    .diff-band .sec-title { color: white; position: relative; }
-    .diff-band .sec-sub   { color: rgba(255,255,255,0.82); margin: 0 auto 3rem; position: relative; }
-
-    .diff-cards {
-      display: flex; justify-content: center;
-      gap: 1.5rem; flex-wrap: wrap; position: relative;
-    }
-    .diff-c {
-      background: rgba(255,255,255,0.14);
-      border: 1px solid rgba(255,255,255,0.28);
-      border-radius: 22px; padding: 2rem 1.5rem; width: 210px;
-      text-align: center; backdrop-filter: blur(8px);
-      transition: background 0.3s, transform 0.25s;
-    }
-    .diff-c:hover { background: rgba(255,255,255,0.24); transform: translateY(-5px); }
-    .diff-c .ico { font-size: 2.5rem; margin-bottom: 0.85rem; }
-    .diff-c h3   { font-family: var(--font-d); font-size: 1.3rem; font-weight: 900; color: white; margin-bottom: 0.4rem; }
-    .diff-c p    { font-size: 0.78rem; color: rgba(255,255,255,0.78); line-height: 1.5; }
-
-    /* ============================================================
-       TEMPLATES
-    ============================================================ */
-    #templates { padding: 100px 5%; background: #F4F0FF; }
-
-    .tpl-grid {
-      display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem;
-    }
-
-    .tpl-card {
-      background: var(--white); border-radius: 20px; overflow: hidden;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.07);
-      border: 1px solid rgba(0,0,0,0.05);
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    .tpl-card:hover { transform: translateY(-7px); box-shadow: 0 18px 55px rgba(0,0,0,0.14); }
-
-    .tpl-preview { height: 230px; position: relative; background: #eee; overflow: hidden; }
-    .tpl-ph {
-      position: absolute; inset: 0;
-      display: flex; align-items: center; justify-content: center;
-      font-family: var(--font-d); font-size: 1.6rem;
-      font-weight: 900; letter-spacing: -0.02em;
-    }
-    .tpl-iframe-box { position: absolute; inset: 0; overflow: hidden; }
-    .tpl-iframe-box iframe {
-      width: 1280px; height: 780px;
-      transform: scale(0.29); transform-origin: top left;
-      pointer-events: none; border: none;
-      transition: opacity 0.4s; opacity: 0;
-    }
-    .tpl-iframe-box iframe.loaded { opacity: 1; }
-
-    .tpl-meta { padding: 1.1rem 1.4rem 1.4rem; }
-    .tpl-cat {
-      font-size: 0.68rem; font-weight: 700;
-      letter-spacing: 0.15em; text-transform: uppercase;
-      color: var(--muted); margin-bottom: 0.3rem;
-    }
-    .tpl-meta h3 { font-family: var(--font-d); font-size: 1.1rem; font-weight: 700; margin-bottom: 0.75rem; }
-    .tpl-link {
-      display: inline-flex; align-items: center; gap: 0.35rem;
-      font-size: 0.82rem; font-weight: 700;
-      color: var(--violet); transition: gap 0.2s;
-    }
-    .tpl-link:hover { gap: 0.65rem; }
-    .tpl-cta { text-align: center; margin-top: 3rem; }
-
-    /* ============================================================
-       ABOUT
-    ============================================================ */
-    #about { padding: 100px 5%; background: var(--ink); }
-
-    .about-grid {
-      max-width: var(--max-w); margin: 0 auto;
-      display: grid; grid-template-columns: 1fr 1.3fr;
-      gap: 5rem; align-items: center;
-    }
-
-    .about-visual { position: relative; }
-    .about-frame {
-      width: 100%; aspect-ratio: 3/4; border-radius: 28px; overflow: hidden;
-      background: linear-gradient(145deg, #FF4F38 0%, #7C3AED 55%, #07071A 100%);
-      display: flex; align-items: center; justify-content: center; position: relative;
-    }
-    .about-photo { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
-    .about-frame-line {
-      position: absolute; top: 2rem; left: 2rem; right: 2rem;
-      border: 1px solid rgba(255,255,255,0.15); border-radius: 20px;
-      bottom: 2rem; pointer-events: none;
-    }
-    .about-badge {
-      position: absolute; bottom: -24px; right: -24px;
-      background: var(--amber); border-radius: 18px; padding: 1.2rem 1.6rem;
-      box-shadow: 0 10px 35px rgba(0,0,0,0.4);
-    }
-    .about-badge strong { display: block; font-size: 1.9rem; font-weight: 900; color: var(--ink); line-height: 1; }
-    .about-badge span   { font-size: 0.72rem; color: rgba(7,7,26,0.65); font-weight: 600; }
-
-    #about .eyebrow   { color: var(--amber); }
-    #about .sec-title { color: var(--cream); }
-
-    .about-quote {
-      font-family: var(--font-d); font-style: italic;
-      font-size: 1.2rem; color: var(--amber); margin-bottom: 1.5rem; line-height: 1.5;
-    }
-    .about-body p { font-size: 0.92rem; color: rgba(255,252,245,0.68); line-height: 1.82; margin-bottom: 1.2rem; }
-
-    .creds { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.75rem; margin-bottom: 2rem; }
-    .cred {
-      background: rgba(255,255,255,0.07);
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 50px; padding: 0.4rem 0.9rem;
-      font-size: 0.75rem; font-weight: 500; color: rgba(255,252,245,0.75);
-    }
-
-    /* ============================================================
-       BLOG
-    ============================================================ */
-    #blog { padding: 100px 5%; background: var(--cream); }
-
-    .blog-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
-
-    .blog-card {
-      background: var(--white); border-radius: 18px;
-      overflow: hidden; border: 1px solid var(--border);
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    .blog-card:hover { transform: translateY(-5px); box-shadow: 0 14px 45px rgba(0,0,0,0.1); }
-
-    .blog-thumb {
-      height: 196px; overflow: hidden; position: relative;
-      display: flex; align-items: center; justify-content: center;
-    }
-    .blog-thumb img { width: 100%; height: 100%; object-fit: cover; }
-    .blog-thumb-fallback {
-      width: 100%; height: 100%;
-      display: flex; align-items: center; justify-content: center;
-      font-family: var(--font-d); font-size: 1.5rem;
-      font-weight: 900; color: rgba(255,255,255,0.25); letter-spacing: -0.02em;
-    }
-
-    .blog-body { padding: 1.4rem; }
-    .blog-date { font-size: 0.73rem; color: var(--muted); margin-bottom: 0.5rem; }
-    .blog-card h3 { font-family: var(--font-d); font-size: 1.1rem; font-weight: 700; line-height: 1.35; margin-bottom: 0.65rem; }
-    .blog-card p  { font-size: 0.83rem; color: #4E4E72; line-height: 1.65; margin-bottom: 1rem; }
-    .blog-read    { font-size: 0.8rem; font-weight: 700; color: var(--coral); }
-
-    .blog-state { grid-column: 1/-1; text-align: center; padding: 3.5rem; color: var(--muted); }
-    .blog-state .spinner {
-      display: inline-block; width: 36px; height: 36px;
-      border: 3px solid rgba(255,79,56,0.2);
-      border-top-color: var(--coral); border-radius: 50%;
-      animation: spin 0.8s linear infinite; margin-bottom: 1rem;
-    }
-    @keyframes spin { to { transform: rotate(360deg); } }
-    .blog-cta { text-align: center; margin-top: 3rem; }
-
-    /* ============================================================
-       CONTACT
-    ============================================================ */
-    #contact { padding: 100px 5%; background: var(--ink); }
-
-    .contact-grid {
-      max-width: var(--max-w); margin: 0 auto;
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 5rem; align-items: start;
-    }
-
-    #contact .eyebrow   { color: var(--amber); }
-    #contact .sec-title { color: var(--cream); }
-
-    .contact-info p { color: rgba(255,252,245,0.6); line-height: 1.82; margin-bottom: 2rem; font-size: 0.92rem; }
-
-    .c-methods { display: flex; flex-direction: column; gap: 0.9rem; }
-    .c-method { display: flex; align-items: center; gap: 0.85rem; color: rgba(255,252,245,0.68); }
-    .c-method-ico {
-      width: 40px; height: 40px; border-radius: 10px; flex-shrink: 0;
-      background: rgba(255,255,255,0.06);
-      display: flex; align-items: center; justify-content: center; font-size: 1rem;
-    }
-    .c-method span { font-size: 0.88rem; }
-    .c-method a    { color: var(--amber); }
-
-    .contact-note {
-      margin-top: 3rem; padding: 1.25rem;
-      border: 1px solid rgba(255,255,255,0.08); border-radius: 14px;
-      font-size: 0.8rem; font-style: italic;
-      color: rgba(255,252,245,0.38); line-height: 1.65;
-    }
-
-    .form { display: flex; flex-direction: column; gap: 1.1rem; }
-    .fg label {
-      display: block; font-size: 0.72rem; font-weight: 700;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      color: rgba(255,252,245,0.4); margin-bottom: 0.45rem;
-    }
-    .fg input, .fg textarea, .fg select {
-      width: 100%; background: rgba(255,255,255,0.055);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 12px; padding: 0.875rem 1rem;
-      color: var(--cream); font-family: var(--font-b);
-      font-size: 0.88rem; outline: none;
-      transition: border-color 0.2s, background 0.2s;
-    }
-    .fg input:focus, .fg textarea:focus, .fg select:focus {
-      border-color: var(--coral); background: rgba(255,255,255,0.08);
-    }
-    .fg textarea { resize: vertical; min-height: 110px; }
-    .fg select option { background: #12122A; }
-    .fg input::placeholder, .fg textarea::placeholder { color: rgba(255,252,245,0.25); }
-
-    .submit-btn {
-      background: var(--coral); color: white;
-      border: none; border-radius: 50px; padding: 1rem 2rem;
-      font-family: var(--font-b); font-size: 0.95rem; font-weight: 700;
-      cursor: pointer; width: 100%;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(255,79,56,0.4); }
-
-    .form-msg {
-      text-align: center; font-size: 0.83rem;
-      padding: 0.5rem; border-radius: 8px; display: none;
-    }
-    .form-msg.ok  { color: #10B981; background: rgba(16,185,129,0.1); display: block; }
-    .form-msg.err { color: #FF5340; background: rgba(255,83,64,0.1);  display: block; }
-
-    /* ============================================================
-       FOOTER
-    ============================================================ */
-    footer { background: #040410; padding: 3rem 5%; }
-    .footer-in {
-      max-width: var(--max-w); margin: 0 auto;
-      display: grid; grid-template-columns: 1fr 1fr 1fr;
-      gap: 2rem; align-items: center;
-    }
-    .footer-logo { font-family: var(--font-d); font-size: 1.1rem; font-weight: 900; color: var(--cream); }
-    .footer-logo em    { color: var(--coral); font-style: normal; }
-    .footer-logo small {
-      display: block; font-family: var(--font-b);
-      font-size: 0.7rem; color: rgba(255,252,245,0.35);
-      font-weight: 400; margin-top: 0.2rem; letter-spacing: 0.05em;
-    }
-    .footer-links { display: flex; justify-content: center; gap: 2rem; list-style: none; }
-    .footer-links a { color: rgba(255,252,245,0.45); font-size: 0.82rem; transition: color 0.2s; }
-    .footer-links a:hover { color: var(--cream); }
-    .footer-right { text-align: right; }
-    .footer-right p { font-size: 0.75rem; color: rgba(255,252,245,0.3); line-height: 1.6; }
-
-    /* ============================================================
-       RESPONSIVE
-    ============================================================ */
-    @media (max-width: 1024px) {
-      .svc-grid      { grid-template-columns: 1fr 1fr; }
-      .svc-sub-grid  { grid-template-columns: 1fr 1fr; }
-      .tpl-grid      { grid-template-columns: 1fr 1fr; }
-    }
-
-    @media (max-width: 900px) {
-      .nav-links { display: none; }
-      .hamburger { display: flex; }
-      .hero-wrap { grid-template-columns: 1fr; }
-      .hero-tiles { display: none; }
-      .about-grid   { grid-template-columns: 1fr; gap: 3rem; }
-      .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
-      .footer-in    { grid-template-columns: 1fr; text-align: center; }
-      .footer-right { text-align: center; }
-      .footer-links { justify-content: center; }
-    }
-
-    @media (max-width: 700px) {
-      .svc-grid     { grid-template-columns: 1fr; }
-      .svc-sub-grid { grid-template-columns: 1fr; }
-      .tpl-grid     { grid-template-columns: 1fr; }
-      .blog-grid    { grid-template-columns: 1fr; }
-      .stats-inner  { grid-template-columns: repeat(2,1fr); }
-      .diff-cards   { gap: 1rem; }
-      .diff-c       { width: 100%; max-width: 220px; }
-    }
-
-    @media (max-width: 480px) {
-      #home, #services, #templates, #about, #blog, #contact {
-        padding-left: 5%; padding-right: 5%;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Million Phrases Labs — Words. Websites. Visuals.</title>
+<meta name="description" content="Beyond websites. We build your complete digital presence.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+:root{
+  --mg:#E8157A;--pink:#F4A7C3;--blue:#89C4E1;
+  --parch:#F0ECD8;--sage:#8FA67A;--ochre:#C4A35A;
+  --ink:#1A1018;--white:#FAFAFA;
+  --fd:'Playfair Display',serif;
+  --fb:'DM Sans',sans-serif;
+  --fm:'Space Mono',monospace;
+  --nav-h:72px;
+}
+body{font-family:var(--fb);color:var(--ink);overflow-x:hidden;line-height:1.6;
+  background:
+    radial-gradient(ellipse 80% 60% at 10% 20%,rgba(232,21,122,0.13) 0%,transparent 60%),
+    radial-gradient(ellipse 60% 80% at 90% 10%,rgba(137,196,225,0.16) 0%,transparent 55%),
+    radial-gradient(ellipse 70% 50% at 50% 85%,rgba(244,167,195,0.14) 0%,transparent 60%),
+    radial-gradient(ellipse 50% 40% at 80% 55%,rgba(196,163,90,0.09) 0%,transparent 50%),
+    radial-gradient(ellipse 90% 70% at 20% 70%,rgba(143,166,122,0.08) 0%,transparent 55%),
+    #F0ECD8;
+  background-attachment:fixed;
+}
+a{text-decoration:none;color:inherit}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-thumb{background:var(--mg);border-radius:2px}
+
+/* glass - works everywhere */
+.glass{
+  background:rgba(250,245,235,0.75);
+  border:1px solid rgba(255,255,255,0.7);
+  border-radius:20px;
+  box-shadow:0 4px 24px rgba(232,21,122,0.07),inset 0 1px 0 rgba(255,255,255,0.8);
+}
+@supports(backdrop-filter:blur(1px)){
+  .glass{
+    background:rgba(250,245,235,0.45);
+    backdrop-filter:blur(20px) saturate(1.5);
+    -webkit-backdrop-filter:blur(20px) saturate(1.5);
+  }
+}
+.glass-dark{
+  background:rgba(26,16,24,0.88);
+  border:1px solid rgba(255,255,255,0.12);
+  border-radius:20px;
+}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;height:var(--nav-h);z-index:300;
+  display:flex;align-items:center;justify-content:space-between;padding:0 5%;
+  background:rgba(240,236,216,0.92);
+  border-bottom:1px solid rgba(232,21,122,0.12);
+  transition:box-shadow 0.3s;
+}
+@supports(backdrop-filter:blur(1px)){nav{background:rgba(240,236,216,0.72);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);}}
+nav.scrolled{box-shadow:0 4px 30px rgba(232,21,122,0.1)}
+.nav-logo{font-family:var(--fd);font-size:1.1rem;font-weight:900;letter-spacing:-0.02em}
+.nav-logo em{color:var(--mg);font-style:normal}
+.nav-links{display:flex;align-items:center;gap:2rem;list-style:none}
+.nav-links a{font-size:0.82rem;font-weight:500;transition:color 0.2s}
+.nav-links a:hover{color:var(--mg)}
+.nav-cta{background:var(--mg)!important;color:#fff!important;padding:0.5rem 1.4rem;border-radius:50px;font-weight:600!important;transition:transform 0.2s,box-shadow 0.2s!important}
+.nav-cta:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(232,21,122,0.4)!important}
+.hamburger{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;padding:4px}
+.hamburger span{display:block;width:22px;height:2px;background:var(--ink);border-radius:2px;transition:all 0.3s}
+.mob-nav{
+  display:none;position:fixed;inset:0;z-index:299;
+  flex-direction:column;align-items:center;justify-content:center;gap:2.5rem;
+  background:rgba(240,236,216,0.98);
+}
+.mob-nav.open{display:flex}
+.mob-nav a{font-family:var(--fd);font-size:2.2rem;font-weight:700;color:var(--ink);transition:color 0.2s}
+.mob-nav a:hover{color:var(--mg)}
+.mob-close{position:absolute;top:1.5rem;right:5%;background:none;border:none;font-size:2rem;cursor:pointer}
+
+/* SHARED */
+.wrap{max-width:1200px;margin:0 auto}
+.section{padding:100px 5%}
+.eyebrow{font-family:var(--fm);font-size:0.68rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--mg);margin-bottom:1rem;display:flex;align-items:center;gap:0.5rem}
+.eyebrow::before{content:'';width:24px;height:1.5px;background:var(--mg)}
+.sec-title{font-family:var(--fd);font-size:clamp(2.2rem,5vw,4rem);font-weight:900;line-height:1.0;letter-spacing:-0.03em;margin-bottom:1.2rem}
+.sec-sub{font-size:1rem;color:#5a4a50;max-width:540px;line-height:1.8;margin-bottom:3rem}
+.btn-p{display:inline-flex;align-items:center;gap:0.5rem;background:var(--mg);color:#fff;padding:0.85rem 2rem;border-radius:50px;font-weight:600;font-size:0.9rem;border:none;cursor:pointer;font-family:var(--fb);transition:transform 0.2s,box-shadow 0.2s}
+.btn-p:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(232,21,122,0.4)}
+.btn-s{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(250,245,235,0.8);color:var(--ink);padding:0.85rem 2rem;border-radius:50px;font-weight:600;font-size:0.9rem;border:1.5px solid rgba(26,16,24,0.2);transition:all 0.2s}
+.btn-s:hover{background:rgba(250,245,235,1);transform:translateY(-2px)}
+.r{opacity:0;transform:translateY(28px);transition:opacity 0.7s ease,transform 0.7s ease}
+.r.vis{opacity:1;transform:none}
+.r.d1{transition-delay:0.1s}.r.d2{transition-delay:0.2s}.r.d3{transition-delay:0.3s}.r.d4{transition-delay:0.4s}
+
+/* HERO */
+#home{min-height:100vh;display:flex;align-items:center;padding:var(--nav-h) 5% 80px}
+.hero-inner{max-width:1200px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.hero-tag{display:inline-flex;align-items:center;gap:0.6rem;font-family:var(--fm);font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--mg);margin-bottom:1.5rem;padding:0.4rem 1rem;border-radius:50px;background:rgba(232,21,122,0.08);border:1px solid rgba(232,21,122,0.2)}
+.hero-tag span{width:5px;height:5px;border-radius:50%;background:var(--mg);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+.hero-h1{font-family:var(--fd);font-size:clamp(3rem,7vw,5.5rem);font-weight:900;line-height:0.95;letter-spacing:-0.04em;margin-bottom:1.5rem}
+.hero-h1 .mg{color:var(--mg)}.hero-h1 .it{font-style:italic;color:var(--mg)}
+.hero-p{font-size:1rem;color:#5a4a50;max-width:460px;line-height:1.8;margin-bottom:2rem}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
+
+/* PUZZLE CARD */
+.puzzle-teaser{padding:2.5rem;position:relative;overflow:hidden}
+.puzzle-teaser::before{content:'';position:absolute;top:-60px;right:-60px;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(232,21,122,0.12),transparent 70%);pointer-events:none}
+.puzzle-label{font-family:var(--fm);font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--mg);margin-bottom:1rem}
+.puzzle-headline{font-family:var(--fd);font-size:1.6rem;font-weight:700;line-height:1.2;margin-bottom:0.75rem}
+.puzzle-headline em{font-style:italic;color:var(--mg)}
+.puzzle-sub{font-size:0.85rem;color:#5a4a50;line-height:1.7;margin-bottom:1.5rem}
+.prize-badge{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(232,21,122,0.08);border:1px solid rgba(232,21,122,0.2);border-radius:50px;padding:0.4rem 1rem;font-family:var(--fm);font-size:0.65rem;letter-spacing:0.08em;color:var(--mg);margin-bottom:1.5rem}
+.open-puzzle-btn{display:block;width:100%;background:var(--mg);color:#fff;border:none;border-radius:14px;padding:1rem;font-family:var(--fd);font-size:1rem;font-weight:700;font-style:italic;cursor:pointer;transition:transform 0.2s,box-shadow 0.2s}
+.open-puzzle-btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(232,21,122,0.4)}
+
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;z-index:500;background:rgba(26,16,24,0.55);display:none;align-items:center;justify-content:center;padding:1rem}
+.modal-overlay.open{display:flex}
+.modal-box{width:100%;max-width:620px;max-height:90vh;overflow-y:auto;background:#F5F0E8;border:1px solid rgba(255,255,255,0.7);border-radius:28px;padding:2.5rem;box-shadow:0 24px 80px rgba(26,16,24,0.25);position:relative}
+.modal-close{position:absolute;top:1.2rem;right:1.2rem;background:rgba(26,16,24,0.08);border:none;border-radius:50%;width:36px;height:36px;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;transition:background 0.2s}
+.modal-close:hover{background:rgba(232,21,122,0.15)}
+.modal-title{font-family:var(--fd);font-size:1.8rem;font-weight:900;line-height:1.15;margin-bottom:0.5rem}
+.modal-title em{font-style:italic;color:var(--mg)}
+.modal-sub{font-size:0.88rem;color:#5a4a50;line-height:1.7;margin-bottom:1.5rem}
+.journal-fields{display:flex;flex-direction:column;gap:0.8rem;margin-bottom:1.2rem}
+.journal-field label{display:block;font-family:var(--fm);font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--mg);margin-bottom:0.35rem}
+.letter-box{width:100%;background:rgba(255,255,255,0.8);border:1.5px solid rgba(232,21,122,0.2);border-radius:12px;padding:0.85rem 1rem;font-family:var(--fb);font-size:0.88rem;color:var(--ink);outline:none;resize:vertical;min-height:80px;transition:border-color 0.2s,box-shadow 0.2s}
+.letter-box:focus{border-color:var(--mg);box-shadow:0 0 0 3px rgba(232,21,122,0.1)}
+.letter-box::placeholder{color:rgba(90,74,80,0.4)}
+.letter-box.single{min-height:unset;resize:none}
+.send-btn{width:100%;background:var(--mg);color:#fff;border:none;border-radius:14px;padding:1rem;font-family:var(--fd);font-size:1rem;font-weight:700;font-style:italic;cursor:pointer;transition:transform 0.2s,box-shadow 0.2s;margin-bottom:0.75rem}
+.send-btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(232,21,122,0.4)}
+.parchment-reveal{display:none;margin-top:1rem}
+.parchment-reveal.show{display:block}
+.parchment-scroll{background:linear-gradient(160deg,#F0ECD8,#F4E8C8);border:1.5px solid rgba(196,163,90,0.4);border-radius:16px;padding:2rem;box-shadow:0 6px 30px rgba(196,163,90,0.15)}
+.parchment-scroll::before,.parchment-scroll::after{content:'— º6 —';display:block;text-align:center;font-family:var(--fd);font-size:0.8rem;color:rgba(196,163,90,0.6);letter-spacing:0.3em}
+.parchment-scroll::before{margin-bottom:1rem}
+.parchment-scroll::after{margin-top:1rem}
+.parchment-text{font-family:var(--fd);font-style:italic;font-size:1rem;color:var(--ink);line-height:1.8;text-align:center;white-space:pre-wrap}
+.parchment-name{font-family:var(--fm);font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--mg);text-align:center;margin-top:0.75rem}
+.parchment-actions{display:flex;gap:0.75rem;margin-top:1.2rem;flex-wrap:wrap}
+.wa-btn{flex:1;display:flex;align-items:center;justify-content:center;gap:0.5rem;background:#25D366;color:#fff;border:none;border-radius:12px;padding:0.85rem;font-weight:700;font-size:0.88rem;font-family:var(--fb);cursor:pointer;transition:transform 0.2s}
+.wa-btn:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(37,211,102,0.4)}
+.ig-note{flex:1;display:flex;align-items:center;justify-content:center;background:rgba(232,21,122,0.08);border:1px solid rgba(232,21,122,0.25);border-radius:12px;padding:0.85rem;font-size:0.82rem;color:var(--mg);font-weight:600;text-align:center;line-height:1.4}
+
+/* MARQUEE */
+.marquee{padding:1rem 0;overflow:hidden;background:rgba(232,21,122,0.05);border-top:1px solid rgba(232,21,122,0.12);border-bottom:1px solid rgba(232,21,122,0.12)}
+.marquee-track{display:flex;white-space:nowrap}
+.marquee-inner{display:flex;gap:3rem;align-items:center;animation:scroll 30s linear infinite;flex-shrink:0}
+@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.m-item{display:inline-flex;align-items:center;gap:0.6rem;font-family:var(--fm);font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--mg)}
+.m-item::before{content:'º6';font-size:0.5rem;opacity:0.6}
+
+/* FLIP CARDS - SERVICES */
+.flip-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.flip-wrap{perspective:800px;height:280px;cursor:pointer}
+.flip-card{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform 0.65s cubic-bezier(0.4,0.2,0.2,1)}
+.flip-wrap:hover .flip-card,.flip-wrap.flipped .flip-card{transform:rotateY(180deg)}
+.flip-front,.flip-back{position:absolute;inset:0;border-radius:20px;backface-visibility:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem;text-align:center}
+.flip-front{background:rgba(250,245,235,0.88);border:1px solid rgba(255,255,255,0.8);box-shadow:0 4px 24px rgba(232,21,122,0.07)}
+.flip-back{transform:rotateY(180deg);border:1px solid rgba(255,255,255,0.3);box-shadow:0 8px 40px rgba(0,0,0,0.12)}
+.flip-ico{font-size:2.5rem;margin-bottom:0.75rem}
+.flip-title{font-family:var(--fd);font-size:1.4rem;font-weight:700;color:var(--ink);margin-bottom:0.5rem}
+.flip-hint{font-family:var(--fm);font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--mg);opacity:0.7}
+.flip-back-title{font-family:var(--fd);font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:0.6rem}
+.flip-back-text{font-size:0.82rem;color:rgba(255,255,255,0.9);line-height:1.65}
+.flip-tags{display:flex;flex-wrap:wrap;gap:0.35rem;justify-content:center;margin-top:0.8rem}
+.flip-tag{font-size:0.65rem;font-weight:700;padding:0.25rem 0.6rem;border-radius:50px;background:rgba(255,255,255,0.2);color:#fff;border:1px solid rgba(255,255,255,0.3)}
+
+/* DESIGN STRATEGY */
+.ds-inner{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.ds-canvas{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:0.75rem;padding:0.75rem;aspect-ratio:1/1}
+.ds-tile{border-radius:16px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0.5rem;padding:1rem;background:rgba(250,245,235,0.85);border:1px solid rgba(255,255,255,0.8);transition:transform 0.3s,box-shadow 0.3s;cursor:default}
+.ds-tile:hover{transform:scale(1.04);box-shadow:0 8px 30px rgba(232,21,122,0.12)}
+.ds-tile-ico{font-size:1.8rem}
+.ds-tile-label{font-family:var(--fm);font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;text-align:center;color:var(--ink)}
+.ds-pills{display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:2rem}
+.ds-pill{font-size:0.75rem;padding:0.4rem 0.9rem;border-radius:50px;background:rgba(232,21,122,0.08);color:var(--mg);border:1px solid rgba(232,21,122,0.18)}
+
+/* CONTENT STRATEGY */
+.cs-body{display:grid;grid-template-columns:1.2fr 0.8fr;gap:3rem;align-items:start;margin-top:3rem}
+.cs-text p{font-size:0.92rem;color:#5a4a50;line-height:1.85;margin-bottom:1.2rem}
+.cs-text strong{color:var(--ink);font-weight:600}
+.cs-flip-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.cs-flip-wrap{perspective:600px;height:190px;cursor:pointer}
+.cs-flip-card{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform 0.65s cubic-bezier(0.4,0.2,0.2,1)}
+.cs-flip-wrap:hover .cs-flip-card,.cs-flip-wrap.flipped .cs-flip-card{transform:rotateY(180deg)}
+.cs-front,.cs-back{position:absolute;inset:0;border-radius:16px;backface-visibility:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:1.5rem;text-align:center}
+.cs-front{background:rgba(250,245,235,0.88);border:1px solid rgba(255,255,255,0.8)}
+.cs-back{transform:rotateY(180deg);background:linear-gradient(135deg,#1A1018,#2d1a28)}
+.cs-front-ico{font-size:2rem;margin-bottom:0.5rem}
+.cs-front-title{font-family:var(--fd);font-size:1rem;font-weight:700;color:var(--ink);margin-bottom:0.3rem}
+.cs-front-hint{font-family:var(--fm);font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--mg);opacity:0.7}
+.cs-back-title{font-family:var(--fd);font-size:0.9rem;font-weight:700;color:var(--pink);margin-bottom:0.5rem}
+.cs-back-text{font-size:0.75rem;color:rgba(240,236,216,0.82);line-height:1.6}
+
+/* BALLOON GAME */
+.game-box{max-width:700px;margin:0 auto;background:rgba(250,245,235,0.9);border:1px solid rgba(255,255,255,0.8);border-radius:28px;overflow:hidden;box-shadow:0 8px 40px rgba(232,21,122,0.08)}
+.game-header{padding:1.5rem 2rem 1rem;background:rgba(232,21,122,0.05);border-bottom:1px solid rgba(232,21,122,0.1)}
+.game-title{font-family:var(--fd);font-size:1.6rem;font-weight:900;color:var(--ink);margin-bottom:0.3rem}
+.game-sub{font-size:0.85rem;color:#5a4a50}
+.game-meta{display:flex;justify-content:center;gap:3rem;padding:1rem 2rem;border-bottom:1px solid rgba(232,21,122,0.08)}
+.game-stat-label{font-family:var(--fm);font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--mg);margin-bottom:0.2rem}
+.game-stat-val{font-family:var(--fd);font-size:1.8rem;font-weight:900;color:var(--ink)}
+.game-arena{position:relative;height:320px;overflow:hidden;cursor:crosshair;background:rgba(240,236,216,0.3)}
+.game-balloon{position:absolute;bottom:-80px;font-size:2.8rem;cursor:pointer;animation:floatUp linear forwards;user-select:none}
+@keyframes floatUp{from{bottom:-80px;opacity:1}to{bottom:110%;opacity:0.8}}
+.game-pop{position:absolute;pointer-events:none;font-size:2rem;animation:popAnim 0.5s ease-out forwards}
+@keyframes popAnim{0%{transform:scale(0.5);opacity:1}100%{transform:scale(2.5);opacity:0}}
+.game-footer{padding:1.2rem 2rem;text-align:center}
+.start-game-btn{background:var(--mg);color:#fff;border:none;border-radius:12px;padding:0.85rem 2.5rem;font-family:var(--fd);font-size:1rem;font-weight:700;font-style:italic;cursor:pointer;transition:transform 0.2s,box-shadow 0.2s}
+.start-game-btn:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(232,21,122,0.4)}
+.game-result{display:none;padding:2rem;text-align:center}
+.result-score{font-family:var(--fd);font-size:3.5rem;font-weight:900;color:var(--mg);line-height:1}
+.result-msg{font-size:1rem;color:#5a4a50;margin:0.75rem 0 1.5rem;line-height:1.6}
+.result-cta{font-family:var(--fd);font-size:1.1rem;font-weight:700;font-style:italic;color:var(--ink)}
+
+/* PORTFOLIO */
+.port-tabs{display:flex;gap:0.75rem;margin-bottom:2.5rem;flex-wrap:wrap}
+.port-tab{font-family:var(--fm);font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;padding:0.5rem 1.2rem;border-radius:50px;border:1.5px solid rgba(232,21,122,0.25);background:transparent;cursor:pointer;color:var(--ink);transition:all 0.2s}
+.port-tab.active,.port-tab:hover{background:var(--mg);color:#fff;border-color:var(--mg)}
+.port-section{display:none}.port-section.active{display:block}
+.design-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+.design-card{border-radius:18px;overflow:hidden;background:rgba(250,245,235,0.88);border:1px solid rgba(255,255,255,0.8);box-shadow:0 4px 20px rgba(0,0,0,0.05);transition:transform 0.3s,box-shadow 0.3s}
+.design-card:hover{transform:translateY(-6px);box-shadow:0 16px 50px rgba(232,21,122,0.15)}
+.design-thumb{height:190px;display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-size:1.3rem;font-weight:900;color:rgba(255,255,255,0.88);letter-spacing:-0.02em;padding:1rem;text-align:center}
+.design-meta{padding:1rem 1.2rem 1.2rem}
+.design-cat{font-family:var(--fm);font-size:0.58rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--mg);margin-bottom:0.25rem}
+.design-name{font-family:var(--fd);font-size:1rem;font-weight:700;margin-bottom:0.6rem;color:var(--ink)}
+.design-link{display:inline-flex;align-items:center;gap:0.3rem;font-size:0.78rem;font-weight:700;color:var(--mg);transition:gap 0.2s}
+.design-link:hover{gap:0.55rem}
+.blog-grid-wall{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+.blog-modal-card{border-radius:18px;overflow:hidden;cursor:pointer;background:rgba(250,245,235,0.88);border:1px solid rgba(255,255,255,0.8);transition:transform 0.3s,box-shadow 0.3s}
+.blog-modal-card:hover{transform:translateY(-6px);box-shadow:0 16px 50px rgba(232,21,122,0.15)}
+.blog-thumb-wall{height:150px;display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-size:1.1rem;font-weight:900;color:rgba(255,255,255,0.88);padding:1rem;text-align:center}
+.blog-body-wall{padding:1rem 1.2rem 1.2rem}
+.blog-date-wall{font-family:var(--fm);font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--mg);margin-bottom:0.3rem}
+.blog-title-wall{font-family:var(--fd);font-size:0.9rem;font-weight:700;line-height:1.3;margin-bottom:0.5rem;color:var(--ink)}
+.blog-excerpt-wall{font-size:0.76rem;color:#5a4a50;line-height:1.6}
+.blog-modal-overlay{position:fixed;inset:0;z-index:500;background:rgba(26,16,24,0.5);display:none;align-items:center;justify-content:center;padding:1rem}
+.blog-modal-overlay.open{display:flex}
+.blog-modal-inner{width:100%;max-width:600px;max-height:88vh;overflow-y:auto;background:#F5F0E8;border:1px solid rgba(255,255,255,0.7);border-radius:28px;padding:2.5rem;box-shadow:0 24px 80px rgba(26,16,24,0.2);position:relative}
+.blog-modal-close{position:absolute;top:1.2rem;right:1.2rem;background:rgba(26,16,24,0.08);border:none;border-radius:50%;width:36px;height:36px;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;transition:background 0.2s}
+.blog-modal-close:hover{background:rgba(232,21,122,0.15)}
+.blog-modal-cat{font-family:var(--fm);font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--mg);margin-bottom:0.5rem}
+.blog-modal-title{font-family:var(--fd);font-size:1.5rem;font-weight:900;line-height:1.2;margin-bottom:0.75rem;color:var(--ink)}
+.blog-modal-date{font-family:var(--fm);font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;color:#8a7a80;margin-bottom:1.2rem}
+.blog-modal-body{font-size:0.9rem;color:#5a4a50;line-height:1.85;margin-bottom:1.5rem;white-space:pre-line}
+.blog-modal-cta{display:inline-flex;align-items:center;gap:0.5rem;background:var(--mg);color:#fff;padding:0.75rem 1.75rem;border-radius:50px;font-weight:700;font-size:0.88rem;transition:transform 0.2s}
+.blog-modal-cta:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(232,21,122,0.4)}
+
+/* ABOUT */
+.about-inner{display:grid;grid-template-columns:0.9fr 1.1fr;gap:5rem;align-items:center}
+.about-frame{aspect-ratio:3/4;border-radius:28px;overflow:hidden;position:relative;background:linear-gradient(145deg,rgba(232,21,122,0.25),rgba(137,196,225,0.25),rgba(240,236,216,0.5));border:1px solid rgba(255,255,255,0.6);display:flex;align-items:center;justify-content:center}
+.about-photo{width:100%;height:100%;object-fit:cover;object-position:center top}
+.about-visual{position:relative}
+.about-badge{position:absolute;bottom:-20px;right:-20px;background:#F5F0E8;border:1px solid rgba(255,255,255,0.8);border-radius:16px;padding:1rem 1.4rem;box-shadow:0 8px 30px rgba(196,163,90,0.2)}
+.about-badge strong{display:block;font-family:var(--fd);font-size:1rem;font-weight:900;color:var(--ink);line-height:1}
+.about-badge span{font-family:var(--fm);font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--mg)}
+.about-quote{font-family:var(--fd);font-style:italic;font-size:1.15rem;color:var(--mg);margin-bottom:1.5rem;line-height:1.5}
+.about-body p{font-size:0.9rem;color:#5a4a50;line-height:1.85;margin-bottom:1.1rem}
+.creds{display:flex;flex-wrap:wrap;gap:0.5rem;margin:1.5rem 0}
+.cred{font-size:0.75rem;padding:0.35rem 0.85rem;border-radius:50px;background:rgba(250,245,235,0.9);border:1px solid rgba(232,21,122,0.15);color:var(--ink)}
+
+/* CONTACT */
+.contact-inner{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+.contact-links{display:flex;flex-direction:column;gap:1rem;margin-top:2rem}
+.contact-link-item{display:flex;align-items:center;gap:1rem;background:rgba(250,245,235,0.88);border:1px solid rgba(255,255,255,0.8);border-radius:14px;padding:1rem 1.2rem;transition:transform 0.2s,box-shadow 0.2s}
+.contact-link-item:hover{transform:translateX(4px);box-shadow:0 4px 20px rgba(232,21,122,0.1)}
+.cli-ico{width:42px;height:42px;border-radius:10px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.2rem;background:rgba(232,21,122,0.08)}
+.cli-text strong{display:block;font-size:0.88rem;font-weight:600;color:var(--ink);margin-bottom:0.1rem}
+.cli-text span{font-size:0.78rem;color:#8a7a80}
+.contact-form{background:rgba(250,245,235,0.88);border:1px solid rgba(255,255,255,0.8);border-radius:20px;padding:2rem;display:flex;flex-direction:column;gap:1rem}
+.fg label{display:block;font-family:var(--fm);font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--mg);margin-bottom:0.4rem}
+.fg input,.fg textarea,.fg select{width:100%;background:rgba(255,255,255,0.8);border:1.5px solid rgba(232,21,122,0.15);border-radius:12px;padding:0.85rem 1rem;color:var(--ink);font-family:var(--fb);font-size:0.88rem;outline:none;transition:border-color 0.2s,box-shadow 0.2s}
+.fg input:focus,.fg textarea:focus,.fg select:focus{border-color:var(--mg);box-shadow:0 0 0 3px rgba(232,21,122,0.1)}
+.fg textarea{resize:vertical;min-height:110px}
+.fg select option{background:#f5f0e8}
+.fg input::placeholder,.fg textarea::placeholder{color:rgba(90,74,80,0.4)}
+.submit-btn{background:var(--mg);color:#fff;border:none;border-radius:12px;padding:1rem;font-family:var(--fd);font-size:1rem;font-weight:700;font-style:italic;cursor:pointer;transition:transform 0.2s,box-shadow 0.2s;width:100%}
+.submit-btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(232,21,122,0.4)}
+.form-msg{text-align:center;font-size:0.83rem;padding:0.5rem;border-radius:8px;display:none}
+.form-msg.ok{color:#10B981;background:rgba(16,185,129,0.1);display:block}
+.form-msg.err{color:#E8157A;background:rgba(232,21,122,0.1);display:block}
+
+/* FOOTER */
+footer{background:#1A1018;padding:3rem 5%;border-top:1px solid rgba(232,21,122,0.2)}
+.footer-in{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr 1fr;gap:2rem;align-items:center}
+.footer-logo{font-family:var(--fd);font-size:1.1rem;font-weight:900;color:#F0ECD8}
+.footer-logo em{color:var(--mg);font-style:normal}
+.footer-logo small{display:block;font-family:var(--fm);font-size:0.6rem;letter-spacing:0.1em;color:rgba(240,236,216,0.35);margin-top:0.3rem}
+.footer-links{display:flex;justify-content:center;gap:2rem;list-style:none;flex-wrap:wrap}
+.footer-links a{color:rgba(240,236,216,0.4);font-size:0.8rem;transition:color 0.2s}
+.footer-links a:hover{color:var(--mg)}
+.footer-right{text-align:right;font-size:0.75rem;color:rgba(240,236,216,0.3);line-height:1.7}
+.scroll-top{position:fixed;bottom:2rem;right:2rem;z-index:200;width:44px;height:44px;border-radius:50%;border:none;cursor:pointer;background:var(--mg);color:#fff;font-size:1.1rem;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(232,21,122,0.4);opacity:0;transform:translateY(12px);transition:opacity 0.3s,transform 0.3s;pointer-events:none}
+.scroll-top.show{opacity:1;transform:none;pointer-events:all}
+.scroll-top:hover{transform:translateY(-2px)}
+
+/* RESPONSIVE */
+@media(max-width:1024px){.flip-grid{grid-template-columns:1fr 1fr}.design-grid{grid-template-columns:1fr 1fr}.blog-grid-wall{grid-template-columns:1fr 1fr}.ds-inner{grid-template-columns:1fr;gap:3rem}.cs-body{grid-template-columns:1fr;gap:2rem}}
+@media(max-width:900px){.nav-links{display:none}.hamburger{display:flex}.hero-inner{grid-template-columns:1fr;gap:2.5rem}.about-inner{grid-template-columns:1fr;gap:3rem}.contact-inner{grid-template-columns:1fr;gap:3rem}.footer-in{grid-template-columns:1fr;text-align:center}.footer-right{text-align:center}.footer-links{justify-content:center}}
+@media(max-width:700px){.flip-grid{grid-template-columns:1fr}.design-grid{grid-template-columns:1fr}.blog-grid-wall{grid-template-columns:1fr}.cs-flip-row{grid-template-columns:1fr}.parchment-actions{flex-direction:column}}
+@media(max-width:480px){.section{padding:70px 5%}.hero-h1{font-size:2.8rem}.modal-box{padding:1.75rem}}
+</style>
 </head>
 <body>
 
-<!-- ===================== NAV ===================== -->
 <nav id="nav">
   <a href="#home" class="nav-logo">Million<em>Phrases</em> Labs</a>
   <ul class="nav-links">
     <li><a href="#home">Home</a></li>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#templates">Templates</a></li>
+    <li><a href="#services">What We Do</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
     <li><a href="#about">About</a></li>
-    <li><a href="#blog">Blog</a></li>
-    <li><a href="#contact" class="nav-cta">Work With Us</a></li>
+    <li><a href="#contact" class="nav-cta">Let's Talk</a></li>
   </ul>
-  <button class="hamburger" id="hbg" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
+  <button class="hamburger" id="hbg" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
 
-<!-- Mobile nav -->
 <div class="mob-nav" id="mobnav">
-  <button class="mob-close" id="mobclose">✕</button>
-  <a href="#home"      onclick="closeMob()">Home</a>
-  <a href="#services"  onclick="closeMob()">Services</a>
-  <a href="#templates" onclick="closeMob()">Templates</a>
-  <a href="#about"     onclick="closeMob()">About</a>
-  <a href="#blog"      onclick="closeMob()">Blog</a>
-  <a href="#contact"   onclick="closeMob()">Contact</a>
+  <button class="mob-close" id="mobclose">&#x2715;</button>
+  <a href="#home" onclick="closeMob()">Home</a>
+  <a href="#services" onclick="closeMob()">What We Do</a>
+  <a href="#portfolio" onclick="closeMob()">Portfolio</a>
+  <a href="#about" onclick="closeMob()">About</a>
+  <a href="#contact" onclick="closeMob()">Let's Talk</a>
 </div>
 
-
-<!-- ===================== HERO ===================== -->
+<!-- HERO -->
 <section id="home">
-  <div class="hero-orb-1"></div>
-  <div class="hero-orb-2"></div>
-  <div class="hero-orb-3"></div>
-
-  <div class="hero-wrap">
-
-    <!-- Left: headline -->
+  <div class="hero-inner">
     <div>
-      <div class="hero-tag r"><span></span> Digital Presence Studio</div>
-      <h1 class="hero-h1 r d1">
-        Beyond<br>
-        <span class="ci">Websites.</span><br>
-        We Build<br>
-        Presence<span class="c">.</span>
-      </h1>
-      <p class="hero-p r d2">
-        A great website is only one part of the story. Your LinkedIn, résumé, and blog should all speak the same language. That's where we come in.
-      </p>
+      <div class="hero-tag r"><span></span> Digital Presence Studio &middot; India &amp; Global</div>
+      <h1 class="hero-h1 r d1">Words.<br><em class="it">Websites.</em><br><span class="mg">Visuals.</span></h1>
+      <p class="hero-p r d2">We don't just build websites. We build the whole ecosystem &mdash; your LinkedIn, r&eacute;sum&eacute;, blog, and brand, all speaking the same language.</p>
       <div class="hero-btns r d3">
-        <a href="#services" class="btn-p">Explore Services ↗</a>
-        <a href="#templates" class="btn-s">View Templates</a>
+        <a href="#services" class="btn-p">Explore What We Do &rarr;</a>
+        <a href="#portfolio" class="btn-s">View Our Work</a>
       </div>
     </div>
-
-    <!-- Right: interactive tile grid -->
-    <div class="hero-tiles r d2">
-      <div class="tile-universe">
-        <div class="tile-grid" id="tileGrid"></div>
-        <p class="tile-hint">// click any tile to reveal what we do</p>
-        <button class="tile-flip-btn" id="flipAllBtn">[ flip all ]</button>
-      </div>
+    <div class="puzzle-teaser glass r d2">
+      <div class="puzzle-label">// solve the puzzle</div>
+      <div class="puzzle-headline">Can you crack <em>this?</em></div>
+      <p class="puzzle-sub">It's not a riddle. It's simpler &mdash; and harder &mdash; than that. Write to us honestly, and we'll give you something real in return.</p>
+      <div class="prize-badge">&#127873; 2 FREE SEO-friendly blog articles await</div>
+      <button class="open-puzzle-btn" onclick="openPuzzle()">Open the Puzzle &rarr;</button>
     </div>
-
   </div>
 </section>
 
+<!-- PUZZLE MODAL -->
+<div class="modal-overlay" id="puzzleModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closePuzzle()">&#x2715;</button>
+    <div class="modal-title">Who are <em>you,</em> really?</div>
+    <p class="modal-sub">No tricks. No forms. Just write. Tell us who you are, what you want to do, why you're here. Or journal. Or vent. We're listening &mdash; and we'll send you 2 free SEO blog articles just for showing up honestly.</p>
+    <div class="journal-fields">
+      <div class="journal-field"><label>Your name</label><input type="text" class="letter-box single" id="j-name" placeholder="What do people call you?"></div>
+      <div class="journal-field"><label>Who are you?</label><textarea class="letter-box" id="j-who" placeholder="A founder, a dreamer, a professional in transition... write it in your own words."></textarea></div>
+      <div class="journal-field"><label>What do you want to do?</label><textarea class="letter-box" id="j-what" placeholder="Build something, change something, become something..."></textarea></div>
+      <div class="journal-field"><label>Why are you here today?</label><textarea class="letter-box" id="j-why" placeholder="Bored? Curious? Looking for help? Just write."></textarea></div>
+    </div>
+    <button class="send-btn" onclick="sendJournal()">Send My Words &rarr;</button>
+    <div class="parchment-reveal" id="parchmentReveal">
+      <div class="parchment-scroll">
+        <p class="parchment-text" id="parchmentText"></p>
+        <p class="parchment-name" id="parchmentName"></p>
+      </div>
+      <div class="parchment-actions">
+        <button class="wa-btn" id="waBtn">&#128241; Send via WhatsApp</button>
+        <div class="ig-note">&#128247; Screenshot &amp; DM us<br><strong>@million_phraseslabs</strong> for your 2 free articles</div>
+      </div>
+    </div>
+  </div>
+</div>
 
-<!-- ===================== MARQUEE ===================== -->
+<!-- MARQUEE -->
 <div class="marquee" aria-hidden="true">
   <div class="marquee-track">
-    <div class="marquee-inner" id="mi1">
-      <span class="m-item">Blog Content</span>
-      <span class="m-item">LinkedIn Profiles</span>
-      <span class="m-item">Personal Websites</span>
-      <span class="m-item">Résumé Writing</span>
-      <span class="m-item">Brand Visuals</span>
-      <span class="m-item">Substack Integration</span>
-      <span class="m-item">GitHub Pages</span>
-      <span class="m-item">SEO Content</span>
-      <span class="m-item">Career Transitions</span>
-      <span class="m-item">Digital Presence</span>
-    </div>
-    <div class="marquee-inner" aria-hidden="true">
-      <span class="m-item">Blog Content</span>
-      <span class="m-item">LinkedIn Profiles</span>
-      <span class="m-item">Personal Websites</span>
-      <span class="m-item">Résumé Writing</span>
-      <span class="m-item">Brand Visuals</span>
-      <span class="m-item">Substack Integration</span>
-      <span class="m-item">GitHub Pages</span>
-      <span class="m-item">SEO Content</span>
-      <span class="m-item">Career Transitions</span>
-      <span class="m-item">Digital Presence</span>
-    </div>
+    <div class="marquee-inner"><span class="m-item">Blog Content</span><span class="m-item">LinkedIn Profiles</span><span class="m-item">Personal Websites</span><span class="m-item">R&eacute;sum&eacute; Writing</span><span class="m-item">Brand Visuals</span><span class="m-item">Substack</span><span class="m-item">GitHub Pages</span><span class="m-item">SEO Content</span><span class="m-item">Digital Presence</span><span class="m-item">Design Strategy</span><span class="m-item">Content Pipelines</span></div>
+    <div class="marquee-inner" aria-hidden="true"><span class="m-item">Blog Content</span><span class="m-item">LinkedIn Profiles</span><span class="m-item">Personal Websites</span><span class="m-item">R&eacute;sum&eacute; Writing</span><span class="m-item">Brand Visuals</span><span class="m-item">Substack</span><span class="m-item">GitHub Pages</span><span class="m-item">SEO Content</span><span class="m-item">Digital Presence</span><span class="m-item">Design Strategy</span><span class="m-item">Content Pipelines</span></div>
   </div>
 </div>
 
+<!-- WHAT WE DO -->
+<section id="services" class="section">
+  <div class="wrap">
+    <p class="eyebrow r">What We Do</p>
+    <h2 class="sec-title r d1">One voice.<br><em style="font-style:italic;color:var(--mg)">Everywhere.</em></h2>
+    <p class="sec-sub r d2">Flip each card to discover what's inside. Your digital presence is an ecosystem &mdash; we build all of it.</p>
+  </div>
+  <div class="flip-grid">
+    <div class="flip-wrap r" onclick="this.classList.toggle('flipped');playDing()">
+      <div class="flip-card">
+        <div class="flip-front"><div class="flip-ico">&#127760;</div><div class="flip-title">Websites</div><div class="flip-hint">flip me &rarr;</div></div>
+        <div class="flip-back" style="background:linear-gradient(135deg,#E8157A,#c4105f)"><div class="flip-back-title">Personal Websites &amp; Landing Pages</div><div class="flip-back-text">Clean, elegant, hosted on GitHub Pages. Websites you truly own &mdash; no subscriptions, no lock-in, no technical overwhelm.</div><div class="flip-tags"><span class="flip-tag">Personal Sites</span><span class="flip-tag">Landing Pages</span><span class="flip-tag">GitHub Pages</span></div></div>
+      </div>
+    </div>
+    <div class="flip-wrap r d1" onclick="this.classList.toggle('flipped');playDing()">
+      <div class="flip-card">
+        <div class="flip-front"><div class="flip-ico">&#9999;&#65039;</div><div class="flip-title">Words</div><div class="flip-hint">flip me &rarr;</div></div>
+        <div class="flip-back" style="background:linear-gradient(135deg,#89C4E1,#5a9ab8)"><div class="flip-back-title">Content That Builds Authority</div><div class="flip-back-text">Blogs, LinkedIn profiles, r&eacute;sum&eacute;s &mdash; thoughtful, human, SEO-ready writing that earns trust and communicates real value.</div><div class="flip-tags"><span class="flip-tag">Blog Content</span><span class="flip-tag">LinkedIn</span><span class="flip-tag">R&eacute;sum&eacute; / CV</span></div></div>
+      </div>
+    </div>
+    <div class="flip-wrap r d2" onclick="this.classList.toggle('flipped');playDing()">
+      <div class="flip-card">
+        <div class="flip-front"><div class="flip-ico">&#127912;</div><div class="flip-title">Visuals</div><div class="flip-hint">flip me &rarr;</div></div>
+        <div class="flip-back" style="background:linear-gradient(135deg,#C4A35A,#a07d30)"><div class="flip-back-title">Design That Looks Like You</div><div class="flip-back-text">Banners, thumbnails, brand assets &mdash; cohesive and artistic. Designed to feel like you, not a template from a stock site.</div><div class="flip-tags"><span class="flip-tag">Banners</span><span class="flip-tag">Thumbnails</span><span class="flip-tag">Brand Assets</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
 
-<!-- ===================== STATS ===================== -->
-<div class="stats-bar">
-  <div class="stats-inner">
-    <div class="stat r"><strong>100+</strong><span>Websites Delivered</span></div>
-    <div class="stat r d1"><strong>1000+</strong><span>Clients Served</span></div>
-    <div class="stat r d2"><strong>India +</strong><span>Global Reach</span></div>
-    <div class="stat r d3"><strong>5 ★</strong><span>Client Satisfaction</span></div>
+<!-- DESIGN STRATEGY -->
+<section id="design-strategy" class="section">
+  <div class="wrap">
+    <div class="ds-inner">
+      <div class="r">
+        <div class="ds-canvas glass">
+          <div class="ds-tile"><div class="ds-tile-ico">&#128421;&#65039;</div><div class="ds-tile-label">Website Layout</div></div>
+          <div class="ds-tile"><div class="ds-tile-ico">&#128208;</div><div class="ds-tile-label">Design Systems</div></div>
+          <div class="ds-tile"><div class="ds-tile-ico">&#128241;</div><div class="ds-tile-label">LinkedIn Posts</div></div>
+          <div class="ds-tile"><div class="ds-tile-ico">&#127916;</div><div class="ds-tile-label">Motion Posters</div></div>
+        </div>
+      </div>
+      <div>
+        <p class="eyebrow r">Design Strategy</p>
+        <h2 class="sec-title r d1">Design doesn't stop at the <em style="font-style:italic;color:var(--mg)">website.</em></h2>
+        <p class="sec-sub r d2">A good design spills over everywhere &mdash; your LinkedIn posts, motion posters, ad pieces, thumbnails. We create things that are aesthetically beautiful in every format.</p>
+        <div class="ds-pills r d2"><span class="ds-pill">GitHub Pages</span><span class="ds-pill">Minimalist Layouts</span><span class="ds-pill">Motion Posters</span><span class="ds-pill">Ad Pieces</span><span class="ds-pill">LinkedIn Banners</span><span class="ds-pill">Thumbnails</span></div>
+        <p class="r d3" style="font-size:0.9rem;color:#5a4a50;line-height:1.8;font-style:italic;font-family:var(--fd)">"We do it artistically. We love to create things in a way that they are just aesthetically pleasing &mdash; everything."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTENT STRATEGY -->
+<section id="content-strategy" class="section">
+  <div class="wrap">
+    <p class="eyebrow r">Content Strategy</p>
+    <h2 class="sec-title r d1">We manage your <em style="font-style:italic;color:var(--mg)">pipelines.</em></h2>
+    <div class="cs-body">
+      <div class="cs-text r d1">
+        <p>Content strategy starts the moment your website goes live. Regular posting across platforms isn't just a habit &mdash; it's how your site crawls, how Google finds you, how your audience grows.</p>
+        <p>From <strong>what headline goes in your hero section</strong> to <strong>what kind of reel will get traction on Instagram</strong> &mdash; we strategize everything. SEO, ads, content calendars, social media &mdash; all of it.</p>
+        <p>We will be <strong>brutally honest with you</strong>. We'll push you to come up with ideas that don't just build your brand &mdash; they change how you think about yourself and your work.</p>
+        <a href="#contact" class="btn-p" style="margin-top:1rem;display:inline-flex">Let's Build Your Strategy &rarr;</a>
+      </div>
+      <div class="cs-flip-row">
+        <div class="cs-flip-wrap" onclick="this.classList.toggle('flipped');playDing()"><div class="cs-flip-card"><div class="cs-front"><div class="cs-front-ico">&#128196;</div><div class="cs-front-title">Resume &amp; LinkedIn</div><div class="cs-front-hint">flip &rarr;</div></div><div class="cs-back"><div class="cs-back-title">Professional Content</div><div class="cs-back-text">Stronger headlines, better summaries, clearer positioning. Your profile should read like a value proposition.</div></div></div></div>
+        <div class="cs-flip-wrap" onclick="this.classList.toggle('flipped');playDing()"><div class="cs-flip-card"><div class="cs-front"><div class="cs-front-ico">&#128202;</div><div class="cs-front-title">SEO &amp; Ads</div><div class="cs-front-hint">flip &rarr;</div></div><div class="cs-back"><div class="cs-back-title">Growth Strategy</div><div class="cs-back-text">From Google crawling to paid campaigns &mdash; we handle the technical and creative side of getting you found.</div></div></div></div>
+        <div class="cs-flip-wrap" onclick="this.classList.toggle('flipped');playDing()"><div class="cs-flip-card"><div class="cs-front"><div class="cs-front-ico">&#128241;</div><div class="cs-front-title">Social Media</div><div class="cs-front-hint">flip &rarr;</div></div><div class="cs-back"><div class="cs-back-title">Platform Strategy</div><div class="cs-back-text">The right reel, the right post, the right time. We map your content so every piece builds toward something bigger.</div></div></div></div>
+        <div class="cs-flip-wrap" onclick="this.classList.toggle('flipped');playDing()"><div class="cs-flip-card"><div class="cs-front"><div class="cs-front-ico">&#9999;&#65039;</div><div class="cs-front-title">Blog &amp; Substack</div><div class="cs-front-hint">flip &rarr;</div></div><div class="cs-back"><div class="cs-back-title">Long-form Authority</div><div class="cs-back-text">SEO-ready articles that build trust. Ideas that grow your audience and change how you see the world.</div></div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BALLOON GAME -->
+<section id="balloon-game" class="section" style="text-align:center">
+  <div class="wrap">
+    <p class="eyebrow r" style="justify-content:center">Quick Break</p>
+    <h2 class="sec-title r d1" style="text-align:center">Catch the <em style="font-style:italic;color:var(--mg)">balloons!</em></h2>
+    <p class="sec-sub r d2" style="margin:0 auto 2rem;text-align:center">30 seconds. Tap every balloon you can. Your score tells us something about you.</p>
+    <div class="game-box r d2">
+      <div class="game-header"><div class="game-title">Balloon Pop &#127880;</div><div class="game-sub">Pop as many as you can before time runs out!</div></div>
+      <div class="game-meta">
+        <div><div class="game-stat-label">Score</div><div class="game-stat-val" id="gScore">0</div></div>
+        <div><div class="game-stat-label">Time</div><div class="game-stat-val" id="gTime">30</div></div>
+      </div>
+      <div class="game-arena" id="gameArena"></div>
+      <div class="game-result" id="gameResult">
+        <div class="result-score" id="resultScore">0</div>
+        <div class="result-msg" id="resultMsg"></div>
+        <div class="result-cta" id="resultCta"></div>
+        <button class="start-game-btn" style="margin-top:1.5rem" onclick="resetGame()">Play Again &rarr;</button>
+      </div>
+      <div class="game-footer" id="gameFooter"><button class="start-game-btn" onclick="startGame()">Start Game &rarr;</button></div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio" class="section">
+  <div class="wrap">
+    <p class="eyebrow r">Portfolio</p>
+    <h2 class="sec-title r d1">Things We've <em style="font-style:italic;color:var(--mg)">Built.</em></h2>
+    <p class="sec-sub r d2">Two walls. One for design, one for content. Everything intentional.</p>
+    <div class="port-tabs r d2">
+      <button class="port-tab active" onclick="switchTab('design',this)">Design Wall</button>
+      <button class="port-tab" onclick="switchTab('content',this)">Content Wall</button>
+    </div>
+    <div class="port-section active" id="tab-design">
+      <div class="design-grid" id="designGrid"></div>
+    </div>
+    <div class="port-section" id="tab-content">
+      <div class="blog-grid-wall" id="blogWall"></div>
+      <div style="text-align:center;margin-top:2.5rem">
+        <a href="https://varshaeturi.substack.com/" target="_blank" rel="noopener" class="btn-p">Read All on Substack &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG MODAL -->
+<div class="blog-modal-overlay" id="blogModal">
+  <div class="blog-modal-inner">
+    <button class="blog-modal-close" onclick="closeBlogModal()">&#x2715;</button>
+    <div class="blog-modal-cat" id="bm-cat"></div>
+    <div class="blog-modal-title" id="bm-title"></div>
+    <div class="blog-modal-date" id="bm-date"></div>
+    <div class="blog-modal-body" id="bm-body"></div>
+    <a href="#" target="_blank" rel="noopener" class="blog-modal-cta" id="bm-link">Read Full Article on Substack &rarr;</a>
   </div>
 </div>
 
-
-<!-- ===================== SERVICES ===================== -->
-<section id="services">
-  <div class="container">
-    <p class="eyebrow r">What We Offer</p>
-    <h2 class="sec-title r d1">One voice.<br><em style="font-style:italic; color:var(--coral);">Everywhere.</em></h2>
-    <p class="sec-sub r d2">Your website, LinkedIn, résumé, and blog — all aligned. Personal branding is not one asset. It is an ecosystem.</p>
-
-    <div class="svc-grid">
-      <div class="svc-card r" style="--c:#FF4F38; --bg:rgba(255,79,56,0.08);">
-        <div class="svc-ico">🌐</div>
-        <h3>Websites</h3>
-        <p>Personal websites, landing pages, digital homes. Clean, elegant, hosted on GitHub Pages — websites you truly own. No subscriptions. No lock-in.</p>
-        <div class="tag-list">
-          <span class="tag" style="--tbg:rgba(255,79,56,0.08);--tc:#FF4F38;">Personal Sites</span>
-          <span class="tag" style="--tbg:rgba(255,79,56,0.08);--tc:#FF4F38;">Landing Pages</span>
-          <span class="tag" style="--tbg:rgba(255,79,56,0.08);--tc:#FF4F38;">GitHub Pages</span>
-          <span class="tag" style="--tbg:rgba(255,79,56,0.08);--tc:#FF4F38;">Substack Link</span>
+<!-- ABOUT -->
+<section id="about" class="section">
+  <div class="wrap">
+    <div class="about-inner">
+      <div class="about-visual r">
+        <div class="about-frame">
+          <img src="https://raw.githubusercontent.com/EturiVarsha/MPL/main/IMG_20260117_090541.jpg" alt="Varsha Eturi" class="about-photo" onerror="this.style.display='none'">
+        </div>
+        <div class="about-badge">
+          <strong>Applied Linguistics</strong>
+          <span>UGC JRF &middot; IIT Bombay</span>
         </div>
       </div>
-      <div class="svc-card r d1" style="--c:#7C3AED; --bg:rgba(124,58,237,0.08);">
-        <div class="svc-ico" style="background:rgba(124,58,237,0.08);">✍️</div>
-        <h3>Words</h3>
-        <p>Thoughtful, human, SEO-ready writing. Blogs, LinkedIn profiles, résumés — content that builds authority, communicates value, and earns trust.</p>
-        <div class="tag-list">
-          <span class="tag" style="--tbg:rgba(124,58,237,0.08);--tc:#7C3AED;">Blog Content</span>
-          <span class="tag" style="--tbg:rgba(124,58,237,0.08);--tc:#7C3AED;">LinkedIn Profiles</span>
-          <span class="tag" style="--tbg:rgba(124,58,237,0.08);--tc:#7C3AED;">Résumé / CV</span>
-          <span class="tag" style="--tbg:rgba(124,58,237,0.08);--tc:#7C3AED;">Substack</span>
+      <div>
+        <p class="eyebrow r">Meet the Founder</p>
+        <h2 class="sec-title r d1">Varsha Eturi</h2>
+        <p class="about-quote r d2">"I believe words can build worlds."</p>
+        <div class="r d2">
+          <p class="about-body">Over several years, I've worked with multiple startups and thousands of clients &mdash; both in India and globally &mdash; helping individuals and businesses shape their voice through thoughtful content, strategic writing, and meaningful storytelling.</p>
+          <p class="about-body">My journey began in academia. I hold a Master's degree in Linguistics, qualified UGC Junior Research Fellowship (JRF) and GATE Linguistics, and worked as a Junior Research Fellow at IIT Bombay.</p>
+          <p class="about-body">I spent time living in the Himalayas &mdash; an experience that gave me perspective, clarity, and a deeper appreciation for meaningful work. Today, my unusual blend defines everything: academic rigor, human empathy, creative design, and technological thinking.</p>
         </div>
-      </div>
-      <div class="svc-card r d2" style="--c:#FFAA2C; --bg:rgba(255,170,44,0.1);">
-        <div class="svc-ico" style="background:rgba(255,170,44,0.1);">🎨</div>
-        <h3>Visuals</h3>
-        <p>Banners, thumbnails, and brand assets that make your digital presence cohesive. Designed to look like you — not a template.</p>
-        <div class="tag-list">
-          <span class="tag" style="--tbg:rgba(255,170,44,0.1);--tc:#B45309;">Banners</span>
-          <span class="tag" style="--tbg:rgba(255,170,44,0.1);--tc:#B45309;">Thumbnails</span>
-          <span class="tag" style="--tbg:rgba(255,170,44,0.1);--tc:#B45309;">Brand Assets</span>
-          <span class="tag" style="--tbg:rgba(255,170,44,0.1);--tc:#B45309;">Social Media</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="svc-sub-grid" style="margin-top:1.5rem;">
-      <div class="svc-card sm r" style="--c:#10B981; --bg:rgba(16,185,129,0.08); border-left:3px solid #10B981;">
-        <div class="svc-ico" style="background:rgba(16,185,129,0.08);">📝</div>
-        <h3>Blog Content</h3>
-        <p>SEO-ready articles that build authority. Turn your ideas into content people read and remember — whether on Substack or your own site.</p>
-        <div class="aside">Perfect for: founders · coaches · consultants · creators</div>
-      </div>
-      <div class="svc-card sm r d1" style="--c:#0EA5E9; --bg:rgba(14,165,233,0.08); border-left:3px solid #0EA5E9;">
-        <div class="svc-ico" style="background:rgba(14,165,233,0.08);">💼</div>
-        <h3>LinkedIn Profile</h3>
-        <p>Stronger headlines, better summaries, clearer positioning. Your profile should read like a value proposition — not a job description.</p>
-      </div>
-      <div class="svc-card sm r d2" style="--c:#F43F5E; --bg:rgba(244,63,94,0.08); border-left:3px solid #F43F5E;">
-        <div class="svc-ico" style="background:rgba(244,63,94,0.08);">📄</div>
-        <h3>Résumé &amp; CV</h3>
-        <p>A résumé that communicates direction, confidence, and capability — sharper, clearer, and more strategic.</p>
-        <div class="aside">Ideal for: executives · professionals · career transitions</div>
+        <div class="creds r d3"><span class="cred">&#127891; M.A. Linguistics</span><span class="cred">&#128218; UGC JRF</span><span class="cred">&#127963; IIT Bombay</span><span class="cred">&#9968; Himalayas</span><span class="cred">&#129302; AI Strategy</span><span class="cred">GATE Linguistics</span></div>
+        <a href="#contact" class="btn-p r d4">Work With Varsha &rarr;</a>
       </div>
     </div>
   </div>
 </section>
 
-
-<!-- ===================== DIFF BAND ===================== -->
-<div class="diff-band">
-  <h2 class="sec-title r">What makes us different</h2>
-  <p class="sec-sub r">We built a Substack integration system that connects your website directly to your newsletter — so your site automatically updates as you publish.</p>
-  <div class="diff-cards">
-    <div class="diff-c r">
-      <div class="ico">📬</div>
-      <h3>Substack</h3>
-      <p>Your newsletter connected to your site. Auto-updates as you publish.</p>
-    </div>
-    <div class="diff-c r d1">
-      <div class="ico">⚡</div>
-      <h3>Fast Sites</h3>
-      <p>GitHub Pages hosting — efficient, free, and truly owned by you.</p>
-    </div>
-    <div class="diff-c r d2">
-      <div class="ico">💡</div>
-      <h3>No Fees</h3>
-      <p>No monthly subscriptions. No technical overwhelm. No lock-in.</p>
-    </div>
-    <div class="diff-c r d3">
-      <div class="ico">🎯</div>
-      <h3>One Ecosystem</h3>
-      <p>Website · LinkedIn · Résumé · Blog — all one aligned voice.</p>
-    </div>
-  </div>
-</div>
-
-
-<!-- ===================== TEMPLATES ===================== -->
-<section id="templates">
-  <div class="container">
-    <p class="eyebrow r" style="color:var(--violet);">Template Gallery</p>
-    <h2 class="sec-title r d1">Websites We've <em style="font-style:italic;color:var(--violet);">Built</em></h2>
-    <p class="sec-sub r d2">Every project is intentional — designed for identity, not just aesthetics. Browse our portfolio across industries and niches.</p>
-
-    <div class="tpl-grid">
-      <div class="tpl-card r">
-        <div class="tpl-preview">
-          <div class="tpl-ph" style="background:linear-gradient(135deg,#FF6B6B,#FFE66D);color:rgba(0,0,0,0.55);">Creator</div>
-          <div class="tpl-iframe-box">
-            <iframe src="https://eturivarsha.github.io/Creator/" loading="lazy" title="Creator Template" onload="iframeLoaded(this)" onerror="iframeError(this)"></iframe>
-          </div>
-        </div>
-        <div class="tpl-meta">
-          <div class="tpl-cat">Creator / Influencer</div>
-          <h3>The Creator</h3>
-          <a href="https://eturivarsha.github.io/Creator/" target="_blank" rel="noopener" class="tpl-link">Live Preview →</a>
+<!-- CONTACT -->
+<section id="contact" class="section">
+  <div class="wrap">
+    <div class="contact-inner">
+      <div>
+        <p class="eyebrow r">Let's Connect</p>
+        <h2 class="sec-title r d1">Ready to build your<br><em style="font-style:italic;color:var(--mg)">presence?</em></h2>
+        <p class="sec-sub r d2" style="margin-bottom:0">No technical overwhelm. No expensive subscriptions. Just clean, elegant work &mdash; designed for you.</p>
+        <div class="contact-links r d2">
+          <a href="mailto:varsha@millionphraseslabs.com" class="contact-link-item"><div class="cli-ico">&#128231;</div><div class="cli-text"><strong>Email</strong><span>Drop us a message directly</span></div></a>
+          <a href="https://www.instagram.com/million_phraseslabs/" target="_blank" rel="noopener" class="contact-link-item"><div class="cli-ico">&#128247;</div><div class="cli-text"><strong>Instagram</strong><span>@million_phraseslabs</span></div></a>
+          <a href="https://varshaeturi.substack.com/" target="_blank" rel="noopener" class="contact-link-item"><div class="cli-ico">&#128236;</div><div class="cli-text"><strong>Substack</strong><span>varshaeturi.substack.com</span></div></a>
+          <a href="https://eturivarsha.github.io" target="_blank" rel="noopener" class="contact-link-item"><div class="cli-ico">&#127760;</div><div class="cli-text"><strong>Portfolio</strong><span>eturivarsha.github.io</span></div></a>
+          <a href="https://linkedin.com/in/varshaeturi" target="_blank" rel="noopener" class="contact-link-item"><div class="cli-ico">&#128188;</div><div class="cli-text"><strong>LinkedIn</strong><span>Connect professionally</span></div></a>
         </div>
       </div>
-      <div class="tpl-card r d1">
-        <div class="tpl-preview">
-          <div class="tpl-ph" style="background:linear-gradient(135deg,#A8EDEA,#FED6E3);color:rgba(0,0,0,0.5);">Life Coach</div>
-          <div class="tpl-iframe-box">
-            <iframe src="https://eturivarsha.github.io/Lifecoaching1/" loading="lazy" title="Life Coaching Template" onload="iframeLoaded(this)" onerror="iframeError(this)"></iframe>
-          </div>
-        </div>
-        <div class="tpl-meta">
-          <div class="tpl-cat">Coaching / Wellness</div>
-          <h3>Life Coaching</h3>
-          <a href="https://eturivarsha.github.io/Lifecoaching1/" target="_blank" rel="noopener" class="tpl-link">Live Preview →</a>
-        </div>
+      <div class="contact-form r d2">
+        <div class="fg"><label>Your Name</label><input type="text" id="fn" placeholder="Jane Smith"></div>
+        <div class="fg"><label>Email Address</label><input type="email" id="fe" placeholder="jane@example.com"></div>
+        <div class="fg"><label>I Need Help With</label><select id="fs"><option value="">Select a service&hellip;</option><option>Personal Website</option><option>Blog Content</option><option>LinkedIn Profile</option><option>R&eacute;sum&eacute; / CV</option><option>Brand Visuals</option><option>Full Digital Presence</option></select></div>
+        <div class="fg"><label>Tell Us About Your Project</label><textarea id="fm" placeholder="Tell me a bit about yourself and what you'd like to build&hellip;"></textarea></div>
+        <button class="submit-btn" onclick="sendForm()">Send Message &rarr;</button>
+        <div class="form-msg" id="fmsg"></div>
       </div>
-      <div class="tpl-card r d2">
-        <div class="tpl-preview">
-          <div class="tpl-ph" style="background:linear-gradient(135deg,#FF9933,#138808);color:rgba(255,255,255,0.85);">BharatLingo</div>
-          <div class="tpl-iframe-box">
-            <iframe src="https://eturivarsha.github.io/bharatlingo1/" loading="lazy" title="BharatLingo Template" onload="iframeLoaded(this)" onerror="iframeError(this)"></iframe>
-          </div>
-        </div>
-        <div class="tpl-meta">
-          <div class="tpl-cat">Education / Language</div>
-          <h3>BharatLingo</h3>
-          <a href="https://eturivarsha.github.io/bharatlingo1/" target="_blank" rel="noopener" class="tpl-link">Live Preview →</a>
-        </div>
-      </div>
-      <div class="tpl-card r">
-        <div class="tpl-preview">
-          <div class="tpl-ph" style="background:linear-gradient(135deg,#1A2980,#26D0CE);color:rgba(255,255,255,0.85);">Trekster</div>
-          <div class="tpl-iframe-box">
-            <iframe src="https://eturivarsha.github.io/Trekster/" loading="lazy" title="Trekster Template" onload="iframeLoaded(this)" onerror="iframeError(this)"></iframe>
-          </div>
-        </div>
-        <div class="tpl-meta">
-          <div class="tpl-cat">Travel / Adventure</div>
-          <h3>Trekster</h3>
-          <a href="https://eturivarsha.github.io/Trekster/" target="_blank" rel="noopener" class="tpl-link">Live Preview →</a>
-        </div>
-      </div>
-      <div class="tpl-card r d1">
-        <div class="tpl-preview">
-          <div class="tpl-ph" style="background:linear-gradient(135deg,#F7971E,#FFD200);color:rgba(0,0,0,0.6);">Hot &amp; Sweet</div>
-          <div class="tpl-iframe-box">
-            <iframe src="https://eturivarsha.github.io/Hot-Sweet/" loading="lazy" title="Hot Sweet Template" onload="iframeLoaded(this)" onerror="iframeError(this)"></iframe>
-          </div>
-        </div>
-        <div class="tpl-meta">
-          <div class="tpl-cat">Food / Bakery</div>
-          <h3>Hot &amp; Sweet</h3>
-          <a href="https://eturivarsha.github.io/Hot-Sweet/" target="_blank" rel="noopener" class="tpl-link">Live Preview →</a>
-        </div>
-      </div>
-      <div class="tpl-card r d2">
-        <div class="tpl-preview">
-          <div class="tpl-ph" style="background:linear-gradient(135deg,#232526,#414345);color:rgba(255,255,255,0.75);">Magazine</div>
-          <div class="tpl-iframe-box">
-            <iframe src="https://eturivarsha.github.io/magazine-blog/" loading="lazy" title="Magazine Blog Template" onload="iframeLoaded(this)" onerror="iframeError(this)"></iframe>
-          </div>
-        </div>
-        <div class="tpl-meta">
-          <div class="tpl-cat">Editorial / Blog</div>
-          <h3>Magazine Blog</h3>
-          <a href="https://eturivarsha.github.io/magazine-blog/" target="_blank" rel="noopener" class="tpl-link">Live Preview →</a>
-        </div>
-      </div>
-      <div class="tpl-card r">
-        <div class="tpl-preview">
-          <div class="tpl-ph" style="background:linear-gradient(135deg,#4568DC,#B06AB3);color:rgba(255,255,255,0.85);">Design</div>
-          <div class="tpl-iframe-box">
-            <iframe src="https://eturivarsha.github.io/Designthinking/" loading="lazy" title="Design Thinking Template" onload="iframeLoaded(this)" onerror="iframeError(this)"></iframe>
-          </div>
-        </div>
-        <div class="tpl-meta">
-          <div class="tpl-cat">Design / Consultancy</div>
-          <h3>Design Thinking</h3>
-          <a href="https://eturivarsha.github.io/Designthinking/" target="_blank" rel="noopener" class="tpl-link">Live Preview →</a>
-        </div>
-      </div>
-      <div class="tpl-card r d1">
-        <div class="tpl-preview">
-          <div class="tpl-ph" style="background:linear-gradient(135deg,#1a1a1a,#4a3728);color:#D4AF37;">Luxury</div>
-          <div class="tpl-iframe-box">
-            <iframe src="https://eturivarsha.github.io/Luxurysite/" loading="lazy" title="Luxury Site Template" onload="iframeLoaded(this)" onerror="iframeError(this)"></iframe>
-          </div>
-        </div>
-        <div class="tpl-meta">
-          <div class="tpl-cat">Luxury / Premium Brand</div>
-          <h3>Luxury Site</h3>
-          <a href="https://eturivarsha.github.io/Luxurysite/" target="_blank" rel="noopener" class="tpl-link">Live Preview →</a>
-        </div>
-      </div>
-      <div class="tpl-card r d2">
-        <div class="tpl-preview">
-          <div class="tpl-ph" style="background:linear-gradient(135deg,#FF4F38,#7C3AED);color:rgba(255,255,255,0.85);">M Phrases</div>
-          <div class="tpl-iframe-box">
-            <iframe src="https://eturivarsha.github.io/millionphrases.github.io/" loading="lazy" title="Million Phrases Template" onload="iframeLoaded(this)" onerror="iframeError(this)"></iframe>
-          </div>
-        </div>
-        <div class="tpl-meta">
-          <div class="tpl-cat">Agency / Studio</div>
-          <h3>Million Phrases</h3>
-          <a href="https://eturivarsha.github.io/millionphrases.github.io/" target="_blank" rel="noopener" class="tpl-link">Live Preview →</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="tpl-cta r">
-      <a href="#contact" class="btn-p" style="background:var(--violet);">Get a Custom Website ↗</a>
     </div>
   </div>
 </section>
 
-
-<!-- ===================== ABOUT ===================== -->
-<section id="about">
-  <div class="about-grid">
-    <div class="about-visual r">
-      <div class="about-frame">
-        <img src="https://raw.githubusercontent.com/EturiVarsha/MPL/main/IMG_20260117_090541.jpg" alt="Varsha Eturi" class="about-photo"/>
-        <div class="about-frame-line"></div>
-      </div>
-      <div class="about-badge">
-        <strong>Applied Linguistics</strong>
-        <span>JRF</span>
-      </div>
-    </div>
-    <div class="about-body">
-      <p class="eyebrow r">Meet the Founder</p>
-      <h2 class="sec-title r d1">Varsha Eturi</h2>
-      <p class="about-quote r d2">"I believe words can build worlds."</p>
-      <p class="r d2">Over several years, I've worked with multiple startups and thousands of clients — both in India and globally — helping individuals and businesses shape their voice through thoughtful content, strategic writing, and meaningful storytelling.</p>
-      <p class="r d3">My journey began in academia. I hold a Master's degree in Linguistics, qualified UGC Junior Research Fellowship (JRF) and GATE Linguistics, and worked as a Junior Research Fellow at IIT Bombay — deepening my understanding of language, communication, and human thought.</p>
-      <p class="r d3">I spent time living in the Himalayas — an experience that gave me perspective, clarity, and a deeper appreciation for meaningful work. That shift changed everything. Today, my unusual blend defines my work: academic rigor, human empathy, creative design, and technological thinking.</p>
-      <p class="r d4" style="color:rgba(255,252,245,0.45); font-style:italic; font-size:0.85rem;">I write with compassion. I design with care. I build with intention.</p>
-      <div class="creds r d4">
-        <span class="cred">🎓 M.A. Linguistics</span>
-        <span class="cred">📚 UGC JRF</span>
-        <span class="cred">🏛 IIT Bombay</span>
-        <span class="cred">⛰ Himalayas</span>
-        <span class="cred">🤖 AI Strategy</span>
-        <span class="cred">GATE Linguistics</span>
-      </div>
-      <a href="#contact" class="btn-p r" style="background:var(--amber); color:var(--ink);">Work With Varsha ↗</a>
-    </div>
-  </div>
-</section>
-
-
-<!-- ===================== BLOG ===================== -->
-<section id="blog">
-  <div class="container">
-    <p class="eyebrow r">Latest Writings</p>
-    <h2 class="sec-title r d1">From Varsha's <em style="font-style:italic;color:var(--coral);">Substack</em></h2>
-    <p class="sec-sub r d2">Thoughtful articles on writing, personal branding, digital presence, and the art of building a voice online.</p>
-    <div class="blog-grid" id="blog-grid">
-      <div class="blog-state">
-        <div class="spinner"></div>
-        <p>Loading from Substack…</p>
-      </div>
-    </div>
-    <div class="blog-cta r">
-      <a href="https://varshaeturi.substack.com/" target="_blank" rel="noopener" class="btn-s">Subscribe on Substack ↗</a>
-    </div>
-  </div>
-</section>
-
-
-<!-- ===================== CONTACT ===================== -->
-<section id="contact">
-  <div class="contact-grid">
-    <div>
-      <p class="eyebrow r">Let's Connect</p>
-      <h2 class="sec-title r d1">Ready to build your digital presence?</h2>
-      <p class="r d2" style="color:rgba(255,252,245,0.6); line-height:1.82; font-size:0.92rem; margin-bottom:2rem;">
-        No technical overwhelm. No expensive subscriptions. No unnecessary complexity. Just clean, elegant work — designed for you.
-      </p>
-      <div class="c-methods r d3">
-        <div class="c-method">
-          <div class="c-method-ico">📬</div>
-          <span>Substack: <a href="https://varshaeturi.substack.com" target="_blank">varshaeturi.substack.com</a></span>
-        </div>
-        <div class="c-method">
-          <div class="c-method-ico">🌐</div>
-          <span>Portfolio: <a href="https://eturivarsha.github.io" target="_blank">eturivarsha.github.io</a></span>
-        </div>
-        <div class="c-method">
-          <div class="c-method-ico">📧</div>
-          <span>Send a message using the form →</span>
-        </div>
-      </div>
-      <div class="contact-note r d4">
-        "I believe words can build worlds. Every project here is personal — designed not just for aesthetics, but for identity."<br>
-        — Varsha Eturi, Founder · Million Phrases Labs
-      </div>
-    </div>
-    <div class="form r d2">
-      <div class="fg">
-        <label>Your Name</label>
-        <input type="text" id="fn" placeholder="Jane Smith">
-      </div>
-      <div class="fg">
-        <label>Email Address</label>
-        <input type="email" id="fe" placeholder="jane@example.com">
-      </div>
-      <div class="fg">
-        <label>I Need Help With</label>
-        <select id="fs">
-          <option value="">Select a service…</option>
-          <option value="Personal Website">Personal Website</option>
-          <option value="Blog Content">Blog Content</option>
-          <option value="LinkedIn Profile">LinkedIn Profile</option>
-          <option value="Résumé / CV">Résumé / CV</option>
-          <option value="Brand Visuals">Brand Visuals</option>
-          <option value="Full Digital Presence">Full Digital Presence (All of the above)</option>
-        </select>
-      </div>
-      <div class="fg">
-        <label>Tell us about your project</label>
-        <textarea id="fm" placeholder="Tell me a bit about yourself and what you'd like to build…"></textarea>
-      </div>
-      <button class="submit-btn" onclick="sendForm()">Send Message →</button>
-      <div class="form-msg" id="fmsg"></div>
-    </div>
-  </div>
-</section>
-
-
-<!-- ===================== FOOTER ===================== -->
 <footer>
   <div class="footer-in">
-    <div class="footer-logo">
-      Million<em>Phrases</em> Labs
-      <small>Words. Websites. Visuals.</small>
-    </div>
-    <ul class="footer-links">
-      <li><a href="#home">Home</a></li>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#templates">Templates</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#blog">Blog</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-    <div class="footer-right">
-      <p>Built with intelligence.<br>Designed with empathy.<br><br>© 2025 Million Phrases Labs</p>
-    </div>
+    <div class="footer-logo">Million<em>Phrases</em> Labs<small>Words. Websites. Visuals.</small></div>
+    <ul class="footer-links"><li><a href="#home">Home</a></li><li><a href="#services">What We Do</a></li><li><a href="#portfolio">Portfolio</a></li><li><a href="#about">About</a></li><li><a href="#contact">Contact</a></li></ul>
+    <div class="footer-right"><p>Built with intelligence.<br>Designed with empathy.<br><br>&copy; 2025 Million Phrases Labs</p></div>
   </div>
 </footer>
 
+<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">&uarr;</button>
 
-<!-- ===================== JS ===================== -->
 <script>
-  /* ---- Nav scroll + active link ---- */
-  const nav = document.getElementById('nav');
-  window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 30);
-    const sections = ['home','services','templates','about','blog','contact'];
-    let current = '';
-    sections.forEach(id => {
-      const s = document.getElementById(id);
-      if (s && window.scrollY >= s.offsetTop - 120) current = id;
-    });
-    document.querySelectorAll('.nav-links a').forEach(a => {
-      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
-    });
-  });
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>{
+  nav.classList.toggle('scrolled',window.scrollY>30);
+  document.getElementById('scrollTop').classList.toggle('show',window.scrollY>400);
+});
+document.getElementById('hbg').addEventListener('click',()=>document.getElementById('mobnav').classList.add('open'));
+document.getElementById('mobclose').addEventListener('click',closeMob);
+function closeMob(){document.getElementById('mobnav').classList.remove('open')}
 
-  /* ---- Mobile nav ---- */
-  document.getElementById('hbg').addEventListener('click', () =>
-    document.getElementById('mobnav').classList.add('open'));
-  document.getElementById('mobclose').addEventListener('click', closeMob);
-  function closeMob() { document.getElementById('mobnav').classList.remove('open'); }
+const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target)}})},{threshold:0.07});
+document.querySelectorAll('.r').forEach(el=>io.observe(el));
 
-  /* ---- Scroll reveal ---- */
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('vis'); io.unobserve(e.target); }
-    });
-  }, { threshold: 0.08 });
-  document.querySelectorAll('.r').forEach(el => io.observe(el));
+function playDing(){try{const c=new(window.AudioContext||window.webkitAudioContext)();const o=c.createOscillator();const g=c.createGain();o.connect(g);g.connect(c.destination);o.frequency.setValueAtTime(880,c.currentTime);o.frequency.exponentialRampToValueAtTime(660,c.currentTime+0.15);g.gain.setValueAtTime(0.25,c.currentTime);g.gain.exponentialRampToValueAtTime(0.001,c.currentTime+0.4);o.start();o.stop(c.currentTime+0.4);}catch(e){}}
 
-  /* ---- Iframe previews ---- */
-  function iframeLoaded(iframe) { try { iframe.classList.add('loaded'); } catch(e) {} }
-  function iframeError(iframe)  { iframe.style.display = 'none'; }
+function openPuzzle(){document.getElementById('puzzleModal').classList.add('open')}
+function closePuzzle(){document.getElementById('puzzleModal').classList.remove('open')}
+document.getElementById('puzzleModal').addEventListener('click',e=>{if(e.target===e.currentTarget)closePuzzle()});
 
-  /* ---- Tile Grid ---- */
-  const SYMBOLS = [
-    {sym:'∞', label:'infinite'}, {sym:'α', label:'alpha'},
-    {sym:'γ', label:'gamma'},    {sym:'Ω', label:'omega'},
-    {sym:'Δ', label:'delta'},    {sym:'π', label:'pi'},
-    {sym:'λ', label:'lambda'},   {sym:'Σ', label:'sigma'},
-    {sym:'⌘', label:'command'},  {sym:'✦', label:'spark'},
-    {sym:'◈', label:'core'},     {sym:'⟡', label:'node'},
-    {sym:'⊕', label:'plus'},     {sym:'⬡', label:'hex'},
-    {sym:'⟁', label:'tri'},      {sym:'⌬', label:'delta'},
-    {sym:'⋈', label:'join'},     {sym:'≋', label:'wave'},
-    {sym:'⊞', label:'grid'},     {sym:'◉', label:'focus'},
-    {sym:'⟳', label:'loop'},     {sym:'∴', label:'thus'},
-    {sym:'⟰', label:'rise'},     {sym:'✶', label:'star'},
-    {sym:'⊻', label:'xor'},
-  ];
+function sendJournal(){
+  const name=document.getElementById('j-name').value.trim();
+  const who=document.getElementById('j-who').value.trim();
+  const what=document.getElementById('j-what').value.trim();
+  const why=document.getElementById('j-why').value.trim();
+  if(!who&&!what&&!why){alert('Write at least a little something!');return}
+  const dn=name||'A wandering soul';
+  const txt=[(who?'I am: '+who:''),(what?'I want to: '+what:''),(why?'I am here because: '+why:'')].filter(Boolean).join('\n\n');
+  document.getElementById('parchmentText').textContent=txt;
+  document.getElementById('parchmentName').textContent='\u2014 '+dn+', '+new Date().toLocaleDateString('en-IN',{year:'numeric',month:'long',day:'numeric'});
+  const wm=encodeURIComponent('Hi Million Phrases Labs!\n\n'+txt+'\n\n\u2014 '+dn);
+  document.getElementById('waBtn').onclick=()=>window.open('https://wa.me/918247375497?text='+wm,'_blank');
+  document.getElementById('parchmentReveal').classList.add('show');
+  document.getElementById('parchmentReveal').scrollIntoView({behavior:'smooth',block:'nearest'});
+}
 
-  const TILES = [
-    {word:'Google Ads',         bg:'#ef4444'},
-    {word:'SEO',                bg:'#f97316'},
-    {word:'Blog Writing',       bg:'#eab308'},
-    {word:'LinkedIn',           bg:'#22c55e'},
-    {word:'Sleek Design',       bg:'#0ea5e9'},
-    {word:'Home Pages',         bg:'#a855f7'},
-    {word:'Résumé CV',          bg:'#f43f5e'},
-    {word:'Brand Voice',        bg:'#fb923c'},
-    {word:'Substack',           bg:'#d97706'},
-    {word:'GitHub Pages',       bg:'#16a34a'},
-    {word:'Visuals',            bg:'#38bdf8'},
-    {word:'Copy That Converts', bg:'#c026d3'},
-    {word:'Personal Brand',     bg:'#dc2626'},
-    {word:'Digital Presence',   bg:'#ea580c'},
-    {word:'Free Hosting',       bg:'#65a30d'},
-    {word:'No Lock-in',         bg:'#0891b2'},
-    {word:'Thumbnails',         bg:'#7c3aed'},
-    {word:'Banners',            bg:'#db2777'},
-    {word:'Storytelling',       bg:'#e11d48'},
-    {word:'Authority Content',  bg:'#f97316'},
-    {word:'1000+ Clients',      bg:'#059669'},
-    {word:'5 ★ Rated',         bg:'#ca8a04'},
-    {word:'India & Global',     bg:'#0284c7'},
-    {word:'Words',              bg:'#9333ea'},
-    {word:'Websites',           bg:'#FF4F38'},
-  ];
+let gameActive=false,gScore=0,gTime=30,gInt=null,bInt=null;
+const BALL=['\uD83C\uDF88','\uD83C\uDF80','\uD83D\uDC97','\uD83C\uDF38','\uD83D\uDC96','\uD83C\uDF8A','\u2728','\uD83C\uDF3A'];
+const MSGS=[[0,5,'You barely moved\u2026 but hey, you showed up. That counts.','Let us help you show up for your brand too.'],[6,10,'A solid start! Consistent, steady \u2014 just like good content.','We build brands for people who keep going.'],[11,17,'Nice reflexes! You've got focus. Let's channel that into your digital presence.','We're just as quick when it comes to your strategy.'],[18,24,'You're unstoppable! That energy? Let's put it into your brand.','We'll keep up \u2014 promise.'],[25,999,'LEGENDARY! You didn't just play \u2014 you dominated.','Your brand deserves that same energy. Let's talk.']];
+function startGame(){
+  document.getElementById('gameFooter').style.display='none';
+  document.getElementById('gameResult').style.display='none';
+  gScore=0;gTime=30;gameActive=true;
+  document.getElementById('gScore').textContent='0';
+  document.getElementById('gTime').textContent='30';
+  document.getElementById('gameArena').innerHTML='';
+  gInt=setInterval(()=>{gTime--;document.getElementById('gTime').textContent=gTime;if(gTime<=0){clearInterval(gInt);clearInterval(bInt);endGame()}},1000);
+  bInt=setInterval(spawnBalloon,800);spawnBalloon();
+}
+function spawnBalloon(){
+  if(!gameActive)return;
+  const a=document.getElementById('gameArena');
+  const b=document.createElement('div');b.className='game-balloon';
+  b.textContent=BALL[Math.floor(Math.random()*BALL.length)];
+  b.style.left=Math.random()*85+'%';
+  const d=2.5+Math.random()*2;b.style.animationDuration=d+'s';
+  b.addEventListener('click',e=>{e.stopPropagation();if(!gameActive)return;gScore++;document.getElementById('gScore').textContent=gScore;popFx(e.clientX,e.clientY);b.remove();popSound();});
+  a.appendChild(b);setTimeout(()=>{if(b.parentNode)b.remove()},d*1000);
+}
+function popFx(x,y){const a=document.getElementById('gameArena');const r=a.getBoundingClientRect();const p=document.createElement('div');p.className='game-pop';p.textContent='\uD83D\uDCA5';p.style.left=(x-r.left-20)+'px';p.style.top=(y-r.top-20)+'px';a.appendChild(p);setTimeout(()=>p.remove(),500);}
+function popSound(){try{const c=new(window.AudioContext||window.webkitAudioContext)();const o=c.createOscillator();const g=c.createGain();o.connect(g);g.connect(c.destination);o.frequency.setValueAtTime(600,c.currentTime);o.frequency.exponentialRampToValueAtTime(200,c.currentTime+0.1);g.gain.setValueAtTime(0.2,c.currentTime);g.gain.exponentialRampToValueAtTime(0.001,c.currentTime+0.15);o.start();o.stop(c.currentTime+0.15);}catch(e){}}
+function endGame(){
+  gameActive=false;document.getElementById('gameArena').innerHTML='';
+  const r=document.getElementById('gameResult');r.style.display='block';
+  document.getElementById('resultScore').textContent=gScore;
+  const m=MSGS.find(([a,b])=>gScore>=a&&gScore<=b)||MSGS[0];
+  document.getElementById('resultMsg').textContent=m[1];
+  document.getElementById('resultCta').innerHTML='<a href="#contact" style="color:var(--mg);text-decoration:underline">'+m[2]+'</a>';
+}
+function resetGame(){document.getElementById('gameResult').style.display='none';document.getElementById('gameFooter').style.display='block';}
 
-  const grid = document.getElementById('tileGrid');
+function switchTab(id,btn){document.querySelectorAll('.port-section').forEach(s=>s.classList.remove('active'));document.querySelectorAll('.port-tab').forEach(t=>t.classList.remove('active'));document.getElementById('tab-'+id).classList.add('active');btn.classList.add('active');}
 
-  TILES.forEach((t, i) => {
-    const sym  = SYMBOLS[i % SYMBOLS.length];
-    const wrap = document.createElement('div');
-    wrap.className = 'tile-wrap';
-    wrap.setAttribute('aria-label', t.word);
-    wrap.innerHTML = `
-      <div class="tile">
-        <div class="tile-front">
-          <div class="sym">${sym.sym}</div>
-          <div class="sym-label">${sym.label}</div>
-        </div>
-        <div class="tile-back" style="background:${t.bg}">
-          <div class="accent-dot"></div>
-          <div class="tile-word">${t.word}</div>
-        </div>
-      </div>`;
-    wrap.addEventListener('click', () => wrap.classList.toggle('flipped'));
-    grid.appendChild(wrap);
-  });
+const DESIGNS=[
+  {thumb:'Flip Wall',bg:'linear-gradient(135deg,#E8157A,#89C4E1)',cat:'Interactive Experience',name:'The Flip Wall',url:'https://eturivarsha.github.io/The-Flip-Wall/'},
+  {thumb:'Flipping World',bg:'linear-gradient(135deg,#C4A35A,#8FA67A)',cat:'Interactive Experience',name:'The Flipping World',url:'https://eturivarsha.github.io/The-Flipping-World/'},
+  {thumb:'Creator',bg:'linear-gradient(135deg,#FF6B6B,#FFE66D)',cat:'Creator / Influencer',name:'The Creator',url:'https://eturivarsha.github.io/Creator/'},
+  {thumb:'Life Coach',bg:'linear-gradient(135deg,#A8EDEA,#FED6E3)',cat:'Coaching / Wellness',name:'Life Coaching',url:'https://eturivarsha.github.io/Lifecoaching1/'},
+  {thumb:'BharatLingo',bg:'linear-gradient(135deg,#FF9933,#138808)',cat:'Education / Language',name:'BharatLingo',url:'https://eturivarsha.github.io/bharatlingo1/'},
+  {thumb:'Trekster',bg:'linear-gradient(135deg,#1A2980,#26D0CE)',cat:'Travel / Adventure',name:'Trekster',url:'https://eturivarsha.github.io/Trekster/'},
+  {thumb:'Hot & Sweet',bg:'linear-gradient(135deg,#F7971E,#FFD200)',cat:'Food / Bakery',name:'Hot & Sweet',url:'https://eturivarsha.github.io/Hot-Sweet/'},
+  {thumb:'Magazine',bg:'linear-gradient(135deg,#232526,#414345)',cat:'Editorial / Blog',name:'Magazine Blog',url:'https://eturivarsha.github.io/magazine-blog/'},
+  {thumb:'Design Thinking',bg:'linear-gradient(135deg,#4568DC,#B06AB3)',cat:'Design / Consultancy',name:'Design Thinking',url:'https://eturivarsha.github.io/Designthinking/'},
+  {thumb:'Luxury',bg:'linear-gradient(135deg,#1a1a1a,#4a3728)',cat:'Luxury / Premium',name:'Luxury Site',url:'https://eturivarsha.github.io/Luxurysite/'},
+  {thumb:'M Phrases v1',bg:'linear-gradient(135deg,#E8157A,#7C3AED)',cat:'Agency / Studio',name:'Million Phrases v1',url:'https://eturivarsha.github.io/millionphrases.github.io/'},
+];
+const dg=document.getElementById('designGrid');
+DESIGNS.forEach((d,i)=>{
+  const c=document.createElement('div');c.className='design-card r'+(i%3===1?' d1':i%3===2?' d2':'');
+  c.innerHTML='<div class="design-thumb" style="background:'+d.bg+'">'+d.thumb+'</div><div class="design-meta"><div class="design-cat">'+d.cat+'</div><div class="design-name">'+d.name+'</div><a href="'+d.url+'" target="_blank" rel="noopener" class="design-link">Live Preview &rarr;</a></div>';
+  dg.appendChild(c);io.observe(c);
+});
 
-  let allFlipped = false;
-  document.getElementById('flipAllBtn').addEventListener('click', () => {
-    allFlipped = !allFlipped;
-    document.querySelectorAll('.tile-wrap').forEach((w, i) => {
-      setTimeout(() => {
-        allFlipped ? w.classList.add('flipped') : w.classList.remove('flipped');
-      }, i * 30);
-    });
-    document.getElementById('flipAllBtn').textContent = allFlipped ? '[ reset all ]' : '[ flip all ]';
-  });
+const BLOGS=[
+  {title:'Million Phrases Labs',url:'https://varshaeturi.substack.com/p/million-phrases-labs',date:'2025',cat:'About MPL',excerpt:'The story behind Million Phrases Labs and why we exist.',body:'Million Phrases Labs was born from a simple belief: that words are the most powerful design tool we have.\n\nWe built this studio to help solo founders, creators, and professionals build a digital presence that actually sounds like them \u2014 not a template, not a chatbot, but a real human voice.\n\nWe combine academic rigor with creative design, writing with technology, strategy with storytelling.',color:'linear-gradient(135deg,#E8157A,#89C4E1)'},
+  {title:'I Feel Less Confident Sometimes \u2014 But',url:'https://varshaeturi.substack.com/p/i-feel-less-confident-sometimes-but',date:'2025',cat:'Personal Essay',excerpt:'A deeply honest essay about confidence and the quiet courage it takes to keep going.',body:'There are days when I look at everything I\u2019ve built and feel nothing but uncertainty. And I think that\u2019s okay.\n\nConfidence isn\u2019t the absence of doubt \u2014 it\u2019s the decision to move forward despite it.\n\nThis essay is about those in-between moments. The ones no one posts about. The ones that actually shape us.',color:'linear-gradient(135deg,#F4A7C3,#C4A35A)'},
+  {title:'Content Consumption 2026: How India\u2019s Digital Habits Are Evolving',url:'https://varshaeturi.substack.com/p/content-consumption-2026-how-indias',date:'2026',cat:'Digital Trends',excerpt:'How Indian audiences are consuming content differently in 2026.',body:'India\u2019s relationship with digital content has transformed dramatically.\n\nShort-form video, vernacular content, and creator-led communities are rewriting the rules of attention.\n\nFor anyone building a brand online in India today, understanding these shifts isn\u2019t optional \u2014 it\u2019s survival.',color:'linear-gradient(135deg,#89C4E1,#8FA67A)'},
+  {title:'Gadget Trends 2026: Where India Is Headed',url:'https://varshaeturi.substack.com/p/gadget-trends-2026-where-india-is',date:'2026',cat:'Tech & Culture',excerpt:'From affordable AI devices to local hardware \u2014 what\u2019s shaping India\u2019s gadget landscape.',body:'India\u2019s gadget market in 2026 is fascinating \u2014 a blend of premium aspirations and value-first pragmatism.\n\nAI-enabled devices are trickling into the mid-range segment, and local manufacturing is finally producing products worth talking about.',color:'linear-gradient(135deg,#8FA67A,#C4A35A)'},
+  {title:'Fashion Trends 2026: India',url:'https://varshaeturi.substack.com/p/fashion-trends-2026-india',date:'2026',cat:'Culture & Style',excerpt:'Fashion in India is refusing to be categorized \u2014 and it\u2019s having a moment.',body:'Indian fashion in 2026 is simultaneously global and hyper-local, sustainable and maximalist.\n\nThis piece explores what\u2019s driving these shifts and what they say about how young India sees itself.',color:'linear-gradient(135deg,#E8157A,#C4A35A)'},
+  {title:'Consumerism in 2026: The New Rules',url:'https://varshaeturi.substack.com/p/consumerism-in-2026-the-new-rules',date:'2026',cat:'Society & Economy',excerpt:'How the rules of buying, spending, and deciding have changed.',body:'The consumer of 2026 is skeptical, values-driven, and deeply aware.\n\nThey research before they buy, distrust advertising, and reward brands that are honest about what they are.\n\nFor businesses, this is both a challenge and an enormous opportunity \u2014 if you\u2019re willing to lead with authenticity.',color:'linear-gradient(135deg,#89C4E1,#E8157A)'},
+];
+const bw=document.getElementById('blogWall');
+BLOGS.forEach((b,i)=>{
+  const c=document.createElement('div');c.className='blog-modal-card r'+(i%3===1?' d1':i%3===2?' d2':'');
+  c.innerHTML='<div class="blog-thumb-wall" style="background:'+b.color+'">'+b.title.slice(0,30)+'</div><div class="blog-body-wall"><div class="blog-date-wall">'+b.cat+' &middot; '+b.date+'</div><div class="blog-title-wall">'+b.title+'</div><div class="blog-excerpt-wall">'+b.excerpt+'</div></div>';
+  c.addEventListener('click',()=>openBlogModal(b));bw.appendChild(c);io.observe(c);
+});
+function openBlogModal(b){document.getElementById('bm-cat').textContent=b.cat;document.getElementById('bm-title').textContent=b.title;document.getElementById('bm-date').textContent=b.date;document.getElementById('bm-body').textContent=b.body;document.getElementById('bm-link').href=b.url;document.getElementById('blogModal').classList.add('open');}
+function closeBlogModal(){document.getElementById('blogModal').classList.remove('open')}
+document.getElementById('blogModal').addEventListener('click',e=>{if(e.target===e.currentTarget)closeBlogModal()});
 
-  /* ---- Substack blog ---- */
-  async function loadBlog() {
-    const grid = document.getElementById('blog-grid');
-    const rss  = 'https://varshaeturi.substack.com/feed';
-    const url  = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rss)}&count=6`;
-    try {
-      const res  = await fetch(url);
-      const data = await res.json();
-      if (data.status === 'ok' && data.items && data.items.length > 0) {
-        const palettes = [
-          ['#FF4F38','#FFAA2C'], ['#7C3AED','#FF4F38'],
-          ['#0EA5E9','#7C3AED'], ['#10B981','#0EA5E9'],
-          ['#FFAA2C','#FF4F38'], ['#F43F5E','#7C3AED'],
-        ];
-        grid.innerHTML = data.items.slice(0,6).map((p, i) => {
-          const [c1, c2] = palettes[i % palettes.length];
-          const date     = new Date(p.pubDate).toLocaleDateString('en-IN', { year:'numeric', month:'long', day:'numeric' });
-          const raw      = p.description || '';
-          const text     = raw.replace(/<[^>]*>/g,'').trim().slice(0,130);
-          const excerpt  = text ? text + '…' : 'Read the full article on Substack.';
-          const thumb    = p.thumbnail || (p.enclosure && p.enclosure.link) || '';
-          return `
-            <div class="blog-card r">
-              <div class="blog-thumb" style="background:linear-gradient(135deg,${c1},${c2});">
-                ${thumb ? `<img src="${thumb}" alt="${p.title}" loading="lazy" onerror="this.style.display='none'">` : `<div class="blog-thumb-fallback">✦</div>`}
-              </div>
-              <div class="blog-body">
-                <div class="blog-date">${date}</div>
-                <h3>${p.title}</h3>
-                <p>${excerpt}</p>
-                <a href="${p.link}" target="_blank" rel="noopener" class="blog-read">Read on Substack →</a>
-              </div>
-            </div>`;
-        }).join('');
-        grid.querySelectorAll('.r').forEach(el => io.observe(el));
-      } else {
-        fallbackBlog();
-      }
-    } catch(err) {
-      fallbackBlog();
-    }
-  }
-
-  function fallbackBlog() {
-    document.getElementById('blog-grid').innerHTML = `
-      <div class="blog-state">
-        <p style="font-size:1.2rem;margin-bottom:0.75rem;">📬 Fresh content landing soon!</p>
-        <p style="margin-bottom:1.5rem;">Varsha writes about personal branding, digital presence, and building a voice online. Subscribe to be first to read.</p>
-        <a href="https://varshaeturi.substack.com/" target="_blank" rel="noopener"
-           style="display:inline-flex;align-items:center;gap:0.5rem;background:#FF4F38;color:white;
-                  padding:0.875rem 2rem;border-radius:50px;font-weight:700;font-size:0.92rem;text-decoration:none;">
-          Subscribe on Substack ↗
-        </a>
-      </div>`;
-  }
-
-  loadBlog();
-
-  /* ---- Contact form ---- */
-  function sendForm() {
-    const name    = document.getElementById('fn').value.trim();
-    const email   = document.getElementById('fe').value.trim();
-    const service = document.getElementById('fs').value;
-    const msg     = document.getElementById('fm').value.trim();
-    const fb      = document.getElementById('fmsg');
-    fb.className  = 'form-msg';
-    if (!name || !email || !msg) {
-      fb.textContent = '⚠ Please fill in your name, email and message.';
-      fb.className   = 'form-msg err';
-      return;
-    }
-    const sub  = encodeURIComponent(`Million Phrases Labs — ${service || 'General Inquiry'} from ${name}`);
-    const body = encodeURIComponent(`Hi Varsha,\n\nName: ${name}\nEmail: ${email}\nService: ${service||'Not specified'}\n\n${msg}\n\n— Sent via millionphraseslabs.com`);
-    window.location.href = `mailto:?subject=${sub}&body=${body}`;
-    fb.textContent = '✓ Opening your email client… Talk soon!';
-    fb.className   = 'form-msg ok';
-  }
-
-  document.querySelectorAll('.fg input, .fg select, .fg textarea').forEach(el => {
-    el.addEventListener('keydown', e => { if (e.key === 'Enter' && e.target.tagName !== 'TEXTAREA') sendForm(); });
-  });
-</script>
-
+function sendForm(){
+  const name=document.getElementById('fn').value.trim();
+  const email=document.getElementById('fe').value.trim();
+  const service=document.getElementById('fs').value;
+  const msg=document.getElementById('fm').value.trim();
+  const fb=document.getElementById('fmsg');fb.className='form-msg';
+  if(!name||!email||!msg){fb.textContent='Please fill in your name, email and message.';fb.className='form-msg err';return}
+  const sub=encodeURIComponent('MPL Inquiry \u2014 '+(service||'General')+' from '+name);
+  const body=encodeURIComponent('Hi Varsha,\n\nName: '+name+'\nEmail: '+email+'\nService: '+(service||'Not specified')+'\n\n'+msg+'\n\n\u2014 Sent via millionphraseslabs.com');
+  window.location.href='mailto:varsha@millionphraseslabs.com?subject='+sub+'&body='+body;
+  fb.textContent='Opening your email client\u2026 Talk soon!';fb.className='form-msg ok';
+}
+<\/script>
 </body>
 </html>
