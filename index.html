@@ -12,9 +12,9 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 :root{
-  --mg:#E8157A;--pink:#F4A7C3;--blue:#89C4E1;
-  --parch:#F0ECD8;--sage:#8FA67A;--ochre:#C4A35A;
-  --ink:#1A1018;--white:#FAFAFA;
+  --mg:#0077B6;--pink:#90E0EF;--blue:#00B4D8;
+  --parch:#EAF6FB;--sage:#48CAE4;--ochre:#ADE8F4;
+  --ink:#03045E;--white:#FAFEFF;
   --fd:'Playfair Display',serif;
   --fb:'DM Sans',sans-serif;
   --fm:'Space Mono',monospace;
@@ -22,12 +22,12 @@ html{scroll-behavior:smooth}
 }
 body{font-family:var(--fb);color:var(--ink);overflow-x:hidden;line-height:1.6;
   background:
-    radial-gradient(ellipse 80% 60% at 10% 20%,rgba(232,21,122,0.13) 0%,transparent 60%),
-    radial-gradient(ellipse 60% 80% at 90% 10%,rgba(137,196,225,0.16) 0%,transparent 55%),
-    radial-gradient(ellipse 70% 50% at 50% 85%,rgba(244,167,195,0.14) 0%,transparent 60%),
-    radial-gradient(ellipse 50% 40% at 80% 55%,rgba(196,163,90,0.09) 0%,transparent 50%),
-    radial-gradient(ellipse 90% 70% at 20% 70%,rgba(143,166,122,0.08) 0%,transparent 55%),
-    #F0ECD8;
+    radial-gradient(ellipse 80% 60% at 10% 20%,rgba(0,119,182,0.14) 0%,transparent 60%),
+    radial-gradient(ellipse 60% 80% at 90% 10%,rgba(72,202,228,0.18) 0%,transparent 55%),
+    radial-gradient(ellipse 70% 50% at 50% 85%,rgba(144,224,239,0.16) 0%,transparent 60%),
+    radial-gradient(ellipse 50% 40% at 80% 55%,rgba(0,180,216,0.1) 0%,transparent 50%),
+    radial-gradient(ellipse 90% 70% at 20% 70%,rgba(173,232,244,0.12) 0%,transparent 55%),
+    #EAF6FB;
   background-attachment:fixed;
 }
 a{text-decoration:none;color:inherit}
@@ -39,7 +39,7 @@ a{text-decoration:none;color:inherit}
   background:rgba(250,245,235,0.75);
   border:1px solid rgba(255,255,255,0.7);
   border-radius:20px;
-  box-shadow:0 4px 24px rgba(232,21,122,0.07),inset 0 1px 0 rgba(255,255,255,0.8);
+  box-shadow:0 4px 24px rgba(0,119,182,0.07),inset 0 1px 0 rgba(255,255,255,0.8);
 }
 @supports(backdrop-filter:blur(1px)){
   .glass{
@@ -58,11 +58,11 @@ a{text-decoration:none;color:inherit}
 nav{
   position:fixed;top:0;left:0;right:0;height:var(--nav-h);z-index:300;
   display:flex;align-items:center;justify-content:space-between;padding:0 5%;
-  background:rgba(240,236,216,0.92);
-  border-bottom:1px solid rgba(232,21,122,0.12);
+  background:rgba(234,246,251,0.92);
+  border-bottom:1px solid rgba(0,119,182,0.15);
   transition:box-shadow 0.3s;
 }
-@supports(backdrop-filter:blur(1px)){nav{background:rgba(240,236,216,0.72);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);}}
+@supports(backdrop-filter:blur(1px)){nav{background:rgba(234,246,251,0.72);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);}}
 nav.scrolled{box-shadow:0 4px 30px rgba(232,21,122,0.1)}
 .nav-logo{font-family:var(--fd);font-size:1.1rem;font-weight:900;letter-spacing:-0.02em}
 .nav-logo em{color:var(--mg);font-style:normal}
@@ -70,13 +70,13 @@ nav.scrolled{box-shadow:0 4px 30px rgba(232,21,122,0.1)}
 .nav-links a{font-size:0.82rem;font-weight:500;transition:color 0.2s}
 .nav-links a:hover{color:var(--mg)}
 .nav-cta{background:var(--mg)!important;color:#fff!important;padding:0.5rem 1.4rem;border-radius:50px;font-weight:600!important;transition:transform 0.2s,box-shadow 0.2s!important}
-.nav-cta:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(232,21,122,0.4)!important}
+.nav-cta:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(0,119,182,0.35)!important}
 .hamburger{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;padding:4px}
 .hamburger span{display:block;width:22px;height:2px;background:var(--ink);border-radius:2px;transition:all 0.3s}
 .mob-nav{
   display:none;position:fixed;inset:0;z-index:299;
   flex-direction:column;align-items:center;justify-content:center;gap:2.5rem;
-  background:rgba(240,236,216,0.98);
+  background:rgba(234,246,251,0.98);
 }
 .mob-nav.open{display:flex}
 .mob-nav a{font-family:var(--fd);font-size:2.2rem;font-weight:700;color:var(--ink);transition:color 0.2s}
@@ -91,7 +91,7 @@ nav.scrolled{box-shadow:0 4px 30px rgba(232,21,122,0.1)}
 .sec-title{font-family:var(--fd);font-size:clamp(2.2rem,5vw,4rem);font-weight:900;line-height:1.0;letter-spacing:-0.03em;margin-bottom:1.2rem}
 .sec-sub{font-size:1rem;color:#5a4a50;max-width:540px;line-height:1.8;margin-bottom:3rem}
 .btn-p{display:inline-flex;align-items:center;gap:0.5rem;background:var(--mg);color:#fff;padding:0.85rem 2rem;border-radius:50px;font-weight:600;font-size:0.9rem;border:none;cursor:pointer;font-family:var(--fb);transition:transform 0.2s,box-shadow 0.2s}
-.btn-p:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(232,21,122,0.4)}
+.btn-p:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,119,182,0.4)}
 .btn-s{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(250,245,235,0.8);color:var(--ink);padding:0.85rem 2rem;border-radius:50px;font-weight:600;font-size:0.9rem;border:1.5px solid rgba(26,16,24,0.2);transition:all 0.2s}
 .btn-s:hover{background:rgba(250,245,235,1);transform:translateY(-2px)}
 .r{opacity:0;transform:translateY(28px);transition:opacity 0.7s ease,transform 0.7s ease}
@@ -101,7 +101,7 @@ nav.scrolled{box-shadow:0 4px 30px rgba(232,21,122,0.1)}
 /* HERO */
 #home{min-height:100vh;display:flex;align-items:center;padding:var(--nav-h) 5% 80px}
 .hero-inner{max-width:1200px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
-.hero-tag{display:inline-flex;align-items:center;gap:0.6rem;font-family:var(--fm);font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--mg);margin-bottom:1.5rem;padding:0.4rem 1rem;border-radius:50px;background:rgba(232,21,122,0.08);border:1px solid rgba(232,21,122,0.2)}
+.hero-tag{display:inline-flex;align-items:center;gap:0.6rem;font-family:var(--fm);font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--mg);margin-bottom:1.5rem;padding:0.4rem 1rem;border-radius:50px;background:rgba(0,119,182,0.08);border:1px solid rgba(0,119,182,0.2)}
 .hero-tag span{width:5px;height:5px;border-radius:50%;background:var(--mg);animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
 .hero-h1{font-family:var(--fd);font-size:clamp(3rem,7vw,5.5rem);font-weight:900;line-height:0.95;letter-spacing:-0.04em;margin-bottom:1.5rem}
@@ -111,36 +111,36 @@ nav.scrolled{box-shadow:0 4px 30px rgba(232,21,122,0.1)}
 
 /* PUZZLE CARD */
 .puzzle-teaser{padding:2.5rem;position:relative;overflow:hidden}
-.puzzle-teaser::before{content:'';position:absolute;top:-60px;right:-60px;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(232,21,122,0.12),transparent 70%);pointer-events:none}
+.puzzle-teaser::before{content:'';position:absolute;top:-60px;right:-60px;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(0,119,182,0.12),transparent 70%);pointer-events:none}
 .puzzle-label{font-family:var(--fm);font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--mg);margin-bottom:1rem}
 .puzzle-headline{font-family:var(--fd);font-size:1.6rem;font-weight:700;line-height:1.2;margin-bottom:0.75rem}
 .puzzle-headline em{font-style:italic;color:var(--mg)}
 .puzzle-sub{font-size:0.85rem;color:#5a4a50;line-height:1.7;margin-bottom:1.5rem}
-.prize-badge{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(232,21,122,0.08);border:1px solid rgba(232,21,122,0.2);border-radius:50px;padding:0.4rem 1rem;font-family:var(--fm);font-size:0.65rem;letter-spacing:0.08em;color:var(--mg);margin-bottom:1.5rem}
+.prize-badge{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(0,119,182,0.08);border:1px solid rgba(0,119,182,0.2);border-radius:50px;padding:0.4rem 1rem;font-family:var(--fm);font-size:0.65rem;letter-spacing:0.08em;color:var(--mg);margin-bottom:1.5rem}
 .open-puzzle-btn{display:block;width:100%;background:var(--mg);color:#fff;border:none;border-radius:14px;padding:1rem;font-family:var(--fd);font-size:1rem;font-weight:700;font-style:italic;cursor:pointer;transition:transform 0.2s,box-shadow 0.2s}
-.open-puzzle-btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(232,21,122,0.4)}
+.open-puzzle-btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,119,182,0.4)}
 
 /* MODAL */
 .modal-overlay{position:fixed;inset:0;z-index:500;background:rgba(26,16,24,0.55);display:none;align-items:center;justify-content:center;padding:1rem}
 .modal-overlay.open{display:flex}
-.modal-box{width:100%;max-width:620px;max-height:90vh;overflow-y:auto;background:#F5F0E8;border:1px solid rgba(255,255,255,0.7);border-radius:28px;padding:2.5rem;box-shadow:0 24px 80px rgba(26,16,24,0.25);position:relative}
+.modal-box{width:100%;max-width:620px;max-height:90vh;overflow-y:auto;background:#EAF6FB;border:1px solid rgba(255,255,255,0.7);border-radius:28px;padding:2.5rem;box-shadow:0 24px 80px rgba(26,16,24,0.25);position:relative}
 .modal-close{position:absolute;top:1.2rem;right:1.2rem;background:rgba(26,16,24,0.08);border:none;border-radius:50%;width:36px;height:36px;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;transition:background 0.2s}
 .modal-close:hover{background:rgba(232,21,122,0.15)}
-.modal-title{font-family:var(--fd);font-size:1.8rem;font-weight:900;line-height:1.15;margin-bottom:0.5rem}
+.modal-title{font-family:'Georgia',serif;font-size:1.8rem;font-weight:900;line-height:1.15;margin-bottom:0.5rem}
 .modal-title em{font-style:italic;color:var(--mg)}
-.modal-sub{font-size:0.88rem;color:#5a4a50;line-height:1.7;margin-bottom:1.5rem}
+.modal-sub{font-family:"Georgia",serif;font-size:0.95rem;color:#2c4a6e;line-height:1.8;margin-bottom:1.5rem;font-style:italic}
 .journal-fields{display:flex;flex-direction:column;gap:0.8rem;margin-bottom:1.2rem}
-.journal-field label{display:block;font-family:var(--fm);font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--mg);margin-bottom:0.35rem}
-.letter-box{width:100%;background:rgba(255,255,255,0.8);border:1.5px solid rgba(232,21,122,0.2);border-radius:12px;padding:0.85rem 1rem;font-family:var(--fb);font-size:0.88rem;color:var(--ink);outline:none;resize:vertical;min-height:80px;transition:border-color 0.2s,box-shadow 0.2s}
-.letter-box:focus{border-color:var(--mg);box-shadow:0 0 0 3px rgba(232,21,122,0.1)}
+.journal-field label{display:block;font-family:"Georgia",serif;font-size:0.75rem;font-style:italic;color:var(--mg);margin-bottom:0.35rem}
+.letter-box{width:100%;background:rgba(255,255,255,0.8);border:1.5px solid rgba(0,119,182,0.2);border-radius:12px;padding:0.85rem 1rem;font-family:"Georgia",serif;font-size:0.95rem;color:var(--ink);outline:none;resize:vertical;min-height:80px;transition:border-color 0.2s,box-shadow 0.2s;line-height:1.7}
+.letter-box:focus{border-color:var(--mg);box-shadow:0 0 0 3px rgba(0,119,182,0.1)}
 .letter-box::placeholder{color:rgba(90,74,80,0.4)}
 .letter-box.single{min-height:unset;resize:none}
-.send-btn{width:100%;background:var(--mg);color:#fff;border:none;border-radius:14px;padding:1rem;font-family:var(--fd);font-size:1rem;font-weight:700;font-style:italic;cursor:pointer;transition:transform 0.2s,box-shadow 0.2s;margin-bottom:0.75rem}
-.send-btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(232,21,122,0.4)}
+.send-btn{width:100%;background:var(--mg);color:#fff;border:none;border-radius:14px;padding:1rem;font-family:'Georgia',serif;font-size:1.1rem;font-weight:700;font-style:italic;cursor:pointer;transition:transform 0.2s,box-shadow 0.2s;margin-bottom:0.75rem}
+.send-btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,119,182,0.4)}
 .parchment-reveal{display:none;margin-top:1rem}
 .parchment-reveal.show{display:block}
-.parchment-scroll{background:linear-gradient(160deg,#F0ECD8,#F4E8C8);border:1.5px solid rgba(196,163,90,0.4);border-radius:16px;padding:2rem;box-shadow:0 6px 30px rgba(196,163,90,0.15)}
-.parchment-scroll::before,.parchment-scroll::after{content:'— º6 —';display:block;text-align:center;font-family:var(--fd);font-size:0.8rem;color:rgba(196,163,90,0.6);letter-spacing:0.3em}
+.parchment-scroll{background:linear-gradient(160deg,#CAF0F8,#EAF6FB);border:1.5px solid rgba(0,119,182,0.3);border-radius:16px;padding:2rem;box-shadow:0 6px 30px rgba(0,119,182,0.12)}
+.parchment-scroll::before,.parchment-scroll::after{content:'— º6 —';display:block;text-align:center;font-family:var(--fd);font-size:0.8rem;color:rgba(0,119,182,0.5);letter-spacing:0.3em}
 .parchment-scroll::before{margin-bottom:1rem}
 .parchment-scroll::after{margin-top:1rem}
 .parchment-text{font-family:var(--fd);font-style:italic;font-size:1rem;color:var(--ink);line-height:1.8;text-align:center;white-space:pre-wrap}
@@ -148,10 +148,10 @@ nav.scrolled{box-shadow:0 4px 30px rgba(232,21,122,0.1)}
 .parchment-actions{display:flex;gap:0.75rem;margin-top:1.2rem;flex-wrap:wrap}
 .wa-btn{flex:1;display:flex;align-items:center;justify-content:center;gap:0.5rem;background:#25D366;color:#fff;border:none;border-radius:12px;padding:0.85rem;font-weight:700;font-size:0.88rem;font-family:var(--fb);cursor:pointer;transition:transform 0.2s}
 .wa-btn:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(37,211,102,0.4)}
-.ig-note{flex:1;display:flex;align-items:center;justify-content:center;background:rgba(232,21,122,0.08);border:1px solid rgba(232,21,122,0.25);border-radius:12px;padding:0.85rem;font-size:0.82rem;color:var(--mg);font-weight:600;text-align:center;line-height:1.4}
+.ig-note{flex:1;display:flex;align-items:center;justify-content:center;background:rgba(0,119,182,0.08);border:1px solid rgba(232,21,122,0.25);border-radius:12px;padding:0.85rem;font-size:0.82rem;color:var(--mg);font-weight:600;text-align:center;line-height:1.4}
 
 /* MARQUEE */
-.marquee{padding:1rem 0;overflow:hidden;background:rgba(232,21,122,0.05);border-top:1px solid rgba(232,21,122,0.12);border-bottom:1px solid rgba(232,21,122,0.12)}
+.marquee{padding:1rem 0;overflow:hidden;background:rgba(0,119,182,0.05);border-top:1px solid rgba(0,119,182,0.12);border-bottom:1px solid rgba(0,119,182,0.12)}
 .marquee-track{display:flex;white-space:nowrap}
 .marquee-inner{display:flex;gap:3rem;align-items:center;animation:scroll 30s linear infinite;flex-shrink:0}
 @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
@@ -164,7 +164,7 @@ nav.scrolled{box-shadow:0 4px 30px rgba(232,21,122,0.1)}
 .flip-card{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform 0.65s cubic-bezier(0.4,0.2,0.2,1)}
 .flip-wrap:hover .flip-card,.flip-wrap.flipped .flip-card{transform:rotateY(180deg)}
 .flip-front,.flip-back{position:absolute;inset:0;border-radius:20px;backface-visibility:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem;text-align:center}
-.flip-front{background:rgba(250,245,235,0.88);border:1px solid rgba(255,255,255,0.8);box-shadow:0 4px 24px rgba(232,21,122,0.07)}
+.flip-front{background:rgba(250,245,235,0.88);border:1px solid rgba(255,255,255,0.8);box-shadow:0 4px 24px rgba(0,119,182,0.07)}
 .flip-back{transform:rotateY(180deg);border:1px solid rgba(255,255,255,0.3);box-shadow:0 8px 40px rgba(0,0,0,0.12)}
 .flip-ico{font-size:2.5rem;margin-bottom:0.75rem}
 .flip-title{font-family:var(--fd);font-size:1.4rem;font-weight:700;color:var(--ink);margin-bottom:0.5rem}
@@ -182,7 +182,7 @@ nav.scrolled{box-shadow:0 4px 30px rgba(232,21,122,0.1)}
 .ds-tile-ico{font-size:1.8rem}
 .ds-tile-label{font-family:var(--fm);font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;text-align:center;color:var(--ink)}
 .ds-pills{display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:2rem}
-.ds-pill{font-size:0.75rem;padding:0.4rem 0.9rem;border-radius:50px;background:rgba(232,21,122,0.08);color:var(--mg);border:1px solid rgba(232,21,122,0.18)}
+.ds-pill{font-size:0.75rem;padding:0.4rem 0.9rem;border-radius:50px;background:rgba(0,119,182,0.08);color:var(--mg);border:1px solid rgba(0,119,182,0.18)}
 
 /* CONTENT STRATEGY */
 .cs-body{display:grid;grid-template-columns:1.2fr 0.8fr;gap:3rem;align-items:start;margin-top:3rem}
@@ -194,19 +194,19 @@ nav.scrolled{box-shadow:0 4px 30px rgba(232,21,122,0.1)}
 .cs-flip-wrap:hover .cs-flip-card,.cs-flip-wrap.flipped .cs-flip-card{transform:rotateY(180deg)}
 .cs-front,.cs-back{position:absolute;inset:0;border-radius:16px;backface-visibility:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:1.5rem;text-align:center}
 .cs-front{background:rgba(250,245,235,0.88);border:1px solid rgba(255,255,255,0.8)}
-.cs-back{transform:rotateY(180deg);background:linear-gradient(135deg,#1A1018,#2d1a28)}
+.cs-back{transform:rotateY(180deg);background:linear-gradient(135deg,#03045E,#023E8A)}
 .cs-front-ico{font-size:2rem;margin-bottom:0.5rem}
 .cs-front-title{font-family:var(--fd);font-size:1rem;font-weight:700;color:var(--ink);margin-bottom:0.3rem}
 .cs-front-hint{font-family:var(--fm);font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--mg);opacity:0.7}
-.cs-back-title{font-family:var(--fd);font-size:0.9rem;font-weight:700;color:var(--pink);margin-bottom:0.5rem}
+.cs-back-title{font-family:var(--fd);font-size:0.9rem;font-weight:700;color:#90E0EF;margin-bottom:0.5rem}
 .cs-back-text{font-size:0.75rem;color:rgba(240,236,216,0.82);line-height:1.6}
 
 /* BALLOON GAME */
-.game-box{max-width:700px;margin:0 auto;background:rgba(250,245,235,0.9);border:1px solid rgba(255,255,255,0.8);border-radius:28px;overflow:hidden;box-shadow:0 8px 40px rgba(232,21,122,0.08)}
-.game-header{padding:1.5rem 2rem 1rem;background:rgba(232,21,122,0.05);border-bottom:1px solid rgba(232,21,122,0.1)}
+.game-box{max-width:700px;margin:0 auto;background:rgba(250,245,235,0.9);border:1px solid rgba(255,255,255,0.8);border-radius:28px;overflow:hidden;box-shadow:0 8px 40px rgba(0,119,182,0.08)}
+.game-header{padding:1.5rem 2rem 1rem;background:rgba(0,119,182,0.05);border-bottom:1px solid rgba(0,119,182,0.1)}
 .game-title{font-family:var(--fd);font-size:1.6rem;font-weight:900;color:var(--ink);margin-bottom:0.3rem}
 .game-sub{font-size:0.85rem;color:#5a4a50}
-.game-meta{display:flex;justify-content:center;gap:3rem;padding:1rem 2rem;border-bottom:1px solid rgba(232,21,122,0.08)}
+.game-meta{display:flex;justify-content:center;gap:3rem;padding:1rem 2rem;border-bottom:1px solid rgba(0,119,182,0.08)}
 .game-stat-label{font-family:var(--fm);font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--mg);margin-bottom:0.2rem}
 .game-stat-val{font-family:var(--fd);font-size:1.8rem;font-weight:900;color:var(--ink)}
 .game-arena{position:relative;height:320px;overflow:hidden;cursor:crosshair;background:rgba(240,236,216,0.3)}
@@ -224,12 +224,12 @@ nav.scrolled{box-shadow:0 4px 30px rgba(232,21,122,0.1)}
 
 /* PORTFOLIO */
 .port-tabs{display:flex;gap:0.75rem;margin-bottom:2.5rem;flex-wrap:wrap}
-.port-tab{font-family:var(--fm);font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;padding:0.5rem 1.2rem;border-radius:50px;border:1.5px solid rgba(232,21,122,0.25);background:transparent;cursor:pointer;color:var(--ink);transition:all 0.2s}
+.port-tab{font-family:var(--fm);font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;padding:0.5rem 1.2rem;border-radius:50px;border:1.5px solid rgba(0,119,182,0.25);background:transparent;cursor:pointer;color:var(--ink);transition:all 0.2s}
 .port-tab.active,.port-tab:hover{background:var(--mg);color:#fff;border-color:var(--mg)}
-.port-section{display:none}.port-section.active{display:block}
+.port-section{display:none;opacity:1}.port-section.active{display:block;opacity:1}
 .design-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
 .design-card{border-radius:18px;overflow:hidden;background:rgba(250,245,235,0.88);border:1px solid rgba(255,255,255,0.8);box-shadow:0 4px 20px rgba(0,0,0,0.05);transition:transform 0.3s,box-shadow 0.3s}
-.design-card:hover{transform:translateY(-6px);box-shadow:0 16px 50px rgba(232,21,122,0.15)}
+.design-card:hover{transform:translateY(-6px);box-shadow:0 16px 50px rgba(0,119,182,0.15)}
 .design-thumb{height:190px;display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-size:1.3rem;font-weight:900;color:rgba(255,255,255,0.88);letter-spacing:-0.02em;padding:1rem;text-align:center}
 .design-meta{padding:1rem 1.2rem 1.2rem}
 .design-cat{font-family:var(--fm);font-size:0.58rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--mg);margin-bottom:0.25rem}
@@ -237,16 +237,16 @@ nav.scrolled{box-shadow:0 4px 30px rgba(232,21,122,0.1)}
 .design-link{display:inline-flex;align-items:center;gap:0.3rem;font-size:0.78rem;font-weight:700;color:var(--mg);transition:gap 0.2s}
 .design-link:hover{gap:0.55rem}
 .blog-grid-wall{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
-.blog-modal-card{border-radius:18px;overflow:hidden;cursor:pointer;background:rgba(250,245,235,0.88);border:1px solid rgba(255,255,255,0.8);transition:transform 0.3s,box-shadow 0.3s}
-.blog-modal-card:hover{transform:translateY(-6px);box-shadow:0 16px 50px rgba(232,21,122,0.15)}
+.blog-modal-card{border-radius:18px;overflow:hidden;cursor:pointer;background:rgba(234,246,251,0.88);border:1px solid rgba(255,255,255,0.8);transition:transform 0.3s,box-shadow 0.3s;opacity:1!important;transform:none!important}
+.blog-modal-card:hover{transform:translateY(-6px);box-shadow:0 16px 50px rgba(0,119,182,0.15)}
 .blog-thumb-wall{height:150px;display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-size:1.1rem;font-weight:900;color:rgba(255,255,255,0.88);padding:1rem;text-align:center}
 .blog-body-wall{padding:1rem 1.2rem 1.2rem}
 .blog-date-wall{font-family:var(--fm);font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--mg);margin-bottom:0.3rem}
 .blog-title-wall{font-family:var(--fd);font-size:0.9rem;font-weight:700;line-height:1.3;margin-bottom:0.5rem;color:var(--ink)}
 .blog-excerpt-wall{font-size:0.76rem;color:#5a4a50;line-height:1.6}
-.blog-modal-overlay{position:fixed;inset:0;z-index:500;background:rgba(26,16,24,0.5);display:none;align-items:center;justify-content:center;padding:1rem}
+.blog-modal-overlay{position:fixed;inset:0;z-index:500;background:rgba(3,4,94,0.45);display:none;align-items:center;justify-content:center;padding:1rem}
 .blog-modal-overlay.open{display:flex}
-.blog-modal-inner{width:100%;max-width:600px;max-height:88vh;overflow-y:auto;background:#F5F0E8;border:1px solid rgba(255,255,255,0.7);border-radius:28px;padding:2.5rem;box-shadow:0 24px 80px rgba(26,16,24,0.2);position:relative}
+.blog-modal-inner{width:100%;max-width:600px;max-height:88vh;overflow-y:auto;background:#EAF6FB;border:1px solid rgba(255,255,255,0.7);border-radius:28px;padding:2.5rem;box-shadow:0 24px 80px rgba(26,16,24,0.2);position:relative}
 .blog-modal-close{position:absolute;top:1.2rem;right:1.2rem;background:rgba(26,16,24,0.08);border:none;border-radius:50%;width:36px;height:36px;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;transition:background 0.2s}
 .blog-modal-close:hover{background:rgba(232,21,122,0.15)}
 .blog-modal-cat{font-family:var(--fm);font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--mg);margin-bottom:0.5rem}
@@ -254,55 +254,138 @@ nav.scrolled{box-shadow:0 4px 30px rgba(232,21,122,0.1)}
 .blog-modal-date{font-family:var(--fm);font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;color:#8a7a80;margin-bottom:1.2rem}
 .blog-modal-body{font-size:0.9rem;color:#5a4a50;line-height:1.85;margin-bottom:1.5rem;white-space:pre-line}
 .blog-modal-cta{display:inline-flex;align-items:center;gap:0.5rem;background:var(--mg);color:#fff;padding:0.75rem 1.75rem;border-radius:50px;font-weight:700;font-size:0.88rem;transition:transform 0.2s}
-.blog-modal-cta:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(232,21,122,0.4)}
+.blog-modal-cta:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,119,182,0.35)}
 
 /* ABOUT */
 .about-inner{display:grid;grid-template-columns:0.9fr 1.1fr;gap:5rem;align-items:center}
-.about-frame{aspect-ratio:3/4;border-radius:28px;overflow:hidden;position:relative;background:linear-gradient(145deg,rgba(232,21,122,0.25),rgba(137,196,225,0.25),rgba(240,236,216,0.5));border:1px solid rgba(255,255,255,0.6);display:flex;align-items:center;justify-content:center}
+.about-frame{aspect-ratio:3/4;border-radius:28px;overflow:hidden;position:relative;background:linear-gradient(145deg,rgba(0,119,182,0.3),rgba(72,202,228,0.3),rgba(173,232,244,0.5));border:1px solid rgba(255,255,255,0.6);display:flex;align-items:center;justify-content:center}
 .about-photo{width:100%;height:100%;object-fit:cover;object-position:center top}
 .about-visual{position:relative}
-.about-badge{position:absolute;bottom:-20px;right:-20px;background:#F5F0E8;border:1px solid rgba(255,255,255,0.8);border-radius:16px;padding:1rem 1.4rem;box-shadow:0 8px 30px rgba(196,163,90,0.2)}
+.about-badge{position:absolute;bottom:-20px;right:-20px;background:#EAF6FB;border:1px solid rgba(255,255,255,0.8);border-radius:16px;padding:1rem 1.4rem;box-shadow:0 8px 30px rgba(196,163,90,0.2)}
 .about-badge strong{display:block;font-family:var(--fd);font-size:1rem;font-weight:900;color:var(--ink);line-height:1}
 .about-badge span{font-family:var(--fm);font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--mg)}
 .about-quote{font-family:var(--fd);font-style:italic;font-size:1.15rem;color:var(--mg);margin-bottom:1.5rem;line-height:1.5}
 .about-body p{font-size:0.9rem;color:#5a4a50;line-height:1.85;margin-bottom:1.1rem}
 .creds{display:flex;flex-wrap:wrap;gap:0.5rem;margin:1.5rem 0}
-.cred{font-size:0.75rem;padding:0.35rem 0.85rem;border-radius:50px;background:rgba(250,245,235,0.9);border:1px solid rgba(232,21,122,0.15);color:var(--ink)}
+.cred{font-size:0.75rem;padding:0.35rem 0.85rem;border-radius:50px;background:rgba(202,240,248,0.6);border:1px solid rgba(0,119,182,0.15);color:var(--ink)}
 
 /* CONTACT */
 .contact-inner{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
 .contact-links{display:flex;flex-direction:column;gap:1rem;margin-top:2rem}
 .contact-link-item{display:flex;align-items:center;gap:1rem;background:rgba(250,245,235,0.88);border:1px solid rgba(255,255,255,0.8);border-radius:14px;padding:1rem 1.2rem;transition:transform 0.2s,box-shadow 0.2s}
-.contact-link-item:hover{transform:translateX(4px);box-shadow:0 4px 20px rgba(232,21,122,0.1)}
-.cli-ico{width:42px;height:42px;border-radius:10px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.2rem;background:rgba(232,21,122,0.08)}
+.contact-link-item:hover{transform:translateX(4px);box-shadow:0 4px 20px rgba(0,119,182,0.12)}
+.cli-ico{width:42px;height:42px;border-radius:10px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.2rem;background:rgba(0,119,182,0.08)}
 .cli-text strong{display:block;font-size:0.88rem;font-weight:600;color:var(--ink);margin-bottom:0.1rem}
 .cli-text span{font-size:0.78rem;color:#8a7a80}
 .contact-form{background:rgba(250,245,235,0.88);border:1px solid rgba(255,255,255,0.8);border-radius:20px;padding:2rem;display:flex;flex-direction:column;gap:1rem}
 .fg label{display:block;font-family:var(--fm);font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--mg);margin-bottom:0.4rem}
-.fg input,.fg textarea,.fg select{width:100%;background:rgba(255,255,255,0.8);border:1.5px solid rgba(232,21,122,0.15);border-radius:12px;padding:0.85rem 1rem;color:var(--ink);font-family:var(--fb);font-size:0.88rem;outline:none;transition:border-color 0.2s,box-shadow 0.2s}
-.fg input:focus,.fg textarea:focus,.fg select:focus{border-color:var(--mg);box-shadow:0 0 0 3px rgba(232,21,122,0.1)}
+.fg input,.fg textarea,.fg select{width:100%;background:rgba(255,255,255,0.8);border:1.5px solid rgba(0,119,182,0.15);border-radius:12px;padding:0.85rem 1rem;color:var(--ink);font-family:var(--fb);font-size:0.88rem;outline:none;transition:border-color 0.2s,box-shadow 0.2s}
+.fg input:focus,.fg textarea:focus,.fg select:focus{border-color:var(--mg);box-shadow:0 0 0 3px rgba(0,119,182,0.1)}
 .fg textarea{resize:vertical;min-height:110px}
 .fg select option{background:#f5f0e8}
 .fg input::placeholder,.fg textarea::placeholder{color:rgba(90,74,80,0.4)}
 .submit-btn{background:var(--mg);color:#fff;border:none;border-radius:12px;padding:1rem;font-family:var(--fd);font-size:1rem;font-weight:700;font-style:italic;cursor:pointer;transition:transform 0.2s,box-shadow 0.2s;width:100%}
-.submit-btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(232,21,122,0.4)}
+.submit-btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,119,182,0.4)}
 .form-msg{text-align:center;font-size:0.83rem;padding:0.5rem;border-radius:8px;display:none}
 .form-msg.ok{color:#10B981;background:rgba(16,185,129,0.1);display:block}
 .form-msg.err{color:#E8157A;background:rgba(232,21,122,0.1);display:block}
 
 /* FOOTER */
-footer{background:#1A1018;padding:3rem 5%;border-top:1px solid rgba(232,21,122,0.2)}
+footer{background:#03045E;padding:3rem 5%;border-top:1px solid rgba(0,180,216,0.2)}
 .footer-in{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr 1fr;gap:2rem;align-items:center}
-.footer-logo{font-family:var(--fd);font-size:1.1rem;font-weight:900;color:#F0ECD8}
+.footer-logo{font-family:var(--fd);font-size:1.1rem;font-weight:900;color:#CAF0F8}
 .footer-logo em{color:var(--mg);font-style:normal}
 .footer-logo small{display:block;font-family:var(--fm);font-size:0.6rem;letter-spacing:0.1em;color:rgba(240,236,216,0.35);margin-top:0.3rem}
 .footer-links{display:flex;justify-content:center;gap:2rem;list-style:none;flex-wrap:wrap}
-.footer-links a{color:rgba(240,236,216,0.4);font-size:0.8rem;transition:color 0.2s}
+.footer-links a{color:rgba(144,224,239,0.4);font-size:0.8rem;transition:color 0.2s}
 .footer-links a:hover{color:var(--mg)}
-.footer-right{text-align:right;font-size:0.75rem;color:rgba(240,236,216,0.3);line-height:1.7}
-.scroll-top{position:fixed;bottom:2rem;right:2rem;z-index:200;width:44px;height:44px;border-radius:50%;border:none;cursor:pointer;background:var(--mg);color:#fff;font-size:1.1rem;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(232,21,122,0.4);opacity:0;transform:translateY(12px);transition:opacity 0.3s,transform 0.3s;pointer-events:none}
+.footer-right{text-align:right;font-size:0.75rem;color:rgba(144,224,239,0.3);line-height:1.7}
+.scroll-top{position:fixed;bottom:2rem;right:2rem;z-index:200;width:44px;height:44px;border-radius:50%;border:none;cursor:pointer;background:var(--mg);color:#fff;font-size:1.1rem;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(0,119,182,0.4);opacity:0;transform:translateY(12px);transition:opacity 0.3s,transform 0.3s;pointer-events:none}
 .scroll-top.show{opacity:1;transform:none;pointer-events:all}
 .scroll-top:hover{transform:translateY(-2px)}
+
+
+
+/* DS FLIP TILES */
+.ds-flip-wrap{perspective:600px;cursor:pointer;border-radius:12px;overflow:hidden}
+.ds-flip-card{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform 0.6s cubic-bezier(0.4,0.2,0.2,1)}
+.ds-flipped .ds-flip-card{transform:rotateY(180deg)}
+.ds-flip-front,.ds-flip-back{position:absolute;inset:0;border-radius:12px;backface-visibility:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0.6rem}
+.ds-flip-front{background:rgba(255,255,255,0.85);border:1px solid rgba(255,255,255,0.9)}
+.ds-flip-back{transform:rotateY(180deg);padding:1rem}
+
+
+.ds-flip-wrap{perspective:700px;cursor:pointer;border-radius:12px}
+.ds-flip-card{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform 0.65s cubic-bezier(0.4,0.2,0.2,1)}
+.ds-flipped .ds-flip-card{transform:rotateY(180deg)}
+.ds-flip-front,.ds-flip-back{position:absolute;inset:0;border-radius:12px;backface-visibility:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0.6rem;overflow:hidden}
+.ds-flip-front{background:rgba(255,255,255,0.88);border:1px solid rgba(255,255,255,0.9)}
+.ds-flip-back{transform:rotateY(180deg);padding:1rem}
+
+/* DS TILE INTERNALS */
+.ds-tile{ overflow:hidden; padding:0.75rem; }
+
+/* Website mock */
+.mock-browser{ width:100%; background:#fff; border-radius:6px; overflow:hidden; border:1px solid rgba(0,0,0,0.08); box-shadow:0 2px 8px rgba(0,0,0,0.08); }
+.mock-bar{ background:#f0f0f0; padding:4px 6px; display:flex; align-items:center; gap:3px; }
+.mock-dot{ width:5px; height:5px; border-radius:50%; display:inline-block; }
+.mock-dot.r{ background:#ff5f57; }
+.mock-dot.y{ background:#febc2e; }
+.mock-dot.g{ background:#28c840; }
+.mock-url{ flex:1; background:#fff; border-radius:3px; height:8px; margin-left:4px; font-size:5px; color:#999; display:flex; align-items:center; padding:0 4px; overflow:hidden; white-space:nowrap; }
+.mock-body{ padding:4px; }
+.mock-nav-strip{ height:5px; background:linear-gradient(90deg,#0077B6,#48CAE4); border-radius:2px; margin-bottom:4px; opacity:0.6; }
+.mock-hero-block{ background:linear-gradient(135deg,rgba(0,119,182,0.08),rgba(72,202,228,0.08)); border-radius:4px; padding:5px; margin-bottom:4px; }
+.mock-h1{ height:6px; background:#03045E; border-radius:2px; width:80%; margin-bottom:3px; opacity:0.7; }
+.mock-h2{ height:4px; background:#888; border-radius:2px; width:60%; margin-bottom:4px; opacity:0.5; }
+.mock-btn{ height:7px; width:35%; background:#0077B6; border-radius:10px; opacity:0.8; }
+.mock-cards{ display:flex; gap:3px; }
+.mock-card{ flex:1; height:18px; background:rgba(0,119,182,0.06); border-radius:3px; border:1px solid rgba(0,119,182,0.12); }
+
+/* Design system mock */
+.design-sys{ width:100%; }
+.ds-row{ display:flex; gap:4px; margin-bottom:6px; }
+.ds-swatch{ flex:1; height:14px; border-radius:4px; }
+.ds-type-row{ display:flex; align-items:center; gap:6px; margin-bottom:6px; }
+.ds-t1{ font-family:var(--fd); font-size:20px; font-weight:900; color:#0077B6; line-height:1; }
+.ds-type-lines{ flex:1; display:flex; flex-direction:column; gap:3px; }
+.ds-tline{ height:3px; background:#1A1018; border-radius:2px; opacity:0.15; }
+.ds-tline.w80{ width:80%; }.ds-tline.w60{ width:60%; }.ds-tline.w70{ width:70%; }
+.ds-comp-row{ display:flex; align-items:center; gap:5px; }
+.ds-btn-mock{ height:10px; width:40%; background:#0077B6; border-radius:10px; opacity:0.85; }
+.ds-tag-mock{ height:10px; width:28%; background:rgba(0,119,182,0.12); border-radius:10px; border:1px solid rgba(0,119,182,0.3); }
+.ds-icon-mock{ font-size:10px; color:#0077B6; }
+
+/* LinkedIn mock */
+.li-post{ width:100%; background:#fff; border-radius:6px; padding:7px; border:1px solid rgba(0,0,0,0.08); box-shadow:0 2px 8px rgba(0,0,0,0.06); }
+.li-header{ display:flex; align-items:center; gap:5px; margin-bottom:6px; }
+.li-avatar{ width:18px; height:18px; border-radius:50%; background:linear-gradient(135deg,#0077B6,#48CAE4); flex-shrink:0; }
+.li-meta{ display:flex; flex-direction:column; gap:2px; }
+.li-name{ height:4px; width:50px; background:#1A1018; border-radius:2px; opacity:0.6; }
+.li-role{ height:3px; width:36px; background:#888; border-radius:2px; opacity:0.4; }
+.li-body{ display:flex; flex-direction:column; gap:3px; margin-bottom:6px; }
+.li-line{ height:3px; background:#333; border-radius:2px; opacity:0.12; }
+.li-line.w90{ width:90%; }.li-line.w75{ width:75%; }.li-line.w85{ width:85%; }.li-line.w60{ width:60%; }.li-line.w80{ width:80%; }
+.li-tag-row{ display:flex; gap:3px; margin-bottom:5px; }
+.li-tag{ font-size:6px; color:#E8157A; background:rgba(0,119,182,0.08); border-radius:10px; padding:2px 5px; font-weight:600; }
+.li-reactions{ display:flex; gap:8px; }
+.li-react{ font-size:7px; color:#555; }
+
+/* Mini motion poster */
+.mini-poster{ width:100%; aspect-ratio:9/14; position:relative; overflow:hidden; background:#0e0e1a; border-radius:6px; display:flex; flex-direction:column; align-items:center; justify-content:center; }
+.mp-bg{ position:absolute; inset:0; background:radial-gradient(ellipse at 20% 30%,rgba(0,119,182,0.35) 0%,transparent 55%), radial-gradient(ellipse at 80% 20%,rgba(72,202,228,0.3) 0%,transparent 50%), radial-gradient(ellipse at 50% 70%,rgba(0,180,216,0.2) 0%,transparent 50%); }
+.mp-bar{ position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(90deg,#03045E,#0077B6,#00B4D8,#48CAE4,#03045E); background-size:200% 100%; animation:mpBar 2s linear infinite; }
+@keyframes mpBar{ from{background-position:0%}to{background-position:200%} }
+.mp-letters{ position:relative; z-index:2; display:flex; gap:1px; }
+.mp-letter{ font-family:var(--fd); font-size:28px; font-weight:900; background-clip:text; -webkit-background-clip:text; color:transparent; animation:mpShift 3s ease-in-out infinite alternate; }
+#mpM{ background-image:linear-gradient(135deg,#03045E,#0077B6,#48CAE4); }
+#mpP{ background-image:linear-gradient(135deg,#0077B6,#00B4D8,#90E0EF); animation-delay:0.4s; }
+#mpL{ background-image:linear-gradient(135deg,#48CAE4,#ADE8F4,#CAF0F8); animation-delay:0.8s; }
+@keyframes mpShift{ 0%{background-position:0% 0%;filter:brightness(0.9)}100%{background-position:100% 100%;filter:brightness(1.2)} }
+.mp-words{ position:absolute; inset:0; z-index:1; pointer-events:none; }
+.mp-float{ position:absolute; font-size:5px; font-family:var(--fm); letter-spacing:0.1em; text-transform:uppercase; animation:mpFloat 3s ease-in-out infinite; opacity:0; }
+@keyframes mpFloat{ 0%,100%{opacity:0;transform:translateY(4px)}40%,60%{opacity:0.7;transform:translateY(0)} }
+.mp-tag{ position:absolute; bottom:8%; left:0; right:0; text-align:center; font-family:var(--fd); font-size:6px; font-weight:700; font-style:italic; color:rgba(255,255,255,0.7); z-index:3; }
 
 /* RESPONSIVE */
 @media(max-width:1024px){.flip-grid{grid-template-columns:1fr 1fr}.design-grid{grid-template-columns:1fr 1fr}.blog-grid-wall{grid-template-columns:1fr 1fr}.ds-inner{grid-template-columns:1fr;gap:3rem}.cs-body{grid-template-columns:1fr;gap:2rem}}
@@ -401,66 +484,156 @@ footer{background:#1A1018;padding:3rem 5%;border-top:1px solid rgba(232,21,122,0
     <div class="flip-wrap r" onclick="this.classList.toggle('flipped');playDing()">
       <div class="flip-card">
         <div class="flip-front"><div class="flip-ico">&#127760;</div><div class="flip-title">Websites</div><div class="flip-hint">flip me &rarr;</div></div>
-        <div class="flip-back" style="background:linear-gradient(135deg,#E8157A,#c4105f)"><div class="flip-back-title">Personal Websites &amp; Landing Pages</div><div class="flip-back-text">Clean, elegant, hosted on GitHub Pages. Websites you truly own &mdash; no subscriptions, no lock-in, no technical overwhelm.</div><div class="flip-tags"><span class="flip-tag">Personal Sites</span><span class="flip-tag">Landing Pages</span><span class="flip-tag">GitHub Pages</span></div></div>
+        <div class="flip-back" style="background:linear-gradient(135deg,#03045E,#0077B6)"><div class="flip-back-title">Personal Websites &amp; Landing Pages</div><div class="flip-back-text">Clean, elegant, hosted on GitHub Pages. Websites you truly own &mdash; no subscriptions, no lock-in, no technical overwhelm.</div><div class="flip-tags"><span class="flip-tag">Personal Sites</span><span class="flip-tag">Landing Pages</span><span class="flip-tag">GitHub Pages</span></div></div>
       </div>
     </div>
     <div class="flip-wrap r d1" onclick="this.classList.toggle('flipped');playDing()">
       <div class="flip-card">
         <div class="flip-front"><div class="flip-ico">&#9999;&#65039;</div><div class="flip-title">Words</div><div class="flip-hint">flip me &rarr;</div></div>
-        <div class="flip-back" style="background:linear-gradient(135deg,#89C4E1,#5a9ab8)"><div class="flip-back-title">Content That Builds Authority</div><div class="flip-back-text">Blogs, LinkedIn profiles, r&eacute;sum&eacute;s &mdash; thoughtful, human, SEO-ready writing that earns trust and communicates real value.</div><div class="flip-tags"><span class="flip-tag">Blog Content</span><span class="flip-tag">LinkedIn</span><span class="flip-tag">R&eacute;sum&eacute; / CV</span></div></div>
+        <div class="flip-back" style="background:linear-gradient(135deg,#0096C7,#48CAE4)"><div class="flip-back-title">Content That Builds Authority</div><div class="flip-back-text">Blogs, LinkedIn profiles, r&eacute;sum&eacute;s &mdash; thoughtful, human, SEO-ready writing that earns trust and communicates real value.</div><div class="flip-tags"><span class="flip-tag">Blog Content</span><span class="flip-tag">LinkedIn</span><span class="flip-tag">R&eacute;sum&eacute; / CV</span></div></div>
       </div>
     </div>
     <div class="flip-wrap r d2" onclick="this.classList.toggle('flipped');playDing()">
       <div class="flip-card">
         <div class="flip-front"><div class="flip-ico">&#127912;</div><div class="flip-title">Visuals</div><div class="flip-hint">flip me &rarr;</div></div>
-        <div class="flip-back" style="background:linear-gradient(135deg,#C4A35A,#a07d30)"><div class="flip-back-title">Design That Looks Like You</div><div class="flip-back-text">Banners, thumbnails, brand assets &mdash; cohesive and artistic. Designed to feel like you, not a template from a stock site.</div><div class="flip-tags"><span class="flip-tag">Banners</span><span class="flip-tag">Thumbnails</span><span class="flip-tag">Brand Assets</span></div></div>
+        <div class="flip-back" style="background:linear-gradient(135deg,#023E8A,#0077B6)"><div class="flip-back-title">Design That Looks Like You</div><div class="flip-back-text">Banners, thumbnails, brand assets &mdash; cohesive and artistic. Designed to feel like you, not a template from a stock site.</div><div class="flip-tags"><span class="flip-tag">Banners</span><span class="flip-tag">Thumbnails</span><span class="flip-tag">Brand Assets</span></div></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- DESIGN STRATEGY -->
+<!-- DESIGN & CONTENT STRATEGY -->
 <section id="design-strategy" class="section">
   <div class="wrap">
-    <div class="ds-inner">
-      <div class="r">
-        <div class="ds-canvas glass">
-          <div class="ds-tile"><div class="ds-tile-ico">&#128421;&#65039;</div><div class="ds-tile-label">Website Layout</div></div>
-          <div class="ds-tile"><div class="ds-tile-ico">&#128208;</div><div class="ds-tile-label">Design Systems</div></div>
-          <div class="ds-tile"><div class="ds-tile-ico">&#128241;</div><div class="ds-tile-label">LinkedIn Posts</div></div>
-          <div class="ds-tile"><div class="ds-tile-ico">&#127916;</div><div class="ds-tile-label">Motion Posters</div></div>
+
+    <p class="eyebrow r">Design + Content Strategy</p>
+    <h2 class="sec-title r d1">Design doesn&#8217;t stop at the <em style="font-style:italic;color:var(--mg)">website.</em></h2>
+    <p class="sec-sub r d2">A good design spills over everywhere &#8212; LinkedIn posts, motion posters, ad pieces, thumbnails. And content strategy starts the moment your site goes live. We manage it all.</p>
+
+    <!-- TOP: flip tiles grid -->
+    <div class="ds-canvas glass r d2">
+
+      <div class="ds-flip-wrap" onclick="this.classList.toggle('ds-flipped')">
+        <div class="ds-flip-card">
+          <div class="ds-flip-front">
+            <div class="mock-browser">
+              <div class="mock-bar"><span class="mock-dot r"></span><span class="mock-dot y"></span><span class="mock-dot g"></span><div class="mock-url">millionphrases.com</div></div>
+              <div class="mock-body">
+                <div class="mock-nav-strip"></div>
+                <div class="mock-hero-block"><div class="mock-h1"></div><div class="mock-h2"></div><div class="mock-btn"></div></div>
+                <div class="mock-cards"><div class="mock-card"></div><div class="mock-card"></div><div class="mock-card"></div></div>
+              </div>
+            </div>
+            <div class="ds-tile-label" style="margin-top:6px;font-size:0.55rem">Website Layout &#8212; flip &rarr;</div>
+          </div>
+          <div class="ds-flip-back" style="background:linear-gradient(135deg,#03045E,#0077B6)">
+            <div style="font-size:1.4rem;margin-bottom:0.4rem">&#128421;</div>
+            <div style="font-family:var(--fd);font-size:0.85rem;font-weight:700;color:#fff;margin-bottom:0.4rem">GitHub Pages</div>
+            <div style="font-size:0.65rem;color:rgba(202,240,248,0.88);line-height:1.5;text-align:center">Clean, fast, free hosting. No subscriptions. No lock-in. Yours forever.</div>
+          </div>
         </div>
       </div>
-      <div>
-        <p class="eyebrow r">Design Strategy</p>
-        <h2 class="sec-title r d1">Design doesn't stop at the <em style="font-style:italic;color:var(--mg)">website.</em></h2>
-        <p class="sec-sub r d2">A good design spills over everywhere &mdash; your LinkedIn posts, motion posters, ad pieces, thumbnails. We create things that are aesthetically beautiful in every format.</p>
-        <div class="ds-pills r d2"><span class="ds-pill">GitHub Pages</span><span class="ds-pill">Minimalist Layouts</span><span class="ds-pill">Motion Posters</span><span class="ds-pill">Ad Pieces</span><span class="ds-pill">LinkedIn Banners</span><span class="ds-pill">Thumbnails</span></div>
-        <p class="r d3" style="font-size:0.9rem;color:#5a4a50;line-height:1.8;font-style:italic;font-family:var(--fd)">"We do it artistically. We love to create things in a way that they are just aesthetically pleasing &mdash; everything."</p>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- CONTENT STRATEGY -->
-<section id="content-strategy" class="section">
-  <div class="wrap">
-    <p class="eyebrow r">Content Strategy</p>
-    <h2 class="sec-title r d1">We manage your <em style="font-style:italic;color:var(--mg)">pipelines.</em></h2>
-    <div class="cs-body">
+      <div class="ds-flip-wrap" onclick="this.classList.toggle('ds-flipped')">
+        <div class="ds-flip-card">
+          <div class="ds-flip-front">
+            <div class="design-sys">
+              <div class="ds-row"><div class="ds-swatch" style="background:#03045E"></div><div class="ds-swatch" style="background:#0077B6"></div><div class="ds-swatch" style="background:#00B4D8"></div><div class="ds-swatch" style="background:#90E0EF"></div></div>
+              <div class="ds-type-row"><span class="ds-t1">Aa</span><div class="ds-type-lines"><div class="ds-tline w80"></div><div class="ds-tline w60"></div><div class="ds-tline w70"></div></div></div>
+              <div class="ds-comp-row"><div class="ds-btn-mock"></div><div class="ds-tag-mock"></div><div class="ds-icon-mock">&#10022;</div></div>
+            </div>
+            <div class="ds-tile-label" style="margin-top:6px;font-size:0.55rem">Design System &#8212; flip &rarr;</div>
+          </div>
+          <div class="ds-flip-back" style="background:linear-gradient(135deg,#0096C7,#48CAE4)">
+            <div style="font-size:1.4rem;margin-bottom:0.4rem">&#127912;</div>
+            <div style="font-family:var(--fd);font-size:0.85rem;font-weight:700;color:#fff;margin-bottom:0.4rem">Brand Consistency</div>
+            <div style="font-size:0.65rem;color:rgba(255,255,255,0.9);line-height:1.5;text-align:center">Colors, fonts, spacing &#8212; locked in once, applied everywhere.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ds-flip-wrap" onclick="this.classList.toggle('ds-flipped')">
+        <div class="ds-flip-card">
+          <div class="ds-flip-front">
+            <div class="li-post">
+              <div class="li-header"><div class="li-avatar"></div><div class="li-meta"><div class="li-name"></div><div class="li-role"></div></div></div>
+              <div class="li-body"><div class="li-line w90"></div><div class="li-line w75"></div><div class="li-line w85"></div><div class="li-line w60"></div></div>
+              <div class="li-tag-row"><div class="li-tag">#branding</div><div class="li-tag">#content</div></div>
+              <div class="li-reactions"><span class="li-react">&#128077; 48</span><span class="li-react">&#128172; 12</span></div>
+            </div>
+            <div class="ds-tile-label" style="margin-top:6px;font-size:0.55rem">LinkedIn Posts &#8212; flip &rarr;</div>
+          </div>
+          <div class="ds-flip-back" style="background:linear-gradient(135deg,#023E8A,#0077B6)">
+            <div style="font-size:1.4rem;margin-bottom:0.4rem">&#128188;</div>
+            <div style="font-family:var(--fd);font-size:0.85rem;font-weight:700;color:#fff;margin-bottom:0.4rem">Profile + Posts</div>
+            <div style="font-size:0.65rem;color:rgba(202,240,248,0.88);line-height:1.5;text-align:center">Headline, banner, posts &#8212; your profile reads like a value proposition.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ds-flip-wrap" onclick="this.classList.toggle('ds-flipped')">
+        <div class="ds-flip-card">
+          <div class="ds-flip-front">
+            <div class="mini-poster" id="miniPoster">
+              <div class="mp-bg"></div>
+              <div class="mp-bar"></div>
+              <div class="mp-letters">
+                <span class="mp-letter" id="mpM">M</span>
+                <span class="mp-letter" id="mpP">P</span>
+                <span class="mp-letter" id="mpL">L</span>
+              </div>
+              <div class="mp-words" id="mpWords"></div>
+              <div class="mp-tag">Beyond Websites.</div>
+            </div>
+            <div class="ds-tile-label" style="margin-top:6px;font-size:0.55rem">Motion Posters &#8212; flip &rarr;</div>
+          </div>
+          <div class="ds-flip-back" style="background:linear-gradient(135deg,#03045E,#00B4D8)">
+            <div style="font-size:1.4rem;margin-bottom:0.4rem">&#127916;</div>
+            <div style="font-family:var(--fd);font-size:0.85rem;font-weight:700;color:#fff;margin-bottom:0.4rem">Motion Design</div>
+            <div style="font-size:0.65rem;color:rgba(202,240,248,0.88);line-height:1.5;text-align:center">Animated posters, ad pieces, thumbnails &#8212; designed to stop the scroll.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- BOTTOM: content strategy two columns -->
+    <div class="cs-body" style="margin-top:3rem">
       <div class="cs-text r d1">
-        <p>Content strategy starts the moment your website goes live. Regular posting across platforms isn't just a habit &mdash; it's how your site crawls, how Google finds you, how your audience grows.</p>
-        <p>From <strong>what headline goes in your hero section</strong> to <strong>what kind of reel will get traction on Instagram</strong> &mdash; we strategize everything. SEO, ads, content calendars, social media &mdash; all of it.</p>
-        <p>We will be <strong>brutally honest with you</strong>. We'll push you to come up with ideas that don't just build your brand &mdash; they change how you think about yourself and your work.</p>
-        <a href="#contact" class="btn-p" style="margin-top:1rem;display:inline-flex">Let's Build Your Strategy &rarr;</a>
+        <p class="eyebrow" style="margin-bottom:0.75rem">Content Strategy</p>
+        <p>Content strategy starts the moment your website goes live. Regular posting across platforms is how your site crawls, how Google finds you, how your audience grows.</p>
+        <p>From <strong>what headline goes in your hero section</strong> to <strong>what kind of reel gets traction on Instagram</strong> &#8212; we strategize everything. SEO, ads, content calendars, social media &#8212; all of it.</p>
+        <p>We will be <strong>brutally honest with you</strong>. We push you to come up with ideas that don&#8217;t just build your brand &#8212; they change how you think.</p>
+        <a href="#contact" class="btn-p" style="margin-top:1rem;display:inline-flex">Let&#8217;s Build Your Strategy &rarr;</a>
       </div>
       <div class="cs-flip-row">
-        <div class="cs-flip-wrap" onclick="this.classList.toggle('flipped');playDing()"><div class="cs-flip-card"><div class="cs-front"><div class="cs-front-ico">&#128196;</div><div class="cs-front-title">Resume &amp; LinkedIn</div><div class="cs-front-hint">flip &rarr;</div></div><div class="cs-back"><div class="cs-back-title">Professional Content</div><div class="cs-back-text">Stronger headlines, better summaries, clearer positioning. Your profile should read like a value proposition.</div></div></div></div>
-        <div class="cs-flip-wrap" onclick="this.classList.toggle('flipped');playDing()"><div class="cs-flip-card"><div class="cs-front"><div class="cs-front-ico">&#128202;</div><div class="cs-front-title">SEO &amp; Ads</div><div class="cs-front-hint">flip &rarr;</div></div><div class="cs-back"><div class="cs-back-title">Growth Strategy</div><div class="cs-back-text">From Google crawling to paid campaigns &mdash; we handle the technical and creative side of getting you found.</div></div></div></div>
-        <div class="cs-flip-wrap" onclick="this.classList.toggle('flipped');playDing()"><div class="cs-flip-card"><div class="cs-front"><div class="cs-front-ico">&#128241;</div><div class="cs-front-title">Social Media</div><div class="cs-front-hint">flip &rarr;</div></div><div class="cs-back"><div class="cs-back-title">Platform Strategy</div><div class="cs-back-text">The right reel, the right post, the right time. We map your content so every piece builds toward something bigger.</div></div></div></div>
-        <div class="cs-flip-wrap" onclick="this.classList.toggle('flipped');playDing()"><div class="cs-flip-card"><div class="cs-front"><div class="cs-front-ico">&#9999;&#65039;</div><div class="cs-front-title">Blog &amp; Substack</div><div class="cs-front-hint">flip &rarr;</div></div><div class="cs-back"><div class="cs-back-title">Long-form Authority</div><div class="cs-back-text">SEO-ready articles that build trust. Ideas that grow your audience and change how you see the world.</div></div></div></div>
+        <div class="cs-flip-wrap" onclick="this.classList.toggle('flipped');playDing()">
+          <div class="cs-flip-card">
+            <div class="cs-front"><div class="cs-front-ico">&#128196;</div><div class="cs-front-title">Resume &amp; LinkedIn</div><div class="cs-front-hint">flip &rarr;</div></div>
+            <div class="cs-back"><div class="cs-back-title">Professional Content</div><div class="cs-back-text">Stronger headlines, better summaries, clearer positioning. Your profile should read like a value proposition.</div></div>
+          </div>
+        </div>
+        <div class="cs-flip-wrap" onclick="this.classList.toggle('flipped');playDing()">
+          <div class="cs-flip-card">
+            <div class="cs-front"><div class="cs-front-ico">&#128202;</div><div class="cs-front-title">SEO &amp; Ads</div><div class="cs-front-hint">flip &rarr;</div></div>
+            <div class="cs-back"><div class="cs-back-title">Growth Strategy</div><div class="cs-back-text">From Google crawling to paid campaigns &#8212; we handle the technical and creative side of getting you found.</div></div>
+          </div>
+        </div>
+        <div class="cs-flip-wrap" onclick="this.classList.toggle('flipped');playDing()">
+          <div class="cs-flip-card">
+            <div class="cs-front"><div class="cs-front-ico">&#128241;</div><div class="cs-front-title">Social Media</div><div class="cs-front-hint">flip &rarr;</div></div>
+            <div class="cs-back"><div class="cs-back-title">Platform Strategy</div><div class="cs-back-text">The right reel, the right post, the right time. Every piece builds toward something bigger.</div></div>
+          </div>
+        </div>
+        <div class="cs-flip-wrap" onclick="this.classList.toggle('flipped');playDing()">
+          <div class="cs-flip-card">
+            <div class="cs-front"><div class="cs-front-ico">&#9999;&#65039;</div><div class="cs-front-title">Blog &amp; Substack</div><div class="cs-front-hint">flip &rarr;</div></div>
+            <div class="cs-back"><div class="cs-back-title">Long-form Authority</div><div class="cs-back-text">SEO-ready articles that build trust and grow your audience one honest idea at a time.</div></div>
+          </div>
+        </div>
       </div>
     </div>
+
   </div>
 </section>
 
@@ -502,7 +675,32 @@ footer{background:#1A1018;padding:3rem 5%;border-top:1px solid rgba(232,21,122,0
       <div class="design-grid" id="designGrid"></div>
     </div>
     <div class="port-section" id="tab-content">
-      <div class="blog-grid-wall" id="blogWall"></div>
+      <div class="blog-grid-wall" id="blogWall">
+        <div class="blog-modal-card" onclick="openBlogModal(BLOGS[0])">
+          <div class="blog-thumb-wall" style="background:linear-gradient(135deg,#03045E,#0077B6)">Million Phrases Labs</div>
+          <div class="blog-body-wall"><div class="blog-date-wall">About MPL &middot; 2025</div><div class="blog-title-wall">Million Phrases Labs</div><div class="blog-excerpt-wall">The story behind Million Phrases Labs and why we exist.</div></div>
+        </div>
+        <div class="blog-modal-card" onclick="openBlogModal(BLOGS[1])">
+          <div class="blog-thumb-wall" style="background:linear-gradient(135deg,#0077B6,#48CAE4)">I Feel Less Confident</div>
+          <div class="blog-body-wall"><div class="blog-date-wall">Personal Essay &middot; 2025</div><div class="blog-title-wall">I Feel Less Confident Sometimes</div><div class="blog-excerpt-wall">A deeply honest essay about confidence and the quiet courage it takes to keep going.</div></div>
+        </div>
+        <div class="blog-modal-card" onclick="openBlogModal(BLOGS[2])">
+          <div class="blog-thumb-wall" style="background:linear-gradient(135deg,#00B4D8,#90E0EF)">Content 2026</div>
+          <div class="blog-body-wall"><div class="blog-date-wall">Digital Trends &middot; 2026</div><div class="blog-title-wall">Content Consumption 2026: India</div><div class="blog-excerpt-wall">How Indian audiences are consuming content differently in 2026.</div></div>
+        </div>
+        <div class="blog-modal-card" onclick="openBlogModal(BLOGS[3])">
+          <div class="blog-thumb-wall" style="background:linear-gradient(135deg,#48CAE4,#ADE8F4)">Gadget Trends 2026</div>
+          <div class="blog-body-wall"><div class="blog-date-wall">Tech and Culture &middot; 2026</div><div class="blog-title-wall">Gadget Trends 2026: Where India Is Headed</div><div class="blog-excerpt-wall">From affordable AI devices to local hardware shaping India.</div></div>
+        </div>
+        <div class="blog-modal-card" onclick="openBlogModal(BLOGS[4])">
+          <div class="blog-thumb-wall" style="background:linear-gradient(135deg,#023E8A,#0096C7)">Fashion 2026</div>
+          <div class="blog-body-wall"><div class="blog-date-wall">Culture and Style &middot; 2026</div><div class="blog-title-wall">Fashion Trends 2026: India</div><div class="blog-excerpt-wall">Fashion in India is refusing to be categorized and it is having a moment.</div></div>
+        </div>
+        <div class="blog-modal-card" onclick="openBlogModal(BLOGS[5])">
+          <div class="blog-thumb-wall" style="background:linear-gradient(135deg,#0077B6,#CAF0F8)">Consumerism 2026</div>
+          <div class="blog-body-wall"><div class="blog-date-wall">Society and Economy &middot; 2026</div><div class="blog-title-wall">Consumerism in 2026: The New Rules</div><div class="blog-excerpt-wall">How the rules of buying and deciding have changed for good.</div></div>
+        </div>
+      </div>
       <div style="text-align:center;margin-top:2.5rem">
         <a href="https://varshaeturi.substack.com/" target="_blank" rel="noopener" class="btn-p">Read All on Substack &rarr;</a>
       </div>
@@ -590,127 +788,319 @@ footer{background:#1A1018;padding:3rem 5%;border-top:1px solid rgba(232,21,122,0
 <button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">&uarr;</button>
 
 <script>
-const nav=document.getElementById('nav');
-window.addEventListener('scroll',()=>{
-  nav.classList.toggle('scrolled',window.scrollY>30);
-  document.getElementById('scrollTop').classList.toggle('show',window.scrollY>400);
+/* NAV */
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', function() {
+  nav.classList.toggle('scrolled', window.scrollY > 30);
+  document.getElementById('scrollTop').classList.toggle('show', window.scrollY > 400);
 });
-document.getElementById('hbg').addEventListener('click',()=>document.getElementById('mobnav').classList.add('open'));
-document.getElementById('mobclose').addEventListener('click',closeMob);
-function closeMob(){document.getElementById('mobnav').classList.remove('open')}
+document.getElementById('hbg').addEventListener('click', function() {
+  document.getElementById('mobnav').classList.add('open');
+});
+document.getElementById('mobclose').addEventListener('click', closeMob);
+function closeMob() { document.getElementById('mobnav').classList.remove('open'); }
 
-const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target)}})},{threshold:0.07});
-document.querySelectorAll('.r').forEach(el=>io.observe(el));
+/* SCROLL REVEAL */
+const io = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) {
+    if (e.isIntersecting) { e.target.classList.add('vis'); io.unobserve(e.target); }
+  });
+}, { threshold: 0.07 });
+document.querySelectorAll('.r').forEach(function(el) { io.observe(el); });
 
-function playDing(){try{const c=new(window.AudioContext||window.webkitAudioContext)();const o=c.createOscillator();const g=c.createGain();o.connect(g);g.connect(c.destination);o.frequency.setValueAtTime(880,c.currentTime);o.frequency.exponentialRampToValueAtTime(660,c.currentTime+0.15);g.gain.setValueAtTime(0.25,c.currentTime);g.gain.exponentialRampToValueAtTime(0.001,c.currentTime+0.4);o.start();o.stop(c.currentTime+0.4);}catch(e){}}
+/* DING SOUND */
+function playDing() {
+  try {
+    var ctx = new (window.AudioContext || window.webkitAudioContext)();
+    var o = ctx.createOscillator();
+    var g = ctx.createGain();
+    o.connect(g); g.connect(ctx.destination);
+    o.frequency.setValueAtTime(880, ctx.currentTime);
+    o.frequency.exponentialRampToValueAtTime(660, ctx.currentTime + 0.15);
+    g.gain.setValueAtTime(0.25, ctx.currentTime);
+    g.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.4);
+    o.start(); o.stop(ctx.currentTime + 0.4);
+  } catch(e) {}
+}
 
-function openPuzzle(){document.getElementById('puzzleModal').classList.add('open')}
-function closePuzzle(){document.getElementById('puzzleModal').classList.remove('open')}
-document.getElementById('puzzleModal').addEventListener('click',e=>{if(e.target===e.currentTarget)closePuzzle()});
+/* PUZZLE MODAL */
+function openPuzzle() { document.getElementById('puzzleModal').classList.add('open'); }
+function closePuzzle() { document.getElementById('puzzleModal').classList.remove('open'); }
+document.getElementById('puzzleModal').addEventListener('click', function(e) {
+  if (e.target === e.currentTarget) closePuzzle();
+});
 
-function sendJournal(){
-  const name=document.getElementById('j-name').value.trim();
-  const who=document.getElementById('j-who').value.trim();
-  const what=document.getElementById('j-what').value.trim();
-  const why=document.getElementById('j-why').value.trim();
-  if(!who&&!what&&!why){alert('Write at least a little something!');return}
-  const dn=name||'A wandering soul';
-  const txt=[(who?'I am: '+who:''),(what?'I want to: '+what:''),(why?'I am here because: '+why:'')].filter(Boolean).join('\n\n');
-  document.getElementById('parchmentText').textContent=txt;
-  document.getElementById('parchmentName').textContent='\u2014 '+dn+', '+new Date().toLocaleDateString('en-IN',{year:'numeric',month:'long',day:'numeric'});
-  const wm=encodeURIComponent('Hi Million Phrases Labs!\n\n'+txt+'\n\n\u2014 '+dn);
-  document.getElementById('waBtn').onclick=()=>window.open('https://wa.me/918247375497?text='+wm,'_blank');
+function sendJournal() {
+  var name = document.getElementById('j-name').value.trim();
+  var who  = document.getElementById('j-who').value.trim();
+  var what = document.getElementById('j-what').value.trim();
+  var why  = document.getElementById('j-why').value.trim();
+  if (!who && !what && !why) { alert('Write at least a little something!'); return; }
+  var dn = name || 'A wandering soul';
+  var parts = [];
+  if (who)  parts.push('I am: ' + who);
+  if (what) parts.push('I want to: ' + what);
+  if (why)  parts.push('I am here because: ' + why);
+  var txt = parts.join('\n\n');
+  var today = new Date().toLocaleDateString('en-IN', { year:'numeric', month:'long', day:'numeric' });
+  document.getElementById('parchmentText').textContent = txt;
+  document.getElementById('parchmentName').textContent = '— ' + dn + ', ' + today;
+  var wm = encodeURIComponent('Hi Million Phrases Labs!\n\n' + txt + '\n\n— ' + dn);
+  document.getElementById('waBtn').onclick = function() {
+    window.open('https://wa.me/918247375497?text=' + wm, '_blank');
+  };
   document.getElementById('parchmentReveal').classList.add('show');
-  document.getElementById('parchmentReveal').scrollIntoView({behavior:'smooth',block:'nearest'});
+  document.getElementById('parchmentReveal').scrollIntoView({ behavior:'smooth', block:'nearest' });
 }
 
-let gameActive=false,gScore=0,gTime=30,gInt=null,bInt=null;
-const BALL=['\uD83C\uDF88','\uD83C\uDF80','\uD83D\uDC97','\uD83C\uDF38','\uD83D\uDC96','\uD83C\uDF8A','\u2728','\uD83C\uDF3A'];
-const MSGS=[[0,5,'You barely moved\u2026 but hey, you showed up. That counts.','Let us help you show up for your brand too.'],[6,10,'A solid start! Consistent, steady \u2014 just like good content.','We build brands for people who keep going.'],[11,17,'Nice reflexes! You've got focus. Let's channel that into your digital presence.','We're just as quick when it comes to your strategy.'],[18,24,'You're unstoppable! That energy? Let's put it into your brand.','We'll keep up \u2014 promise.'],[25,999,'LEGENDARY! You didn't just play \u2014 you dominated.','Your brand deserves that same energy. Let's talk.']];
-function startGame(){
-  document.getElementById('gameFooter').style.display='none';
-  document.getElementById('gameResult').style.display='none';
-  gScore=0;gTime=30;gameActive=true;
-  document.getElementById('gScore').textContent='0';
-  document.getElementById('gTime').textContent='30';
-  document.getElementById('gameArena').innerHTML='';
-  gInt=setInterval(()=>{gTime--;document.getElementById('gTime').textContent=gTime;if(gTime<=0){clearInterval(gInt);clearInterval(bInt);endGame()}},1000);
-  bInt=setInterval(spawnBalloon,800);spawnBalloon();
-}
-function spawnBalloon(){
-  if(!gameActive)return;
-  const a=document.getElementById('gameArena');
-  const b=document.createElement('div');b.className='game-balloon';
-  b.textContent=BALL[Math.floor(Math.random()*BALL.length)];
-  b.style.left=Math.random()*85+'%';
-  const d=2.5+Math.random()*2;b.style.animationDuration=d+'s';
-  b.addEventListener('click',e=>{e.stopPropagation();if(!gameActive)return;gScore++;document.getElementById('gScore').textContent=gScore;popFx(e.clientX,e.clientY);b.remove();popSound();});
-  a.appendChild(b);setTimeout(()=>{if(b.parentNode)b.remove()},d*1000);
-}
-function popFx(x,y){const a=document.getElementById('gameArena');const r=a.getBoundingClientRect();const p=document.createElement('div');p.className='game-pop';p.textContent='\uD83D\uDCA5';p.style.left=(x-r.left-20)+'px';p.style.top=(y-r.top-20)+'px';a.appendChild(p);setTimeout(()=>p.remove(),500);}
-function popSound(){try{const c=new(window.AudioContext||window.webkitAudioContext)();const o=c.createOscillator();const g=c.createGain();o.connect(g);g.connect(c.destination);o.frequency.setValueAtTime(600,c.currentTime);o.frequency.exponentialRampToValueAtTime(200,c.currentTime+0.1);g.gain.setValueAtTime(0.2,c.currentTime);g.gain.exponentialRampToValueAtTime(0.001,c.currentTime+0.15);o.start();o.stop(c.currentTime+0.15);}catch(e){}}
-function endGame(){
-  gameActive=false;document.getElementById('gameArena').innerHTML='';
-  const r=document.getElementById('gameResult');r.style.display='block';
-  document.getElementById('resultScore').textContent=gScore;
-  const m=MSGS.find(([a,b])=>gScore>=a&&gScore<=b)||MSGS[0];
-  document.getElementById('resultMsg').textContent=m[1];
-  document.getElementById('resultCta').innerHTML='<a href="#contact" style="color:var(--mg);text-decoration:underline">'+m[2]+'</a>';
-}
-function resetGame(){document.getElementById('gameResult').style.display='none';document.getElementById('gameFooter').style.display='block';}
-
-function switchTab(id,btn){document.querySelectorAll('.port-section').forEach(s=>s.classList.remove('active'));document.querySelectorAll('.port-tab').forEach(t=>t.classList.remove('active'));document.getElementById('tab-'+id).classList.add('active');btn.classList.add('active');}
-
-const DESIGNS=[
-  {thumb:'Flip Wall',bg:'linear-gradient(135deg,#E8157A,#89C4E1)',cat:'Interactive Experience',name:'The Flip Wall',url:'https://eturivarsha.github.io/The-Flip-Wall/'},
-  {thumb:'Flipping World',bg:'linear-gradient(135deg,#C4A35A,#8FA67A)',cat:'Interactive Experience',name:'The Flipping World',url:'https://eturivarsha.github.io/The-Flipping-World/'},
-  {thumb:'Creator',bg:'linear-gradient(135deg,#FF6B6B,#FFE66D)',cat:'Creator / Influencer',name:'The Creator',url:'https://eturivarsha.github.io/Creator/'},
-  {thumb:'Life Coach',bg:'linear-gradient(135deg,#A8EDEA,#FED6E3)',cat:'Coaching / Wellness',name:'Life Coaching',url:'https://eturivarsha.github.io/Lifecoaching1/'},
-  {thumb:'BharatLingo',bg:'linear-gradient(135deg,#FF9933,#138808)',cat:'Education / Language',name:'BharatLingo',url:'https://eturivarsha.github.io/bharatlingo1/'},
-  {thumb:'Trekster',bg:'linear-gradient(135deg,#1A2980,#26D0CE)',cat:'Travel / Adventure',name:'Trekster',url:'https://eturivarsha.github.io/Trekster/'},
-  {thumb:'Hot & Sweet',bg:'linear-gradient(135deg,#F7971E,#FFD200)',cat:'Food / Bakery',name:'Hot & Sweet',url:'https://eturivarsha.github.io/Hot-Sweet/'},
-  {thumb:'Magazine',bg:'linear-gradient(135deg,#232526,#414345)',cat:'Editorial / Blog',name:'Magazine Blog',url:'https://eturivarsha.github.io/magazine-blog/'},
-  {thumb:'Design Thinking',bg:'linear-gradient(135deg,#4568DC,#B06AB3)',cat:'Design / Consultancy',name:'Design Thinking',url:'https://eturivarsha.github.io/Designthinking/'},
-  {thumb:'Luxury',bg:'linear-gradient(135deg,#1a1a1a,#4a3728)',cat:'Luxury / Premium',name:'Luxury Site',url:'https://eturivarsha.github.io/Luxurysite/'},
-  {thumb:'M Phrases v1',bg:'linear-gradient(135deg,#E8157A,#7C3AED)',cat:'Agency / Studio',name:'Million Phrases v1',url:'https://eturivarsha.github.io/millionphrases.github.io/'},
+/* BALLOON GAME */
+var gameActive = false, gScore = 0, gTime = 30, gInt = null, bInt = null;
+var BALL = ['🎈','🎀','💗','🌸','💖','🎊','✨','🌺'];
+var MSGS = [
+  [0,  5,  'You barely moved... but hey, you showed up. That counts.', 'Let us help you show up for your brand too.'],
+  [6,  10, 'A solid start! Consistent, steady — just like good content.', 'We build brands for people who keep going.'],
+  [11, 17, 'Nice reflexes! You have focus. Let us channel that into your digital presence.', 'We are just as quick when it comes to your strategy.'],
+  [18, 24, 'You are unstoppable! That energy? Let us put it into your brand.', 'We will keep up — promise.'],
+  [25, 999,'LEGENDARY! You did not just play — you dominated.', 'Your brand deserves that same energy. Let us talk.']
 ];
-const dg=document.getElementById('designGrid');
-DESIGNS.forEach((d,i)=>{
-  const c=document.createElement('div');c.className='design-card r'+(i%3===1?' d1':i%3===2?' d2':'');
-  c.innerHTML='<div class="design-thumb" style="background:'+d.bg+'">'+d.thumb+'</div><div class="design-meta"><div class="design-cat">'+d.cat+'</div><div class="design-name">'+d.name+'</div><a href="'+d.url+'" target="_blank" rel="noopener" class="design-link">Live Preview &rarr;</a></div>';
-  dg.appendChild(c);io.observe(c);
+
+function startGame() {
+  document.getElementById('gameFooter').style.display = 'none';
+  document.getElementById('gameResult').style.display = 'none';
+  gScore = 0; gTime = 30; gameActive = true;
+  document.getElementById('gScore').textContent = '0';
+  document.getElementById('gTime').textContent = '30';
+  document.getElementById('gameArena').innerHTML = '';
+  gInt = setInterval(function() {
+    gTime--;
+    document.getElementById('gTime').textContent = gTime;
+    if (gTime <= 0) { clearInterval(gInt); clearInterval(bInt); endGame(); }
+  }, 1000);
+  bInt = setInterval(spawnBalloon, 800);
+  spawnBalloon();
+}
+
+function spawnBalloon() {
+  if (!gameActive) return;
+  var arena = document.getElementById('gameArena');
+  var b = document.createElement('div');
+  b.className = 'game-balloon';
+  b.textContent = BALL[Math.floor(Math.random() * BALL.length)];
+  b.style.left = (Math.random() * 85) + '%';
+  var dur = 2.5 + Math.random() * 2;
+  b.style.animationDuration = dur + 's';
+  b.addEventListener('click', function(e) {
+    e.stopPropagation();
+    if (!gameActive) return;
+    gScore++;
+    document.getElementById('gScore').textContent = gScore;
+    popFx(e.clientX, e.clientY);
+    b.remove();
+    popSound();
+  });
+  arena.appendChild(b);
+  setTimeout(function() { if (b.parentNode) b.remove(); }, dur * 1000);
+}
+
+function popFx(x, y) {
+  var arena = document.getElementById('gameArena');
+  var rect = arena.getBoundingClientRect();
+  var p = document.createElement('div');
+  p.className = 'game-pop';
+  p.textContent = '💥';
+  p.style.left = (x - rect.left - 20) + 'px';
+  p.style.top  = (y - rect.top  - 20) + 'px';
+  arena.appendChild(p);
+  setTimeout(function() { p.remove(); }, 500);
+}
+
+function popSound() {
+  try {
+    var ctx = new (window.AudioContext || window.webkitAudioContext)();
+    var o = ctx.createOscillator();
+    var g = ctx.createGain();
+    o.connect(g); g.connect(ctx.destination);
+    o.frequency.setValueAtTime(600, ctx.currentTime);
+    o.frequency.exponentialRampToValueAtTime(200, ctx.currentTime + 0.1);
+    g.gain.setValueAtTime(0.2, ctx.currentTime);
+    g.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.15);
+    o.start(); o.stop(ctx.currentTime + 0.15);
+  } catch(e) {}
+}
+
+function endGame() {
+  gameActive = false;
+  document.getElementById('gameArena').innerHTML = '';
+  document.getElementById('gameResult').style.display = 'block';
+  document.getElementById('resultScore').textContent = gScore;
+  var m = MSGS[0];
+  for (var i = 0; i < MSGS.length; i++) {
+    if (gScore >= MSGS[i][0] && gScore <= MSGS[i][1]) { m = MSGS[i]; break; }
+  }
+  document.getElementById('resultMsg').textContent = m[1];
+  document.getElementById('resultCta').innerHTML = '<a href="#contact" style="color:var(--mg);text-decoration:underline">' + m[2] + '</a>';
+}
+
+function resetGame() {
+  document.getElementById('gameResult').style.display = 'none';
+  document.getElementById('gameFooter').style.display = 'block';
+}
+
+/* PORTFOLIO TABS */
+function switchTab(id, btn) {
+  document.querySelectorAll('.port-section').forEach(function(s) { s.classList.remove('active'); });
+  document.querySelectorAll('.port-tab').forEach(function(t) { t.classList.remove('active'); });
+  document.getElementById('tab-' + id).classList.add('active');
+  btn.classList.add('active');
+}
+
+/* DESIGN GRID */
+var DESIGNS = [
+  { thumb:'Flip Wall',       bg:'linear-gradient(135deg,#03045E,#0077B6)', cat:'Interactive Experience',  name:'The Flip Wall',       url:'https://eturivarsha.github.io/The-Flip-Wall/' },
+  { thumb:'Flipping World',  bg:'linear-gradient(135deg,#0096C7,#48CAE4)', cat:'Interactive Experience',  name:'The Flipping World',  url:'https://eturivarsha.github.io/The-Flipping-World/' },
+  { thumb:'Creator',         bg:'linear-gradient(135deg,#FF6B6B,#FFE66D)', cat:'Creator / Influencer',    name:'The Creator',         url:'https://eturivarsha.github.io/Creator/' },
+  { thumb:'Life Coach',      bg:'linear-gradient(135deg,#A8EDEA,#FED6E3)', cat:'Coaching / Wellness',     name:'Life Coaching',       url:'https://eturivarsha.github.io/Lifecoaching1/' },
+  { thumb:'BharatLingo',     bg:'linear-gradient(135deg,#FF9933,#138808)', cat:'Education / Language',    name:'BharatLingo',         url:'https://eturivarsha.github.io/bharatlingo1/' },
+  { thumb:'Trekster',        bg:'linear-gradient(135deg,#1A2980,#26D0CE)', cat:'Travel / Adventure',      name:'Trekster',            url:'https://eturivarsha.github.io/Trekster/' },
+  { thumb:'Hot and Sweet',   bg:'linear-gradient(135deg,#F7971E,#FFD200)', cat:'Food / Bakery',           name:'Hot and Sweet',       url:'https://eturivarsha.github.io/Hot-Sweet/' },
+  { thumb:'Magazine',        bg:'linear-gradient(135deg,#232526,#414345)', cat:'Editorial / Blog',        name:'Magazine Blog',       url:'https://eturivarsha.github.io/magazine-blog/' },
+  { thumb:'Design Thinking', bg:'linear-gradient(135deg,#4568DC,#B06AB3)', cat:'Design / Consultancy',   name:'Design Thinking',     url:'https://eturivarsha.github.io/Designthinking/' },
+  { thumb:'Luxury',          bg:'linear-gradient(135deg,#1a1a1a,#4a3728)', cat:'Luxury / Premium',        name:'Luxury Site',         url:'https://eturivarsha.github.io/Luxurysite/' },
+  { thumb:'M Phrases v1',   bg:'linear-gradient(135deg,#E8157A,#7C3AED)', cat:'Agency / Studio',         name:'Million Phrases v1',  url:'https://eturivarsha.github.io/millionphrases.github.io/' }
+];
+
+var dg = document.getElementById('designGrid');
+DESIGNS.forEach(function(d, i) {
+  var c = document.createElement('div');
+  c.className = 'design-card r' + (i % 3 === 1 ? ' d1' : i % 3 === 2 ? ' d2' : '');
+  c.innerHTML = '<div class="design-thumb" style="background:' + d.bg + '">' + d.thumb + '</div>'
+    + '<div class="design-meta">'
+    + '<div class="design-cat">' + d.cat + '</div>'
+    + '<div class="design-name">' + d.name + '</div>'
+    + '<a href="' + d.url + '" target="_blank" rel="noopener" class="design-link">Live Preview &rarr;</a>'
+    + '</div>';
+  dg.appendChild(c);
+  io.observe(c);
 });
 
-const BLOGS=[
-  {title:'Million Phrases Labs',url:'https://varshaeturi.substack.com/p/million-phrases-labs',date:'2025',cat:'About MPL',excerpt:'The story behind Million Phrases Labs and why we exist.',body:'Million Phrases Labs was born from a simple belief: that words are the most powerful design tool we have.\n\nWe built this studio to help solo founders, creators, and professionals build a digital presence that actually sounds like them \u2014 not a template, not a chatbot, but a real human voice.\n\nWe combine academic rigor with creative design, writing with technology, strategy with storytelling.',color:'linear-gradient(135deg,#E8157A,#89C4E1)'},
-  {title:'I Feel Less Confident Sometimes \u2014 But',url:'https://varshaeturi.substack.com/p/i-feel-less-confident-sometimes-but',date:'2025',cat:'Personal Essay',excerpt:'A deeply honest essay about confidence and the quiet courage it takes to keep going.',body:'There are days when I look at everything I\u2019ve built and feel nothing but uncertainty. And I think that\u2019s okay.\n\nConfidence isn\u2019t the absence of doubt \u2014 it\u2019s the decision to move forward despite it.\n\nThis essay is about those in-between moments. The ones no one posts about. The ones that actually shape us.',color:'linear-gradient(135deg,#F4A7C3,#C4A35A)'},
-  {title:'Content Consumption 2026: How India\u2019s Digital Habits Are Evolving',url:'https://varshaeturi.substack.com/p/content-consumption-2026-how-indias',date:'2026',cat:'Digital Trends',excerpt:'How Indian audiences are consuming content differently in 2026.',body:'India\u2019s relationship with digital content has transformed dramatically.\n\nShort-form video, vernacular content, and creator-led communities are rewriting the rules of attention.\n\nFor anyone building a brand online in India today, understanding these shifts isn\u2019t optional \u2014 it\u2019s survival.',color:'linear-gradient(135deg,#89C4E1,#8FA67A)'},
-  {title:'Gadget Trends 2026: Where India Is Headed',url:'https://varshaeturi.substack.com/p/gadget-trends-2026-where-india-is',date:'2026',cat:'Tech & Culture',excerpt:'From affordable AI devices to local hardware \u2014 what\u2019s shaping India\u2019s gadget landscape.',body:'India\u2019s gadget market in 2026 is fascinating \u2014 a blend of premium aspirations and value-first pragmatism.\n\nAI-enabled devices are trickling into the mid-range segment, and local manufacturing is finally producing products worth talking about.',color:'linear-gradient(135deg,#8FA67A,#C4A35A)'},
-  {title:'Fashion Trends 2026: India',url:'https://varshaeturi.substack.com/p/fashion-trends-2026-india',date:'2026',cat:'Culture & Style',excerpt:'Fashion in India is refusing to be categorized \u2014 and it\u2019s having a moment.',body:'Indian fashion in 2026 is simultaneously global and hyper-local, sustainable and maximalist.\n\nThis piece explores what\u2019s driving these shifts and what they say about how young India sees itself.',color:'linear-gradient(135deg,#E8157A,#C4A35A)'},
-  {title:'Consumerism in 2026: The New Rules',url:'https://varshaeturi.substack.com/p/consumerism-in-2026-the-new-rules',date:'2026',cat:'Society & Economy',excerpt:'How the rules of buying, spending, and deciding have changed.',body:'The consumer of 2026 is skeptical, values-driven, and deeply aware.\n\nThey research before they buy, distrust advertising, and reward brands that are honest about what they are.\n\nFor businesses, this is both a challenge and an enormous opportunity \u2014 if you\u2019re willing to lead with authenticity.',color:'linear-gradient(135deg,#89C4E1,#E8157A)'},
+/* BLOG WALL */
+var BLOGS = [
+  {
+    title: 'Million Phrases Labs',
+    url: 'https://varshaeturi.substack.com/p/million-phrases-labs',
+    date: '2025', cat: 'About MPL',
+    excerpt: 'The story behind Million Phrases Labs and why we exist.',
+    body: 'Million Phrases Labs was born from a simple belief: that words are the most powerful design tool we have.\n\nWe built this studio to help solo founders, creators, and professionals build a digital presence that actually sounds like them.\n\nWe combine academic rigor with creative design, writing with technology, strategy with storytelling.',
+    color: 'linear-gradient(135deg,#03045E,#0077B6)'
+  },
+  {
+    title: 'I Feel Less Confident Sometimes',
+    url: 'https://varshaeturi.substack.com/p/i-feel-less-confident-sometimes-but',
+    date: '2025', cat: 'Personal Essay',
+    excerpt: 'A deeply honest essay about confidence and the quiet courage it takes to keep going.',
+    body: 'There are days when I look at everything I have built and feel nothing but uncertainty. And I think that is okay.\n\nConfidence is not the absence of doubt. It is the decision to move forward despite it.\n\nThis essay is about those in-between moments. The ones no one posts about. The ones that actually shape us.',
+    color: 'linear-gradient(135deg,#0077B6,#48CAE4)'
+  },
+  {
+    title: 'Content Consumption 2026: India',
+    url: 'https://varshaeturi.substack.com/p/content-consumption-2026-how-indias',
+    date: '2026', cat: 'Digital Trends',
+    excerpt: 'How Indian audiences are consuming content differently in 2026.',
+    body: 'India’s relationship with digital content has transformed dramatically.\n\nShort-form video, vernacular content, and creator-led communities are rewriting the rules of attention.\n\nFor anyone building a brand online in India today, understanding these shifts is not optional. It is survival.',
+    color: 'linear-gradient(135deg,#00B4D8,#90E0EF)'
+  },
+  {
+    title: 'Gadget Trends 2026: Where India Is Headed',
+    url: 'https://varshaeturi.substack.com/p/gadget-trends-2026-where-india-is',
+    date: '2026', cat: 'Tech and Culture',
+    excerpt: 'From affordable AI devices to local hardware shaping India.',
+    body: 'India’s gadget market in 2026 is fascinating. A blend of premium aspirations and value-first pragmatism.\n\nAI-enabled devices are trickling into the mid-range segment, and local manufacturing is finally producing products worth talking about.',
+    color: 'linear-gradient(135deg,#48CAE4,#ADE8F4)'
+  },
+  {
+    title: 'Fashion Trends 2026: India',
+    url: 'https://varshaeturi.substack.com/p/fashion-trends-2026-india',
+    date: '2026', cat: 'Culture and Style',
+    excerpt: 'Fashion in India is refusing to be categorized and it is having a moment.',
+    body: 'Indian fashion in 2026 is simultaneously global and hyper-local, sustainable and maximalist.\n\nThis piece explores what is driving these shifts and what they say about how young India sees itself.',
+    color: 'linear-gradient(135deg,#023E8A,#0096C7)'
+  },
+  {
+    title: 'Consumerism in 2026: The New Rules',
+    url: 'https://varshaeturi.substack.com/p/consumerism-in-2026-the-new-rules',
+    date: '2026', cat: 'Society and Economy',
+    excerpt: 'How the rules of buying and deciding have changed for good.',
+    body: 'The consumer of 2026 is skeptical, values-driven, and deeply aware.\n\nThey research before they buy, distrust advertising, and reward brands that are honest about what they are.\n\nFor businesses, this is both a challenge and an enormous opportunity if you are willing to lead with authenticity.',
+    color: 'linear-gradient(135deg,#0077B6,#CAF0F8)'
+  }
 ];
-const bw=document.getElementById('blogWall');
-BLOGS.forEach((b,i)=>{
-  const c=document.createElement('div');c.className='blog-modal-card r'+(i%3===1?' d1':i%3===2?' d2':'');
-  c.innerHTML='<div class="blog-thumb-wall" style="background:'+b.color+'">'+b.title.slice(0,30)+'</div><div class="blog-body-wall"><div class="blog-date-wall">'+b.cat+' &middot; '+b.date+'</div><div class="blog-title-wall">'+b.title+'</div><div class="blog-excerpt-wall">'+b.excerpt+'</div></div>';
-  c.addEventListener('click',()=>openBlogModal(b));bw.appendChild(c);io.observe(c);
-});
-function openBlogModal(b){document.getElementById('bm-cat').textContent=b.cat;document.getElementById('bm-title').textContent=b.title;document.getElementById('bm-date').textContent=b.date;document.getElementById('bm-body').textContent=b.body;document.getElementById('bm-link').href=b.url;document.getElementById('blogModal').classList.add('open');}
-function closeBlogModal(){document.getElementById('blogModal').classList.remove('open')}
-document.getElementById('blogModal').addEventListener('click',e=>{if(e.target===e.currentTarget)closeBlogModal()});
 
-function sendForm(){
-  const name=document.getElementById('fn').value.trim();
-  const email=document.getElementById('fe').value.trim();
-  const service=document.getElementById('fs').value;
-  const msg=document.getElementById('fm').value.trim();
-  const fb=document.getElementById('fmsg');fb.className='form-msg';
-  if(!name||!email||!msg){fb.textContent='Please fill in your name, email and message.';fb.className='form-msg err';return}
-  const sub=encodeURIComponent('MPL Inquiry \u2014 '+(service||'General')+' from '+name);
-  const body=encodeURIComponent('Hi Varsha,\n\nName: '+name+'\nEmail: '+email+'\nService: '+(service||'Not specified')+'\n\n'+msg+'\n\n\u2014 Sent via millionphraseslabs.com');
-  window.location.href='mailto:varsha@millionphraseslabs.com?subject='+sub+'&body='+body;
-  fb.textContent='Opening your email client\u2026 Talk soon!';fb.className='form-msg ok';
+var bw = document.getElementById('blogWall'); if (!bw) { console.error('blogWall not found'); }
+BLOGS.forEach(function(b, i) {
+  var c = document.createElement('div');
+  c.className = 'blog-modal-card r' + (i % 3 === 1 ? ' d1' : i % 3 === 2 ? ' d2' : '');
+  c.innerHTML = '<div class="blog-thumb-wall" style="background:' + b.color + '">' + b.title.slice(0,30) + '</div>'
+    + '<div class="blog-body-wall">'
+    + '<div class="blog-date-wall">' + b.cat + ' &middot; ' + b.date + '</div>'
+    + '<div class="blog-title-wall">' + b.title + '</div>'
+    + '<div class="blog-excerpt-wall">' + b.excerpt + '</div>'
+    + '</div>';
+  c.addEventListener('click', function() { openBlogModal(b); });
+  bw.appendChild(c);
+  io.observe(c);
+});
+
+function openBlogModal(b) {
+  document.getElementById('bm-cat').textContent   = b.cat;
+  document.getElementById('bm-title').textContent = b.title;
+  document.getElementById('bm-date').textContent  = b.date;
+  document.getElementById('bm-body').textContent  = b.body;
+  document.getElementById('bm-link').href         = b.url;
+  document.getElementById('blogModal').classList.add('open');
 }
-<\/script>
+function closeBlogModal() { document.getElementById('blogModal').classList.remove('open'); }
+document.getElementById('blogModal').addEventListener('click', function(e) {
+  if (e.target === e.currentTarget) closeBlogModal();
+});
+
+
+/* MINI MOTION POSTER WORDS */
+(function() {
+  var words = ['Brand','LinkedIn','SEO','Blogs','Voice','Copy','UX','Design'];
+  var colors = ['#0077B6','#00B4D8','#48CAE4','#90E0EF','#ADE8F4'];
+  var container = document.getElementById('mpWords');
+  if (!container) return;
+  words.forEach(function(w, i) {
+    var el = document.createElement('div');
+    el.className = 'mp-float';
+    el.textContent = w;
+    el.style.left = (8 + Math.random() * 75) + '%';
+    el.style.top = (20 + Math.random() * 55) + '%';
+    el.style.color = colors[i % colors.length];
+    el.style.animationDelay = (i * 0.5) + 's';
+    container.appendChild(el);
+  });
+})();
+
+/* CONTACT FORM */
+function sendForm() {
+  var name    = document.getElementById('fn').value.trim();
+  var email   = document.getElementById('fe').value.trim();
+  var service = document.getElementById('fs').value;
+  var msg     = document.getElementById('fm').value.trim();
+  var fb      = document.getElementById('fmsg');
+  fb.className = 'form-msg';
+  if (!name || !email || !msg) {
+    fb.textContent = 'Please fill in your name, email and message.';
+    fb.className = 'form-msg err';
+    return;
+  }
+  var sub  = encodeURIComponent('MPL Inquiry from ' + name + ' — ' + (service || 'General'));
+  var body = encodeURIComponent('Hi Varsha,\n\nName: ' + name + '\nEmail: ' + email + '\nService: ' + (service || 'Not specified') + '\n\n' + msg + '\n\n— Sent via millionphraseslabs.com');
+  window.location.href = 'mailto:varsha@millionphraseslabs.com?subject=' + sub + '&body=' + body;
+  fb.textContent = 'Opening your email client... Talk soon!';
+  fb.className = 'form-msg ok';
+}
+</script>
 </body>
 </html>
