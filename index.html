@@ -4,784 +4,583 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Million Phrases Labs — Words. Websites. Visuals.</title>
-<meta name="description" content="Beyond websites. We build your complete digital presence.">
+<meta name="description" content="A genuinely helpful digital presence studio. Websites, blogs, content, SEO, motion — for small businesses, creators, and individuals with ideas.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;font-size:16px}
 :root{
-  --mg:#0077B6;--pink:#90E0EF;--blue:#00B4D8;
-  --parch:#EAF6FB;--sage:#48CAE4;--ochre:#ADE8F4;
-  --ink:#03045E;--white:#FAFEFF;
-  --fd:'Playfair Display',serif;
-  --fb:'DM Sans',sans-serif;
-  --fm:'Space Mono',monospace;
-  --nav-h:72px;
+  --cream:#FAF6EF;
+  --warm:#F5EDD8;
+  --amber:#C8860A;
+  --amber-light:#F0B429;
+  --ink:#1A1208;
+  --muted:#6B5C3E;
+  --pink:#E85FA0;
+  --purple:#8B3DBF;
+  --glass:rgba(250,246,239,0.6);
+  --glass-border:rgba(200,134,10,0.18);
+  --serif:'DM Serif Display',serif;
+  --sans:'Outfit',sans-serif;
+  --nav-h:64px;
 }
-body{font-family:var(--fb);color:var(--ink);overflow-x:hidden;line-height:1.6;
-  background:
-    radial-gradient(ellipse 80% 60% at 10% 20%,rgba(0,119,182,0.14) 0%,transparent 60%),
-    radial-gradient(ellipse 60% 80% at 90% 10%,rgba(72,202,228,0.18) 0%,transparent 55%),
-    radial-gradient(ellipse 70% 50% at 50% 85%,rgba(144,224,239,0.16) 0%,transparent 60%),
-    radial-gradient(ellipse 50% 40% at 80% 55%,rgba(0,180,216,0.1) 0%,transparent 50%),
-    radial-gradient(ellipse 90% 70% at 20% 70%,rgba(173,232,244,0.12) 0%,transparent 55%),
-    #EAF6FB;
-  background-attachment:fixed;
-}
+body{font-family:var(--sans);background:var(--cream);color:var(--ink);overflow-x:hidden;line-height:1.6}
 a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
 ::-webkit-scrollbar{width:4px}
-::-webkit-scrollbar-thumb{background:var(--mg);border-radius:2px}
-
-/* glass - works everywhere */
-.glass{
-  background:rgba(250,245,235,0.75);
-  border:1px solid rgba(255,255,255,0.7);
-  border-radius:20px;
-  box-shadow:0 4px 24px rgba(0,119,182,0.07),inset 0 1px 0 rgba(255,255,255,0.8);
-}
-@supports(backdrop-filter:blur(1px)){
-  .glass{
-    background:rgba(250,245,235,0.45);
-    backdrop-filter:blur(20px) saturate(1.5);
-    -webkit-backdrop-filter:blur(20px) saturate(1.5);
-  }
-}
-.glass-dark{
-  background:rgba(26,16,24,0.88);
-  border:1px solid rgba(255,255,255,0.12);
-  border-radius:20px;
-}
+::-webkit-scrollbar-thumb{background:var(--amber);border-radius:2px}
 
 /* NAV */
 nav{
-  position:fixed;top:0;left:0;right:0;height:var(--nav-h);z-index:300;
-  display:flex;align-items:center;justify-content:space-between;padding:0 5%;
-  background:rgba(234,246,251,0.92);
-  border-bottom:1px solid rgba(0,119,182,0.15);
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;
+  padding:0 5%;
+  background:rgba(250,246,239,0.88);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border-bottom:0.5px solid var(--glass-border);
   transition:box-shadow 0.3s;
 }
-@supports(backdrop-filter:blur(1px)){nav{background:rgba(234,246,251,0.72);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);}}
-nav.scrolled{box-shadow:0 4px 30px rgba(232,21,122,0.1)}
-.nav-logo{font-family:var(--fd);font-size:1.1rem;font-weight:900;letter-spacing:-0.02em}
-.nav-logo em{color:var(--mg);font-style:normal}
-.nav-links{display:flex;align-items:center;gap:2rem;list-style:none}
-.nav-links a{font-size:0.82rem;font-weight:500;transition:color 0.2s}
-.nav-links a:hover{color:var(--mg)}
-.nav-cta{background:var(--mg)!important;color:#fff!important;padding:0.5rem 1.4rem;border-radius:50px;font-weight:600!important;transition:transform 0.2s,box-shadow 0.2s!important}
-.nav-cta:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(0,119,182,0.35)!important}
-.hamburger{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;padding:4px}
-.hamburger span{display:block;width:22px;height:2px;background:var(--ink);border-radius:2px;transition:all 0.3s}
+nav.scrolled{box-shadow:0 4px 24px rgba(200,134,10,0.08)}
+.nav-logo{font-family:var(--serif);font-size:1.1rem;color:var(--ink);letter-spacing:-0.01em}
+.nav-logo span{color:var(--amber)}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{font-size:0.75rem;font-weight:500;color:var(--muted);letter-spacing:0.06em;text-transform:uppercase;transition:color 0.2s}
+.nav-links a:hover{color:var(--amber)}
+.hamburger{display:none;background:none;border:none;cursor:pointer;padding:4px;flex-direction:column;gap:5px}
+.hamburger span{display:block;width:22px;height:1.5px;background:var(--ink);border-radius:2px;transition:all 0.3s}
+@media(max-width:680px){.nav-links{display:none}.hamburger{display:flex}}
+
+/* MOBILE NAV */
 .mob-nav{
-  display:none;position:fixed;inset:0;z-index:299;
+  display:none;position:fixed;inset:0;z-index:199;
   flex-direction:column;align-items:center;justify-content:center;gap:2.5rem;
-  background:rgba(234,246,251,0.98);
+  background:rgba(250,246,239,0.98);
 }
 .mob-nav.open{display:flex}
-.mob-nav a{font-family:var(--fd);font-size:2.2rem;font-weight:700;color:var(--ink);transition:color 0.2s}
-.mob-nav a:hover{color:var(--mg)}
-.mob-close{position:absolute;top:1.5rem;right:5%;background:none;border:none;font-size:2rem;cursor:pointer}
+.mob-nav a{font-family:var(--serif);font-size:2.2rem;color:var(--ink);transition:color 0.2s}
+.mob-nav a:hover{color:var(--amber)}
+.mob-close{position:absolute;top:1.2rem;right:5%;background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--muted)}
 
 /* SHARED */
-.wrap{max-width:1200px;margin:0 auto}
-.section{padding:100px 5%}
-.eyebrow{font-family:var(--fm);font-size:0.68rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--mg);margin-bottom:1rem;display:flex;align-items:center;gap:0.5rem}
-.eyebrow::before{content:'';width:24px;height:1.5px;background:var(--mg)}
-.sec-title{font-family:var(--fd);font-size:clamp(2.2rem,5vw,4rem);font-weight:900;line-height:1.0;letter-spacing:-0.03em;margin-bottom:1.2rem}
-.sec-sub{font-size:1rem;color:#5a4a50;max-width:540px;line-height:1.8;margin-bottom:3rem}
-.btn-p{display:inline-flex;align-items:center;gap:0.5rem;background:var(--mg);color:#fff;padding:0.85rem 2rem;border-radius:50px;font-weight:600;font-size:0.9rem;border:none;cursor:pointer;font-family:var(--fb);transition:transform 0.2s,box-shadow 0.2s}
-.btn-p:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,119,182,0.4)}
-.btn-s{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(250,245,235,0.8);color:var(--ink);padding:0.85rem 2rem;border-radius:50px;font-weight:600;font-size:0.9rem;border:1.5px solid rgba(26,16,24,0.2);transition:all 0.2s}
-.btn-s:hover{background:rgba(250,245,235,1);transform:translateY(-2px)}
-.r{opacity:0;transform:translateY(28px);transition:opacity 0.7s ease,transform 0.7s ease}
+section{position:relative;padding:6rem 5%}
+.wrap{max-width:1140px;margin:0 auto;position:relative;z-index:1}
+.eyebrow{font-size:0.65rem;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--amber);margin-bottom:0.8rem;display:flex;align-items:center;gap:0.5rem}
+.eyebrow::before{content:'';width:20px;height:1px;background:var(--amber)}
+.sec-title{font-family:var(--serif);font-size:clamp(2rem,5vw,3.5rem);line-height:1.08;letter-spacing:-0.02em;margin-bottom:1rem;color:var(--ink)}
+.sec-title em{font-style:italic;color:var(--amber)}
+.sec-body{font-size:0.92rem;color:var(--muted);line-height:1.9;margin-bottom:1.2rem;max-width:560px}
+
+/* DECO CIRCLES - mathematical pink/purple */
+.deco{position:absolute;border-radius:50%;pointer-events:none;z-index:0}
+
+/* GLASS CARD */
+.glass-card{
+  background:rgba(253,250,244,0.65);
+  backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
+  border:0.5px solid var(--glass-border);
+  border-radius:22px;
+  padding:2rem;
+}
+
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;gap:0.45rem;background:var(--amber);color:#fff;padding:0.8rem 1.8rem;border-radius:40px;font-size:0.85rem;font-weight:600;border:none;cursor:pointer;font-family:var(--sans);transition:transform 0.2s,box-shadow 0.2s;text-decoration:none;letter-spacing:0.02em}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(200,134,10,0.35)}
+.btn-ghost{display:inline-flex;align-items:center;gap:0.45rem;background:transparent;color:var(--amber);padding:0.8rem 1.8rem;border-radius:40px;font-size:0.85rem;font-weight:600;border:0.5px solid rgba(200,134,10,0.35);cursor:pointer;font-family:var(--sans);transition:all 0.2s;text-decoration:none;letter-spacing:0.02em}
+.btn-ghost:hover{background:rgba(200,134,10,0.07);transform:translateY(-1px)}
+.btn-row{display:flex;gap:0.75rem;flex-wrap:wrap;margin-top:1.5rem}
+
+/* SCROLL REVEAL */
+.r{opacity:0;transform:translateY(24px);transition:opacity 0.7s ease,transform 0.7s ease}
 .r.vis{opacity:1;transform:none}
 .r.d1{transition-delay:0.1s}.r.d2{transition-delay:0.2s}.r.d3{transition-delay:0.3s}.r.d4{transition-delay:0.4s}
 
-/* HERO */
-#home{min-height:100vh;display:flex;align-items:center;padding:var(--nav-h) 5% 80px}
-.hero-inner{max-width:1200px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
-.hero-tag{display:inline-flex;align-items:center;gap:0.6rem;font-family:var(--fm);font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--mg);margin-bottom:1.5rem;padding:0.4rem 1rem;border-radius:50px;background:rgba(0,119,182,0.08);border:1px solid rgba(0,119,182,0.2)}
-.hero-tag span{width:5px;height:5px;border-radius:50%;background:var(--mg);animation:pulse 2s infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
-.hero-h1{font-family:var(--fd);font-size:clamp(3rem,7vw,5.5rem);font-weight:900;line-height:0.95;letter-spacing:-0.04em;margin-bottom:1.5rem}
-.hero-h1 .mg{color:var(--mg)}.hero-h1 .it{font-style:italic;color:var(--mg)}
-.hero-p{font-size:1rem;color:#5a4a50;max-width:460px;line-height:1.8;margin-bottom:2rem}
-.hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
+/* ============ HERO ============ */
+#hero{
+  min-height:100vh;display:flex;align-items:center;justify-content:center;
+  padding-top:var(--nav-h);
+  background:linear-gradient(160deg,#FAF6EF 55%,#F5EDD8 100%);
+  text-align:center;
+}
+.orbit-system{
+  position:relative;width:100%;
+  display:flex;align-items:center;justify-content:center;
+  min-height:560px;
+  margin:2rem auto;
+  max-width:480px;
+}
+.orbit-ring{
+  position:absolute;top:50%;left:50%;
+  border-radius:50%;border:0.5px solid;
+  animation:spin linear infinite;
+  transform-origin:center;
+}
+.orbit-ring:nth-child(1){
+  width:300px;height:300px;
+  margin-top:-150px;margin-left:-150px;
+  border-color:rgba(232,95,160,0.2);
+  animation-duration:20s;
+}
+.orbit-ring:nth-child(2){
+  width:390px;height:390px;
+  margin-top:-195px;margin-left:-195px;
+  border-color:rgba(139,61,191,0.14);
+  animation-duration:32s;animation-direction:reverse;
+}
+.orbit-ring:nth-child(3){
+  width:480px;height:480px;
+  margin-top:-240px;margin-left:-240px;
+  border-color:rgba(200,134,10,0.1);
+  animation-duration:48s;
+}
+@keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
 
-/* PUZZLE CARD */
-.puzzle-teaser{padding:2.5rem;position:relative;overflow:hidden}
-.puzzle-teaser::before{content:'';position:absolute;top:-60px;right:-60px;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(0,119,182,0.12),transparent 70%);pointer-events:none}
-.puzzle-label{font-family:var(--fm);font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--mg);margin-bottom:1rem}
-.puzzle-headline{font-family:var(--fd);font-size:1.6rem;font-weight:700;line-height:1.2;margin-bottom:0.75rem}
-.puzzle-headline em{font-style:italic;color:var(--mg)}
-.puzzle-sub{font-size:0.85rem;color:#5a4a50;line-height:1.7;margin-bottom:1.5rem}
-.prize-badge{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(0,119,182,0.08);border:1px solid rgba(0,119,182,0.2);border-radius:50px;padding:0.4rem 1rem;font-family:var(--fm);font-size:0.65rem;letter-spacing:0.08em;color:var(--mg);margin-bottom:1.5rem}
-.open-puzzle-btn{display:block;width:100%;background:var(--mg);color:#fff;border:none;border-radius:14px;padding:1rem;font-family:var(--fd);font-size:1rem;font-weight:700;font-style:italic;cursor:pointer;transition:transform 0.2s,box-shadow 0.2s}
-.open-puzzle-btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,119,182,0.4)}
+.odot{
+  position:absolute;
+  font-family:var(--sans);font-size:0.6rem;font-weight:500;
+  letter-spacing:0.06em;padding:3px 9px;border-radius:30px;
+  white-space:nowrap;animation:counter-spin linear infinite;
+}
+.odot.pink{color:var(--pink);background:rgba(232,95,160,0.1);border:0.5px solid rgba(232,95,160,0.25)}
+.odot.purple{color:var(--purple);background:rgba(139,61,191,0.1);border:0.5px solid rgba(139,61,191,0.2)}
+.odot.amber{color:var(--amber);background:rgba(200,134,10,0.1);border:0.5px solid rgba(200,134,10,0.2)}
+@keyframes counter-spin{from{transform:rotate(0deg)}to{transform:rotate(-360deg)}}
 
-/* MODAL */
-.modal-overlay{position:fixed;inset:0;z-index:500;background:rgba(26,16,24,0.55);display:none;align-items:center;justify-content:center;padding:1rem}
-.modal-overlay.open{display:flex}
-.modal-box{width:100%;max-width:620px;max-height:90vh;overflow-y:auto;background:#EAF6FB;border:1px solid rgba(255,255,255,0.7);border-radius:28px;padding:2.5rem;box-shadow:0 24px 80px rgba(26,16,24,0.25);position:relative}
-.modal-close{position:absolute;top:1.2rem;right:1.2rem;background:rgba(26,16,24,0.08);border:none;border-radius:50%;width:36px;height:36px;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;transition:background 0.2s}
-.modal-close:hover{background:rgba(232,21,122,0.15)}
-.modal-title{font-family:'Georgia',serif;font-size:1.8rem;font-weight:900;line-height:1.15;margin-bottom:0.5rem}
-.modal-title em{font-style:italic;color:var(--mg)}
-.modal-sub{font-family:"Georgia",serif;font-size:0.95rem;color:#2c4a6e;line-height:1.8;margin-bottom:1.5rem;font-style:italic}
-.journal-fields{display:flex;flex-direction:column;gap:0.8rem;margin-bottom:1.2rem}
-.journal-field label{display:block;font-family:"Georgia",serif;font-size:0.75rem;font-style:italic;color:var(--mg);margin-bottom:0.35rem}
-.letter-box{width:100%;background:rgba(255,255,255,0.8);border:1.5px solid rgba(0,119,182,0.2);border-radius:12px;padding:0.85rem 1rem;font-family:"Georgia",serif;font-size:0.95rem;color:var(--ink);outline:none;resize:vertical;min-height:80px;transition:border-color 0.2s,box-shadow 0.2s;line-height:1.7}
-.letter-box:focus{border-color:var(--mg);box-shadow:0 0 0 3px rgba(0,119,182,0.1)}
-.letter-box::placeholder{color:rgba(90,74,80,0.4)}
-.letter-box.single{min-height:unset;resize:none}
-.send-btn{width:100%;background:var(--mg);color:#fff;border:none;border-radius:14px;padding:1rem;font-family:'Georgia',serif;font-size:1.1rem;font-weight:700;font-style:italic;cursor:pointer;transition:transform 0.2s,box-shadow 0.2s;margin-bottom:0.75rem}
-.send-btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,119,182,0.4)}
-.parchment-reveal{display:none;margin-top:1rem}
-.parchment-reveal.show{display:block}
-.parchment-scroll{background:linear-gradient(160deg,#CAF0F8,#EAF6FB);border:1.5px solid rgba(0,119,182,0.3);border-radius:16px;padding:2rem;box-shadow:0 6px 30px rgba(0,119,182,0.12)}
-.parchment-scroll::before,.parchment-scroll::after{content:'— º6 —';display:block;text-align:center;font-family:var(--fd);font-size:0.8rem;color:rgba(0,119,182,0.5);letter-spacing:0.3em}
-.parchment-scroll::before{margin-bottom:1rem}
-.parchment-scroll::after{margin-top:1rem}
-.parchment-text{font-family:var(--fd);font-style:italic;font-size:1rem;color:var(--ink);line-height:1.8;text-align:center;white-space:pre-wrap}
-.parchment-name{font-family:var(--fm);font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--mg);text-align:center;margin-top:0.75rem}
-.parchment-actions{display:flex;gap:0.75rem;margin-top:1.2rem;flex-wrap:wrap}
-.wa-btn{flex:1;display:flex;align-items:center;justify-content:center;gap:0.5rem;background:#25D366;color:#fff;border:none;border-radius:12px;padding:0.85rem;font-weight:700;font-size:0.88rem;font-family:var(--fb);cursor:pointer;transition:transform 0.2s}
-.wa-btn:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(37,211,102,0.4)}
-.ig-note{flex:1;display:flex;align-items:center;justify-content:center;background:rgba(0,119,182,0.08);border:1px solid rgba(232,21,122,0.25);border-radius:12px;padding:0.85rem;font-size:0.82rem;color:var(--mg);font-weight:600;text-align:center;line-height:1.4}
+/* orbit dot containers that rotate with the ring */
+.ring-carrier{position:absolute;top:50%;left:50%;border-radius:50%;animation:spin linear infinite}
+.ring-carrier.r1{width:300px;height:300px;margin-top:-150px;margin-left:-150px;animation-duration:20s}
+.ring-carrier.r2{width:390px;height:390px;margin-top:-195px;margin-left:-195px;animation-duration:32s;animation-direction:reverse}
+.ring-carrier.r3{width:480px;height:480px;margin-top:-240px;margin-left:-240px;animation-duration:48s}
+.dp{position:absolute}
+.dp.t{top:-10px;left:50%;transform:translateX(-50%)}
+.dp.r{right:-12px;top:50%;transform:translateY(-50%)}
+.dp.b{bottom:-10px;left:50%;transform:translateX(-50%)}
+.dp.l{left:-12px;top:50%;transform:translateY(-50%)}
 
-/* MARQUEE */
-.marquee{padding:1rem 0;overflow:hidden;background:rgba(0,119,182,0.05);border-top:1px solid rgba(0,119,182,0.12);border-bottom:1px solid rgba(0,119,182,0.12)}
-.marquee-track{display:flex;white-space:nowrap}
-.marquee-inner{display:flex;gap:3rem;align-items:center;animation:scroll 30s linear infinite;flex-shrink:0}
-@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-.m-item{display:inline-flex;align-items:center;gap:0.6rem;font-family:var(--fm);font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--mg)}
-.m-item::before{content:'º6';font-size:0.5rem;opacity:0.6}
+/* TYPEWRITER BOX */
+.tw-box{
+  position:relative;z-index:10;
+  width:260px;height:260px;
+  background:#FDFAF4;
+  border:0.5px solid rgba(200,134,10,0.35);
+  border-radius:20px;
+  box-shadow:0 8px 48px rgba(200,134,10,0.14),inset 0 1px 0 rgba(255,255,255,0.95);
+  display:flex;flex-direction:column;
+  padding:1.4rem 1.3rem;
+  overflow:hidden;
+}
+.tw-label{font-family:var(--sans);font-size:0.55rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--amber);margin-bottom:0.65rem;opacity:0.65}
+.tw-text{font-family:'Courier New',Courier,monospace;font-size:0.8rem;color:var(--ink);line-height:1.65;flex:1;overflow:hidden}
+.tw-cursor{display:inline-block;width:7px;height:13px;background:var(--amber);margin-left:1px;vertical-align:middle;animation:blink 0.75s step-end infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+.tw-progress{position:absolute;bottom:0;left:0;right:0;height:2px;background:rgba(200,134,10,0.08)}
+.tw-bar{height:100%;background:linear-gradient(90deg,var(--pink),var(--purple));width:0%;transition:width 0.2s linear}
 
-/* FLIP CARDS - SERVICES */
-.flip-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
-.flip-wrap{perspective:800px;height:280px;cursor:pointer}
-.flip-card{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform 0.65s cubic-bezier(0.4,0.2,0.2,1)}
-.flip-wrap:hover .flip-card,.flip-wrap.flipped .flip-card{transform:rotateY(180deg)}
-.flip-front,.flip-back{position:absolute;inset:0;border-radius:20px;backface-visibility:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem;text-align:center}
-.flip-front{background:rgba(250,245,235,0.88);border:1px solid rgba(255,255,255,0.8);box-shadow:0 4px 24px rgba(0,119,182,0.07)}
-.flip-back{transform:rotateY(180deg);border:1px solid rgba(255,255,255,0.3);box-shadow:0 8px 40px rgba(0,0,0,0.12)}
-.flip-ico{font-size:2.5rem;margin-bottom:0.75rem}
-.flip-title{font-family:var(--fd);font-size:1.4rem;font-weight:700;color:var(--ink);margin-bottom:0.5rem}
-.flip-hint{font-family:var(--fm);font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--mg);opacity:0.7}
-.flip-back-title{font-family:var(--fd);font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:0.6rem}
-.flip-back-text{font-size:0.82rem;color:rgba(255,255,255,0.9);line-height:1.65}
-.flip-tags{display:flex;flex-wrap:wrap;gap:0.35rem;justify-content:center;margin-top:0.8rem}
-.flip-tag{font-size:0.65rem;font-weight:700;padding:0.25rem 0.6rem;border-radius:50px;background:rgba(255,255,255,0.2);color:#fff;border:1px solid rgba(255,255,255,0.3)}
+/* hero bottom text */
+.hero-tag{display:inline-flex;align-items:center;gap:0.5rem;font-family:var(--sans);font-size:0.65rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--amber);padding:0.35rem 1rem;border-radius:30px;background:rgba(200,134,10,0.08);border:0.5px solid rgba(200,134,10,0.2)}
+.hero-tag span{width:5px;height:5px;border-radius:50%;background:var(--amber);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
 
-/* DESIGN STRATEGY */
-.ds-inner{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
-.ds-canvas{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:0.75rem;padding:0.75rem;aspect-ratio:1/1}
-.ds-tile{border-radius:16px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0.5rem;padding:1rem;background:rgba(250,245,235,0.85);border:1px solid rgba(255,255,255,0.8);transition:transform 0.3s,box-shadow 0.3s;cursor:default}
-.ds-tile:hover{transform:scale(1.04);box-shadow:0 8px 30px rgba(232,21,122,0.12)}
-.ds-tile-ico{font-size:1.8rem}
-.ds-tile-label{font-family:var(--fm);font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;text-align:center;color:var(--ink)}
-.ds-pills{display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:2rem}
-.ds-pill{font-size:0.75rem;padding:0.4rem 0.9rem;border-radius:50px;background:rgba(0,119,182,0.08);color:var(--mg);border:1px solid rgba(0,119,182,0.18)}
+/* ============ WHO WE ARE ============ */
+#who{background:linear-gradient(180deg,#FAF6EF,#F0E8D5)}
+.who-inner{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.who-card{position:relative;overflow:hidden}
+.who-card::before{content:'';position:absolute;top:-50px;right:-50px;width:140px;height:140px;border-radius:50%;background:radial-gradient(circle,rgba(232,95,160,0.12),transparent 70%);pointer-events:none}
+.who-card::after{content:'';position:absolute;bottom:-40px;left:-40px;width:100px;height:100px;border-radius:50%;background:radial-gradient(circle,rgba(139,61,191,0.1),transparent 70%);pointer-events:none}
+.who-pills{display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1.2rem}
+.pill{font-size:0.7rem;padding:0.32rem 0.85rem;border-radius:30px}
+.pill.pink{color:var(--pink);background:rgba(232,95,160,0.1);border:0.5px solid rgba(232,95,160,0.25)}
+.pill.purple{color:var(--purple);background:rgba(139,61,191,0.1);border:0.5px solid rgba(139,61,191,0.2)}
+.pill.amber{color:var(--amber);background:rgba(200,134,10,0.1);border:0.5px solid rgba(200,134,10,0.2)}
+.who-stat{text-align:center;padding:1.5rem 1rem}
+.who-stat-num{font-family:var(--serif);font-size:2.4rem;color:var(--amber);line-height:1}
+.who-stat-label{font-size:0.72rem;font-weight:500;color:var(--muted);margin-top:0.3rem;letter-spacing:0.06em;text-transform:uppercase}
+.who-stats{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-top:0.5rem}
 
-/* CONTENT STRATEGY */
-.cs-body{display:grid;grid-template-columns:1.2fr 0.8fr;gap:3rem;align-items:start;margin-top:3rem}
-.cs-text p{font-size:0.92rem;color:#5a4a50;line-height:1.85;margin-bottom:1.2rem}
-.cs-text strong{color:var(--ink);font-weight:600}
-.cs-flip-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
-.cs-flip-wrap{perspective:600px;height:190px;cursor:pointer}
-.cs-flip-card{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform 0.65s cubic-bezier(0.4,0.2,0.2,1)}
-.cs-flip-wrap:hover .cs-flip-card,.cs-flip-wrap.flipped .cs-flip-card{transform:rotateY(180deg)}
-.cs-front,.cs-back{position:absolute;inset:0;border-radius:16px;backface-visibility:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:1.5rem;text-align:center}
-.cs-front{background:rgba(250,245,235,0.88);border:1px solid rgba(255,255,255,0.8)}
-.cs-back{transform:rotateY(180deg);background:linear-gradient(135deg,#03045E,#023E8A)}
-.cs-front-ico{font-size:2rem;margin-bottom:0.5rem}
-.cs-front-title{font-family:var(--fd);font-size:1rem;font-weight:700;color:var(--ink);margin-bottom:0.3rem}
-.cs-front-hint{font-family:var(--fm);font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--mg);opacity:0.7}
-.cs-back-title{font-family:var(--fd);font-size:0.9rem;font-weight:700;color:#90E0EF;margin-bottom:0.5rem}
-.cs-back-text{font-size:0.75rem;color:rgba(240,236,216,0.82);line-height:1.6}
+/* ============ SERVICES ============ */
+#services{background:#FAF6EF}
+.tiles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2rem}
+.tile{
+  background:rgba(253,250,244,0.8);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border:0.5px solid var(--glass-border);
+  border-radius:16px;padding:1.1rem 1rem;
+  transition:transform 0.25s,box-shadow 0.25s,border-color 0.25s;
+  cursor:default;position:relative;overflow:hidden;
+}
+.tile::after{content:'';position:absolute;inset:0;border-radius:16px;background:linear-gradient(135deg,rgba(232,95,160,0.06),rgba(139,61,191,0.06));opacity:0;transition:opacity 0.3s}
+.tile:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(200,134,10,0.1);border-color:rgba(200,134,10,0.3)}
+.tile:hover::after{opacity:1}
+.tile-ico{font-size:1.2rem;margin-bottom:0.45rem}
+.tile-name{font-size:0.78rem;font-weight:600;color:var(--ink);line-height:1.3}
+.tile-sub{font-size:0.65rem;color:var(--muted);margin-top:0.2rem;line-height:1.4}
 
-/* BALLOON GAME */
-.game-box{max-width:700px;margin:0 auto;background:rgba(250,245,235,0.9);border:1px solid rgba(255,255,255,0.8);border-radius:28px;overflow:hidden;box-shadow:0 8px 40px rgba(0,119,182,0.08)}
-.game-header{padding:1.5rem 2rem 1rem;background:rgba(0,119,182,0.05);border-bottom:1px solid rgba(0,119,182,0.1)}
-.game-title{font-family:var(--fd);font-size:1.6rem;font-weight:900;color:var(--ink);margin-bottom:0.3rem}
-.game-sub{font-size:0.85rem;color:#5a4a50}
-.game-meta{display:flex;justify-content:center;gap:3rem;padding:1rem 2rem;border-bottom:1px solid rgba(0,119,182,0.08)}
-.game-stat-label{font-family:var(--fm);font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--mg);margin-bottom:0.2rem}
-.game-stat-val{font-family:var(--fd);font-size:1.8rem;font-weight:900;color:var(--ink)}
-.game-arena{position:relative;height:320px;overflow:hidden;cursor:crosshair;background:rgba(240,236,216,0.3)}
-.game-balloon{position:absolute;bottom:-80px;font-size:2.8rem;cursor:pointer;animation:floatUp linear forwards;user-select:none}
-@keyframes floatUp{from{bottom:-80px;opacity:1}to{bottom:110%;opacity:0.8}}
-.game-pop{position:absolute;pointer-events:none;font-size:2rem;animation:popAnim 0.5s ease-out forwards}
-@keyframes popAnim{0%{transform:scale(0.5);opacity:1}100%{transform:scale(2.5);opacity:0}}
-.game-footer{padding:1.2rem 2rem;text-align:center}
-.start-game-btn{background:var(--mg);color:#fff;border:none;border-radius:12px;padding:0.85rem 2.5rem;font-family:var(--fd);font-size:1rem;font-weight:700;font-style:italic;cursor:pointer;transition:transform 0.2s,box-shadow 0.2s}
-.start-game-btn:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(232,21,122,0.4)}
-.game-result{display:none;padding:2rem;text-align:center}
-.result-score{font-family:var(--fd);font-size:3.5rem;font-weight:900;color:var(--mg);line-height:1}
-.result-msg{font-size:1rem;color:#5a4a50;margin:0.75rem 0 1.5rem;line-height:1.6}
-.result-cta{font-family:var(--fd);font-size:1.1rem;font-weight:700;font-style:italic;color:var(--ink)}
+/* ============ PORTFOLIO ============ */
+#portfolio{background:linear-gradient(180deg,#F5EDD8,#FAF6EF)}
+.port-tabs{display:flex;gap:0.6rem;margin-bottom:2rem;flex-wrap:wrap}
+.ptab{font-size:0.7rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;padding:0.5rem 1.2rem;border-radius:30px;border:0.5px solid rgba(200,134,10,0.3);background:transparent;cursor:pointer;color:var(--muted);transition:all 0.2s;font-family:var(--sans)}
+.ptab.active,.ptab:hover{background:var(--amber);color:#fff;border-color:var(--amber)}
+.port-panel{display:none}.port-panel.active{display:block}
+.design-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem}
+.proj-card{
+  background:rgba(253,250,244,0.8);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border:0.5px solid var(--glass-border);
+  border-radius:18px;overflow:hidden;
+  transition:transform 0.25s,box-shadow 0.25s;
+}
+.proj-card:hover{transform:translateY(-5px);box-shadow:0 16px 40px rgba(200,134,10,0.12)}
+.proj-thumb{height:160px;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:1.1rem;color:rgba(255,255,255,0.92);letter-spacing:-0.01em;padding:1rem;text-align:center}
+.proj-meta{padding:1rem 1.1rem 1.2rem}
+.proj-cat{font-size:0.6rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--amber);margin-bottom:0.25rem}
+.proj-name{font-family:var(--serif);font-size:1rem;color:var(--ink);margin-bottom:0.6rem}
+.proj-link{font-size:0.75rem;font-weight:600;color:var(--amber);display:inline-flex;align-items:center;gap:0.3rem;transition:gap 0.2s}
+.proj-link:hover{gap:0.5rem}
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem}
+.blog-card{
+  background:rgba(253,250,244,0.8);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border:0.5px solid var(--glass-border);
+  border-radius:18px;overflow:hidden;
+  transition:transform 0.25s,box-shadow 0.25s;
+}
+.blog-card:hover{transform:translateY(-5px);box-shadow:0 16px 40px rgba(200,134,10,0.12)}
+.blog-thumb{height:100px;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:0.95rem;color:rgba(255,255,255,0.9);padding:0.85rem;text-align:center}
+.blog-body{padding:0.9rem 1rem 1rem}
+.blog-date{font-size:0.6rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--amber);margin-bottom:0.25rem}
+.blog-title{font-family:var(--serif);font-size:0.9rem;color:var(--ink);margin-bottom:0.35rem;line-height:1.3}
+.blog-excerpt{font-size:0.72rem;color:var(--muted);line-height:1.65;margin-bottom:0.5rem}
+.blog-link{font-size:0.72rem;font-weight:600;color:var(--amber);display:inline-flex;align-items:center;gap:0.25rem;transition:gap 0.2s}
+.blog-link:hover{gap:0.4rem}
+.substack-cta{text-align:center;margin-top:2.5rem}
 
-/* PORTFOLIO */
-.port-tabs{display:flex;gap:0.75rem;margin-bottom:2.5rem;flex-wrap:wrap}
-.port-tab{font-family:var(--fm);font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;padding:0.5rem 1.2rem;border-radius:50px;border:1.5px solid rgba(0,119,182,0.25);background:transparent;cursor:pointer;color:var(--ink);transition:all 0.2s}
-.port-tab.active,.port-tab:hover{background:var(--mg);color:#fff;border-color:var(--mg)}
-.port-section{display:none;opacity:1}.port-section.active{display:block;opacity:1}
-.design-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
-.design-card{border-radius:18px;overflow:hidden;background:rgba(250,245,235,0.88);border:1px solid rgba(255,255,255,0.8);box-shadow:0 4px 20px rgba(0,0,0,0.05);transition:transform 0.3s,box-shadow 0.3s}
-.design-card:hover{transform:translateY(-6px);box-shadow:0 16px 50px rgba(0,119,182,0.15)}
-.design-thumb{height:190px;display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-size:1.3rem;font-weight:900;color:rgba(255,255,255,0.88);letter-spacing:-0.02em;padding:1rem;text-align:center}
-.design-meta{padding:1rem 1.2rem 1.2rem}
-.design-cat{font-family:var(--fm);font-size:0.58rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--mg);margin-bottom:0.25rem}
-.design-name{font-family:var(--fd);font-size:1rem;font-weight:700;margin-bottom:0.6rem;color:var(--ink)}
-.design-link{display:inline-flex;align-items:center;gap:0.3rem;font-size:0.78rem;font-weight:700;color:var(--mg);transition:gap 0.2s}
-.design-link:hover{gap:0.55rem}
-.blog-grid-wall{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
-.blog-modal-card{border-radius:18px;overflow:hidden;cursor:pointer;background:rgba(234,246,251,0.88);border:1px solid rgba(255,255,255,0.8);transition:transform 0.3s,box-shadow 0.3s;opacity:1!important;transform:none!important}
-.blog-modal-card:hover{transform:translateY(-6px);box-shadow:0 16px 50px rgba(0,119,182,0.15)}
-.blog-thumb-wall{height:150px;display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-size:1.1rem;font-weight:900;color:rgba(255,255,255,0.88);padding:1rem;text-align:center}
-.blog-body-wall{padding:1rem 1.2rem 1.2rem}
-.blog-date-wall{font-family:var(--fm);font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--mg);margin-bottom:0.3rem}
-.blog-title-wall{font-family:var(--fd);font-size:0.9rem;font-weight:700;line-height:1.3;margin-bottom:0.5rem;color:var(--ink)}
-.blog-excerpt-wall{font-size:0.76rem;color:#5a4a50;line-height:1.6}
-.blog-modal-overlay{position:fixed;inset:0;z-index:500;background:rgba(3,4,94,0.45);display:none;align-items:center;justify-content:center;padding:1rem}
-.blog-modal-overlay.open{display:flex}
-.blog-modal-inner{width:100%;max-width:600px;max-height:88vh;overflow-y:auto;background:#EAF6FB;border:1px solid rgba(255,255,255,0.7);border-radius:28px;padding:2.5rem;box-shadow:0 24px 80px rgba(26,16,24,0.2);position:relative}
-.blog-modal-close{position:absolute;top:1.2rem;right:1.2rem;background:rgba(26,16,24,0.08);border:none;border-radius:50%;width:36px;height:36px;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;transition:background 0.2s}
-.blog-modal-close:hover{background:rgba(232,21,122,0.15)}
-.blog-modal-cat{font-family:var(--fm);font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--mg);margin-bottom:0.5rem}
-.blog-modal-title{font-family:var(--fd);font-size:1.5rem;font-weight:900;line-height:1.2;margin-bottom:0.75rem;color:var(--ink)}
-.blog-modal-date{font-family:var(--fm);font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;color:#8a7a80;margin-bottom:1.2rem}
-.blog-modal-body{font-size:0.9rem;color:#5a4a50;line-height:1.85;margin-bottom:1.5rem;white-space:pre-line}
-.blog-modal-cta{display:inline-flex;align-items:center;gap:0.5rem;background:var(--mg);color:#fff;padding:0.75rem 1.75rem;border-radius:50px;font-weight:700;font-size:0.88rem;transition:transform 0.2s}
-.blog-modal-cta:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,119,182,0.35)}
-
-/* ABOUT */
-.about-inner{display:grid;grid-template-columns:0.9fr 1.1fr;gap:5rem;align-items:center}
-.about-frame{aspect-ratio:3/4;border-radius:28px;overflow:hidden;position:relative;background:linear-gradient(145deg,rgba(0,119,182,0.3),rgba(72,202,228,0.3),rgba(173,232,244,0.5));border:1px solid rgba(255,255,255,0.6);display:flex;align-items:center;justify-content:center}
-.about-photo{width:100%;height:100%;object-fit:cover;object-position:center top}
-.about-visual{position:relative}
-.about-badge{position:absolute;bottom:-20px;right:-20px;background:#EAF6FB;border:1px solid rgba(255,255,255,0.8);border-radius:16px;padding:1rem 1.4rem;box-shadow:0 8px 30px rgba(196,163,90,0.2)}
-.about-badge strong{display:block;font-family:var(--fd);font-size:1rem;font-weight:900;color:var(--ink);line-height:1}
-.about-badge span{font-family:var(--fm);font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--mg)}
-.about-quote{font-family:var(--fd);font-style:italic;font-size:1.15rem;color:var(--mg);margin-bottom:1.5rem;line-height:1.5}
-.about-body p{font-size:0.9rem;color:#5a4a50;line-height:1.85;margin-bottom:1.1rem}
-.creds{display:flex;flex-wrap:wrap;gap:0.5rem;margin:1.5rem 0}
-.cred{font-size:0.75rem;padding:0.35rem 0.85rem;border-radius:50px;background:rgba(202,240,248,0.6);border:1px solid rgba(0,119,182,0.15);color:var(--ink)}
-
-/* CONTACT */
+/* ============ CONTACT ============ */
+#contact{background:linear-gradient(180deg,#FAF6EF,#F0E8D5)}
 .contact-inner{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
-.contact-links{display:flex;flex-direction:column;gap:1rem;margin-top:2rem}
-.contact-link-item{display:flex;align-items:center;gap:1rem;background:rgba(250,245,235,0.88);border:1px solid rgba(255,255,255,0.8);border-radius:14px;padding:1rem 1.2rem;transition:transform 0.2s,box-shadow 0.2s}
-.contact-link-item:hover{transform:translateX(4px);box-shadow:0 4px 20px rgba(0,119,182,0.12)}
-.cli-ico{width:42px;height:42px;border-radius:10px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.2rem;background:rgba(0,119,182,0.08)}
-.cli-text strong{display:block;font-size:0.88rem;font-weight:600;color:var(--ink);margin-bottom:0.1rem}
-.cli-text span{font-size:0.78rem;color:#8a7a80}
-.contact-form{background:rgba(250,245,235,0.88);border:1px solid rgba(255,255,255,0.8);border-radius:20px;padding:2rem;display:flex;flex-direction:column;gap:1rem}
-.fg label{display:block;font-family:var(--fm);font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--mg);margin-bottom:0.4rem}
-.fg input,.fg textarea,.fg select{width:100%;background:rgba(255,255,255,0.8);border:1.5px solid rgba(0,119,182,0.15);border-radius:12px;padding:0.85rem 1rem;color:var(--ink);font-family:var(--fb);font-size:0.88rem;outline:none;transition:border-color 0.2s,box-shadow 0.2s}
-.fg input:focus,.fg textarea:focus,.fg select:focus{border-color:var(--mg);box-shadow:0 0 0 3px rgba(0,119,182,0.1)}
-.fg textarea{resize:vertical;min-height:110px}
-.fg select option{background:#f5f0e8}
-.fg input::placeholder,.fg textarea::placeholder{color:rgba(90,74,80,0.4)}
-.submit-btn{background:var(--mg);color:#fff;border:none;border-radius:12px;padding:1rem;font-family:var(--fd);font-size:1rem;font-weight:700;font-style:italic;cursor:pointer;transition:transform 0.2s,box-shadow 0.2s;width:100%}
-.submit-btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,119,182,0.4)}
-.form-msg{text-align:center;font-size:0.83rem;padding:0.5rem;border-radius:8px;display:none}
-.form-msg.ok{color:#10B981;background:rgba(16,185,129,0.1);display:block}
-.form-msg.err{color:#E8157A;background:rgba(232,21,122,0.1);display:block}
+.contact-links{display:flex;flex-direction:column;gap:0.7rem;margin-top:1.5rem}
+.clink{
+  display:flex;align-items:center;gap:1rem;
+  background:rgba(253,250,244,0.75);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border:0.5px solid var(--glass-border);
+  border-radius:14px;padding:0.9rem 1.1rem;
+  transition:transform 0.2s,box-shadow 0.2s,border-color 0.2s;
+  text-decoration:none;
+}
+.clink:hover{transform:translateX(4px);box-shadow:0 4px 20px rgba(200,134,10,0.1);border-color:rgba(200,134,10,0.3)}
+.clink-ico{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.clink-ico.ig{background:linear-gradient(135deg,rgba(232,95,160,0.12),rgba(139,61,191,0.12));border:0.5px solid rgba(232,95,160,0.2)}
+.clink-ico.li{background:rgba(200,134,10,0.1);border:0.5px solid rgba(200,134,10,0.2)}
+.clink-ico.gh{background:rgba(26,18,8,0.07);border:0.5px solid rgba(26,18,8,0.1)}
+.clink-ico.ss{background:rgba(255,105,0,0.09);border:0.5px solid rgba(255,105,0,0.18)}
+.clink-ico.wa{background:rgba(37,211,102,0.1);border:0.5px solid rgba(37,211,102,0.2)}
+.clink-text strong{display:block;font-size:0.85rem;font-weight:600;color:var(--ink);margin-bottom:0.1rem}
+.clink-text span{font-size:0.75rem;color:var(--muted)}
+.clink-arrow{margin-left:auto;font-size:0.9rem;color:var(--amber);opacity:0.5;transition:opacity 0.2s,transform 0.2s}
+.clink:hover .clink-arrow{opacity:1;transform:translateX(2px)}
 
-/* FOOTER */
-footer{background:#03045E;padding:3rem 5%;border-top:1px solid rgba(0,180,216,0.2)}
-.footer-in{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr 1fr;gap:2rem;align-items:center}
-.footer-logo{font-family:var(--fd);font-size:1.1rem;font-weight:900;color:#CAF0F8}
-.footer-logo em{color:var(--mg);font-style:normal}
-.footer-logo small{display:block;font-family:var(--fm);font-size:0.6rem;letter-spacing:0.1em;color:rgba(240,236,216,0.35);margin-top:0.3rem}
-.footer-links{display:flex;justify-content:center;gap:2rem;list-style:none;flex-wrap:wrap}
-.footer-links a{color:rgba(144,224,239,0.4);font-size:0.8rem;transition:color 0.2s}
-.footer-links a:hover{color:var(--mg)}
-.footer-right{text-align:right;font-size:0.75rem;color:rgba(144,224,239,0.3);line-height:1.7}
-.scroll-top{position:fixed;bottom:2rem;right:2rem;z-index:200;width:44px;height:44px;border-radius:50%;border:none;cursor:pointer;background:var(--mg);color:#fff;font-size:1.1rem;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(0,119,182,0.4);opacity:0;transform:translateY(12px);transition:opacity 0.3s,transform 0.3s;pointer-events:none}
+/* founder card */
+.founder-card{position:relative;overflow:hidden}
+.founder-photo{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center top;border-radius:20px;border:0.5px solid var(--glass-border)}
+.founder-photo-placeholder{width:100%;aspect-ratio:3/4;border-radius:20px;background:linear-gradient(145deg,rgba(200,134,10,0.15),rgba(139,61,191,0.15),rgba(232,95,160,0.1));border:0.5px solid var(--glass-border);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:1.2rem;color:var(--amber)}
+.founder-badge{margin-top:1rem;padding:1rem 1.2rem;border-radius:14px}
+.founder-badge strong{display:block;font-family:var(--serif);font-size:1rem;color:var(--ink);margin-bottom:0.15rem}
+.founder-badge span{font-size:0.72rem;color:var(--muted)}
+
+/* ============ FOOTER ============ */
+footer{background:var(--ink);padding:3.5rem 5%;border-top:1px solid rgba(200,134,10,0.15)}
+.footer-inner{max-width:1140px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr 1fr;gap:2rem;align-items:center}
+.footer-logo{font-family:var(--serif);font-size:1.15rem;color:var(--warm)}
+.footer-logo span{color:var(--amber)}
+.footer-logo small{display:block;font-family:var(--sans);font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(245,237,216,0.3);margin-top:0.3rem}
+.footer-links{display:flex;justify-content:center;gap:1.8rem;list-style:none;flex-wrap:wrap}
+.footer-links a{color:rgba(245,237,216,0.35);font-size:0.78rem;transition:color 0.2s}
+.footer-links a:hover{color:var(--amber)}
+.footer-right{text-align:right;font-size:0.72rem;color:rgba(245,237,216,0.25);line-height:1.8}
+
+/* SCROLL TOP */
+.scroll-top{position:fixed;bottom:1.5rem;right:1.5rem;z-index:150;width:42px;height:42px;border-radius:50%;border:none;cursor:pointer;background:var(--amber);color:#fff;font-size:1rem;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(200,134,10,0.4);opacity:0;transform:translateY(10px);transition:opacity 0.3s,transform 0.3s;pointer-events:none}
 .scroll-top.show{opacity:1;transform:none;pointer-events:all}
 .scroll-top:hover{transform:translateY(-2px)}
 
-
-
-/* DS FLIP TILES */
-.ds-flip-wrap{perspective:600px;cursor:pointer;border-radius:12px;overflow:hidden}
-.ds-flip-card{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform 0.6s cubic-bezier(0.4,0.2,0.2,1)}
-.ds-flipped .ds-flip-card{transform:rotateY(180deg)}
-.ds-flip-front,.ds-flip-back{position:absolute;inset:0;border-radius:12px;backface-visibility:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0.6rem}
-.ds-flip-front{background:rgba(255,255,255,0.85);border:1px solid rgba(255,255,255,0.9)}
-.ds-flip-back{transform:rotateY(180deg);padding:1rem}
-
-
-.ds-flip-wrap{perspective:700px;cursor:pointer;border-radius:12px}
-.ds-flip-card{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform 0.65s cubic-bezier(0.4,0.2,0.2,1)}
-.ds-flipped .ds-flip-card{transform:rotateY(180deg)}
-.ds-flip-front,.ds-flip-back{position:absolute;inset:0;border-radius:12px;backface-visibility:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0.6rem;overflow:hidden}
-.ds-flip-front{background:rgba(255,255,255,0.88);border:1px solid rgba(255,255,255,0.9)}
-.ds-flip-back{transform:rotateY(180deg);padding:1rem}
-
-/* DS TILE INTERNALS */
-.ds-tile{ overflow:hidden; padding:0.75rem; }
-
-/* Website mock */
-.mock-browser{ width:100%; background:#fff; border-radius:6px; overflow:hidden; border:1px solid rgba(0,0,0,0.08); box-shadow:0 2px 8px rgba(0,0,0,0.08); }
-.mock-bar{ background:#f0f0f0; padding:4px 6px; display:flex; align-items:center; gap:3px; }
-.mock-dot{ width:5px; height:5px; border-radius:50%; display:inline-block; }
-.mock-dot.r{ background:#ff5f57; }
-.mock-dot.y{ background:#febc2e; }
-.mock-dot.g{ background:#28c840; }
-.mock-url{ flex:1; background:#fff; border-radius:3px; height:8px; margin-left:4px; font-size:5px; color:#999; display:flex; align-items:center; padding:0 4px; overflow:hidden; white-space:nowrap; }
-.mock-body{ padding:4px; }
-.mock-nav-strip{ height:5px; background:linear-gradient(90deg,#0077B6,#48CAE4); border-radius:2px; margin-bottom:4px; opacity:0.6; }
-.mock-hero-block{ background:linear-gradient(135deg,rgba(0,119,182,0.08),rgba(72,202,228,0.08)); border-radius:4px; padding:5px; margin-bottom:4px; }
-.mock-h1{ height:6px; background:#03045E; border-radius:2px; width:80%; margin-bottom:3px; opacity:0.7; }
-.mock-h2{ height:4px; background:#888; border-radius:2px; width:60%; margin-bottom:4px; opacity:0.5; }
-.mock-btn{ height:7px; width:35%; background:#0077B6; border-radius:10px; opacity:0.8; }
-.mock-cards{ display:flex; gap:3px; }
-.mock-card{ flex:1; height:18px; background:rgba(0,119,182,0.06); border-radius:3px; border:1px solid rgba(0,119,182,0.12); }
-
-/* Design system mock */
-.design-sys{ width:100%; }
-.ds-row{ display:flex; gap:4px; margin-bottom:6px; }
-.ds-swatch{ flex:1; height:14px; border-radius:4px; }
-.ds-type-row{ display:flex; align-items:center; gap:6px; margin-bottom:6px; }
-.ds-t1{ font-family:var(--fd); font-size:20px; font-weight:900; color:#0077B6; line-height:1; }
-.ds-type-lines{ flex:1; display:flex; flex-direction:column; gap:3px; }
-.ds-tline{ height:3px; background:#1A1018; border-radius:2px; opacity:0.15; }
-.ds-tline.w80{ width:80%; }.ds-tline.w60{ width:60%; }.ds-tline.w70{ width:70%; }
-.ds-comp-row{ display:flex; align-items:center; gap:5px; }
-.ds-btn-mock{ height:10px; width:40%; background:#0077B6; border-radius:10px; opacity:0.85; }
-.ds-tag-mock{ height:10px; width:28%; background:rgba(0,119,182,0.12); border-radius:10px; border:1px solid rgba(0,119,182,0.3); }
-.ds-icon-mock{ font-size:10px; color:#0077B6; }
-
-/* LinkedIn mock */
-.li-post{ width:100%; background:#fff; border-radius:6px; padding:7px; border:1px solid rgba(0,0,0,0.08); box-shadow:0 2px 8px rgba(0,0,0,0.06); }
-.li-header{ display:flex; align-items:center; gap:5px; margin-bottom:6px; }
-.li-avatar{ width:18px; height:18px; border-radius:50%; background:linear-gradient(135deg,#0077B6,#48CAE4); flex-shrink:0; }
-.li-meta{ display:flex; flex-direction:column; gap:2px; }
-.li-name{ height:4px; width:50px; background:#1A1018; border-radius:2px; opacity:0.6; }
-.li-role{ height:3px; width:36px; background:#888; border-radius:2px; opacity:0.4; }
-.li-body{ display:flex; flex-direction:column; gap:3px; margin-bottom:6px; }
-.li-line{ height:3px; background:#333; border-radius:2px; opacity:0.12; }
-.li-line.w90{ width:90%; }.li-line.w75{ width:75%; }.li-line.w85{ width:85%; }.li-line.w60{ width:60%; }.li-line.w80{ width:80%; }
-.li-tag-row{ display:flex; gap:3px; margin-bottom:5px; }
-.li-tag{ font-size:6px; color:#E8157A; background:rgba(0,119,182,0.08); border-radius:10px; padding:2px 5px; font-weight:600; }
-.li-reactions{ display:flex; gap:8px; }
-.li-react{ font-size:7px; color:#555; }
-
-/* Mini motion poster */
-.mini-poster{ width:100%; aspect-ratio:9/14; position:relative; overflow:hidden; background:#0e0e1a; border-radius:6px; display:flex; flex-direction:column; align-items:center; justify-content:center; }
-.mp-bg{ position:absolute; inset:0; background:radial-gradient(ellipse at 20% 30%,rgba(0,119,182,0.35) 0%,transparent 55%), radial-gradient(ellipse at 80% 20%,rgba(72,202,228,0.3) 0%,transparent 50%), radial-gradient(ellipse at 50% 70%,rgba(0,180,216,0.2) 0%,transparent 50%); }
-.mp-bar{ position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(90deg,#03045E,#0077B6,#00B4D8,#48CAE4,#03045E); background-size:200% 100%; animation:mpBar 2s linear infinite; }
-@keyframes mpBar{ from{background-position:0%}to{background-position:200%} }
-.mp-letters{ position:relative; z-index:2; display:flex; gap:1px; }
-.mp-letter{ font-family:var(--fd); font-size:28px; font-weight:900; background-clip:text; -webkit-background-clip:text; color:transparent; animation:mpShift 3s ease-in-out infinite alternate; }
-#mpM{ background-image:linear-gradient(135deg,#03045E,#0077B6,#48CAE4); }
-#mpP{ background-image:linear-gradient(135deg,#0077B6,#00B4D8,#90E0EF); animation-delay:0.4s; }
-#mpL{ background-image:linear-gradient(135deg,#48CAE4,#ADE8F4,#CAF0F8); animation-delay:0.8s; }
-@keyframes mpShift{ 0%{background-position:0% 0%;filter:brightness(0.9)}100%{background-position:100% 100%;filter:brightness(1.2)} }
-.mp-words{ position:absolute; inset:0; z-index:1; pointer-events:none; }
-.mp-float{ position:absolute; font-size:5px; font-family:var(--fm); letter-spacing:0.1em; text-transform:uppercase; animation:mpFloat 3s ease-in-out infinite; opacity:0; }
-@keyframes mpFloat{ 0%,100%{opacity:0;transform:translateY(4px)}40%,60%{opacity:0.7;transform:translateY(0)} }
-.mp-tag{ position:absolute; bottom:8%; left:0; right:0; text-align:center; font-family:var(--fd); font-size:6px; font-weight:700; font-style:italic; color:rgba(255,255,255,0.7); z-index:3; }
-
-/* RESPONSIVE */
-@media(max-width:1024px){.flip-grid{grid-template-columns:1fr 1fr}.design-grid{grid-template-columns:1fr 1fr}.blog-grid-wall{grid-template-columns:1fr 1fr}.ds-inner{grid-template-columns:1fr;gap:3rem}.cs-body{grid-template-columns:1fr;gap:2rem}}
-@media(max-width:900px){.nav-links{display:none}.hamburger{display:flex}.hero-inner{grid-template-columns:1fr;gap:2.5rem}.about-inner{grid-template-columns:1fr;gap:3rem}.contact-inner{grid-template-columns:1fr;gap:3rem}.footer-in{grid-template-columns:1fr;text-align:center}.footer-right{text-align:center}.footer-links{justify-content:center}}
-@media(max-width:700px){.flip-grid{grid-template-columns:1fr}.design-grid{grid-template-columns:1fr}.blog-grid-wall{grid-template-columns:1fr}.cs-flip-row{grid-template-columns:1fr}.parchment-actions{flex-direction:column}}
-@media(max-width:480px){.section{padding:70px 5%}.hero-h1{font-size:2.8rem}.modal-box{padding:1.75rem}}
+/* ============ RESPONSIVE ============ */
+@media(max-width:900px){
+  .who-inner{grid-template-columns:1fr;gap:2.5rem}
+  .tiles-grid{grid-template-columns:repeat(2,1fr)}
+  .design-grid{grid-template-columns:repeat(2,1fr)}
+  .blog-grid{grid-template-columns:repeat(2,1fr)}
+  .contact-inner{grid-template-columns:1fr;gap:3rem}
+  .footer-inner{grid-template-columns:1fr;text-align:center}
+  .footer-right{text-align:center}
+  .footer-links{justify-content:center}
+}
+@media(max-width:600px){
+  section{padding:4.5rem 5%}
+  .tiles-grid{grid-template-columns:repeat(2,1fr);gap:0.65rem}
+  .design-grid{grid-template-columns:1fr}
+  .blog-grid{grid-template-columns:1fr}
+  .orbit-system{min-height:420px;max-width:360px}
+  .orbit-ring:nth-child(1){width:220px;height:220px;margin-top:-110px;margin-left:-110px}
+  .orbit-ring:nth-child(2){width:300px;height:300px;margin-top:-150px;margin-left:-150px}
+  .orbit-ring:nth-child(3){width:360px;height:360px;margin-top:-180px;margin-left:-180px}
+  .ring-carrier.r1{width:220px;height:220px;margin-top:-110px;margin-left:-110px}
+  .ring-carrier.r2{width:300px;height:300px;margin-top:-150px;margin-left:-150px}
+  .ring-carrier.r3{width:360px;height:360px;margin-top:-180px;margin-left:-180px}
+  .tw-box{width:210px;height:210px}
+  .tw-text{font-size:0.72rem}
+}
+@media(max-width:420px){
+  .tiles-grid{grid-template-columns:1fr 1fr;gap:0.5rem}
+  .tile{padding:0.85rem 0.75rem}
+  .tile-name{font-size:0.72rem}
+}
 </style>
 </head>
 <body>
 
-<nav id="nav">
-  <a href="#home" class="nav-logo">Million<em>Phrases</em> Labs</a>
+<!-- NAV -->
+<nav id="mainNav">
+  <a href="#hero" class="nav-logo">Million<span>Phrases</span> Labs</a>
   <ul class="nav-links">
-    <li><a href="#home">Home</a></li>
-    <li><a href="#services">What We Do</a></li>
-    <li><a href="#portfolio">Portfolio</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#contact" class="nav-cta">Let's Talk</a></li>
+    <li><a href="#hero">Home</a></li>
+    <li><a href="#who">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#portfolio">Work</a></li>
+    <li><a href="#contact">Contact</a></li>
   </ul>
   <button class="hamburger" id="hbg" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
 
 <div class="mob-nav" id="mobnav">
   <button class="mob-close" id="mobclose">&#x2715;</button>
-  <a href="#home" onclick="closeMob()">Home</a>
-  <a href="#services" onclick="closeMob()">What We Do</a>
-  <a href="#portfolio" onclick="closeMob()">Portfolio</a>
-  <a href="#about" onclick="closeMob()">About</a>
-  <a href="#contact" onclick="closeMob()">Let's Talk</a>
+  <a href="#hero" onclick="closeMob()">Home</a>
+  <a href="#who" onclick="closeMob()">About</a>
+  <a href="#services" onclick="closeMob()">Services</a>
+  <a href="#portfolio" onclick="closeMob()">Work</a>
+  <a href="#contact" onclick="closeMob()">Contact</a>
 </div>
 
-<!-- HERO -->
-<section id="home">
-  <div class="hero-inner">
-    <div>
-      <div class="hero-tag r"><span></span> Digital Presence Studio &middot; India &amp; Global</div>
-      <h1 class="hero-h1 r d1">Words.<br><em class="it">Websites.</em><br><span class="mg">Visuals.</span></h1>
-      <p class="hero-p r d2">We don't just build websites. We build the whole ecosystem &mdash; your LinkedIn, r&eacute;sum&eacute;, blog, and brand, all speaking the same language.</p>
-      <div class="hero-btns r d3">
-        <a href="#services" class="btn-p">Explore What We Do &rarr;</a>
-        <a href="#portfolio" class="btn-s">View Our Work</a>
+<!-- ============ HERO ============ -->
+<section id="hero">
+  <!-- mathematical deco circles -->
+  <div class="deco" style="width:200px;height:200px;border:1px solid rgba(232,95,160,0.13);top:8%;left:-70px"></div>
+  <div class="deco" style="width:100px;height:100px;border:1px solid rgba(139,61,191,0.17);top:12%;left:-15px"></div>
+  <div class="deco" style="width:60px;height:60px;background:rgba(232,95,160,0.07);top:18%;left:8%"></div>
+  <div class="deco" style="width:160px;height:160px;border:1px solid rgba(232,95,160,0.11);bottom:10%;right:-50px"></div>
+  <div class="deco" style="width:80px;height:80px;border:1px solid rgba(139,61,191,0.16);bottom:15%;right:5%"></div>
+  <div class="deco" style="width:40px;height:40px;background:rgba(139,61,191,0.08);bottom:22%;right:12%"></div>
+
+  <div class="wrap" style="display:flex;flex-direction:column;align-items:center;text-align:center">
+    <div class="hero-tag r"><span></span> Digital Presence Studio &middot; India &amp; Global</div>
+
+    <div class="orbit-system r d1">
+      <!-- Static orbit rings -->
+      <div class="orbit-ring"></div>
+      <div class="orbit-ring"></div>
+      <div class="orbit-ring"></div>
+
+      <!-- Ring 1 carriers -->
+      <div class="ring-carrier r1">
+        <div class="dp t"><span class="odot pink">&lt;html&gt;</span></div>
+        <div class="dp r"><span class="odot amber">SEO ✦</span></div>
+        <div class="dp b"><span class="odot purple">design/</span></div>
+        <div class="dp l"><span class="odot pink">blog</span></div>
+      </div>
+      <!-- Ring 2 carriers -->
+      <div class="ring-carrier r2">
+        <div class="dp t"><span class="odot purple">git push</span></div>
+        <div class="dp r"><span class="odot amber">✿ brand</span></div>
+        <div class="dp b"><span class="odot pink">@instagram</span></div>
+        <div class="dp l"><span class="odot purple">substack</span></div>
+      </div>
+      <!-- Ring 3 carriers -->
+      <div class="ring-carrier r3">
+        <div class="dp t"><span class="odot amber">motion ✦</span></div>
+        <div class="dp r"><span class="odot pink">words</span></div>
+        <div class="dp b"><span class="odot amber">github</span></div>
+        <div class="dp l"><span class="odot purple">content</span></div>
+      </div>
+
+      <!-- TYPEWRITER BOX -->
+      <div class="tw-box">
+        <div class="tw-label">// million phrases labs</div>
+        <div class="tw-text" id="twText"><span class="tw-cursor"></span></div>
+        <div class="tw-progress"><div class="tw-bar" id="twBar"></div></div>
       </div>
     </div>
-    <div class="puzzle-teaser glass r d2">
-      <div class="puzzle-label">// solve the puzzle</div>
-      <div class="puzzle-headline">Can you crack <em>this?</em></div>
-      <p class="puzzle-sub">It's not a riddle. It's simpler &mdash; and harder &mdash; than that. Write to us honestly, and we'll give you something real in return.</p>
-      <div class="prize-badge">&#127873; 2 FREE SEO-friendly blog articles await</div>
-      <button class="open-puzzle-btn" onclick="openPuzzle()">Open the Puzzle &rarr;</button>
+
+    <div class="btn-row r d2" style="justify-content:center">
+      <a href="#services" class="btn">What We Do &rarr;</a>
+      <a href="#portfolio" class="btn-ghost">See Our Work</a>
     </div>
   </div>
 </section>
 
-<!-- PUZZLE MODAL -->
-<div class="modal-overlay" id="puzzleModal">
-  <div class="modal-box">
-    <button class="modal-close" onclick="closePuzzle()">&#x2715;</button>
-    <div class="modal-title">Who are <em>you,</em> really?</div>
-    <p class="modal-sub">No tricks. No forms. Just write. Tell us who you are, what you want to do, why you're here. Or journal. Or vent. We're listening &mdash; and we'll send you 2 free SEO blog articles just for showing up honestly.</p>
-    <div class="journal-fields">
-      <div class="journal-field"><label>Your name</label><input type="text" class="letter-box single" id="j-name" placeholder="What do people call you?"></div>
-      <div class="journal-field"><label>Who are you?</label><textarea class="letter-box" id="j-who" placeholder="A founder, a dreamer, a professional in transition... write it in your own words."></textarea></div>
-      <div class="journal-field"><label>What do you want to do?</label><textarea class="letter-box" id="j-what" placeholder="Build something, change something, become something..."></textarea></div>
-      <div class="journal-field"><label>Why are you here today?</label><textarea class="letter-box" id="j-why" placeholder="Bored? Curious? Looking for help? Just write."></textarea></div>
-    </div>
-    <button class="send-btn" onclick="sendJournal()">Send My Words &rarr;</button>
-    <div class="parchment-reveal" id="parchmentReveal">
-      <div class="parchment-scroll">
-        <p class="parchment-text" id="parchmentText"></p>
-        <p class="parchment-name" id="parchmentName"></p>
+<!-- ============ WHO WE ARE ============ -->
+<section id="who">
+  <div class="deco" style="width:220px;height:220px;border:1px solid rgba(232,95,160,0.1);top:5%;right:-80px"></div>
+  <div class="deco" style="width:110px;height:110px;border:1px solid rgba(139,61,191,0.13);top:10%;right:-15px"></div>
+  <div class="deco" style="width:160px;height:160px;background:radial-gradient(circle,rgba(232,95,160,0.07),transparent 70%);bottom:8%;left:-40px"></div>
+
+  <div class="wrap">
+    <div class="who-inner">
+      <div>
+        <p class="eyebrow r">Who We Are</p>
+        <h2 class="sec-title r d1">The Million<br><em>Phrases Labs</em></h2>
+        <p class="sec-body r d2">A creative initiative born from a real need. A genuinely helpful platform where people with ideas but not the bandwidth, vision but not the technical know-how, can get real, honest, expert help.</p>
+        <p class="sec-body r d2">Not a consultancy. Not an agency that disappears after handing you a PDF. More like a <strong>real friend</strong> who happens to know web design, SEO, content, GitHub Pages, Substack, motion design &mdash; and more.</p>
+        <p class="sec-body r d2">You have a broken website. Dormant socials. No blogs. You know you need to show up online but the inertia is real. <strong>That&rsquo;s exactly where we come in.</strong></p>
+        <div class="who-pills r d3">
+          <span class="pill pink">Digital Marketing</span>
+          <span class="pill purple">Art &amp; Creatives</span>
+          <span class="pill amber">Technical Education</span>
+          <span class="pill pink">Genuine Help</span>
+          <span class="pill purple">No Overwhelm</span>
+          <span class="pill amber">Affordable</span>
+        </div>
+        <div class="btn-row r d3">
+          <a href="#contact" class="btn">Work With Us &rarr;</a>
+        </div>
       </div>
-      <div class="parchment-actions">
-        <button class="wa-btn" id="waBtn">&#128241; Send via WhatsApp</button>
-        <div class="ig-note">&#128247; Screenshot &amp; DM us<br><strong>@million_phraseslabs</strong> for your 2 free articles</div>
+      <div class="r d2">
+        <div class="glass-card founder-card">
+          <img src="https://raw.githubusercontent.com/EturiVarsha/MPL/main/IMG_20260117_090541.jpg"
+               alt="Varsha Eturi — Founder, Million Phrases Labs"
+               class="founder-photo"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="founder-photo-placeholder" style="display:none">Varsha Eturi</div>
+          <div class="founder-badge glass-card" style="margin-top:1rem;padding:1rem 1.2rem">
+            <strong>Varsha Eturi</strong>
+            <span>Founder &middot; Applied Linguist &middot; UGC JRF &middot; IIT Bombay</span>
+          </div>
+        </div>
+        <div class="who-stats">
+          <div class="who-stat glass-card">
+            <div class="who-stat-num">18+</div>
+            <div class="who-stat-label">Services</div>
+          </div>
+          <div class="who-stat glass-card">
+            <div class="who-stat-num">11</div>
+            <div class="who-stat-label">Projects Built</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-</div>
+</section>
 
-<!-- MARQUEE -->
-<div class="marquee" aria-hidden="true">
-  <div class="marquee-track">
-    <div class="marquee-inner"><span class="m-item">Blog Content</span><span class="m-item">LinkedIn Profiles</span><span class="m-item">Personal Websites</span><span class="m-item">R&eacute;sum&eacute; Writing</span><span class="m-item">Brand Visuals</span><span class="m-item">Substack</span><span class="m-item">GitHub Pages</span><span class="m-item">SEO Content</span><span class="m-item">Digital Presence</span><span class="m-item">Design Strategy</span><span class="m-item">Content Pipelines</span></div>
-    <div class="marquee-inner" aria-hidden="true"><span class="m-item">Blog Content</span><span class="m-item">LinkedIn Profiles</span><span class="m-item">Personal Websites</span><span class="m-item">R&eacute;sum&eacute; Writing</span><span class="m-item">Brand Visuals</span><span class="m-item">Substack</span><span class="m-item">GitHub Pages</span><span class="m-item">SEO Content</span><span class="m-item">Digital Presence</span><span class="m-item">Design Strategy</span><span class="m-item">Content Pipelines</span></div>
-  </div>
-</div>
+<!-- ============ SERVICES ============ -->
+<section id="services">
+  <div class="deco" style="width:240px;height:240px;border:1px solid rgba(232,95,160,0.1);top:3%;left:-90px;border-radius:50%"></div>
+  <div class="deco" style="width:120px;height:120px;border:1px solid rgba(139,61,191,0.13);top:7%;left:-20px;border-radius:50%"></div>
+  <div class="deco" style="width:80px;height:80px;background:rgba(139,61,191,0.06);bottom:8%;right:5%;border-radius:50%"></div>
+  <div class="deco" style="width:180px;height:180px;border:1px solid rgba(200,134,10,0.1);bottom:4%;right:-60px;border-radius:50%"></div>
 
-<!-- WHAT WE DO -->
-<section id="services" class="section">
   <div class="wrap">
     <p class="eyebrow r">What We Do</p>
-    <h2 class="sec-title r d1">One voice.<br><em style="font-style:italic;color:var(--mg)">Everywhere.</em></h2>
-    <p class="sec-sub r d2">Flip each card to discover what's inside. Your digital presence is an ecosystem &mdash; we build all of it.</p>
-  </div>
-  <div class="flip-grid">
-    <div class="flip-wrap r" onclick="this.classList.toggle('flipped');playDing()">
-      <div class="flip-card">
-        <div class="flip-front"><div class="flip-ico">&#127760;</div><div class="flip-title">Websites</div><div class="flip-hint">flip me &rarr;</div></div>
-        <div class="flip-back" style="background:linear-gradient(135deg,#03045E,#0077B6)"><div class="flip-back-title">Personal Websites &amp; Landing Pages</div><div class="flip-back-text">Clean, elegant, hosted on GitHub Pages. Websites you truly own &mdash; no subscriptions, no lock-in, no technical overwhelm.</div><div class="flip-tags"><span class="flip-tag">Personal Sites</span><span class="flip-tag">Landing Pages</span><span class="flip-tag">GitHub Pages</span></div></div>
-      </div>
-    </div>
-    <div class="flip-wrap r d1" onclick="this.classList.toggle('flipped');playDing()">
-      <div class="flip-card">
-        <div class="flip-front"><div class="flip-ico">&#9999;&#65039;</div><div class="flip-title">Words</div><div class="flip-hint">flip me &rarr;</div></div>
-        <div class="flip-back" style="background:linear-gradient(135deg,#0096C7,#48CAE4)"><div class="flip-back-title">Content That Builds Authority</div><div class="flip-back-text">Blogs, LinkedIn profiles, r&eacute;sum&eacute;s &mdash; thoughtful, human, SEO-ready writing that earns trust and communicates real value.</div><div class="flip-tags"><span class="flip-tag">Blog Content</span><span class="flip-tag">LinkedIn</span><span class="flip-tag">R&eacute;sum&eacute; / CV</span></div></div>
-      </div>
-    </div>
-    <div class="flip-wrap r d2" onclick="this.classList.toggle('flipped');playDing()">
-      <div class="flip-card">
-        <div class="flip-front"><div class="flip-ico">&#127912;</div><div class="flip-title">Visuals</div><div class="flip-hint">flip me &rarr;</div></div>
-        <div class="flip-back" style="background:linear-gradient(135deg,#023E8A,#0077B6)"><div class="flip-back-title">Design That Looks Like You</div><div class="flip-back-text">Banners, thumbnails, brand assets &mdash; cohesive and artistic. Designed to feel like you, not a template from a stock site.</div><div class="flip-tags"><span class="flip-tag">Banners</span><span class="flip-tag">Thumbnails</span><span class="flip-tag">Brand Assets</span></div></div>
-      </div>
-    </div>
+    <h2 class="sec-title r d1">One voice.<br><em>Everywhere.</em></h2>
+    <p class="sec-body r d2">Everything you need to build a real digital presence. Hover each tile to explore. No subscriptions you can&rsquo;t handle. No technical overwhelm.</p>
+    <div class="tiles-grid" id="tilesGrid"></div>
   </div>
 </section>
 
-<!-- DESIGN & CONTENT STRATEGY -->
-<section id="design-strategy" class="section">
-  <div class="wrap">
+<!-- ============ PORTFOLIO ============ -->
+<section id="portfolio">
+  <div class="deco" style="width:200px;height:200px;background:radial-gradient(circle,rgba(139,61,191,0.07),transparent 70%);top:5%;right:-50px"></div>
+  <div class="deco" style="width:130px;height:130px;border:1px solid rgba(232,95,160,0.1);bottom:8%;left:-40px;border-radius:50%"></div>
 
-    <p class="eyebrow r">Design + Content Strategy</p>
-    <h2 class="sec-title r d1">Design doesn&#8217;t stop at the <em style="font-style:italic;color:var(--mg)">website.</em></h2>
-    <p class="sec-sub r d2">A good design spills over everywhere &#8212; LinkedIn posts, motion posters, ad pieces, thumbnails. And content strategy starts the moment your site goes live. We manage it all.</p>
-
-    <!-- TOP: flip tiles grid -->
-    <div class="ds-canvas glass r d2">
-
-      <div class="ds-flip-wrap" onclick="this.classList.toggle('ds-flipped')">
-        <div class="ds-flip-card">
-          <div class="ds-flip-front">
-            <div class="mock-browser">
-              <div class="mock-bar"><span class="mock-dot r"></span><span class="mock-dot y"></span><span class="mock-dot g"></span><div class="mock-url">millionphrases.com</div></div>
-              <div class="mock-body">
-                <div class="mock-nav-strip"></div>
-                <div class="mock-hero-block"><div class="mock-h1"></div><div class="mock-h2"></div><div class="mock-btn"></div></div>
-                <div class="mock-cards"><div class="mock-card"></div><div class="mock-card"></div><div class="mock-card"></div></div>
-              </div>
-            </div>
-            <div class="ds-tile-label" style="margin-top:6px;font-size:0.55rem">Website Layout &#8212; flip &rarr;</div>
-          </div>
-          <div class="ds-flip-back" style="background:linear-gradient(135deg,#03045E,#0077B6)">
-            <div style="font-size:1.4rem;margin-bottom:0.4rem">&#128421;</div>
-            <div style="font-family:var(--fd);font-size:0.85rem;font-weight:700;color:#fff;margin-bottom:0.4rem">GitHub Pages</div>
-            <div style="font-size:0.65rem;color:rgba(202,240,248,0.88);line-height:1.5;text-align:center">Clean, fast, free hosting. No subscriptions. No lock-in. Yours forever.</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="ds-flip-wrap" onclick="this.classList.toggle('ds-flipped')">
-        <div class="ds-flip-card">
-          <div class="ds-flip-front">
-            <div class="design-sys">
-              <div class="ds-row"><div class="ds-swatch" style="background:#03045E"></div><div class="ds-swatch" style="background:#0077B6"></div><div class="ds-swatch" style="background:#00B4D8"></div><div class="ds-swatch" style="background:#90E0EF"></div></div>
-              <div class="ds-type-row"><span class="ds-t1">Aa</span><div class="ds-type-lines"><div class="ds-tline w80"></div><div class="ds-tline w60"></div><div class="ds-tline w70"></div></div></div>
-              <div class="ds-comp-row"><div class="ds-btn-mock"></div><div class="ds-tag-mock"></div><div class="ds-icon-mock">&#10022;</div></div>
-            </div>
-            <div class="ds-tile-label" style="margin-top:6px;font-size:0.55rem">Design System &#8212; flip &rarr;</div>
-          </div>
-          <div class="ds-flip-back" style="background:linear-gradient(135deg,#0096C7,#48CAE4)">
-            <div style="font-size:1.4rem;margin-bottom:0.4rem">&#127912;</div>
-            <div style="font-family:var(--fd);font-size:0.85rem;font-weight:700;color:#fff;margin-bottom:0.4rem">Brand Consistency</div>
-            <div style="font-size:0.65rem;color:rgba(255,255,255,0.9);line-height:1.5;text-align:center">Colors, fonts, spacing &#8212; locked in once, applied everywhere.</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="ds-flip-wrap" onclick="this.classList.toggle('ds-flipped')">
-        <div class="ds-flip-card">
-          <div class="ds-flip-front">
-            <div class="li-post">
-              <div class="li-header"><div class="li-avatar"></div><div class="li-meta"><div class="li-name"></div><div class="li-role"></div></div></div>
-              <div class="li-body"><div class="li-line w90"></div><div class="li-line w75"></div><div class="li-line w85"></div><div class="li-line w60"></div></div>
-              <div class="li-tag-row"><div class="li-tag">#branding</div><div class="li-tag">#content</div></div>
-              <div class="li-reactions"><span class="li-react">&#128077; 48</span><span class="li-react">&#128172; 12</span></div>
-            </div>
-            <div class="ds-tile-label" style="margin-top:6px;font-size:0.55rem">LinkedIn Posts &#8212; flip &rarr;</div>
-          </div>
-          <div class="ds-flip-back" style="background:linear-gradient(135deg,#023E8A,#0077B6)">
-            <div style="font-size:1.4rem;margin-bottom:0.4rem">&#128188;</div>
-            <div style="font-family:var(--fd);font-size:0.85rem;font-weight:700;color:#fff;margin-bottom:0.4rem">Profile + Posts</div>
-            <div style="font-size:0.65rem;color:rgba(202,240,248,0.88);line-height:1.5;text-align:center">Headline, banner, posts &#8212; your profile reads like a value proposition.</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="ds-flip-wrap" onclick="this.classList.toggle('ds-flipped')">
-        <div class="ds-flip-card">
-          <div class="ds-flip-front">
-            <div class="mini-poster" id="miniPoster">
-              <div class="mp-bg"></div>
-              <div class="mp-bar"></div>
-              <div class="mp-letters">
-                <span class="mp-letter" id="mpM">M</span>
-                <span class="mp-letter" id="mpP">P</span>
-                <span class="mp-letter" id="mpL">L</span>
-              </div>
-              <div class="mp-words" id="mpWords"></div>
-              <div class="mp-tag">Beyond Websites.</div>
-            </div>
-            <div class="ds-tile-label" style="margin-top:6px;font-size:0.55rem">Motion Posters &#8212; flip &rarr;</div>
-          </div>
-          <div class="ds-flip-back" style="background:linear-gradient(135deg,#03045E,#00B4D8)">
-            <div style="font-size:1.4rem;margin-bottom:0.4rem">&#127916;</div>
-            <div style="font-family:var(--fd);font-size:0.85rem;font-weight:700;color:#fff;margin-bottom:0.4rem">Motion Design</div>
-            <div style="font-size:0.65rem;color:rgba(202,240,248,0.88);line-height:1.5;text-align:center">Animated posters, ad pieces, thumbnails &#8212; designed to stop the scroll.</div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- BOTTOM: content strategy two columns -->
-    <div class="cs-body" style="margin-top:3rem">
-      <div class="cs-text r d1">
-        <p class="eyebrow" style="margin-bottom:0.75rem">Content Strategy</p>
-        <p>Content strategy starts the moment your website goes live. Regular posting across platforms is how your site crawls, how Google finds you, how your audience grows.</p>
-        <p>From <strong>what headline goes in your hero section</strong> to <strong>what kind of reel gets traction on Instagram</strong> &#8212; we strategize everything. SEO, ads, content calendars, social media &#8212; all of it.</p>
-        <p>We will be <strong>brutally honest with you</strong>. We push you to come up with ideas that don&#8217;t just build your brand &#8212; they change how you think.</p>
-        <a href="#contact" class="btn-p" style="margin-top:1rem;display:inline-flex">Let&#8217;s Build Your Strategy &rarr;</a>
-      </div>
-      <div class="cs-flip-row">
-        <div class="cs-flip-wrap" onclick="this.classList.toggle('flipped');playDing()">
-          <div class="cs-flip-card">
-            <div class="cs-front"><div class="cs-front-ico">&#128196;</div><div class="cs-front-title">Resume &amp; LinkedIn</div><div class="cs-front-hint">flip &rarr;</div></div>
-            <div class="cs-back"><div class="cs-back-title">Professional Content</div><div class="cs-back-text">Stronger headlines, better summaries, clearer positioning. Your profile should read like a value proposition.</div></div>
-          </div>
-        </div>
-        <div class="cs-flip-wrap" onclick="this.classList.toggle('flipped');playDing()">
-          <div class="cs-flip-card">
-            <div class="cs-front"><div class="cs-front-ico">&#128202;</div><div class="cs-front-title">SEO &amp; Ads</div><div class="cs-front-hint">flip &rarr;</div></div>
-            <div class="cs-back"><div class="cs-back-title">Growth Strategy</div><div class="cs-back-text">From Google crawling to paid campaigns &#8212; we handle the technical and creative side of getting you found.</div></div>
-          </div>
-        </div>
-        <div class="cs-flip-wrap" onclick="this.classList.toggle('flipped');playDing()">
-          <div class="cs-flip-card">
-            <div class="cs-front"><div class="cs-front-ico">&#128241;</div><div class="cs-front-title">Social Media</div><div class="cs-front-hint">flip &rarr;</div></div>
-            <div class="cs-back"><div class="cs-back-title">Platform Strategy</div><div class="cs-back-text">The right reel, the right post, the right time. Every piece builds toward something bigger.</div></div>
-          </div>
-        </div>
-        <div class="cs-flip-wrap" onclick="this.classList.toggle('flipped');playDing()">
-          <div class="cs-flip-card">
-            <div class="cs-front"><div class="cs-front-ico">&#9999;&#65039;</div><div class="cs-front-title">Blog &amp; Substack</div><div class="cs-front-hint">flip &rarr;</div></div>
-            <div class="cs-back"><div class="cs-back-title">Long-form Authority</div><div class="cs-back-text">SEO-ready articles that build trust and grow your audience one honest idea at a time.</div></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- BALLOON GAME -->
-<section id="balloon-game" class="section" style="text-align:center">
-  <div class="wrap">
-    <p class="eyebrow r" style="justify-content:center">Quick Break</p>
-    <h2 class="sec-title r d1" style="text-align:center">Catch the <em style="font-style:italic;color:var(--mg)">balloons!</em></h2>
-    <p class="sec-sub r d2" style="margin:0 auto 2rem;text-align:center">30 seconds. Tap every balloon you can. Your score tells us something about you.</p>
-    <div class="game-box r d2">
-      <div class="game-header"><div class="game-title">Balloon Pop &#127880;</div><div class="game-sub">Pop as many as you can before time runs out!</div></div>
-      <div class="game-meta">
-        <div><div class="game-stat-label">Score</div><div class="game-stat-val" id="gScore">0</div></div>
-        <div><div class="game-stat-label">Time</div><div class="game-stat-val" id="gTime">30</div></div>
-      </div>
-      <div class="game-arena" id="gameArena"></div>
-      <div class="game-result" id="gameResult">
-        <div class="result-score" id="resultScore">0</div>
-        <div class="result-msg" id="resultMsg"></div>
-        <div class="result-cta" id="resultCta"></div>
-        <button class="start-game-btn" style="margin-top:1.5rem" onclick="resetGame()">Play Again &rarr;</button>
-      </div>
-      <div class="game-footer" id="gameFooter"><button class="start-game-btn" onclick="startGame()">Start Game &rarr;</button></div>
-    </div>
-  </div>
-</section>
-
-<!-- PORTFOLIO -->
-<section id="portfolio" class="section">
   <div class="wrap">
     <p class="eyebrow r">Portfolio</p>
-    <h2 class="sec-title r d1">Things We've <em style="font-style:italic;color:var(--mg)">Built.</em></h2>
-    <p class="sec-sub r d2">Two walls. One for design, one for content. Everything intentional.</p>
+    <h2 class="sec-title r d1">Things We&rsquo;ve<br><em>Built.</em></h2>
+    <p class="sec-body r d2">Two walls. One for design, one for writing. Everything intentional.</p>
     <div class="port-tabs r d2">
-      <button class="port-tab active" onclick="switchTab('design',this)">Design Wall</button>
-      <button class="port-tab" onclick="switchTab('content',this)">Content Wall</button>
+      <button class="ptab active" onclick="switchTab('sites',this)">Websites</button>
+      <button class="ptab" onclick="switchTab('blogs',this)">Blog &amp; Writing</button>
     </div>
-    <div class="port-section active" id="tab-design">
+    <div class="port-panel active" id="tab-sites">
       <div class="design-grid" id="designGrid"></div>
     </div>
-    <div class="port-section" id="tab-content">
-      <div class="blog-grid-wall" id="blogWall">
-        <div class="blog-modal-card" onclick="openBlogModal(BLOGS[0])">
-          <div class="blog-thumb-wall" style="background:linear-gradient(135deg,#03045E,#0077B6)">Million Phrases Labs</div>
-          <div class="blog-body-wall"><div class="blog-date-wall">About MPL &middot; 2025</div><div class="blog-title-wall">Million Phrases Labs</div><div class="blog-excerpt-wall">The story behind Million Phrases Labs and why we exist.</div></div>
-        </div>
-        <div class="blog-modal-card" onclick="openBlogModal(BLOGS[1])">
-          <div class="blog-thumb-wall" style="background:linear-gradient(135deg,#0077B6,#48CAE4)">I Feel Less Confident</div>
-          <div class="blog-body-wall"><div class="blog-date-wall">Personal Essay &middot; 2025</div><div class="blog-title-wall">I Feel Less Confident Sometimes</div><div class="blog-excerpt-wall">A deeply honest essay about confidence and the quiet courage it takes to keep going.</div></div>
-        </div>
-        <div class="blog-modal-card" onclick="openBlogModal(BLOGS[2])">
-          <div class="blog-thumb-wall" style="background:linear-gradient(135deg,#00B4D8,#90E0EF)">Content 2026</div>
-          <div class="blog-body-wall"><div class="blog-date-wall">Digital Trends &middot; 2026</div><div class="blog-title-wall">Content Consumption 2026: India</div><div class="blog-excerpt-wall">How Indian audiences are consuming content differently in 2026.</div></div>
-        </div>
-        <div class="blog-modal-card" onclick="openBlogModal(BLOGS[3])">
-          <div class="blog-thumb-wall" style="background:linear-gradient(135deg,#48CAE4,#ADE8F4)">Gadget Trends 2026</div>
-          <div class="blog-body-wall"><div class="blog-date-wall">Tech and Culture &middot; 2026</div><div class="blog-title-wall">Gadget Trends 2026: Where India Is Headed</div><div class="blog-excerpt-wall">From affordable AI devices to local hardware shaping India.</div></div>
-        </div>
-        <div class="blog-modal-card" onclick="openBlogModal(BLOGS[4])">
-          <div class="blog-thumb-wall" style="background:linear-gradient(135deg,#023E8A,#0096C7)">Fashion 2026</div>
-          <div class="blog-body-wall"><div class="blog-date-wall">Culture and Style &middot; 2026</div><div class="blog-title-wall">Fashion Trends 2026: India</div><div class="blog-excerpt-wall">Fashion in India is refusing to be categorized and it is having a moment.</div></div>
-        </div>
-        <div class="blog-modal-card" onclick="openBlogModal(BLOGS[5])">
-          <div class="blog-thumb-wall" style="background:linear-gradient(135deg,#0077B6,#CAF0F8)">Consumerism 2026</div>
-          <div class="blog-body-wall"><div class="blog-date-wall">Society and Economy &middot; 2026</div><div class="blog-title-wall">Consumerism in 2026: The New Rules</div><div class="blog-excerpt-wall">How the rules of buying and deciding have changed for good.</div></div>
-        </div>
-      </div>
-      <div style="text-align:center;margin-top:2.5rem">
-        <a href="https://varshaeturi.substack.com/" target="_blank" rel="noopener" class="btn-p">Read All on Substack &rarr;</a>
+    <div class="port-panel" id="tab-blogs">
+      <div class="blog-grid" id="blogGrid"></div>
+      <div class="substack-cta">
+        <a href="https://varshaeturi.substack.com/" target="_blank" rel="noopener" class="btn">Read All on Substack &rarr;</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- BLOG MODAL -->
-<div class="blog-modal-overlay" id="blogModal">
-  <div class="blog-modal-inner">
-    <button class="blog-modal-close" onclick="closeBlogModal()">&#x2715;</button>
-    <div class="blog-modal-cat" id="bm-cat"></div>
-    <div class="blog-modal-title" id="bm-title"></div>
-    <div class="blog-modal-date" id="bm-date"></div>
-    <div class="blog-modal-body" id="bm-body"></div>
-    <a href="#" target="_blank" rel="noopener" class="blog-modal-cta" id="bm-link">Read Full Article on Substack &rarr;</a>
-  </div>
-</div>
+<!-- ============ CONTACT ============ -->
+<section id="contact">
+  <div class="deco" style="width:180px;height:180px;border:1px solid rgba(232,95,160,0.12);top:8%;right:-60px;border-radius:50%"></div>
+  <div class="deco" style="width:90px;height:90px;border:1px solid rgba(139,61,191,0.15);top:13%;right:5%;border-radius:50%"></div>
+  <div class="deco" style="width:120px;height:120px;background:radial-gradient(circle,rgba(200,134,10,0.07),transparent 70%);bottom:10%;left:-20px;border-radius:50%"></div>
 
-<!-- ABOUT -->
-<section id="about" class="section">
-  <div class="wrap">
-    <div class="about-inner">
-      <div class="about-visual r">
-        <div class="about-frame">
-          <img src="https://raw.githubusercontent.com/EturiVarsha/MPL/main/IMG_20260117_090541.jpg" alt="Varsha Eturi" class="about-photo" onerror="this.style.display='none'">
-        </div>
-        <div class="about-badge">
-          <strong>Applied Linguistics</strong>
-          <span>UGC JRF &middot; IIT Bombay</span>
-        </div>
-      </div>
-      <div>
-        <p class="eyebrow r">Meet the Founder</p>
-        <h2 class="sec-title r d1">Varsha Eturi</h2>
-        <p class="about-quote r d2">"I believe words can build worlds."</p>
-        <div class="r d2">
-          <p class="about-body">Over several years, I've worked with multiple startups and thousands of clients &mdash; both in India and globally &mdash; helping individuals and businesses shape their voice through thoughtful content, strategic writing, and meaningful storytelling.</p>
-          <p class="about-body">My journey began in academia. I hold a Master's degree in Linguistics, qualified UGC Junior Research Fellowship (JRF) and GATE Linguistics, and worked as a Junior Research Fellow at IIT Bombay.</p>
-          <p class="about-body">I spent time living in the Himalayas &mdash; an experience that gave me perspective, clarity, and a deeper appreciation for meaningful work. Today, my unusual blend defines everything: academic rigor, human empathy, creative design, and technological thinking.</p>
-        </div>
-        <div class="creds r d3"><span class="cred">&#127891; M.A. Linguistics</span><span class="cred">&#128218; UGC JRF</span><span class="cred">&#127963; IIT Bombay</span><span class="cred">&#9968; Himalayas</span><span class="cred">&#129302; AI Strategy</span><span class="cred">GATE Linguistics</span></div>
-        <a href="#contact" class="btn-p r d4">Work With Varsha &rarr;</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact" class="section">
   <div class="wrap">
     <div class="contact-inner">
       <div>
-        <p class="eyebrow r">Let's Connect</p>
-        <h2 class="sec-title r d1">Ready to build your<br><em style="font-style:italic;color:var(--mg)">presence?</em></h2>
-        <p class="sec-sub r d2" style="margin-bottom:0">No technical overwhelm. No expensive subscriptions. Just clean, elegant work &mdash; designed for you.</p>
+        <p class="eyebrow r">Let&rsquo;s Connect</p>
+        <h2 class="sec-title r d1">Ready to build<br>your <em>corner?</em></h2>
+        <p class="sec-body r d2">No technical overwhelm. No expensive subscriptions. Just clean, honest work &mdash; designed for you, affordable, and yours to handle forever.</p>
         <div class="contact-links r d2">
-          <a href="mailto:varsha@millionphraseslabs.com" class="contact-link-item"><div class="cli-ico">&#128231;</div><div class="cli-text"><strong>Email</strong><span>Drop us a message directly</span></div></a>
-          <a href="https://www.instagram.com/million_phraseslabs/" target="_blank" rel="noopener" class="contact-link-item"><div class="cli-ico">&#128247;</div><div class="cli-text"><strong>Instagram</strong><span>@million_phraseslabs</span></div></a>
-          <a href="https://varshaeturi.substack.com/" target="_blank" rel="noopener" class="contact-link-item"><div class="cli-ico">&#128236;</div><div class="cli-text"><strong>Substack</strong><span>varshaeturi.substack.com</span></div></a>
-          <a href="https://eturivarsha.github.io" target="_blank" rel="noopener" class="contact-link-item"><div class="cli-ico">&#127760;</div><div class="cli-text"><strong>Portfolio</strong><span>eturivarsha.github.io</span></div></a>
-          <a href="https://linkedin.com/in/varshaeturi" target="_blank" rel="noopener" class="contact-link-item"><div class="cli-ico">&#128188;</div><div class="cli-text"><strong>LinkedIn</strong><span>Connect professionally</span></div></a>
+          <a href="https://www.instagram.com/million_phraseslabs/" target="_blank" rel="noopener" class="clink">
+            <div class="clink-ico ig">📸</div>
+            <div class="clink-text"><strong>Instagram</strong><span>@million_phraseslabs</span></div>
+            <div class="clink-arrow">→</div>
+          </a>
+          <a href="https://linkedin.com/in/varshaeturi" target="_blank" rel="noopener" class="clink">
+            <div class="clink-ico li">💼</div>
+            <div class="clink-text"><strong>LinkedIn</strong><span>Connect professionally</span></div>
+            <div class="clink-arrow">→</div>
+          </a>
+          <a href="https://github.com/EturiVarsha" target="_blank" rel="noopener" class="clink">
+            <div class="clink-ico gh">💻</div>
+            <div class="clink-text"><strong>GitHub</strong><span>EturiVarsha</span></div>
+            <div class="clink-arrow">→</div>
+          </a>
+          <a href="https://varshaeturi.substack.com/" target="_blank" rel="noopener" class="clink">
+            <div class="clink-ico ss">📰</div>
+            <div class="clink-text"><strong>Substack</strong><span>varshaeturi.substack.com</span></div>
+            <div class="clink-arrow">→</div>
+          </a>
+          <a href="https://wa.me/918247375497" target="_blank" rel="noopener" class="clink">
+            <div class="clink-ico wa">💬</div>
+            <div class="clink-text"><strong>WhatsApp</strong><span>Quick message &mdash; +91 82473 75497</span></div>
+            <div class="clink-arrow">→</div>
+          </a>
         </div>
       </div>
-      <div class="contact-form r d2">
-        <div class="fg"><label>Your Name</label><input type="text" id="fn" placeholder="Jane Smith"></div>
-        <div class="fg"><label>Email Address</label><input type="email" id="fe" placeholder="jane@example.com"></div>
-        <div class="fg"><label>I Need Help With</label><select id="fs"><option value="">Select a service&hellip;</option><option>Personal Website</option><option>Blog Content</option><option>LinkedIn Profile</option><option>R&eacute;sum&eacute; / CV</option><option>Brand Visuals</option><option>Full Digital Presence</option></select></div>
-        <div class="fg"><label>Tell Us About Your Project</label><textarea id="fm" placeholder="Tell me a bit about yourself and what you'd like to build&hellip;"></textarea></div>
-        <button class="submit-btn" onclick="sendForm()">Send Message &rarr;</button>
-        <div class="form-msg" id="fmsg"></div>
+      <div class="r d2">
+        <div class="glass-card" style="padding:2rem;text-align:center">
+          <div style="font-family:var(--serif);font-size:1.4rem;color:var(--amber);font-style:italic;margin-bottom:1rem">&ldquo;I believe words can build worlds.&rdquo;</div>
+          <p style="font-size:0.85rem;color:var(--muted);line-height:1.85;margin-bottom:1.2rem">Over several years, working with startups and individuals across India and globally &mdash; helping people shape their voice through thoughtful content, strategic writing, and meaningful design.</p>
+          <p style="font-size:0.85rem;color:var(--muted);line-height:1.85;margin-bottom:1.5rem">M.A. Applied Linguistics &middot; UGC JRF &middot; IIT Bombay &middot; GATE Linguistics. A blend of academic rigor, human empathy, and creative design.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:0.5rem;justify-content:center">
+            <span class="pill amber">M.A. Linguistics</span>
+            <span class="pill purple">UGC JRF</span>
+            <span class="pill pink">IIT Bombay</span>
+            <span class="pill amber">GATE Linguistics</span>
+            <span class="pill purple">AI Strategy</span>
+            <span class="pill pink">Himalayas</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- FOOTER -->
 <footer>
-  <div class="footer-in">
-    <div class="footer-logo">Million<em>Phrases</em> Labs<small>Words. Websites. Visuals.</small></div>
-    <ul class="footer-links"><li><a href="#home">Home</a></li><li><a href="#services">What We Do</a></li><li><a href="#portfolio">Portfolio</a></li><li><a href="#about">About</a></li><li><a href="#contact">Contact</a></li></ul>
-    <div class="footer-right"><p>Built with intelligence.<br>Designed with empathy.<br><br>&copy; 2025 Million Phrases Labs</p></div>
+  <div class="footer-inner">
+    <div class="footer-logo">Million<span>Phrases</span> Labs<small>Words. Websites. Visuals.</small></div>
+    <ul class="footer-links">
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#who">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#portfolio">Work</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="footer-right">Built with intention.<br>Designed with empathy.<br><br>&copy; 2025 Million Phrases Labs</div>
   </div>
 </footer>
 
@@ -789,317 +588,143 @@ footer{background:#03045E;padding:3rem 5%;border-top:1px solid rgba(0,180,216,0.
 
 <script>
 /* NAV */
-const nav = document.getElementById('nav');
-window.addEventListener('scroll', function() {
-  nav.classList.toggle('scrolled', window.scrollY > 30);
-  document.getElementById('scrollTop').classList.toggle('show', window.scrollY > 400);
+const mainNav=document.getElementById('mainNav');
+window.addEventListener('scroll',function(){
+  mainNav.classList.toggle('scrolled',window.scrollY>30);
+  document.getElementById('scrollTop').classList.toggle('show',window.scrollY>400);
 });
-document.getElementById('hbg').addEventListener('click', function() {
-  document.getElementById('mobnav').classList.add('open');
-});
-document.getElementById('mobclose').addEventListener('click', closeMob);
-function closeMob() { document.getElementById('mobnav').classList.remove('open'); }
+document.getElementById('hbg').addEventListener('click',function(){document.getElementById('mobnav').classList.add('open')});
+document.getElementById('mobclose').addEventListener('click',closeMob);
+function closeMob(){document.getElementById('mobnav').classList.remove('open')}
 
 /* SCROLL REVEAL */
-const io = new IntersectionObserver(function(entries) {
-  entries.forEach(function(e) {
-    if (e.isIntersecting) { e.target.classList.add('vis'); io.unobserve(e.target); }
-  });
-}, { threshold: 0.07 });
-document.querySelectorAll('.r').forEach(function(el) { io.observe(el); });
+const io=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target)}});
+},{threshold:0.07});
+document.querySelectorAll('.r').forEach(function(el){io.observe(el)});
 
-/* DING SOUND */
-function playDing() {
-  try {
-    var ctx = new (window.AudioContext || window.webkitAudioContext)();
-    var o = ctx.createOscillator();
-    var g = ctx.createGain();
-    o.connect(g); g.connect(ctx.destination);
-    o.frequency.setValueAtTime(880, ctx.currentTime);
-    o.frequency.exponentialRampToValueAtTime(660, ctx.currentTime + 0.15);
-    g.gain.setValueAtTime(0.25, ctx.currentTime);
-    g.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.4);
-    o.start(); o.stop(ctx.currentTime + 0.4);
-  } catch(e) {}
+/* TYPEWRITER */
+var messages=[
+  "You run a small caf\u00e9,\nand your menu deserves\na corner on the internet.",
+  "You\u2019re a writer\nwith too many thoughts\nand no place to put them.",
+  "You have a pet store,\na beauty salon,\na home library...",
+  "You\u2019re a hippie\nwith Himalayan pearls\nand a story to tell.",
+  "You run a brewery.\nYou sell handmade things.\nYou need a website.",
+  "You\u2019re a solo founder\nwho just needs\nsomeone to push them.",
+  "You want a blog.\nA Substack. A YouTube.\nWithout the overwhelm.",
+  "Simple website setups.\nYou can handle them\nforever. Independently.",
+  "GitHub Pages. Substack.\nSEO. Flyers. Ads.\nAll of it. Affordable.",
+  "Million Phrases Labs.\nReal help. Real people.\nYour corner of the internet."
+];
+var msgIdx=0,charIdx=0,deleting=false,twTimeout=null;
+var twEl=document.getElementById('twText');
+var twBar=document.getElementById('twBar');
+
+function typeStep(){
+  var msg=messages[msgIdx];
+  if(!deleting){
+    charIdx++;
+    var displayed=msg.slice(0,charIdx).replace(/\n/g,'<br>');
+    twEl.innerHTML=displayed+'<span class="tw-cursor"></span>';
+    twBar.style.width=(charIdx/msg.length*100)+'%';
+    if(charIdx>=msg.length){twTimeout=setTimeout(function(){deleting=true;typeStep()},2400);return}
+    playTypeSound();
+    twTimeout=setTimeout(typeStep,36+Math.random()*30);
+  } else {
+    charIdx=Math.max(0,charIdx-2);
+    var disp=messages[msgIdx].slice(0,charIdx).replace(/\n/g,'<br>');
+    twEl.innerHTML=disp+'<span class="tw-cursor"></span>';
+    twBar.style.width=(charIdx/messages[msgIdx].length*100)+'%';
+    if(charIdx<=0){deleting=false;msgIdx=(msgIdx+1)%messages.length;twTimeout=setTimeout(typeStep,380);return}
+    twTimeout=setTimeout(typeStep,16);
+  }
+}
+setTimeout(typeStep,900);
+
+function playTypeSound(){
+  try{
+    var ctx=new(window.AudioContext||window.webkitAudioContext)();
+    var o=ctx.createOscillator();var g=ctx.createGain();
+    o.connect(g);g.connect(ctx.destination);
+    o.type='square';
+    o.frequency.setValueAtTime(180+Math.random()*100,ctx.currentTime);
+    g.gain.setValueAtTime(0.035,ctx.currentTime);
+    g.gain.exponentialRampToValueAtTime(0.001,ctx.currentTime+0.055);
+    o.start();o.stop(ctx.currentTime+0.055);
+  }catch(e){}
 }
 
-/* PUZZLE MODAL */
-function openPuzzle() { document.getElementById('puzzleModal').classList.add('open'); }
-function closePuzzle() { document.getElementById('puzzleModal').classList.remove('open'); }
-document.getElementById('puzzleModal').addEventListener('click', function(e) {
-  if (e.target === e.currentTarget) closePuzzle();
+/* SERVICES */
+var SERVICES=[
+  {ico:'🌐',name:'Website Setup',sub:'GitHub Pages & custom builds'},
+  {ico:'📝',name:'Blog Page Setup',sub:'Substack integration'},
+  {ico:'✍️',name:'Content Writing',sub:'SEO-ready articles & copy'},
+  {ico:'📊',name:'SEO Analysis',sub:'Rankings & visibility'},
+  {ico:'💡',name:'Conceptualising',sub:'Strategy & ideation'},
+  {ico:'🎨',name:'Colour & Design',sub:'Brand coordination'},
+  {ico:'🔍',name:'Design Research',sub:'Visual system help'},
+  {ico:'🔧',name:'Fix Broken Things',sub:'Websites, hosting, bugs'},
+  {ico:'📧',name:'Email Flyers',sub:'Design & copy'},
+  {ico:'💬',name:'WhatsApp Flyers',sub:'Campaign design'},
+  {ico:'🎬',name:'Motion Posters',sub:'Animated content'},
+  {ico:'📺',name:'YouTube Content',sub:'Strategy & scripting'},
+  {ico:'📱',name:'Instagram Content',sub:'Reels, posts, strategy'},
+  {ico:'🔎',name:'Website Crawling',sub:'Technical SEO audit'},
+  {ico:'💼',name:'LinkedIn Setup',sub:'Profile & content strategy'},
+  {ico:'📖',name:'Substack Setup',sub:'Newsletter & integration'},
+  {ico:'🚀',name:'Execution',sub:'End-to-end delivery'},
+  {ico:'🏷️',name:'Ad Campaigns',sub:'Google & Meta'}
+];
+var tg=document.getElementById('tilesGrid');
+SERVICES.forEach(function(s,i){
+  var d=document.createElement('div');
+  d.className='tile r'+(i%3===1?' d1':i%3===2?' d2':'');
+  d.innerHTML='<div class="tile-ico">'+s.ico+'</div><div class="tile-name">'+s.name+'</div><div class="tile-sub">'+s.sub+'</div>';
+  tg.appendChild(d);io.observe(d);
 });
 
-function sendJournal() {
-  var name = document.getElementById('j-name').value.trim();
-  var who  = document.getElementById('j-who').value.trim();
-  var what = document.getElementById('j-what').value.trim();
-  var why  = document.getElementById('j-why').value.trim();
-  if (!who && !what && !why) { alert('Write at least a little something!'); return; }
-  var dn = name || 'A wandering soul';
-  var parts = [];
-  if (who)  parts.push('I am: ' + who);
-  if (what) parts.push('I want to: ' + what);
-  if (why)  parts.push('I am here because: ' + why);
-  var txt = parts.join('\n\n');
-  var today = new Date().toLocaleDateString('en-IN', { year:'numeric', month:'long', day:'numeric' });
-  document.getElementById('parchmentText').textContent = txt;
-  document.getElementById('parchmentName').textContent = '— ' + dn + ', ' + today;
-  var wm = encodeURIComponent('Hi Million Phrases Labs!\n\n' + txt + '\n\n— ' + dn);
-  document.getElementById('waBtn').onclick = function() {
-    window.open('https://wa.me/918247375497?text=' + wm, '_blank');
-  };
-  document.getElementById('parchmentReveal').classList.add('show');
-  document.getElementById('parchmentReveal').scrollIntoView({ behavior:'smooth', block:'nearest' });
-}
-
-/* BALLOON GAME */
-var gameActive = false, gScore = 0, gTime = 30, gInt = null, bInt = null;
-var BALL = ['🎈','🎀','💗','🌸','💖','🎊','✨','🌺'];
-var MSGS = [
-  [0,  5,  'You barely moved... but hey, you showed up. That counts.', 'Let us help you show up for your brand too.'],
-  [6,  10, 'A solid start! Consistent, steady — just like good content.', 'We build brands for people who keep going.'],
-  [11, 17, 'Nice reflexes! You have focus. Let us channel that into your digital presence.', 'We are just as quick when it comes to your strategy.'],
-  [18, 24, 'You are unstoppable! That energy? Let us put it into your brand.', 'We will keep up — promise.'],
-  [25, 999,'LEGENDARY! You did not just play — you dominated.', 'Your brand deserves that same energy. Let us talk.']
+/* PORTFOLIO - SITES */
+var SITES=[
+  {name:'The Flip Wall',cat:'Interactive Experience',bg:'linear-gradient(135deg,#1A1208,#C8860A)',url:'https://eturivarsha.github.io/The-Flip-Wall/',thumb:'The Flip Wall'},
+  {name:'The Flipping World',cat:'Data Journalism',bg:'linear-gradient(135deg,#0D2137,#1D9E75)',url:'https://eturivarsha.github.io/The-Flipping-World/',thumb:'Flipping World'},
+  {name:'The Creator',cat:'Influencer / Creator',bg:'linear-gradient(135deg,#C0392B,#F39C12)',url:'https://eturivarsha.github.io/Creator/',thumb:'The Creator'},
+  {name:'Life Coaching',cat:'Coaching / Wellness',bg:'linear-gradient(135deg,#A8EDEA,#8B3DBF)',url:'https://eturivarsha.github.io/Lifecoaching1/',thumb:'Life Coaching'},
+  {name:'BharatLingo',cat:'Education / Language',bg:'linear-gradient(135deg,#FF9933,#138808)',url:'https://eturivarsha.github.io/bharatlingo1/',thumb:'BharatLingo'},
+  {name:'Trekster',cat:'Travel / Adventure',bg:'linear-gradient(135deg,#1A2980,#26D0CE)',url:'https://eturivarsha.github.io/Trekster/',thumb:'Trekster'},
+  {name:'Hot and Sweet',cat:'Food / Bakery',bg:'linear-gradient(135deg,#F7971E,#D85A30)',url:'https://eturivarsha.github.io/Hot-Sweet/',thumb:'Hot & Sweet'},
+  {name:'Design Thinking',cat:'Design / Consultancy',bg:'linear-gradient(135deg,#4568DC,#B06AB3)',url:'https://eturivarsha.github.io/Designthinking/',thumb:'Design Thinking'},
+  {name:'Luxury Site',cat:'Luxury / Premium',bg:'linear-gradient(135deg,#1a1a1a,#4a3728)',url:'https://eturivarsha.github.io/Luxurysite/',thumb:'Luxury'},
+  {name:'Magazine Blog',cat:'Editorial / Blog',bg:'linear-gradient(135deg,#232526,#414345)',url:'https://eturivarsha.github.io/magazine-blog/',thumb:'Magazine'},
+  {name:'Million Phrases v1',cat:'Agency / Studio',bg:'linear-gradient(135deg,#E8157A,#7C3AED)',url:'https://eturivarsha.github.io/millionphrases.github.io/',thumb:'MPL v1'},
 ];
+var dg=document.getElementById('designGrid');
+SITES.forEach(function(s,i){
+  var c=document.createElement('div');c.className='proj-card r'+(i%3===1?' d1':i%3===2?' d2':'');
+  c.innerHTML='<div class="proj-thumb" style="background:'+s.bg+'">'+s.thumb+'</div><div class="proj-meta"><div class="proj-cat">'+s.cat+'</div><div class="proj-name">'+s.name+'</div><a href="'+s.url+'" target="_blank" rel="noopener" class="proj-link">Live Preview &rarr;</a></div>';
+  dg.appendChild(c);io.observe(c);
+});
 
-function startGame() {
-  document.getElementById('gameFooter').style.display = 'none';
-  document.getElementById('gameResult').style.display = 'none';
-  gScore = 0; gTime = 30; gameActive = true;
-  document.getElementById('gScore').textContent = '0';
-  document.getElementById('gTime').textContent = '30';
-  document.getElementById('gameArena').innerHTML = '';
-  gInt = setInterval(function() {
-    gTime--;
-    document.getElementById('gTime').textContent = gTime;
-    if (gTime <= 0) { clearInterval(gInt); clearInterval(bInt); endGame(); }
-  }, 1000);
-  bInt = setInterval(spawnBalloon, 800);
-  spawnBalloon();
-}
+/* PORTFOLIO - BLOGS */
+var BLOGS=[
+  {title:'Million Phrases Labs',cat:'About MPL &middot; 2025',excerpt:'The story behind Million Phrases Labs and why we exist.',color:'linear-gradient(135deg,#1A1208,#C8860A)',url:'https://varshaeturi.substack.com/p/million-phrases-labs'},
+  {title:'I Feel Less Confident Sometimes',cat:'Personal Essay &middot; 2025',excerpt:'A deeply honest essay about confidence and quiet courage.',color:'linear-gradient(135deg,#8B3DBF,#E85FA0)',url:'https://varshaeturi.substack.com/p/i-feel-less-confident-sometimes-but'},
+  {title:'Content Consumption 2026: India',cat:'Digital Trends &middot; 2026',excerpt:'How Indian audiences are consuming content differently in 2026.',color:'linear-gradient(135deg,#0D2137,#1D9E75)',url:'https://varshaeturi.substack.com/p/content-consumption-2026-how-indias'},
+  {title:'Gadget Trends 2026: India',cat:'Tech &amp; Culture &middot; 2026',excerpt:'Affordable AI devices and local hardware shaping India.',color:'linear-gradient(135deg,#1A2980,#26D0CE)',url:'https://varshaeturi.substack.com/p/gadget-trends-2026-where-india-is'},
+  {title:'Fashion Trends 2026: India',cat:'Culture &amp; Style &middot; 2026',excerpt:'Fashion in India is refusing to be categorized.',color:'linear-gradient(135deg,#E8157A,#FF9933)',url:'https://varshaeturi.substack.com/p/fashion-trends-2026-india'},
+  {title:'Consumerism in 2026: New Rules',cat:'Society &amp; Economy &middot; 2026',excerpt:'How the rules of buying and deciding have changed for good.',color:'linear-gradient(135deg,#4568DC,#B06AB3)',url:'https://varshaeturi.substack.com/p/consumerism-in-2026-the-new-rules'},
+];
+var bg=document.getElementById('blogGrid');
+BLOGS.forEach(function(b,i){
+  var c=document.createElement('div');c.className='blog-card r'+(i%3===1?' d1':i%3===2?' d2':'');
+  c.innerHTML='<div class="blog-thumb" style="background:'+b.color+'">'+b.title.slice(0,24)+'</div><div class="blog-body"><div class="blog-date">'+b.cat+'</div><div class="blog-title">'+b.title+'</div><div class="blog-excerpt">'+b.excerpt+'</div><a href="'+b.url+'" target="_blank" rel="noopener" class="blog-link">Read on Substack &rarr;</a></div>';
+  bg.appendChild(c);io.observe(c);
+});
 
-function spawnBalloon() {
-  if (!gameActive) return;
-  var arena = document.getElementById('gameArena');
-  var b = document.createElement('div');
-  b.className = 'game-balloon';
-  b.textContent = BALL[Math.floor(Math.random() * BALL.length)];
-  b.style.left = (Math.random() * 85) + '%';
-  var dur = 2.5 + Math.random() * 2;
-  b.style.animationDuration = dur + 's';
-  b.addEventListener('click', function(e) {
-    e.stopPropagation();
-    if (!gameActive) return;
-    gScore++;
-    document.getElementById('gScore').textContent = gScore;
-    popFx(e.clientX, e.clientY);
-    b.remove();
-    popSound();
-  });
-  arena.appendChild(b);
-  setTimeout(function() { if (b.parentNode) b.remove(); }, dur * 1000);
-}
-
-function popFx(x, y) {
-  var arena = document.getElementById('gameArena');
-  var rect = arena.getBoundingClientRect();
-  var p = document.createElement('div');
-  p.className = 'game-pop';
-  p.textContent = '💥';
-  p.style.left = (x - rect.left - 20) + 'px';
-  p.style.top  = (y - rect.top  - 20) + 'px';
-  arena.appendChild(p);
-  setTimeout(function() { p.remove(); }, 500);
-}
-
-function popSound() {
-  try {
-    var ctx = new (window.AudioContext || window.webkitAudioContext)();
-    var o = ctx.createOscillator();
-    var g = ctx.createGain();
-    o.connect(g); g.connect(ctx.destination);
-    o.frequency.setValueAtTime(600, ctx.currentTime);
-    o.frequency.exponentialRampToValueAtTime(200, ctx.currentTime + 0.1);
-    g.gain.setValueAtTime(0.2, ctx.currentTime);
-    g.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.15);
-    o.start(); o.stop(ctx.currentTime + 0.15);
-  } catch(e) {}
-}
-
-function endGame() {
-  gameActive = false;
-  document.getElementById('gameArena').innerHTML = '';
-  document.getElementById('gameResult').style.display = 'block';
-  document.getElementById('resultScore').textContent = gScore;
-  var m = MSGS[0];
-  for (var i = 0; i < MSGS.length; i++) {
-    if (gScore >= MSGS[i][0] && gScore <= MSGS[i][1]) { m = MSGS[i]; break; }
-  }
-  document.getElementById('resultMsg').textContent = m[1];
-  document.getElementById('resultCta').innerHTML = '<a href="#contact" style="color:var(--mg);text-decoration:underline">' + m[2] + '</a>';
-}
-
-function resetGame() {
-  document.getElementById('gameResult').style.display = 'none';
-  document.getElementById('gameFooter').style.display = 'block';
-}
-
-/* PORTFOLIO TABS */
-function switchTab(id, btn) {
-  document.querySelectorAll('.port-section').forEach(function(s) { s.classList.remove('active'); });
-  document.querySelectorAll('.port-tab').forEach(function(t) { t.classList.remove('active'); });
-  document.getElementById('tab-' + id).classList.add('active');
+function switchTab(id,btn){
+  document.querySelectorAll('.port-panel').forEach(function(p){p.classList.remove('active')});
+  document.querySelectorAll('.ptab').forEach(function(t){t.classList.remove('active')});
+  document.getElementById('tab-'+id).classList.add('active');
   btn.classList.add('active');
-}
-
-/* DESIGN GRID */
-var DESIGNS = [
-  { thumb:'Flip Wall',       bg:'linear-gradient(135deg,#03045E,#0077B6)', cat:'Interactive Experience',  name:'The Flip Wall',       url:'https://eturivarsha.github.io/The-Flip-Wall/' },
-  { thumb:'Flipping World',  bg:'linear-gradient(135deg,#0096C7,#48CAE4)', cat:'Interactive Experience',  name:'The Flipping World',  url:'https://eturivarsha.github.io/The-Flipping-World/' },
-  { thumb:'Creator',         bg:'linear-gradient(135deg,#FF6B6B,#FFE66D)', cat:'Creator / Influencer',    name:'The Creator',         url:'https://eturivarsha.github.io/Creator/' },
-  { thumb:'Life Coach',      bg:'linear-gradient(135deg,#A8EDEA,#FED6E3)', cat:'Coaching / Wellness',     name:'Life Coaching',       url:'https://eturivarsha.github.io/Lifecoaching1/' },
-  { thumb:'BharatLingo',     bg:'linear-gradient(135deg,#FF9933,#138808)', cat:'Education / Language',    name:'BharatLingo',         url:'https://eturivarsha.github.io/bharatlingo1/' },
-  { thumb:'Trekster',        bg:'linear-gradient(135deg,#1A2980,#26D0CE)', cat:'Travel / Adventure',      name:'Trekster',            url:'https://eturivarsha.github.io/Trekster/' },
-  { thumb:'Hot and Sweet',   bg:'linear-gradient(135deg,#F7971E,#FFD200)', cat:'Food / Bakery',           name:'Hot and Sweet',       url:'https://eturivarsha.github.io/Hot-Sweet/' },
-  { thumb:'Magazine',        bg:'linear-gradient(135deg,#232526,#414345)', cat:'Editorial / Blog',        name:'Magazine Blog',       url:'https://eturivarsha.github.io/magazine-blog/' },
-  { thumb:'Design Thinking', bg:'linear-gradient(135deg,#4568DC,#B06AB3)', cat:'Design / Consultancy',   name:'Design Thinking',     url:'https://eturivarsha.github.io/Designthinking/' },
-  { thumb:'Luxury',          bg:'linear-gradient(135deg,#1a1a1a,#4a3728)', cat:'Luxury / Premium',        name:'Luxury Site',         url:'https://eturivarsha.github.io/Luxurysite/' },
-  { thumb:'M Phrases v1',   bg:'linear-gradient(135deg,#E8157A,#7C3AED)', cat:'Agency / Studio',         name:'Million Phrases v1',  url:'https://eturivarsha.github.io/millionphrases.github.io/' }
-];
-
-var dg = document.getElementById('designGrid');
-DESIGNS.forEach(function(d, i) {
-  var c = document.createElement('div');
-  c.className = 'design-card r' + (i % 3 === 1 ? ' d1' : i % 3 === 2 ? ' d2' : '');
-  c.innerHTML = '<div class="design-thumb" style="background:' + d.bg + '">' + d.thumb + '</div>'
-    + '<div class="design-meta">'
-    + '<div class="design-cat">' + d.cat + '</div>'
-    + '<div class="design-name">' + d.name + '</div>'
-    + '<a href="' + d.url + '" target="_blank" rel="noopener" class="design-link">Live Preview &rarr;</a>'
-    + '</div>';
-  dg.appendChild(c);
-  io.observe(c);
-});
-
-/* BLOG WALL */
-var BLOGS = [
-  {
-    title: 'Million Phrases Labs',
-    url: 'https://varshaeturi.substack.com/p/million-phrases-labs',
-    date: '2025', cat: 'About MPL',
-    excerpt: 'The story behind Million Phrases Labs and why we exist.',
-    body: 'Million Phrases Labs was born from a simple belief: that words are the most powerful design tool we have.\n\nWe built this studio to help solo founders, creators, and professionals build a digital presence that actually sounds like them.\n\nWe combine academic rigor with creative design, writing with technology, strategy with storytelling.',
-    color: 'linear-gradient(135deg,#03045E,#0077B6)'
-  },
-  {
-    title: 'I Feel Less Confident Sometimes',
-    url: 'https://varshaeturi.substack.com/p/i-feel-less-confident-sometimes-but',
-    date: '2025', cat: 'Personal Essay',
-    excerpt: 'A deeply honest essay about confidence and the quiet courage it takes to keep going.',
-    body: 'There are days when I look at everything I have built and feel nothing but uncertainty. And I think that is okay.\n\nConfidence is not the absence of doubt. It is the decision to move forward despite it.\n\nThis essay is about those in-between moments. The ones no one posts about. The ones that actually shape us.',
-    color: 'linear-gradient(135deg,#0077B6,#48CAE4)'
-  },
-  {
-    title: 'Content Consumption 2026: India',
-    url: 'https://varshaeturi.substack.com/p/content-consumption-2026-how-indias',
-    date: '2026', cat: 'Digital Trends',
-    excerpt: 'How Indian audiences are consuming content differently in 2026.',
-    body: 'India’s relationship with digital content has transformed dramatically.\n\nShort-form video, vernacular content, and creator-led communities are rewriting the rules of attention.\n\nFor anyone building a brand online in India today, understanding these shifts is not optional. It is survival.',
-    color: 'linear-gradient(135deg,#00B4D8,#90E0EF)'
-  },
-  {
-    title: 'Gadget Trends 2026: Where India Is Headed',
-    url: 'https://varshaeturi.substack.com/p/gadget-trends-2026-where-india-is',
-    date: '2026', cat: 'Tech and Culture',
-    excerpt: 'From affordable AI devices to local hardware shaping India.',
-    body: 'India’s gadget market in 2026 is fascinating. A blend of premium aspirations and value-first pragmatism.\n\nAI-enabled devices are trickling into the mid-range segment, and local manufacturing is finally producing products worth talking about.',
-    color: 'linear-gradient(135deg,#48CAE4,#ADE8F4)'
-  },
-  {
-    title: 'Fashion Trends 2026: India',
-    url: 'https://varshaeturi.substack.com/p/fashion-trends-2026-india',
-    date: '2026', cat: 'Culture and Style',
-    excerpt: 'Fashion in India is refusing to be categorized and it is having a moment.',
-    body: 'Indian fashion in 2026 is simultaneously global and hyper-local, sustainable and maximalist.\n\nThis piece explores what is driving these shifts and what they say about how young India sees itself.',
-    color: 'linear-gradient(135deg,#023E8A,#0096C7)'
-  },
-  {
-    title: 'Consumerism in 2026: The New Rules',
-    url: 'https://varshaeturi.substack.com/p/consumerism-in-2026-the-new-rules',
-    date: '2026', cat: 'Society and Economy',
-    excerpt: 'How the rules of buying and deciding have changed for good.',
-    body: 'The consumer of 2026 is skeptical, values-driven, and deeply aware.\n\nThey research before they buy, distrust advertising, and reward brands that are honest about what they are.\n\nFor businesses, this is both a challenge and an enormous opportunity if you are willing to lead with authenticity.',
-    color: 'linear-gradient(135deg,#0077B6,#CAF0F8)'
-  }
-];
-
-var bw = document.getElementById('blogWall'); if (!bw) { console.error('blogWall not found'); }
-BLOGS.forEach(function(b, i) {
-  var c = document.createElement('div');
-  c.className = 'blog-modal-card r' + (i % 3 === 1 ? ' d1' : i % 3 === 2 ? ' d2' : '');
-  c.innerHTML = '<div class="blog-thumb-wall" style="background:' + b.color + '">' + b.title.slice(0,30) + '</div>'
-    + '<div class="blog-body-wall">'
-    + '<div class="blog-date-wall">' + b.cat + ' &middot; ' + b.date + '</div>'
-    + '<div class="blog-title-wall">' + b.title + '</div>'
-    + '<div class="blog-excerpt-wall">' + b.excerpt + '</div>'
-    + '</div>';
-  c.addEventListener('click', function() { openBlogModal(b); });
-  bw.appendChild(c);
-  io.observe(c);
-});
-
-function openBlogModal(b) {
-  document.getElementById('bm-cat').textContent   = b.cat;
-  document.getElementById('bm-title').textContent = b.title;
-  document.getElementById('bm-date').textContent  = b.date;
-  document.getElementById('bm-body').textContent  = b.body;
-  document.getElementById('bm-link').href         = b.url;
-  document.getElementById('blogModal').classList.add('open');
-}
-function closeBlogModal() { document.getElementById('blogModal').classList.remove('open'); }
-document.getElementById('blogModal').addEventListener('click', function(e) {
-  if (e.target === e.currentTarget) closeBlogModal();
-});
-
-
-/* MINI MOTION POSTER WORDS */
-(function() {
-  var words = ['Brand','LinkedIn','SEO','Blogs','Voice','Copy','UX','Design'];
-  var colors = ['#0077B6','#00B4D8','#48CAE4','#90E0EF','#ADE8F4'];
-  var container = document.getElementById('mpWords');
-  if (!container) return;
-  words.forEach(function(w, i) {
-    var el = document.createElement('div');
-    el.className = 'mp-float';
-    el.textContent = w;
-    el.style.left = (8 + Math.random() * 75) + '%';
-    el.style.top = (20 + Math.random() * 55) + '%';
-    el.style.color = colors[i % colors.length];
-    el.style.animationDelay = (i * 0.5) + 's';
-    container.appendChild(el);
-  });
-})();
-
-/* CONTACT FORM */
-function sendForm() {
-  var name    = document.getElementById('fn').value.trim();
-  var email   = document.getElementById('fe').value.trim();
-  var service = document.getElementById('fs').value;
-  var msg     = document.getElementById('fm').value.trim();
-  var fb      = document.getElementById('fmsg');
-  fb.className = 'form-msg';
-  if (!name || !email || !msg) {
-    fb.textContent = 'Please fill in your name, email and message.';
-    fb.className = 'form-msg err';
-    return;
-  }
-  var sub  = encodeURIComponent('MPL Inquiry from ' + name + ' — ' + (service || 'General'));
-  var body = encodeURIComponent('Hi Varsha,\n\nName: ' + name + '\nEmail: ' + email + '\nService: ' + (service || 'Not specified') + '\n\n' + msg + '\n\n— Sent via millionphraseslabs.com');
-  window.location.href = 'mailto:varsha@millionphraseslabs.com?subject=' + sub + '&body=' + body;
-  fb.textContent = 'Opening your email client... Talk soon!';
-  fb.className = 'form-msg ok';
 }
 </script>
 </body>
